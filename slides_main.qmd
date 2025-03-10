@@ -1,0 +1,828 @@
+---
+title: "Bayesian models of brains, minds, & behaviors"
+title_acronym: "bayesMod" # set up variables for re-use 
+subtitle: "Stop describing, start explaining"
+format:
+  revealjs: 
+    toc: true  # Enables a sidebar with slide titles
+    toc-depth: 1 
+    toc-title: "Lecture topics"  # Custom title for TOC
+    slide-number: c/t
+    execute: 
+      enabled: true  # Ensures code execution
+    navigation-mode: vertical  # Optional: Default allows 2D navigation
+    chalkboard: 
+      buttons: true
+    preview-links: auto
+    logo: images/drcmr.jpeg
+    css: styles.css
+    footer: 'Course Website: <a href="https://sites.google.com/view/bayesianmodelsphdschool/home">sites.google.com/view/bayesianmodelsphdschool</a>'
+jupyter: python3  # Ensure Quarto uses Jupyter instead of R
+resources:
+  - bayesModels.pdf
+---
+
+# Preamble
+
+## Course website
+- All slides & materials at → [sites.google.com/view/bayesianmodelsphdschool/home](https://sites.google.com/view/bayesianmodelsphdschool/home)
+
+## Course schedule
+- This is the schedule
+- *insert schedule*
+
+## WhatsApp social group
+::: incremental
+- Here you can talk to each other
+- Answer each others questions
+- Stay in touch
+- Friday bar
+:::
+
+# Introduction
+
+## Overarching aim
+-  To use the tools of probability theory to scientifically understand brains minds annd behavior
+
+## Specific aims
+::: incremental
+- Hands-on / interactive
+- Keep it simple, duh
+- Beyond description → explain via theory
+- Emphasis on the models of mind & behavior
+- Simple methods for connecting these to neural data
+- Intuitive, playful, enlightening, soul-nourishing, life-affirming, fun!, useful!
+:::
+
+## Our expectations of you
+::: incremental
+- Life is too to short to let things pass that you dont understand
+- Your life matters. Your understanding matters. Actively take part.
+- You are entitled to understand this. 
+- Don't listen, wrestle.
+- Ask questions, interupt.
+- Be sceptical. You cant offend me.
+::: 
+
+## Do say:
+::: incremental
+- "im probably being stupid but..."
+- "i might have missed this but..."
+- "sorry, i still dont understand why..."
+- "do you have an intuitive explanation for why..."
+- "i'm confused and feeling a bit dizzy..."
+- If shy, say it in the break, or find a TA
+:::
+
+## Don't:
+::: incremental
+- Nod and pretend you get something
+- Assume you are the only one confused
+:::
+
+## What is a Bayesian model?
+::: incremental
+- At heart: Bayesian model → probabilistic model
+- Probabilistic models are essential because uncertainty is fundamental to all real-world phenomena
+- Brains / minds need probabilistic models to deal with this uncertainty
+- As scientists, our data about brains and minds is also uncertain → probabilistic models for same reason 
+:::
+
+## What can Bayesian models model?
+::: incremental
+- Anything. Literally.
+- Here we apply it to brains, minds, and behavior, with emphasis on experimental data. 
+- Particular emphasis is on cognitive models (minds) which can be inferred from behavior, and then how this can be integrated into simple analyses of neural (mainly neuroimaging) data.
+- The heavy lifting is all on the cogntive modelling, but principles apply to any phenomena of interest.  
+:::
+
+## So what is the esesence of Bayesianism?
+::: incremental
+- Bayesianism is really just reduces to being consistent with your probabilitistic beliefs... 
+- ...and how you update them according to evidence.
+- And being consistent with probabilities is really just logic.
+- So really, deep down, this course is just about being logical.
+- It's not a theory that could be empirically falsified, its mathematically true. End of.  
+:::
+
+## Spoiler alert: Bayes wasn't that much of a genius
+::: incremental
+- Bayes wasn't a Newton or Einstein.
+- He just rearranged an equation and came up with an interesting application. 
+- Its not his domain of theory, he just was the first to notice this. 
+:::
+
+# How to think like a Bayesian
+'Google slides: <a href="https://docs.google.com/presentation/d/1wEUf06-69HDm93K-SIimnBpMw4ken5g6j6rDQ5xTsoU/edit?usp=sharing
+">[link]</a>'
+
+# The basics of Bayesian analysis 
+
+## General principles
+::: incremental
+-  current belief → evidence → new belief
+-  prior belief   → evidence → posterior belief
+::: 
+
+## Example
+::: incremental
+- a cognitive task of 10 trials of equal difficulty
+- we want to estimate cognitive ability $\theta$ which is the rate of correct performance
+- $\theta$ is hidden (latent), we cannot observe it directly, only its effect on the number of trials correct
+- before we obtain data we have uncertainty over $\theta$
+- we do know $0 < \theta <1$ where 0 is no performance, and 1 is perfect performance
+::: 
+
+## Hidden variables
+::: incremental
+- modeling hidden variables is central to cognitive modelling 
+- it is at the heart of explanation beyond description
+- description would just plot performance score as this is observed.
+- but if you want to understand what underlies it, you need to model hidden variables.
+- psychology/neuroscience is always ultimately about hidden variables
+:::
+
+## Why the difference between hidden and observed?
+::: incremental
+- number of trials correct $k$ is an observable consequence of ability which is hidden
+- they are not the same
+- the same ability can give different $\k$ depending on chance
+- often our questions and theories are about the hidden not the observed. 
+:::
+
+## Prior belief over $\theta$
+::: incremental
+- if we are agnostic about $\theta$ we can assign uniform probability distribution for $p(\theta)$
+- *uniform dist*
+- we know nothing so we assign equal probability to all possible values of $\theta$
+- we are maximally uncertain
+:::
+
+## Representing beliefs as probabiity distributions
+::: incremental
+- Probability distributions are a natural way to represent beliefs
+- They express our what we believe (.e.g is theta high or low) 
+- ...and our uncertainy (how spread out is the distribution)
+- *interactive beta dist*
+- play with sliders to represent different prior beliefs
+:::
+
+## Update prior with evidence from data
+::: incremental
+- Data: k = 9/10 trials correct
+- $p(\theta) \rightarrow p(k|\theta) \rightarrow p(\theta|data)$  
+- prior $\rightarrow$ likelihood $\rightarrow$ posterior 
+:::
+
+## Posterior distribution
+::: incremental
+- prior was *uniform dist*
+- posterior $p(\theta|data)$
+- is *plot beta(9,1)*
+- we are now more certain than before
+- the evidence has reduced our uncertainty
+:::
+
+## Bayes rule
+::: incremental
+- Bayes rule expresses how to update priors into posterior according to data
+- $p(\theta | \text{data}) = \frac{p(\text{data} | \theta) \, p(\theta)}{p(\text{data})}$
+- $\text{Posterior} = \frac{\text{Likelihood} \times \text{Prior}}{\text{marginal likelihood}}$
+:::
+
+## Marginal likelihood
+::: incremental
+- $p(D)$ this is the probability of the data. 
+- Its a single number that ensures the posterior sums to 1 and is therefore a probability distribution
+- It doesnt depend on $\theta$
+:::
+
+## Alternative expression of Bayes
+::: incremental
+- $p(\theta | \text{data}) \propto p(\text{data} | \theta) \times p(\theta)$
+- $\text{Posterior} \propto \text{Likelihood} \times \text{Prior}$
+:::
+
+## Bayesian credibility intervals express uncertainy
+::: incremental
+- The posterior can be interpreted as a probability distribution
+- if 50% of distribution is above say 0.55, then there is $p(0.5)>\theta$ 
+- Bayesian credible intervals e.g. $\text{BCI}_{95\%} [0.4,0.8]$ meaans that 95% probability the true value is between those limits. 
+- This is what we want classical confidence intervals to be. 
+- *insert drawing of how to make BCI*
+:::
+
+## Sequential updating
+::: incremental
+- suppose we collect more data
+- 5 more trials and 3 of these are correct
+- we previously had 9 out of 10 correct
+- we just add the data together so now its 12 / 15
+- unlike frequentist statistics the order of data collection doesnt matter
+- *plot new posterior*
+:::
+
+## Sequential updating
+::: incremental
+- it makes no difference if
+- compute posterior for first data, then update again
+- prior → 9/10 → posterior → prior → 3/ 5 → posterior
+- or just compute all in one go
+- prior → 12/15 → posterior
+- same final posterior. simples.
+:::
+
+## Analytic solution
+::: incremental
+- For certain cases you can calculate posteriors "analytically" via equations
+- e.g. in this example we represent our uniform prior as a beta distribution
+- $p(\theta)~beta(1,1)$
+- to update to the posterior is simple
+- $p(\theta|k,n)~beta(1+k,1+(n-k))$
+- thus for every possible observation we know how to update our posterior
+::: 
+
+## Interactive beta distribution
+::: incremental
+- *plot beta with sliders for k and n*
+- play around with the data to see how it updates the uniform prior to any posterior
+- what values of k and n, make the posterior most uncertain?
+- which values make posterior most certain it theta is low? high? intermediate?
+::: 
+
+## Conjugate
+::: incremental
+- in nice cases like this, it is only possible because the prior and posterior belong to the same family of distributions
+- they are "conjugate"
+- sadly, in most cases this is not possible 😞 
+:::
+
+## So what do we do in other cases?
+::: incremental
+- dont fear MCMC is here!
+- what?
+- Monte Carlo Markov Chain.  
+- Its a method for sampling from the posterior and it works in almost all cases.
+- It's a little bit magic. 
+- This course focuses on MCMC because it works in all cases and its simple to use. 
+:::
+
+## Comparing analytic vs. numerical (sampling)
+::: incremental
+- *plot analytic posterior*
+- *plot MCMC*
+- *screencap from book?*
+:::
+
+## How does MCMC work?
+::: incremental
+- There are two paths forward. 
+- Red pill - you like to know the truth because truth is power. Therefore you can follow this video *insert link* on how it works
+- Blue pill - you take for granted that it works and not knowing exactly how has no material impact on your modelling. 
+:::
+
+## Advantages of Bayesian modelling
+::: incremental
+- Flexibility - Bayesian models can be built to accomodate the complexity or simplicity of any data. They can deal with contamination, confounds, hierarchical data, missing data.
+- Principled - Uncertainty is always fully represented, and accounted for, no useful information is discarded. 
+- Intuitive - Generally Bayes will align with your intuition, much better than other approaches. Sometimes you will need to update your intuition, but thats ok. 
+- Easy - It is easy, once you know how. 
+:::
+
+## Getting started
+::: incremental
+- Our first example was about inferring a rate for a binary process
+- Binary process since either correct or incorrect
+- Inferring a rate, since we were inferring the underlying ability as a probability $\theta$
+- Lots of tasks can be represented as binary processes
+:::
+
+## Cognitive tasks that are binary processes
+::: incremental
+- Task switching
+- Go-no-go
+- Stop signal
+- etc. 
+:::
+
+## From binary outcomes to rate
+::: incremental
+- Binary outcomes typically k correct out of n
+- Expressed as a rate = k / n
+- This is the observed rate
+- But what is the underlying hidden rate $/theta$
+- $k \sim \text{Binomial}(\theta, n)$
+
+
+
+
+## Code {auto-animate="true"}
+
+-   The course includes code like this:
+ 
+``` {.r code-line-numbers="1|2|3"}
+# Inferring a rate
+model{
+  #prior distributions over rate theta
+  theta ~ dbeta (1,1)
+  #observed counts
+  k ~ dbin(theta,n)
+}
+``` 
+# section 2
+
+## Code {auto-animate="true"}
+
+-   The course includes code like this:
+
+``` r
+# Define a server for the Shiny app
+function(input, output) {
+  
+  # Fill in the spot we created for a plot
+  output$phonePlot <- renderPlot({
+    # Render a barplot
+  })
+}
+```
+
+## Code Animations {auto-animate="true"}
+
+-   Over 20 syntax highlighting themes available
+-   Default theme optimized for accessibility
+
+``` r
+# Define a server for the Shiny app
+function(input, output) {
+  
+  # Fill in the spot we created for a plot
+  output$phonePlot <- renderPlot({
+    # Render a barplot
+    barplot(WorldPhones[,input$region]*1000, 
+            main=input$region,
+            ylab="Number of Telephones",
+            xlab="Year")
+  })
+}
+```
+
+::: footer
+Learn more: [text of link](https://google.com)
+:::
+
+## Line Highlighting
+
+-   Highlight specific lines for emphasis
+-   Incrementally highlight additional lines
+
+``` {.python code-line-numbers="4-5|7|10"}
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+## Executable Code
+
+```{r}
+#| echo: true
+#| fig-width: 10
+#| fig-height: 4.5
+library(ggplot2)
+ggplot(mtcars, aes(hp, mpg, color = am)) +
+  geom_point() +
+  geom_smooth(formula = y ~ x, method = "loess")
+```
+
+::: footer
+Learn more: [Executable Code](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/#executable-code)
+:::
+
+## LaTeX Equations
+
+[MathJax](https://www.mathjax.org/) rendering of equations to HTML
+
+::: columns
+::: {.column width="40%"}
+``` tex
+\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}
+
+\begin{align}
+a_{11}& =b_{11}&
+  a_{12}& =b_{12}\\
+a_{21}& =b_{21}&
+  a_{22}& =b_{22}+c_{22}
+\end{align}
+```
+:::
+
+::: {.column width="60%"}
+```{=tex}
+\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}
+```
+```{=tex}
+\begin{align}
+a_{11}& =b_{11}&
+  a_{12}& =b_{12}\\
+a_{21}& =b_{21}&
+  a_{22}& =b_{22}+c_{22}
+\end{align}
+```
+:::
+:::
+
+## Column Layout {.smaller}
+
+Arrange content into columns of varying widths:
+
+::: columns
+::: {.column width="35%"}
+#### Motor Trend Car Road Tests
+
+The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles.
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="62%"}
+```{r}
+knitr::kable(head(mtcars)[,c("mpg",	"cyl", "disp", "hp", "wt")])
+```
+:::
+:::
+
+## Incremental Lists
+
+Lists can optionally be displayed incrementally:
+
+::: incremental
+-   First item
+-   Second item
+-   Third item
+:::
+
+. . .
+
+<br/> Insert pauses to make other types of content display incrementally.
+
+
+## Fragments -->
+
+Incremental text display and animation with fragments:
+
+<br/>
+
+::: {.fragment .fade-in}
+Fade in
+:::
+
+::: {.fragment .fade-up}
+Slide up while fading in
+:::
+
+::: {.fragment .fade-left}
+Slide left while fading in
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+Fade in then semi out
+:::
+
+. . .
+
+::: {.fragment .strike}
+Strike
+:::
+
+::: {.fragment .highlight-red}
+Highlight red
+:::
+
+::: footer
+Learn more: [Fragments](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/advanced.html#fragments)
+:::
+
+## Slide Backgrounds {background="#43464B"}
+
+Set the `background` attribute on a slide to change the background color (all CSS color formats are supported).
+
+Different background transitions are available via the `background-transition` option.
+
+::: footer
+Learn more: [Slide Backgrounds](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/#color-backgrounds)
+:::
+
+## Media Backgrounds {background="#43464B" background-image="images/milky-way.jpeg"}
+
+You can also use the following as a slide background:
+
+-   An image: `background-image`
+
+-   A video: `background-video`
+
+-   An iframe: `background-iframe`
+
+::: footer
+Learn more: [Media Backgrounds](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/#image-backgrounds)
+:::
+
+## Absolute Position
+
+Position images or other elements at precise locations
+
+![](mini/images/kitten-400-350.jpeg){.absolute top="170" left="30" width="400" height="400"}
+
+![](mini/images/kitten-450-250.jpeg){.absolute .fragment top="150" right="80" width="450"}
+
+![](mini/images/kitten-300-200.jpeg){.absolute .fragment bottom="110" right="130" width="300"}
+
+::: footer
+Learn more: [Absolute Position](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/advanced.html#absolute-position)
+:::
+
+## Auto-Animate {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Automatically animate matching elements across slides with Auto-Animate.
+
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #3fb618; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box3" auto-animate-delay="0.2" style="background: #e83e8c; width: 200px; height: 150px; margin: 10px;"}
+:::
+:::
+
+::: footer
+Learn more: [Auto-Animate](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/advanced.html#auto-animate)
+:::
+
+## Auto-Animate {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Automatically animate matching elements across slides with Auto-Animate.
+
+::: r-stack
+::: {data-id="box1" style="background: #2780e3; width: 350px; height: 350px; border-radius: 200px;"}
+:::
+
+::: {data-id="box2" style="background: #3fb618; width: 250px; height: 250px; border-radius: 200px;"}
+:::
+
+::: {data-id="box3" style="background: #e83e8c; width: 150px; height: 150px; border-radius: 200px;"}
+:::
+:::
+
+::: footer
+Learn more: [Auto-Animate](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/advanced.html#auto-animate)
+:::
+
+## Slide Transitions {.smaller}
+
+The next few slides will transition using the `slide` transition
+
+| Transition | Description                                                            |
+|------------|------------------------------------------------------------------------|
+| `none`     | No transition (default, switch instantly)                              |
+| `fade`     | Cross fade                                                             |
+| `slide`    | Slide horizontally                                                     |
+| `convex`   | Slide at a convex angle                                                |
+| `concave`  | Slide at a concave angle                                               |
+| `zoom`     | Scale the incoming slide so it grows in from the center of the screen. |
+
+::: footer
+Learn more: [Slide Transitions](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/advanced.html#slide-transitions)
+:::
+
+## Tabsets {.smaller .scrollable transition="slide"}
+
+::: panel-tabset
+### Plot
+
+```{r}
+library(ggplot2)
+ggplot(mtcars, aes(hp, mpg, color = am)) +
+  geom_point() +
+  geom_smooth(formula = y ~ x, method = "loess")
+```
+
+### Data
+
+```{r}
+knitr::kable(mtcars)
+```
+:::
+
+::: footer
+Learn more: [Tabsets](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/#tabsets)
+:::
+
+## Interactive Slides {.smaller transition="slide"}
+
+Include Jupyter widgets and htmlwidgets in your presentations
+
+<!-- ```{r, eval=FALSE} 
+#| echo: false
+#| fig-height: 5
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+```-->
+
+::: footer
+Learn more: [Jupyter widgets](https://{{< meta prerelease-subdomain >}}quarto.org/docs/interactive/widgets/jupyter.html), [htmlwidgets](https://{{< meta prerelease-subdomain >}}quarto.org/docs/interactive/widgets/htmlwidgets.html)
+:::
+
+## Interactive Slides {.smaller transition="slide"}
+
+Turn presentations into applications with Observable and Shiny. Use component layout to position inputs and outputs.
+
+```{r}
+ojs_define(actors = data.frame(
+  x = rnorm(100),
+  y = rnorm(100)
+))
+```
+
+```{ojs}
+//| panel: sidebar
+viewof talentWeight = Inputs.range([-2, 2], { value: 0.7, step: 0.01, label: "talent weight" })
+viewof looksWeight = Inputs.range([-2, 2], { value: 0.7, step: 0.01, label: "looks weight" })
+viewof minimum = Inputs.range([-2, 2], { value: 1, step: 0.01, label: "min fame" })
+```
+
+```{ojs}
+//| panel: fill
+import { plotActors } from './actors.js';
+plotActors(actors, talentWeight, looksWeight, minimum)
+```
+
+::: footer
+Learn more: [Observable](https://{{< meta prerelease-subdomain >}}quarto.org/docs/interactive/ojs/), [Shiny](https://{{< meta prerelease-subdomain >}}quarto.org/docs/interactive/shiny/), [Component Layout](https://{{< meta prerelease-subdomain >}}quarto.org/docs/interactive/layout.html)
+:::
+
+## Preview Links
+
+Navigate to hyperlinks without disrupting the flow of your presentation.
+
+Use the `preview-links` option to open links in an iframe on top of your slides. Try clicking the link below for a demonstration:
+
+::: {style="text-align: center; margin-top: 1em"}
+[Matplotlib: Visualization with Python](https://matplotlib.org/){preview-link="true" style="text-align: center"}
+:::
+
+::: footer
+Learn more: [Preview Links](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/presenting.html#preview-links)
+:::
+
+## Themes
+
+10 Built-in Themes (or [create your own](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/themes.html#creating-themes))
+
+::: {layout-ncol="2"}
+![](images/moon.png)
+
+![](images/sky.png)
+:::
+
+::: footer
+Learn more: [Themes](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/themes.html)
+:::
+
+## Easy Navigation
+
+::: {style="margin-bottom: 0.9em;"}
+Quickly jump to other parts of your presentation
+:::
+
+::: {layout="[1, 20]"}
+![](images/presentation-menu.png){width="41"}
+
+Toggle the slide menu with the menu button (bottom left of slide) to go to other slides and access presentation tools.
+:::
+
+You can also press {{< kbd m >}} to toggle the menu open and closed.
+
+You can also press {{< kbd g >}} to toggle 'Jump To Slide' modal box to quickly go to one of your slide using its number or id.
+
+::: footer
+Learn more: [Navigation](/docs/presentations/revealjs/presenting.qmd#navigation-menu) / [Jump To Slide](/docs/presentations/revealjs/presenting.qmd#jump-to-slide)
+:::
+
+## Jump To Slide
+
+::: {style="margin-bottom: 0.9em;"}
+Quickly jump to other parts of your presentation
+:::
+
+## Chalkboard {chalkboard-buttons="true"}
+
+::: {style="margin-bottom: 0.9em;"}
+Free form drawing and slide annotations
+:::
+
+::: {layout="[1, 20]"}
+![](images/presentation-chalkboard.png){width="41"}
+
+Use the chalkboard button at the bottom left of the slide to toggle the chalkboard.
+:::
+
+::: {layout="[1, 20]"}
+![](images/presentation-notes-canvas.png){width="41"}
+
+Use the notes canvas button at the bottom left of the slide to toggle drawing on top of the current slide.
+:::
+
+You can also press {{< kbd b >}} to toggle the chalkboard or {{< kbd c >}} to toggle the notes canvas.
+
+::: footer
+Learn more: [Chalkboard](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/presenting.html#chalkboard)
+:::
+
+## Point of View
+
+press {{< kbd o >}} to toggle overview mode:
+
+![](images/overview-mode.png){.border}
+
+Hold down the {{< kbd Alt linux=Ctrl >}} and click on any element to zoom towards it---try it now on this slide.
+
+::: footer
+Learn more: [Overview Mode](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/presenting.html#overview-mode), [Slide Zoom](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/presenting.html#slide-zoom)
+:::
+
+## Speaker View
+
+press {{< kbd s >}} (or use the tools in presentation menu ![](../images/navigation-menu-icon.png){style="padding-bottom: 1px; margin: 0" width="0.5em" height="0.5em"}) to open speaker view
+
+![](images/speaker-view.png){fig-align="center" style="border: 3px solid #dee2e6;" width="780"}
+
+::: footer
+Learn more: [Speaker View](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/presenting.html#speaker-view)
+:::
+
+## Scroll View {#scroll-view}
+
+Press {{< kbd r >}} (or use the tools in presentation menu ![](../images/navigation-menu-icon.png){style="padding-bottom: 1px; margin: 0" width="0.5em" height="0.5em"}) to open scroll view
+
+Try it now on this slide --- You'll see a scroll bar on the right and you can scroll down the presentation using your mouse.
+
+Scroll view behavior can be configured using `scroll-view` configuration. 
+
+::: footer
+Learn more: [Scroll View](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/presenting.html#scroll-view)
+:::
+
+## Authoring Tools {.smaller}
+
+Live side-by-side preview for any notebook or text editor including Jupyter and VS Code
+
+::: columns
+::: {.column width="50%"}
+![](images/jupyter-edit.png){.border .border-thick}
+:::
+
+::: {.column width="50%"}
+![](images/jupyter-preview.png){.border .border-thick}
+:::
+:::
+
+::: footer
+Learn more: [Jupyter](https://{{< meta prerelease-subdomain >}}quarto.org/docs/tools/jupyter-lab.html), [VS Code](https://{{< meta prerelease-subdomain >}}quarto.org/docs/tools/vscode.html), [Text Editors](https://{{< meta prerelease-subdomain >}}quarto.org/docs/tools/text-editors.html)
+:::
+
+## Authoring Tools {.smaller}
+
+RStudio includes an integrated presentation preview pane
+
+![](images/rstudio.png){.border width="900"}
+
+::: footer
+Learn more: [RStudio](https://{{< meta prerelease-subdomain >}}quarto.org/docs/tools/rstudio.html)
+:::
+
+## And More...
+
+-   [Touch](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/advanced.html#touch-navigation) optimized (presentations look great on mobile, swipe to navigate slides)
+-   [Footer & Logo](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/#footer-logo) (optionally specify custom footer per-slide or hide global footer)
+-   [Auto-Slide](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/presenting.html#auto-slide) (step through slides automatically, without any user input)
+-   [Multiplex](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/presenting.html#multiplex) (allows your audience to follow the slides of the presentation you are controlling on their own phone, tablet or laptop).
+
+::: footer
+Learn more: [Quarto Presentations](https://{{< meta prerelease-subdomain >}}quarto.org/docs/presentations/revealjs/)
+:::
