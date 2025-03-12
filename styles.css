@@ -1,9 +1,56 @@
-
-
 .border {
   border: 1px solid #dee2e6;
 }
 
 .border-thick {
   border-width: 3px;
+}
+
+.reveal h2.subtitle {
+  font-size: 1.1em !important;
+  color:grey !important; /* Makes subtitle text grey */
+}
+
+.reveal h1.title {
+  font-size: 1.1em !important; /* Adjust as needed */
+  font-weight: bold; 
+}
+
+/* Remove bullet points for lists */
+.reveal ul {
+  list-style-type: none;  /* Removes the default bullet points */
+  padding-left: 0;  /* Ensures no indentation */
+}
+
+.reveal li {
+  margin-bottom: 1em;  /* Adds spacing between list items */
+}
+
+/* Remove padding and margin for nested lists */
+.reveal ul ul {
+  padding-left: 0;  /* Removes left padding for sub-lists */
+  margin-left: 10;   /* Removes left margin for sub-lists */
+}
+
+/* Remove bullets for any nested levels */
+.reveal ul li {
+  list-style-type: none;  /* Ensures no bullets at any level */
+}
+
+/* CSS for positioning the logo at the top-right corner */
+.reveal .logo {
+  position: absolute;
+  top: 10px;       /* Adjust to control vertical position */
+  right: 10px;     /* Adjust to control horizontal position */
+  max-height: 2000px;  /* Adjust this size based on your logo's dimensions */
+  width: auto;      /* Ensure the logo maintains its aspect ratio */
+}
+
+/* Specific positioning for the title slide */
+.reveal .title-slide .logo {
+  top: 10px;
+  bottom: unset;  /* Remove bottom positioning */
+  right: 10px;
+  max-height: 2000px;  /* Adjust based on your logo size */
+  width: auto;
 }

@@ -1,28 +1,34 @@
 --- 
-title: "Bayesian models of brains, minds, & behaviors"
-title_acronym: "bayesMod" # set up variables for re-use 
-subtitle: "Stop describing, start explaining 😊"
+title: Bayesian Models of Brains, Minds, & Behaviors
+subtitle:  Hvidovre Hospital / Copenhagen / May 2025 
+author:  Ollie Hulme 
 format:
-  revealjs: 
+  revealjs:
     code-fold: true
     incremental: true
     toc: true  # Enables a sidebar with slide titles
-    toc-depth: 1 
-    toc-title: "Lecture topics"  # Custom title for TOC
+    toc-depth: 1
+    toc-title: "Lecture Topics"  # Custom title for TOC
     slide-number: c/t
-    execute: 
+    execute:
       enabled: true  # Ensures code execution
-    navigation-mode: vertical  # Optional: Default allows 2D navigation
-    chalkboard: 
+    navigation-mode: vertical  # Allows 2D navigation (optional)
+    chalkboard:
       buttons: true
     preview-links: auto
-    logo: images/drcmr.jpeg
     css: styles.css
-    #footer: #[insert binder link]
+    #footer: "[insert binder link]"
 jupyter: python3  # Ensure Quarto uses Jupyter instead of R
+params:
+  title_acronym: "bayesMod"  # Store for potential reuse
 resources:
   - bayesModels.pdf
 ---
+
+# Affiliations
+
+![](images/DRCMR_regionH_KU_logo.png)  
+
 
 # Preamble
 ::: incremental
@@ -65,11 +71,11 @@ resources:
 
 ## Specific aims
 ::: incremental
-- Hands-on / interactive
-- Keep it simple, duh
-- Beyond description → explain via theory 
+- Hands-on / interactive / discursive
+- KISS: Keep It Simple Stoopid 😜
+- Stop describing 🥱 → start explaining 😌
 - Emphasis on the models of mind & behavior
-- Simple methods for connecting these to neural data
+- Paired with simple methods for connecting to neural data 🧠
 - Intuitive, playful, enlightening, soul-nourishing, life-affirming, fun!, useful! ✨
 :::
 
@@ -78,8 +84,8 @@ resources:
 - Life is too to short to let things pass that you dont understand. 
 - Your life matters. Your understanding matters. Actively take part.
 - You are entitled to understand this. 
-- Don't listen, wrestle.
-- Ask questions, interupt.
+- Don't listen, fight it. 🥊
+- Ask questions, interupt. 🙋‍♂️
 - Be sceptical. You cant offend me. 🤨
 ::: 
 
@@ -90,7 +96,7 @@ resources:
 - "i dont understand why..."
 - "do you have an intuition for why..."
 - "i'm confused..." 🤔
-- If shy, say it in the break, find a TA, write a note
+- If shy, say it in the break, write in whatsApp
 :::
 
 ## Don't:
@@ -102,10 +108,10 @@ resources:
 ## What is a Bayesian model?
 ::: incremental
 - Bayesian models → probabilistic models
-- Probabilistic models are essential because uncertainty is fundamental to all real-world phenomena
-- Brains / minds / bodies need probabilistic models to deal with this uncertainty
-- As scientists, data about brains / minds / bodies is also uncertain 
-- → we need probabilistic models for the same reason 
+- Uncertainty is fundamental to all real-world phenomena
+  - Brains / minds / bodies need probabilistic models 
+- Uncertainty is fundamental to all data about brains / minds / bodies 
+  - Scientists need probabilistic models 
 :::
 
 ## What can Bayesian models model?
@@ -165,7 +171,7 @@ resources:
 ::: 
 
 ## Hidden variables
-  ::: incremental
+::: incremental
 - modeling hidden variables is central to cognitive modelling 
 - it is at the heart of explanation beyond description
 - description would just plot performance score as this is observed.
