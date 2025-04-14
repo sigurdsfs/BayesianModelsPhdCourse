@@ -1,14 +1,14 @@
 --- 
 title: Bayesian Models of Brains, Minds, & Behaviors
-subtitle:  Hvidovre Hospital / Copenhagen / May 2025 
+subtitle:  Hvidovre Hospital · Copenhagen · May 2025 
 author:  Ollie Hulme 
 format:
   revealjs:
+    title-slide: false  # ← This hides the auto-generated opening slide
     code-fold: true
     incremental: true
-    toc: true  # Enables a sidebar with slide titles
+    toc: false # Enables a sidebar with slide titles
     toc-depth: 1
-    toc-title: "Lecture Topics"  # Custom title for TOC
     slide-number: c/t
     execute:
       enabled: true  # Ensures code execution
@@ -17,77 +17,75 @@ format:
       buttons: true
     preview-links: auto
     css: BayesianModels_styles.css
-    #footer: "[insert binder link]"
+    footer:   |
+      <a href="https://mybinder.org/v2/gh/ollie-hulme/BayesianModels/main?urlpath=lab/tree/BayesianModels" target="_blank">
+        mybinder.org/v2/gh/ollie-hulme/BayesianModels
+      </a>&nbsp;&nbsp;&nbsp;
+      <a href="https://github.com/ollie-hulme/BayesianModels" target="_blank">
+        github.com/ollie-hulme/BayesianModels
+      </a>
 jupyter: python3  # Ensure Quarto uses Jupyter instead of R
 params:
   title_acronym: "bayesMod"  # Store for potential reuse
 resources:
   - bayesModels.pdf
 ---
-<!-- #region Affiliation                          -->
+
+<!-- #region Affiliation -->
 # Affiliations
- 
 - ![](images/DRCMR_regionH_KU_logo.png)  
- 
-<!-- #endregion                      -->
-<!-- #region Course preamble                      -->
+<!-- #endregion -->
+
+<!-- #region Course preamble -->
 # Preamble
- 
-- Course materials
-- Course schedule
-- Social 😊
-- Aims
-- Expectations
- 
+- Course materials  
+- Schedule  
+- Social 😊  
+- Aims & expectations  
 
-## Course materials
- 
-- All slides & interactive exercises run on binder → [binder link]
-- ☝️ Lets you run code without needing to install anything. Simples. 😌 
-- Also downloadable on github [github.com/ollie-hulme/BayesianModels](https://github.com/ollie-hulme/BayesianModels)
- 
+## Interactive exercises  
+- Run interactive code via Binder 👇  
+- No installation needed — just click and go 😌  
 
-## Course schedule
- 
-<!-- - *insert schedule* -->
- 
+## GitHub  
+- All course materials and code are on GitHub 👇  
+- <img src="/images/github.png" alt="GitHub screenshot" width="450px">
+
+## Schedule
+- [Schedule link](https://docs.google.com/presentation/d/10HT1QZe-NeLPbn6CZ8mrn3OlBRqWR4Sq8N3HI9Vq0c4/edit#slide=id.p)
+- Photograph the QR code to view schedule on your phone
+- ![](images/google_slides_qr.png)
 
 ## WhatsApp social group
- 
-- Here you can talk to each other
-- Answer each others questions
+- Chat with each other 💬
+- Ask & answer questions
 - Stay in touch ❤️
-- Plan friday bar 😄
- 
+- Friday bar? 😄
 
 ## Overarching aim
- 
--  To use the tools of probability theory to scientifically understand brains minds and behavior
- 
 
+
+
+-  Use the tools of probability theory to scientifically understand brains minds and behavior
+ 
 ## Specific aims
- 
-- Emphasis on the models of mind & behavior
-- Integrate vanilla methods for connecting to neural data 🧠
-- Stop describing 🥱 → start explaining 😌
-- Hands-on / interactive / discursive 
-- Repetitive / lil' bit redundant 
-- KISS: Keep It Simple Stoopid 😜
-- Intuitive / playful / fun / useful ✨
- 
+- Focus on models of mind & behavior
+- Connect to neural data via vanilla methods🧠
+- Stop describing 🥱 → Start explaining 😌
+- Hands-on · Interactive · Discursive
+- Repetitive · A lil' redundant (on purpose!)
+- KISS: Keep It Simple, Stoopid 😜
+- Intuitive · Playful · Fun · Useful ✨
 
-## Our expectations of you
- 
+## Our expectations of you 
 - Life is too to short to let things pass that you dont understand. 
 - Your life matters. Your understanding matters. Actively take part.
 - You are entitled to understand this. 
 - Don't listen to it, fight it. 🥊
 - Ask questions, interupt. 🙋‍♂️
 - Be sceptical. 🤨
-  
 
 ## Do say:
- 
 - "I'm probably being stupid..." 🤪
 - "I might have missed this..."
 - "i dont understand why..."
@@ -95,9 +93,7 @@ resources:
 - "i'm confused..." 🤔
 - If shy, say it in the break, write in whatsApp
  
-
 ## Don't:
- 
 - Nod and pretend you get something. 🙅‍♂️ 
 - Assume you are the only one confused. 😵‍💫😵‍💫😵‍💫
  
@@ -108,24 +104,19 @@ resources:
 ">[link]</a>' -->
 <!-- #endregion -->
 <!-- #region Lecture#2 Basics of Bayesian analysis-->
-# Lecture#2: Basics of Bayesian analysis
- 
+# Lecture#2: Basics of Bayesian analysis 
 - Principles
 - Hidden vs. observable
 - Beliefs and evidence  
 - Estimation methods
 - Why Bayes?
- 
 
 ## General principles
- 
 -  current belief → evidence → new belief
 - [in other words]
 -   prior belief  → evidence → posterior belief
-  
 
 ## A cognitive example
- 
 - a subject performs a cognitive task (e.g. go-nogo) which has 10 trials of equal difficulty.
 - we want to estimate cognitive ability $\theta$ which is the rate of correct performance.
 - $\theta$ is hidden or "latent", we cannot observe it directly
@@ -133,35 +124,27 @@ resources:
 - before we obtain data we have uncertainty over $\theta$
 - we do know $0 < \theta <1$ where 0 is no performance, and 1 is perfect performance
   
-
 ## Hidden variables
- 
 - modeling hidden variables is central to cognitive modelling 
 - it is at the heart of explanation beyond description
 - description would just plot performance score as this is observed.
 - but if you want to understand what underlies it, you need to model hidden variables.
 - psychology / neuroscience is always ultimately about hidden variables
  
-
-## Why the difference between hidden variables and observed data?
- 
+## Why the difference between hidden variables and observed data? 
 - number of trials correct is an *observable* consequence of ability $\theta$ which is hidden
 - they are not the same
 - the same ability $\theta$ can give rise to different data depending on chance
 - often our deeper questions and theories are about the hidden not the observed. 
 -  e.g. *is there a difference in ability between the two groups?*
  
-
 ## Prior belief over $\theta$
- 
 - if we are agnostic about $\theta$ we can assign uniform probability distribution for $p(\theta)$
 - *insert uniform dist*
 - we know nothing so we assign equal probability to all possible values of $\theta$
 - we are maximally uncertain
  
-
 ## Representing beliefs as probabiity distributions
- 
 - Probability distributions are a natural way to represent beliefs
 - They express our what we believe (.e.g is theta high or low) 
 - ...and our uncertainy (how spread out is the distribution)
@@ -169,23 +152,17 @@ resources:
 - play with the sliders to represent different prior beliefs
 - *e.g. certain low, certain high, uncertain low, uncertain high*
  
-
 ## Update prior with evidence from data
- 
 - Data: D = 9/10 trials correct
 - $p(\theta) \rightarrow p(D|\theta) \rightarrow p(\theta|D)$  
 - prior $\rightarrow$ likelihood $\rightarrow$ posterior 
- 
 
 ## Bayes rule
- 
 - Bayes rule expresses how to update priors into posterior according to data
 - $p(\theta | D) = \frac{p(D| \theta) \, p(\theta)}{p(D)}$
 - $\text{Posterior} = \frac{\text{Likelihood} \times \text{Prior}}{\text{marginal likelihood}}$
- 
 
 ## Marginal likelihood
- 
 - $p(D)$ this is the probability of the data. 
 - Its a single number that ensures the posterior sums to 1 and is therefore a probability distribution
 - It doesn't depend on $\theta$

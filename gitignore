@@ -1,0 +1,14 @@
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore the folders
+archive/
+emails/
+
+# Ignore typical temporary files
+*.pyc
+__pycache__/
+*.DS_Store
+
+# Ignore Quarto-generated folders if present
+_quarto/
