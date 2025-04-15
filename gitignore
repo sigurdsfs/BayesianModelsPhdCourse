@@ -6,8 +6,8 @@ __pycache__/
 .History
 
 # Folders to exclude from GitHub
-archive/
-documents/
-emails/
+_archive/
+_documents/
+_emails/
 BayesianModels_slides/
 
