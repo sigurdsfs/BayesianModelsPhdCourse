@@ -3,11 +3,13 @@
 __pycache__/
 *.pyc
 *.DS_Store
-.History
+.Rhistory
 
 # Folders to exclude from GitHub
 _archive/
 _documents/
 _emails/
+_links/
+_gitcommands/
 BayesianModels_slides/
 
