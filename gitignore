@@ -1,14 +1,17 @@
-# Ignore Jupyter notebook checkpoints
+# Auto-generated / not needed in repo
 .ipynb_checkpoints/
+__pycache__/
+*.pyc
+*.DS_Store
+.Rhistory
 
-# Ignore the folders
+# Ignore slide aux folders
+BayesianModels_slides_main_files/
+
+# Folders to exclude from GitHub
 archive/
+documents/
 emails/
 
-# Ignore typical temporary files
-*.pyc
-__pycache__/
-*.DS_Store
-
-# Ignore Quarto-generated folders if present
+# Quarto build cache (if using)
 _quarto/
