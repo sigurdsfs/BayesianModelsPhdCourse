@@ -3,15 +3,11 @@
 __pycache__/
 *.pyc
 *.DS_Store
-.Rhistory
-
-# Ignore slide aux folders
-BayesianModels_slides_main_files/
+.History
 
 # Folders to exclude from GitHub
 archive/
 documents/
 emails/
+BayesianModels_slides/
 
-# Quarto build cache (if using)
-_quarto/
