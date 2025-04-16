@@ -1,79 +1,105 @@
---- 
-title: Bayesian Models of Brains, Minds, & Behaviors
-subtitle:  Hvidovre Hospital · Copenhagen · May 2025 
-author:  Ollie Hulme 
-format:
-  revealjs:
-    title-slide: false  # ← This hides the auto-generated opening slide
-    code-fold: true
-    incremental: true
-    toc: false # Enables a sidebar with slide titles
-    toc-depth: 1
-    slide-number: c/t
+---  
+format:  # ← Specifies output formats. You can define multiple formats like revealjs (slides), html, pdf, etc.
+  revealjs:  # ← This block defines settings specifically for Reveal.js slide output.
+    code-fold: true  # ← Adds toggle buttons to code blocks so viewers can hide/show the code.
+    incremental: true  # ← Makes slide bullet points appear one-by-one, rather than all at once.
+    slide-number: c/t  # ← Shows current slide number and total slide count (e.g., “3/10”) in the presentation.
     execute:
-      enabled: true  # Ensures code execution
-    navigation-mode: vertical  # Allows 2D navigation (optional)
+      enabled: true  # ← Ensures code cells in the document are actually executed during rendering.
+    navigation-mode: vertical  # ← Enables 2D slide navigation: horizontal for sections, vertical for subsections.
     chalkboard:
-      buttons: true
-    preview-links: auto
-    css: BayesianModels_styles.css
-    footer:   |
-      <a href="https://mybinder.org/v2/gh/ollie-hulme/BayesianModels/main?urlpath=lab/tree/BayesianModels" target="_blank">
-        mybinder.org/v2/gh/ollie-hulme/BayesianModels
-      </a>&nbsp;&nbsp;&nbsp;
-      <a href="https://github.com/ollie-hulme/BayesianModels" target="_blank">
-        github.com/ollie-hulme/BayesianModels
-      </a>
-jupyter: python3  # Ensure Quarto uses Jupyter instead of R
-params:
-  title_acronym: "bayesMod"  # Store for potential reuse
-resources:
-  - bayesModels.pdf
----
+      buttons: true  # ← Adds buttons to use a chalkboard or pointer tool while presenting.
+    preview-links: auto  # ← Automatically previews external web links (e.g., YouTube, PDFs) inside slides.
+    css: BayesianModels_styles.css  # ← Applies custom styles using a user-defined CSS file.
+    footer:   |  # ← Adds a custom HTML footer across all slides. The pipe (|) means the following lines are literal block text.
+        <a href="https://tinyurl.com/bayesBinder" target="_blank">
+        tinyurl.com/bayesBinder </a>&nbsp;&nbsp;&nbsp;  
+        <a href="https://tinyurl.com/bayesGithub" target="_blank">
+        tinyurl.com/bayesGithub </a>&nbsp;&nbsp;
+        <a href="https://tinyurl.com/bayesSchedule" target="_blank">
+        tinyurl.com/bayesSchedule </a>      
+  html:  # ← Defines settings for basic HTML output (not slides). This is optional, but useful if rendering to HTML format too.
+    execute:
+      enabled: true  # ← Ensures that code cells are executed in HTML output as well.
+jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the default R kernel.
+--- 
+<!-- #region Title slide -->
+--- 
 
-<!-- #region Affiliation -->
-# Affiliations
-- ![](images/DRCMR_regionH_KU_logo.png)  
+<div style="display: flex; flex-direction: column; align-items: center; height: 100vh; padding-top: 60px; text-align: center;">
+  <div style="font-size:1.6em; font-weight:bold; margin-bottom:10px; margin-top:10px;">
+    Bayesian Models of Brains, Minds, & Behaviors 
+  </div>
+
+  <div style="font-size:1.1em; margin-bottom:15px;">
+    DRCMR · Copenhagen · May 2025 
+  </div>
+
+  <div style="font-size:0.9em; max-width: 80%; margin: 0 auto;">
+    Ollie Hulme · David Meder · Janine Bühler · Melissa Larsen
+        Amin Kangavari · Simon Steinkamp · Naiara Demnitz
+  </div>
+
+  <img src="images/DRCMR_regionH_KU_logo.png" alt="DRCMR logo" style="height:80px; margin-top:15px;">
+</div>
+
+---
 <!-- #endregion -->
+
 <!-- #region Lecture#1 Preamble -->
 # Preamble
-- Course materials  
+- Materials  
 - Schedule  
 - Social 😊  
-- Aims & expectations  
+- Aims & expectations   
 
-## Interactive exercises  
-- Run interactive python code via Binder 👇  
-- No installation needed — just click and go 😌  
+## Materials: Interactive exercises  
+- Run interactive python code via Binder   
+- No installation needed  → just open in browser and go 😌  
+- Loading takes time → keep your tab open
+- <div style="text-align: center;">
+    <img src="/images/binder.png" alt="binder screenshot" width="300px">
+  </div>
+- link in footer: *bayesBinder*👇 
 
-## GitHub  
-- All course materials + code on GitHub 👇  
-- <img src="/images/github.png" alt="GitHub screenshot" width="450px">
+## Materials: GitHub  
+- All materials + code on GitHub 
+- <div style="text-align: center;">
+    <img src="/images/github.png" alt="github screenshot" width="300px">
+  </div>
+ - link in footer: *bayesGithub*👇   
+
+## Materials: Book
+- This is the course book
+- We rely heavily on it especially on days 1-3
+- <div style="text-align: center;">
+   <img src="/images/book.jpeg" alt="book screenshot" width="300px">
+ </div> 
 
 ## Schedule
-- [Schedule link](https://docs.google.com/presentation/d/10HT1QZe-NeLPbn6CZ8mrn3OlBRqWR4Sq8N3HI9Vq0c4/edit#slide=id.p)
-- Photograph the QR code to view schedule on your phone
-- ![](images/google_slides_qr.png)
+- Up to date schedule → *bayesSchedule* 👇   
 
-## WhatsApp social group
+## Social: WhatsApp 
 - Chat with each other 💬
-- Ask & answer questions
+- Ask & answer questions amongst yourselves 🗣️
 - Stay in touch ❤️
-- Friday bar? 😄
+- Friday bar! 😄
+- Join group via 👇
+- <img src="/images/whatsapp.png" width="300px">
 
 ## Overarching aim
--  Use the tools of probability theory to scientifically understand brains minds and behavior
+- *Use the tools of probability theory to scientifically understand brains, minds, and behavior*
  
 ## Specific aims
-- Focus on models of mind & behavior
-- Connect to neural data via vanilla methods🧠
+- Focus on models of mind & behavior → Cognitive models 
+- Connect to neural data via vanilla methods 🧠
 - Stop describing 🥱 → Start explaining 😌
-- Hands-on · Interactive · Discursive
-- Repetitive · A lil' redundant (on purpose!)
+- Hands-on · Interactive · Discursive 
+- Repetitive · Redundant (in a good way)
 - KISS: Keep It Simple, Stoopid 😜
 - Intuitive · Playful · Fun · Useful ✨
 
-## Our expectations of youż:
+## Our expectations of you:
 - Life is too to short to let things pass that you dont understand. 
 - Your life matters. Your understanding matters. Actively take part.
 - You are entitled to understand this. 
@@ -87,14 +113,16 @@ resources:
 - "i dont understand why..."
 - "do you have an intuition for why..."
 - "i'm confused..." 🤔
-- If shy, say it in the break, write in whatsApp
+- *If shy: say it in the break / ask in whatsApp* 
  
 ## Don't:
-- Nod and pretend you get something. 🙅‍♂️ 
-- Assume you are the only one confused. 😵‍💫😵‍💫😵‍💫
- 
-<!-- #endregion Preamble-->
+- Nod and pretend you get something 🙅‍♂️ 
+- Assume you are the only one confused 😵‍💫😵
+
+<!-- #endregion-->
+
 <!-- #region Lecture#2 Basics of Bayesian analysis-->
+
 # Lecture#2: Basics of Bayesian analysis 
 - Principles of Bayesian inference
 - Latent vs. observable variables
@@ -160,24 +188,18 @@ resources:
 - Its a single number that ensures the posterior sums to 1 and is therefore a probability distribution
 - It doesn't depend on $\theta$
  
-
 ## Alternative expression of Bayes
- 
 - $p(\theta | D) \propto p(D | \theta) \times p(\theta)$
 - $\text{Posterior} \propto \text{Likelihood} \times \text{Prior}$
- 
 
-## Bayesian credibility intervals express uncertainy
- 
+## Bayesian credibility intervals express uncertainy 
 - The posterior can be interpreted as a probability distribution
 - if 50% of distribution is above say 0.55, then there is $p(0.5)>\theta$ 
 - Bayesian credible intervals e.g. $\text{BCI}_{95\%} [0.4,0.8]$ meaans that 95% probability the true value is between those limits. 
 - This is what we want classical confidence intervals to be. 
 <!-- - *insert drawing of how to make BCI* -->
  
-
 ## Sequential updating
- 
 - suppose we collect more data
 - 5 more trials and 3 of these are correct
 - we previously had 9 out of 10 correct
@@ -185,9 +207,7 @@ resources:
 - unlike frequentist statistics the order of data collection doesnt matter
 <!-- - *plot new posterior* -->
  
-
 ## Sequential updating
- 
 - it makes no difference if...
 - compute posterior for first data, then update again
 - prior → 9/10 → posterior → prior → 3/ 5 → posterior
@@ -195,9 +215,7 @@ resources:
 - prior → 12/15 → posterior
 - same final posterior. simples.
  
-
 ## Analytic solution
- 
 - For certain cases you can calculate posteriors "analytically" via equations
 - e.g. in this example we represent our uniform prior as a beta distribution
 - $p(\theta) \sim beta(1,1)$
@@ -205,78 +223,58 @@ resources:
 - $p(\theta|k,n) \sim beta(1+k,1+(n-k))$
 - where $k$ is correct and $n$ is total
 - thus for every possible observation we know precisely how to update our posterior
-  
 
 ## Interactive beta distribution
- 
 <!-- - *plot beta with sliders for k and n* -->
 - play around with the data to see how it updates the uniform prior to any posterior
 - what values of k and n, make the posterior most uncertain?
 - which values make posterior most certain it theta is low? high? intermediate?
   
-
 ## Conjugate
- 
 - in nice cases like this, it is only possible because the prior and posterior belong to the same family of distributions
 - they are "conjugate"
 - sadly, in most cases this is not possible 😞 
- 
 
-## So what do we do in other cases?
- 
+## So what do we do in other cases? 
 - dont fear MCMC is here!
 - Monte Carlo Markov Chain.  
 - Its a method for sampling from the posterior and it works in almost all cases.
 - It's a little bit magic. 
 - This course focuses on MCMC because it works in all cases and its simple to use. 
  
-
 ## Comparing analytic vs. numerical (sampling)
- 
 <!-- - *plot analytic posterior*
 - *plot MCMC*
 - *screencap from book?* -->
  
-
 ## How does MCMC sampling work?
- 
 - There are two paths forward. 
 - Red pill - you like to know the truth because truth is power. Therefore you can follow this video *insert link* on how it works
 - Blue pill - you take for granted that it works and not knowing exactly how has no material impact on your modelling. 
  
-
 ## Advantages of Bayesian modelling
- 
 - Flexibility - Bayesian models can be built to accomodate the complexity or simplicity of any data. They can deal with contamination, confounds, hierarchical data, missing data.
 - Principled - Uncertainty is always fully represented, and accounted for, no useful information is discarded. 
 - Intuitive - Generally Bayes will align with your intuition, much better than other approaches. Sometimes you will need to update your intuition, but thats ok. 
 - Easy - It is easy, once you know how. 
- 
 
 # Modelling a binary process 
- 
 - Start simple → binary processes
 - Most/many tasks are binary processes 😲
  
-
 ## Getting started
- 
 - Our first example was about inferring a rate for a binary process
 - Binary process since either correct or incorrect
 - Inferring a rate, since we were inferring the underlying ability as a probability $\theta$
 - Lots of tasks can be represented as binary processes
  
-
 ## Cognitive tasks that are binary processes
- 
 - Task switching
 - Go-no-go
 - Stop signal
 - ...
  
-
 ## From binary outcomes to rate
- 
 - Binary outcomes typically k correct out of n
 - Expressed as a rate = k / n
 - This is the observed rate
@@ -284,32 +282,24 @@ resources:
 - $k \sim \text{Binomial}(\theta, n)$
 - assuming no history dependent effects where what happens in past influences the present
  
-
 ## From binary outcomes to rate
- 
 - observing k out of n trials allows us to update our beliefs about $\theta$
 - what we know, and what we dont know of variables is alwwys represented by probability distributions
 - $\theta \sim \text{Beta(1,1)}$
 - $k \sim \text{Binomial(\theta,n)}$
 - ![](fig2.1.jpg)
- 
 
 ## Graphical 
- 
 - Graphical models represent our probabilisitc model
 - nodes represent all the variables relevant to the problem
 - graph structure represent dependencies - children depend on parents
  
-
 ## Graphical notation 
- 
 - Circular - continuous, Square - discrete
 - Shaded - observed, Non-shaded - hidden
 - Single-boundary - stochastic, double-boundary - deterministic 
- 
 
 ## Sampling via JAGS 
- 
 - JAGS code that would run this model 
 ```jags
 model{ 
@@ -320,9 +310,7 @@ model{
 - We sample from the posterior to find the posterior distribution of $\theta$ for the data k = 5, n =10
 - *[insert Fig.2.8]*
  
-
 ## R-hat as a convergence check
- 
 - Its important to check that the sampling has converged to the stationary distribution
 - One heuristic is the R-hat
 \[
@@ -330,56 +318,45 @@ model{
 \]
 -Rule of thumb: $\hat{R}$ should be 1-1.01 for convergence to be achieved
  
-
-  footer
-Learn more: Brooks & Gelman (1998). 
- 
+footer
+Learn more: Brooks & Gelman (1998).  
 <!-- #endregion -->
-<!-- #region Lecture#3 Parameter estimation       -->
+
+<!-- #region Lecture#3 Parameter estimation-->
+
 # Lecture#3: Parameter estimation
 
 ## Posterior from the last example
- 
 - We estimated the posterior distribution of $\theta$ given the data
 - We sampled from this model
 - ![](fig2.1.jpg)
 - and we got this distribution
 - ![](fig2.8.jpg) 
- 
 
 ## Conjugacy
- 
 - Beta distributions has a natural interpretation
 - $\theta \sim text{Beta(\alpha, \beta)}$  
 - $\alpha$ and $\beta$ can be thought of as counts
 - $\alpha = 1 + text{successes} = 1 + k$
 - $\beta = 1 + text{failures} = 1 + (n-k) $
  
-
 ## Why 1 + count?
- 
 - Beta(1,1) is a uniform distribution so this is equivalent to 0 counts
 - It is your belief distribution when you have no knowledge etc.  
 - Thus evidence accumulates from 1, via counting of successes and failures
  
-
 ## Conjugacy
- 
 - Notice that the update from the prior to the posterior just comes from adding the counts to the beta distribution
 - prior: Beta(1,1) → posterior: Beta(1+k, 1+(n-k)) 
 - prior: Beta(1,1) → posterior: Beta(1+ successCount, 1+ failureCount)  
 - No sampling is needed because we have the equation
 - When the prior and posterior have same type of distribution they are "conjugate"
- 
 
 ## Conjugacy interactive example
-  
 - Binder example- play with the beta distribution
 - No sampling needed you just change inputs to the beta distribution to compute posterior
   
-
 ## Difference between two rates
- 
 - Suppose we have to processes, say two tasks producing:
 - k1 successes out of n1 trials
 - k2 successes out of n2 trials
@@ -388,7 +365,6 @@ Learn more: Brooks & Gelman (1998).
 - *e.g. the effect of a drug on cognitive performance*
 - *e.g. the effect of a age on task performance*
  
-
 ## Graphical model for inferring differences in rates
 - ![](fig3.3.jpg) 
 
@@ -415,50 +391,37 @@ print(samples)
 - ![](fig3.4.jpg) 
 
 ##  Interpreting distributions
- 
 - Probability mass functions are for discrete variables which take finite number of values
 - Probability density functiosn for continuous variables which take infinitely many values
  
-
 ##  Probability mass functions
- 
 - insert left figure from box 3.2
 - all sum to 1
- 
 
 ## Probability density functions  
- 
 - insert right figure from box 3.2
 - area sums to 1
 - densities can exceed 1
 - only areas can be interpreted as probabilities
- 
 
 ## Inferring a common rate 
- 
 - In some cases we want to infer a rate for 2 processes
 - e.g. same subject, same task, two different sessions
 - Here we would model with a single $\theta$
 - ![](fig3.5.jpg) 
- 
 
 ##  Same model with plate notation
- 
 - ![](fig3.6.jpg)
 - note only one theta, multiple processes  
- 
 
 ## Code for inferring a common rate 
- 
 - model{ 
   k1 ~ dbin(theta1,n1)
   k2 ~ dbin(theta2,n2)
   theta ~ dbeta(1,1)
 }
  
-
 ## Predicting data
- 
 - We know 2 distributions already
 - 1.  Prior distribution of parameter e.g. $p(\theta)$
 - This is our prior prediction for what the parameters will be, prior to the data
@@ -466,18 +429,14 @@ print(samples)
 - This is our posterior prediction for the what the parameters will be, having seen the data
 - Remember todays posterior is tomorrows prior, so they can be a prediction for the next round of data, ad infinitum. 
  
-
 ## Predicting data
- 
 - Priors and posteriors are of parameters. what about actually predicting data? 
 - 3.  Prior predictive distribution  $p(data)$
 - this is the prediciton of what the data will be based on the prior, prior to the data being seen.
 - 4.  Posterior predictive distribution  $p(new_data|old_data)$
 - this is the prediciton of what the data will be based on the posterior, after the data has been seen.
- 
 
 ## Prior and posterior prediction
- 
 model {
   k ~ dbin(theta,n)
   theta~dbeta(1,1)
@@ -486,16 +445,12 @@ model {
   priorpredk~dbin(thetapior,n)
 }
  
-
 ## Samples of the four distributions
- 
 - ![](fig3.9.jpg)
 - Note the prior and posterior are in the space of the parameter
 - And the prior and posterior predictive distributions are in space of the data k out of n trials. 
  
-
 ## Comparing data to the posterior predictive distribution 
- 
 - If we estimate the model along with its predictive distributions
 - We can see how this compares to the actual data
 - ![](fig3.11.jpg)
@@ -503,9 +458,7 @@ model {
 - Why is it not a good model?
 - Its a common rate model, so it predicts the same rate, but the data clearly is better modelled with different rates.  
  
-
 ## Inference and time 
- 
 - prediction naturally suggests thinking about the future.
 - predictions can also apply to the past—for instance, when information is missing.
 - data can help infer hidden cognitive variables, which in turn may predict past behavior where information is incomplete.
@@ -514,36 +467,27 @@ model {
 - we predict what might have been known in the past if more information had been available. 
 - Inference allows prediction both forward and backward in time.
  
-
 ## Todays posterior is tomorrows prior 
- 
 - Since the posterior distribution of parameters is continually updatable, then so is the posterior predictive distribution. 
 - As the posterior is updated, then so are its predictions for the data.
 - ![](box3.4.jpg)
 - This can carry on forever.
- 
 <!-- #endregion -->
+
 <!-- #region Lecture#4 Inference with Gaussians   -->
-# Inferences with Gaussians 
- 
+# Inferences with Gaussians  
 - Due to central limit theorem, data and parameters are frequently Gaussian
 - Gaussians have 2 parameters, a mean and a measure of their spread
 - Spread can be expressed as a variance, std, or a precision (1/var) 
  
-
 ## Graphical model for Gaussians 
- 
 - Simple model for inferring Gaussian with unknown mean and std
 - ![](fig.4.1.jpg)
  
-
 ## Interactive demo of Gaussian
- 
 - Jupyter notebook - interactive plotting of gaussian
  
-
 ## Sampling model for inferring Gaussians  
- 
 model { 
 for (i in 1:n){
 x[i]~dnorm(mu,lambda)
@@ -553,25 +497,19 @@ sigma~dunif(0,10)
 lambda<-1/pow(sigma,2)
 } 
  
-
 ## Repeated measures of IQ 
- 
 - Imagine taking a cognitive test like IQ multiple times
 - The mean is your IQ, and the spread models fluctuations in your performance. e.g. attention, fatigue, emotion, venus orbitting satturn
 - We can model this as a Gaussian for each person
- 
 
 ## Graphical model for IQ
- 
 - ![](fig.4.3.jpg)
 - What parameter is common to all subjects?
 - No index on the std. This means it is fixed.
 - Is this justified?
 - How to change it?
  
-
 ## Sampling code for IQ 
- 
 model{
   for (i in 1:n) {
     for (j in 1:m) {
@@ -585,33 +523,26 @@ for (i in 1:n) {
 }
 
 }
- 
 <!-- #endregion                            -->
+
 <!-- #region Lecture#5 Latent Mixture models      -->
-# Latent Mixture Models 
- 
+# Latent Mixture Models  
 - A latent mixture model is a model that assumes data are generated from  a mixture of different hidden (latent) processes
 - E.g. imagine a cogntive test where some people try their best, and others just guess
 - the scores then are generated by two mechnamisms, ability and guessing
 - how would we model this as a mixture of processes
  
-
 ## Latent mixture model of cognitive test 
- 
 - to model the "tryers" you would model their ability as a rate of correct performance, as before. 
 - to model the "guessers" you just model it as chance performance
- 
 
 ## Latent mixture graphical model 
- 
 - ![](fig.6.1.jpg)
 - Here z determines whether the person is a tryer or a guesser. Thus z is a parameter that models the mixture of processes that explain the data. 
 - We know the probability of guessing is 0.5
 - The posterior distribution of z gives us the estimate of how many guessers there were.
  
-
 ## Latent mixture code
- 
 model{
 for (i in 1:p) {
 z[i]~dbern(0.5)
@@ -623,73 +554,54 @@ for (i in 1:p) {
   k[i]~dbin(theta[i],n)
 }
 }
- 
 <!-- #endregion                             -->
+
 <!-- #region Lecture#6 Model selection            -->
 # Model selection
- 
 - Model selection is perhaps the most persuasive reason to choose Bayesian methods.
 - Bayesian models provide a simple and principled way to choose between models balancing between accuracy and complexity
- 
 
 ## Why model comparison?
- 
 - so far we have covered single models
 - in psychology/neuroscience we want to compare different models
 - is this theory or this theory better at explaining the data
 - if someone says this is the theory. it begs the question, compared to what?
 - we want to know how well a theory explains relative to another, or many others. 
 - we need to compare models if we are to move beyond descriptive data analysis. 
- 
 
 ## Ptolomy
- 
 - We consider it a good principle to explain the phenomena by the simplest hypothesis, provided this doesnt contradict the data in an important way
  
-
 ## Occam's razon
- 
 - "Plurarity must never be posited without necessity"
 - This is nicknamed Occam's razor, which cuts out needless complexity when it comes to theories or models or explanations
- 
 
 ## Friston's free energy
- 
 - "Minimizing free energy means finding the right balance between accuracy  and complexity"
 - "Good models should be as simple as possible, but not simpler than necessary to explain the data. Complexity must be minimized to avoid overfitting, yet sufficient to capture the underlying structure of the world." 
- 
 
 ## Geoff Hinton
- 
 - "Model complexity must pay for itself"
 - Geoff is referring to the fact that model complexity must be justified by its ability to explain the data. 
- 
 
 ## Bayesian magic
- 
 - Lots of methods exist for trying to get this balance right
 - Out of sample prediction, parameter counting algorithms, blah, blah.
 - Bayes nails it by finding a universal principle by which to compare models that optimally balances accuracy and complexity. 
 - This is the magic sauce of Bayes. 
- 
 
 ## Marginal likelihood
- 
 - Back to Bayes equation we started with
 - ![](fig.1.1.jpg)
 - ![](fig.1.2.jpg)
 - There is something missing which is that this is all conditional on a particular model. We could have a very different model that might have different parameters. 
  
-
 ## Marginal likelihood conditional on model
- 
 - We can be explicit about how this is conditional on a specific model
 - ![](fig.7.1.jpg)
 - $p(D|M_1)$ is a single number, the marginal likelihood, also known as the evidence. 
  
-
 ## Marginal likelihood in words
- 
 - the probability of the data given model
 - the probability of the data according to the models predictions
 - average predictive performance of the model
@@ -699,9 +611,7 @@ for (i in 1:p) {
 - the better the predictions of the model, the greater the evidence for the model 
 - it’s like running every possible version of the model (with every parameter setting weighted by the prior), and asking: “on average, how well does the model predict the data?”
  
-
 ## Marginal likelihood of paranormal octopi
- 
 - Imagine two paranormal octupuses helping the KGB find a missing sub. 
 - Alice predicts the sub is in the nothern hemisphere
 - Bob predicts its in nothern europe
@@ -712,15 +622,12 @@ for (i in 1:p) {
  
 
 ## Marginal likelihood
- 
 - The marginal likelihood is computed by averaging the likelihood of the data predicted across the models parameter space.  
 - Prior probabilities act as averaging weights.  
 - Based on the law of total probability:  
   $p(D \mid M_1) = \sum_{i=1}^{k} p(D \mid \xi_i, M_1) p(\xi_i \mid M_1)$ 
- 
 
-## Example calculation of marginal likelihood
- 
+## Example calculation of marginal likelihood 
 - - Consider a model $M_x$ with one parameter $\xi$.  
 - $\xi$ can take **three values**:  
   - $\xi_1 = -1$, $\xi_2 = 0$, $\xi_3 = 1$.  
@@ -729,9 +636,7 @@ for (i in 1:p) {
   - $p(\xi_2) = 0.3$  
   - $p(\xi_3) = 0.1$  
  
-
 ## Likelihood Computation  
- 
 - - Likelihood values for observed data $D$:  
   - $p(D \mid \xi_1) = 0.001$  
   - $p(D \mid \xi_2) = 0.002$  
@@ -740,36 +645,28 @@ for (i in 1:p) {
   $p(D \mid M_x) = p(\xi_1) p(D \mid \xi_1) + p(\xi_2) p(D \mid \xi_2) + p(\xi_3) p(D \mid \xi_3)$
   $= 0.6 \times 0.001 + 0.3 \times 0.002 + 0.1 \times 0.003$
   $= 0.0015$
- 
 
-##  Marginal likelihood and complexity
- 
+##  Marginal likelihood and complexity 
 - To have high evidence, the model needs good predictive peformance
 - It needs to focus its predictions where the data has a high likelihood
 - Complex models with many parameters distribute their predictions widely
 - Complex models thus make many predictions that may not turn out to have high likelihood 
 - Complex models thus are more likely to "waste their predictions" 
  
-
 ## Model complexity is not the same as the number of parameters
- 
 - Complexity is not just the number of parameters.
 - A model with few parameters can still be complex if its predictions are highly uncertain due to vague priors.
 - True complexity comes from how broadly the model spreads its predictions across its parameter space.
 - A narrow prediction distribution suggests a simpler model.
 - A wider distribution indicates greater complexity, as the model allows for more diverse possible outcomes.
 - Models are complex to the degree to which they make broad range of predictions
- 
 
 ## Model complexity and vagueness of priors
- 
 - a model with prior $\theta \sim \text{Uniform} (0,1)$
 - ...is more complex than...
 - a model with prior $\theta \sim \text{Uniform} (0.5,1)$
- 
 
 ## Marginal likelihood as a unifying maximandum
- 
 - Marginal likelihood is arguably the most important concept ever. 
 - It is at the heart of scientific inference, psychological and neural inference, and survival, and even existence of objects.
 - Maximising it is hard, we often need to approximate it.
@@ -782,38 +679,30 @@ for (i in 1:p) {
 - Everything else is details. 
 - Ah but so and so maximises something different. 
 - Yes but at heart this is just a proxy for the marginal likelihood.
- 
-
 <!-- #endregion                                   -->
+
 <!-- #region Lecture#7 Bayes factors              -->
 # The Bayes factor
- 
 - Compared to what? This is a surprisingly powerful question to ask. 
 - This model is good - it has high model evidence. 
 - Ok great, but compared to what?
 - We want relative evidence. We want to compare predictive performance for one model versus another. 
 - The Bayes factor gives us this by taking the ratio of the marginal likelihoods for two different models
  
-
 ## Bayes factor equation
- 
 - Marginal likelihood measures a model’s absolute evidence by averaging its predictive performance over all parameter values.  
 - Model selection often focuses on relative evidence —how well one model explains the data compared to another.  
 - This is quantified using the Bayes factor:  
   $BF_{12} = \frac{p(D \mid M_1)}{p(D \mid M_2)}$
  
-
 ## Interpretation of the Bayes Factor  
- 
 - **BF > 1** → Data favors **M₁** over **M₂**.  
 - **BF < 1** → Data favors **M₂** over **M₁**.  
 - **Higher BF** → Stronger evidence for the favored model.  
 - If **BF = 5**, the data is **5 times more likely** under **M₁** than **M₂**.  
 - If **BF = 1/5**, the data is **5 times more likely** under **M₂** than **M₁**.  
- 
 
 ## Jeffreys’ Scale for Bayes Factor  
- 
 | **Bayes Factor (BF₁₂)** | **Interpretation** |
 |----------------|----------------|
 | >100 | Extreme evidence for **M₁** |
@@ -829,20 +718,15 @@ for (i in 1:p) {
 | <1/100 | Extreme evidence for **M₂** |
 -------------------------
  
-
 ## Example: Binomial Model  
- 
 - Suppose we have 9 correct (k) out of 10 trials (n) and compare two models:  
 - M₁: A non-guessing model with unknown success rate.  
-  $p(\theta \mid M_1) \sim \text{Uniform}(0,1)$ 
-  
+  $p(\theta \mid M_1) \sim \text{Uniform}(0,1)$  
 - M₂: A guessing model with chance at 0.5
   $p(\theta \mid M_2) = 0.5$ 
 - Compute **marginal likelihoods** for both models.  
- 
 
 ## Bayes Factor for the example  
- 
 - **Marginal likelihoods**:  
 - $p(D \mid M_1) = \left(\frac{10}{9}\right) \left(\frac{1}{2}\right)^{10}$  
 - $p(D \mid M_2) = \left(\frac{1}{1+n}\right)$  
@@ -851,59 +735,46 @@ for (i in 1:p) {
 - $ BF_{12} = 0.107
 - If $BF_{12} > 1$, M₁ is preferred; if < 1, M₂ is preferred.  
  
-
 ## Flipping the BF
- 
 - m1 is 0.107 less likely than m2
 - hard to interpret
 - thus when a BF is below it is often more convenient to take the reciprocal so that it is a value above 1.
 - here it would be $BF_{21}$ which is 1/1.07 = 9.3
 - M2 is 9.3 times more likely than M1
 - the data is 9.3 times more likely under a model in which subjects are not guessing, vs. than in which they are guessing 
- 
 
 ## Bayes vs. Fisher
- 
 - Bayesian methods are typically comparative, where two ore more models are compared
 - Frequentist methods are not comparative, simply considering how unlikely data was generated by the null. 
 - Evidence is always comparative. ratio of p(data|Innocent) : p(data|Guilty)
- 
 
 ## Cautions and Critiques
- 
 - Bayes factors sensitive to prior specification.
 - Must use careful prior selection and sensitivity analyses.
 - Point null hypotheses controversial: can they ever be exactly true?
   - Pragmatically, yes (experimental studies).
-  - Conceptually, more debated.
- 
+  - Conceptually, more debated. 
 <!-- #endregion                             -->
+
 <!-- #region Lecture#8 Posterior                  -->
 # Posterior model probabilities 
- 
 - Bayes factors compare the predictive performance of two different theories
 - But model plausibility also depends on prior beliefs in each model.
 - To assess relative plausibility after seeing the data we combine:
 - Predictive performance (likelihood) and Prior plausibility (prior probabilities)
  
-
 ## Posterior odds
- 
 - Relaitve plausibility of models after seeing the data is indicated by the posterior odds
 - The posterior odds of two models is:
   $\frac{p(M_1 \mid D)}{p(M_2 \mid D)} = \frac{p(D \mid M_1)}{p(D \mid M_2)} \cdot \frac{p(M_1)}{p(M_2)}$
 - Or in words:
   **posterior odds = Bayes factor × prior odds**
- 
 
 ## Bayes factor transforms prior odds into posterior odds
- 
 - The Bayes factor transforms **prior odds** into **posterior odds**:
   $\text{prior odds} \rightarrow \text{posterior odds}$
  
-
 ## Advantages of the Bayes factors
- 
 - Bayesian hypothesis tests (e.g., Bayes factors) naturally implement Ockham’s razor, penalising complex models when comparing them.  
 - They quantify relative support for multiple models.  
 - Allow model-averaged predictions over parameters.
@@ -911,9 +782,7 @@ for (i in 1:p) {
 - Bayes factors can be forever updated as data arrive (no fixed sample size or plan required)
 - Easy to understand. How many more times likely the data is for one model than another. Thats it. What was the p-value again? 
  
-
 ## Extraordinary Claims Require Extraordinary Evidence
- 
 - Echoing Hume, Laplace, and Sagan: extraordinary claims require extraordinary evidence.
 - This principle is baked into Bayesian methods through **posterior odds**:  
   $\text{Posterior odds} = \text{Bayes factor} \times \text{prior odds}$
@@ -921,27 +790,21 @@ for (i in 1:p) {
 - Even strong evidence may not overturn implausible claims.
 - Bayesian methods make explicit the influence of prior beliefs. Thats a good thing.
  
-
 ## Problems with p-values 
- 
 - p-values often misinterpreted
 - ask your supervisor to define p-values. Most can't.
 - p-values do not provide evidence for the null.
 - depend on experimenter's intentions, and what they would do, if the data had turned out differently, as well as alternative hypotheses.
 - Classical hypothesis testing is asymmetric:
 - Null can be rejected, but never confirmed.
- 
 
 ## Optional Stopping
- 
 - Bayesian methods allow data collection to stop at any time based on evidence.
 - p-value methods require pre-specified stopping rules.
 - Researchers can continue or stop based on interim Bayes factor values.
 - Provides more flexibility and transparency.
  
-
 ## Challenges for Bayesian Approach
- 
 - Conceptual: Sensitivity to **prior distributions**.
 - Computational: Difficulty in calculating **marginal likelihoods**.
 - Using vague priors can lead to low-precision predictions.
@@ -949,9 +812,7 @@ for (i in 1:p) {
 - Priors must reflect meaningful knowledge — vague priors yield unhelpful results.
 - Vague priors entail complex models
  
-
 ## Specifying Good Priors
- 
 - Researchers must encode prior knowledge into prior distributions.
 - Options:
   - Subjective specification: Based on domain expertise.
@@ -961,9 +822,7 @@ for (i in 1:p) {
   - Transparent baseline comparisons.
   - Refinement with specific information when needed.
  
-
 ## Confusion About Priors
- 
 - Common misconception: Bayes factor depends on the prior plausibility of the models.
 - In truth:  
   - Bayes factor is unaffected by prior probabilities of the models.
@@ -971,19 +830,15 @@ for (i in 1:p) {
 - Important distinction:
   - Prior on models affects posterior probabilities but not bayes factor.
   - Prior on parameters affects the Bayes factor itself and hence the posterior odds.
- 
 
 ## Prior Sensitivity
- 
 - When different parameter priors yield different conclusions, it shows scientific uncertainty.
 - Strategies to handle prior sensitivity:
   - Local/intrinsic/fractional/partial Bayes factors.
   - Sensitivity analyses: Vary the priors on parameters and observe effects on conclusions.
 - Reminder: Some models are robust, others are fragile to prior assumptions.
  
-
 ## Computational Challenges
- 
 - Computing marginal likelihoods is hard for complex models.
 - Approximate methods include:
   - Candidate’s formula.
@@ -992,55 +847,44 @@ for (i in 1:p) {
 - MCMC-based methods:
   - Sample from posterior, evaluate likelihoods.
   - Use **model indicator variables** for model comparison.
- 
-<!-- #endregion                           -->
-<!-- #region Lecture#9 Savage Dickey              -->
+<!-- #endregion -->
+
+<!-- #region Lecture#9 Savage Dickey -->
 # Savage-Dickkey method of model comparison
- 
 - In this method two models are compared:
   - **Null hypothesis ($H_0$)**: fixes parameter to a specific value, e.g., $\phi = \phi_0$
   - **Alternative hypothesis ($H_1$)**: parameter free to vary, e.g., $\phi \ne \phi_0$
 - $H_0$ is nested within $H_1$ (by constraining parameter).
 - Classical null hypothesis usually sharp (point-null).
  
-
-## Savage–Dickey Density Ratio
-  
+## Savage–Dickey Density Ratio 
 - Defines Bayes factor for nested models:
 $BF_{01} = \frac{p(D \mid H_0)}{p(D \mid H_1)} = \frac{p(\phi = \phi_0 \mid D, H_1)}{p(\phi = \phi_0 \mid H_1)}$
 - Simply the ratio of posterior to prior densities at the point of interest $\phi_0$ under the alternative hypothesis.
  
-
 ## Example: Binomial Scenario
- 
 - Binomial scenario: $\theta$ parameter, observing 9 correct and 1 incorrect response.
 - Null hypothesis ($H_0$): $\theta = 0.5$
 - Alternative hypothesis ($H_1$): $\theta$ free to vary, prior $\theta \sim Beta(1,1)$
 - Bayes factor is the ratio of posterior and prior densities at $\theta=0.5$
- 
 
 ## Visual Interpretation of Savage-Dickey
- 
 - ![](Fig7.1-example.jpg)
 - Prior (uniform) and posterior distributions shown.
 - Density ratio at $\theta=0.5$ gives Bayes factor.
  
-
 ## MCMC-Based Estimation for Savage-Dickey
- 
 - When analytical solutions are difficult, use MCMC:
 -![](Fig7.2-MCMC-example.jpg)
 - Posterior and prior estimated from MCMC samples.
 - Heights of posterior and prior at the null point give Bayes factor.
- 
 
 ## Advantages of Savage–Dickey
- 
 - Direct interpretation as density ratio.
 - Simplifies computation —no separate marginal likelihood calculation needed.
 - Works well for nested models.
- 
 <!-- #endregion    -->
+
 <!-- #region Lecture#10 Compare guassian means    -->
 # Commpare Gaussian means
 - Common task: test if two Gaussian means differ
@@ -1072,76 +916,57 @@ $BF_{01} = \frac{p(D \mid H_0)}{p(D \mid H_1)} = \frac{p(\phi = \phi_0 \mid D, H
   - δ ~ Cauchy(0,1)
   - xᵢ ~ Gaussian(μ, 1/σ²)
   - μ = δσ
- 
 
 ## One-Sample Graphical Model
- 
 - ![Fig 8.1](figures/graphical_model_onesample.png)
 - Prior on δ: Cauchy(0,1)
 - Prior on σ: Half-Cauchy
 - Estimate posterior with MCMC
  
-
 ## Posterior vs Prior
- 
 - ![Figure 8.2](figures/posterior_prior_onesample.png)
 - Posterior peaks near δ = 0
 - Bayes Factor ≈ 5:1 in favor of H₀
- 
 
 ## Order-Restricted Model
- 
 - SMM predicts **δ < 0**
 - Use order-restricted prior:
   - δ ~ Cauchy(0,1) truncated to (-∞, 0)
- 
 
-## Updated Bayes Factor
- 
+## Updated Bayes Factor 
 - ![Figure 8.4](figures/posterior_prior_orderrestricted.png)
 - Stronger evidence for H₀: BF ≈ 10:1
- 
 
-## Summary
- 
+## Summary 
 - p-values can't confirm H₀
 - Bayes factors can
 - "Evidence of absence" of support for SMM's prediction
  
-
 ## Two-Sample Comparison
- 
 - Compare oxygenated vs plain water on memory
 - Two independent groups
- 
 
 ## Two-Sample Model Structure
- 
 - ![Figure 8.5](figures/graphical_model_twosample.png)
 - Shared variance σ²
 - δ = α / σ  
 - α = μₓ - μᵧ
  
-
 ## Large Effect Example
- 
 | Group         | N  | Mean   | SD   |
 |---------------|----|--------|------|
 | Plain Water   | 20 | 68.35  | 6.38 |
 | Oxygenated    | 20 | 76.65  | 4.06 |
 | t(38) = 4.47, p < .01 |
  
-
 ## Two-Sample Bayes Factor
- 
 -![Figure 8.6](figures/posterior_prior_twosample.png)
 - Posterior moves away from 0
 - BF ≈ 447:1 in favor of H₁  
-- Decisive evidence for oxygenated water effect
- 
+- Decisive evidence for oxygenated water effect 
 <!-- #endregion   -->
-<!-- #region Lecture#11 Compare binomial rates    -->
 
+<!-- #region Lecture#11 Compare binomial rates    -->
 # Comparing binomial rates
 - We will naturally compute binomial rates for different groups or conditions
 - And ask which is larger? 
@@ -1151,9 +976,7 @@ $BF_{01} = \frac{p(D \mid H_0)}{p(D \mid H_1)} = \frac{p(\phi = \phi_0 \mid D, H
 - ![Figure 9.1](figures/Fig9.1.png)
 - graphical model for comparing two proportions
 
-
 ## Bayesian model
- 
 - We model the observed counts using binomial likelihoods and assign uniform Beta priors:
     s1 ~ Binomial(theta1, n1)  
     s2 ~ Binomial(theta2, n2)  
@@ -1165,28 +988,21 @@ $BF_{01} = \frac{p(D \mid H_0)}{p(D \mid H_1)} = \frac{p(\phi = \phi_0 \mid D, H
 - delta = theta1 - theta2: difference in proportions
 - We are interested in the posterior distribution of delta.
  
-
 ## Model Code 
- 
 Here is the model used for posterior simulation:
-
     model {
       theta1 ~ dbeta(1,1)
       theta2 ~ dbeta(1,1)
       delta <- theta1 - theta2
-
       s1 ~ dbin(theta1, n1)
       s2 ~ dbin(theta2, n2)
-
       theta1prior ~ dbeta(1,1)
       theta2prior ~ dbeta(1,1)
       deltaprior <- theta1prior - theta2prior
     }
 This allows us to compare the prior and posterior density of delta at zero.
  
-
 ## Prior and Posterior Distributions
- 
 - ![Figure 9.2](figures/Fig9.2.png)
 - We estimate the posterior distribution for the rate difference delta = theta1 - theta2 using Bayesian inference.
 - The left plot shows prior and posterior distributions for delta across its full range.
@@ -1195,25 +1011,18 @@ This allows us to compare the prior and posterior density of delta at zero.
 - The Savage–Dickey method compares:
     BF_01 = prior density at delta = 0 / posterior density at delta = 0
  
-
 ## Interpreting the Bayes Factor
- 
 - The posterior density at delta = 0 is about half the prior density.
 - This gives a Bayes factor ≈ 2 in favor of the alternative hypothesis H1: delta ≠ 0.
 - The 95% credible interval for delta is approximately [-0.09, 0.01], which does not include 0.
-  
 
 **Interpretation**:
- 
 - There is only modest evidence that one rate is higher than another 
-- The Bayes factor penalizes H1 for spreading prior mass over implausible values.
- 
-
-
-
-
+- The Bayes factor penalizes H1 for spreading prior mass over implausible values. 
 <!-- #endregion    -->
+
 <!-- #region Lecture#12 Memory retention-->
 <!-- #endregion    -->
+
 <!-- #region Lecture#13 Psychophysical function fitting-->
 <!-- #endregion    -->
