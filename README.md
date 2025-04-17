@@ -10,9 +10,7 @@ This repository contains interactive notebooks, Quarto slides, and Binder suppor
 
 Click below to launch an interactive Jupyter environment (no installation required):
 
-[![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main?urlpath=lab)
-
-> Replace `YOUR_GITHUB_USERNAME/YOUR_REPO_NAME` with your actual GitHub info.
+[![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ollie-hulme/BayesianModels/main?urlpath=lab)
 
 ---
 

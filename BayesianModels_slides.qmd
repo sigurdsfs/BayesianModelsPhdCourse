@@ -1,6 +1,8 @@
 ---  
 format:  # ← Specifies output formats. You can define multiple formats like revealjs (slides), html, pdf, etc.
   revealjs:  # ← This block defines settings specifically for Reveal.js slide output.
+    mermaid:
+      enabled: true
     code-fold: true  # ← Adds toggle buttons to code blocks so viewers can hide/show the code.
     incremental: true  # ← Makes slide bullet points appear one-by-one, rather than all at once.
     slide-number: c/t  # ← Shows current slide number and total slide count (e.g., “3/10”) in the presentation.
@@ -48,10 +50,29 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 
 <!-- #region Lecture#1 Preamble -->
 # Preamble
+- How the week will go
 - Materials  
 - Schedule  
 - Social 😊  
-- Aims & expectations   
+- Aims & expectations  
+
+## Course overview
+
+- **Basic modelling** → Get started
+- **Intermediate modelling** → Go deeper
+- **Integrate neural data** → Bridge brain & behavior
+- **Group presentations** → Show what you built
+- ↓
+- lectures · interactive exercises · discussion · case studies ·  group work 
+ 
+## Group work & presentations
+- **Separate** into small groups
+- **Supervision** from multiple experts 
+- **Pick question** that requires cognitive modelling
+- **Design experiment** that collects behavioral & neural data
+- **Design models**, sketch graphical diagrams, plan analyses to test hypotheses & answer question
+- **Present projects**, share your work, ~15 mins on fri
+- **Audience** questions & discussion 
 
 ## Materials: Interactive exercises  
 - Run interactive python code via Binder   
@@ -60,24 +81,25 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - <div style="text-align: center;">
     <img src="/images/binder.png" alt="binder screenshot" width="300px">
   </div>
-- link in footer: *bayesBinder*👇 
+- link in footer 👇 
 
 ## Materials: GitHub  
 - All materials + code on GitHub 
 - <div style="text-align: center;">
     <img src="/images/github.png" alt="github screenshot" width="300px">
   </div>
- - link in footer: *bayesGithub*👇   
+ - link in footer 👇   
 
 ## Materials: Book
-- This is the course book
-- We rely heavily on it especially on days 1-3
 - <div style="text-align: center;">
    <img src="/images/book.jpeg" alt="book screenshot" width="300px">
- </div> 
+ </div>
+- We rely heavily on it especially on days 1-3
 
 ## Schedule
-- Up to date schedule → *bayesSchedule* 👇   
+- Up to date schedule 
+- <iframe src="https://tinyurl.com/bayesSchedule"  width="1000px" height="500px" style="border:1px solid #ccc; border-radius:10px;"></iframe>
+- link in footer 👇   
 
 ## Social: WhatsApp 
 - Chat with each other 💬
@@ -88,175 +110,193 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - <img src="/images/whatsapp.png" width="300px">
 
 ## Overarching aim
-- *Use the tools of probability theory to scientifically understand brains, minds, and behavior*
+- **Use the tools of probability theory to scientifically understand brains, minds, and behavior**
+- **New perspective**. Upgrade your scientific thinking
+- **Simplicity.** Tools are parsimonious, flexible, intuitive, and powerful.
+- **Universality.** Same principles apply to science, statistic, brains, minds, behaviors, evolution, even physics. 
  
 ## Specific aims
-- Focus on models of mind & behavior → Cognitive models 
-- Connect to neural data via vanilla methods 🧠
-- Stop describing 🥱 → Start explaining 😌
-- Hands-on · Interactive · Discursive 
-- Repetitive · Redundant (in a good way)
-- KISS: Keep It Simple, Stoopid 😜
-- Intuitive · Playful · Fun · Useful ✨
+- **Focus on mind & behavior** → Cognitive models 
+- **Connect to neural data** via simple methods 🧠
+- **Stop describing 🥱 → Start explaining 😌**
+- **Engage.** Hands-on · Interactive · Discursive 
+- **KISS.** Keep It Simple, Stoopid 😜
+- **Vibes.** Intuitive · Playful · Fun · Useful ✨
 
 ## Our expectations of you:
-- Life is too to short to let things pass that you dont understand. 
-- Your life matters. Your understanding matters. Actively take part.
-- You are entitled to understand this. 
-- Don't listen to it, fight it. 🥊
-- Ask questions, interupt. 🙋‍♂️
-- Be sceptical. 🤨
+- **Life is short.** Don't things pass that you dont understand. 
+- **Your life matters.** Your understanding matters. Actively take part.
+- **You are entitled** to understand this. 
+- **Don't listen** to it, fight it. 🥊
+- **Disrupt.** Ask questions, interrupt. 🙋‍♂️
+- **Be sceptical.** The truth is out there. 🤨
 
-## Do say:
-- "I'm probably being stupid..." 🤪
-- "I might have missed this..."
-- "i dont understand why..."
-- "do you have an intuition for why..."
-- "i'm confused..." 🤔
-- *If shy: say it in the break / ask in whatsApp* 
+## We love to hear:
+- *"I'm probably being stupid..."* 🤪
+- *"I might have missed this..."*
+- *"i dont understand why..."*
+- *"do you have an intuition for why..."*
+- *"i'm confused..."* 🤔
+- **If you are shy.** Say it in the break / ask in whatsApp 
  
-## Don't:
+## Don't do this to yourself:
 - Nod and pretend you get something 🙅‍♂️ 
 - Assume you are the only one confused 😵‍💫😵
-
+- Collapse under self doubt. 
 <!-- #endregion-->
 
 <!-- #region Lecture#2 Basics of Bayesian analysis-->
 
-# Lecture#2: Basics of Bayesian analysis 
+# Basics of Bayesian analysis
+- What is Bayesianism? 
 - Principles of Bayesian inference
 - Latent vs. observable variables
 - Beliefs and evidence  
 - Estimation methods
 - Why Bayes?
 
+## What is Bayesian modeling, really?
+- Bayesian modeling is just probability theory in action.
+- Probability theory is logic applied to uncertainty.
+- So Bayesian modeling = **rational belief updating**.
+
+## What are we really doing?
+- We're not doing "Bayesianism" — we're using probability to reason about what we can't see.
+- We build models that update beliefs in light of evidence — just like minds do.
+
+## Bayesianism in quotes
+- *"Probability theory is nothing but common sense reduced to calculation."* — Laplace
+- *"The rules of probability are the rules of consistent reasoning."* — E.T. Jaynes
+
+## Bayesianism in a nutshell
+- Bayes is probability. Probability is logic.
+- Logic is consistency. Consistency is rationality.
+- So this course is about something sacred:
+  **thinking clearly about minds, brains, and behavior.**
+
 ## General principles
-- Current belief → evidence → new belief
-- AKA:
-- prior belief  → evidence → posterior belief
+- Belief → Evidence → Updated belief
+- <span class="grey">In other words</span> 
+- Prior → Evidence → Posterior
 
 ## A cognitive example
-- A subject performs a simple task (e.g. go/no-go)  
-- 10 trials, equal difficulty  
-- We want to estimate cognitive ability, $\theta$  
-- $\theta$ = rate of correct performance  
-- $\theta$ is **latent** — its hidden, we can't observe it directly  
-- We observe *only* the number of correct trials  
-- We are uncertain about $\theta$  
-- But we know $0 < \theta < 1$
+- **Task** 10 trials of equal difficulty 
+- - <span class="grey">e.g., go/no-go, task-switching, stop-go... etc.*</span>
+- We want to estimate cognitive ability $\theta$
+- $\theta$ = rate of correct performance
+- $\theta$ is latent — we can’t observe it directly
+- We can only observe behavior  → number of correct trials 
 
 ## Hidden Variables
-- Modeling hidden variables is *central* to cognitive modeling  
-- It’s how we **explain**, not just describe  
-- Descriptive: “performance = 8/10”  
-- Explanatory: “what underlying ability led to that?”  
-- Psychology/neuroscience is always about **hidden causes**
+- Hidden variables are **central** to cognitive modeling
+- They let us **explain**, not just describe
+- Descriptive: “8/10 correct”
+- Explanatory: “What ability produced that?”
+- Psych/neuro is always about **hidden causes**
 
-## Why Hidden ≠ Observed?
-- Number correct = **observable** variable  
-- Ability $\theta$ = **hidden** variable
-- Same $\theta$ can produce different outcomes  
-- Theory lives in the **hidden layer**
-- Often our deeper questions and theories are about the hidden not the observed. 
--  e.g. *is there a difference in ability between the two groups?*
+## What’s observed vs. what’s hidden
+- **Observed**: number correct
+- **Hidden**: ability ($\theta$)
+- Same $\theta$ → different outcomes
+- Same performance ≠ same ability
+- Our models infer causes from data
 
-## Prior Belief over $\theta$
-- If agnostic: use a **uniform prior**  
-- Equal probability to all $\theta$ values in (0,1)  
-- Maximum uncertainty
- 
-## Representing beliefs as probabiity distributions
-- Probability distributions are a natural way to represent beliefs
-- They express our what we believe (.e.g is theta high or low) 
-- ...and our uncertainy (how spread out is the distribution)
-- *interactive beta dist*
-- play with the sliders to represent different prior beliefs
-- *e.g. certain low, certain high, uncertain low, uncertain high*
- 
-## Update prior with evidence from data
-- Data: D = 9/10 trials correct
-- $p(\theta) \rightarrow p(D|\theta) \rightarrow p(\theta|D)$  
-- prior $\rightarrow$ likelihood $\rightarrow$ posterior 
+## Why we model hidden causes
+- Our theories live in the **hidden layer**
+- We care about *why*, not just *what*
+- Real questions ask about causes, not outcomes
+- e.g., *Do the two groups truly differ in ability?*
+- So we model what we **can’t observe directly**
 
-## Bayes rule
-- Bayes rule expresses how to update priors into posterior according to data
-- $p(\theta | D) = \frac{p(D| \theta) \, p(\theta)}{p(D)}$
-- $\text{Posterior} = \frac{\text{Likelihood} \times \text{Prior}}{\text{marginal likelihood}}$
+## Prior belief over $\theta$
+- If agnostic, use **uniform prior**
+- Equal probability for all $\theta$ in (0,1)
+- Maximum uncertainty, no bias
+
+## Representing beliefs as distributions
+- Probabilities represent belief
+- Shape = belief; spread = uncertainty
+- Use sliders to explore different priors
+- e.g., certain low, certain high, uncertain
+
+## Update prior with evidence
+- Data: 9/10 correct
+- Prior $\rightarrow$ Likelihood $\rightarrow$ Posterior
+- $p(\theta) \rightarrow p(D|\theta) \rightarrow p(\theta|D)$
+
+## Bayes’ rule
+- $p(\theta | D) = \frac{p(D|\theta)\, p(\theta)}{p(D)}$
+- Posterior = Likelihood × Prior / Marginal Likelihood
 
 ## Marginal likelihood
-- $p(D)$ this is the probability of the data. 
-- Its a single number that ensures the posterior sums to 1 and is therefore a probability distribution
-- It doesn't depend on $\theta$
- 
-## Alternative expression of Bayes
-- $p(\theta | D) \propto p(D | \theta) \times p(\theta)$
-- $\text{Posterior} \propto \text{Likelihood} \times \text{Prior}$
+- $p(D)$ = probability of the data
+- It normalizes the posterior (ensures it sums to 1)
+- It does **not** depend on $\theta$
 
-## Bayesian credibility intervals express uncertainy 
-- The posterior can be interpreted as a probability distribution
-- if 50% of distribution is above say 0.55, then there is $p(0.5)>\theta$ 
-- Bayesian credible intervals e.g. $\text{BCI}_{95\%} [0.4,0.8]$ meaans that 95% probability the true value is between those limits. 
-- This is what we want classical confidence intervals to be. 
-<!-- - *insert drawing of how to make BCI* -->
- 
-## Sequential updating
-- suppose we collect more data
-- 5 more trials and 3 of these are correct
-- we previously had 9 out of 10 correct
-- we just add the data together so now its 12 / 15
-- unlike frequentist statistics the order of data collection doesnt matter
-<!-- - *plot new posterior* -->
- 
-## Sequential updating
-- it makes no difference if...
-- compute posterior for first data, then update again
-- prior → 9/10 → posterior → prior → 3/ 5 → posterior
-- or just compute all in one go
-- prior → 12/15 → posterior
-- same final posterior. simples.
- 
+## Shortcut expression
+- $p(\theta|D) \propto p(D|\theta) \times p(\theta)$
+- Posterior is proportional to Likelihood × Prior
+
+## Posterior = probability distribution
+- Interpreted as belief about $\theta$
+- If 50% is above 0.65, then $p(\theta > 0.65) = 0.5$
+- Simple, intuitive interpretation
+
+## Bayesian credibility intervals
+- $\text{BCI}_{95\%} [0.4, 0.8]$ means 95% chance $\theta$ is in that range
+- This is what we *want* classical confidence intervals to mean
+
+## Sequential updating (part 1)
+- Get new data: 3/5 additional trials correct
+- Previously: 9/10 correct → now 12/15
+- Combine new data with old
+
+## Sequential updating (part 2)
+- Update in two steps or one — same result
+- Prior $\rightarrow$ Posterior $\rightarrow$ Posterior again
+- Or Prior $\rightarrow$ All data $\rightarrow$ Posterior
+
 ## Analytic solution
-- For certain cases you can calculate posteriors "analytically" via equations
-- e.g. in this example we represent our uniform prior as a beta distribution
-- $p(\theta) \sim beta(1,1)$
-- to update to the posterior is simple
-- $p(\theta|k,n) \sim beta(1+k,1+(n-k))$
-- where $k$ is correct and $n$ is total
-- thus for every possible observation we know precisely how to update our posterior
+- Beta prior: $\text{Beta}(1,1)$ (uniform)
+- Posterior: $\text{Beta}(1+k,1+n-k)$
+- Where $k$ = correct, $n$ = total trials
 
 ## Interactive beta distribution
-<!-- - *plot beta with sliders for k and n* -->
-- play around with the data to see how it updates the uniform prior to any posterior
-- what values of k and n, make the posterior most uncertain?
-- which values make posterior most certain it theta is low? high? intermediate?
-  
-## Conjugate
-- in nice cases like this, it is only possible because the prior and posterior belong to the same family of distributions
-- they are "conjugate"
-- sadly, in most cases this is not possible 😞 
+- Adjust $k$ and $n$ to see posteriors
+- When is the posterior most uncertain?
+- When does it strongly prefer high or low $\theta$?
 
-## So what do we do in other cases? 
-- dont fear MCMC is here!
-- Monte Carlo Markov Chain.  
-- Its a method for sampling from the posterior and it works in almost all cases.
-- It's a little bit magic. 
-- This course focuses on MCMC because it works in all cases and its simple to use. 
- 
-## Comparing analytic vs. numerical (sampling)
-<!-- - *plot analytic posterior*
-- *plot MCMC*
-- *screencap from book?* -->
- 
-## How does MCMC sampling work?
-- There are two paths forward. 
-- Red pill - you like to know the truth because truth is power. Therefore you can follow this video *insert link* on how it works
-- Blue pill - you take for granted that it works and not knowing exactly how has no material impact on your modelling. 
- 
-## Advantages of Bayesian modelling
-- Flexibility - Bayesian models can be built to accomodate the complexity or simplicity of any data. They can deal with contamination, confounds, hierarchical data, missing data.
-- Principled - Uncertainty is always fully represented, and accounted for, no useful information is discarded. 
-- Intuitive - Generally Bayes will align with your intuition, much better than other approaches. Sometimes you will need to update your intuition, but thats ok. 
-- Easy - It is easy, once you know how. 
+## Conjugate priors
+- Prior & posterior in same family → conjugate
+- Nice when possible
+- But often not possible 😞
+
+## What then? MCMC!
+- MCMC = Markov Chain Monte Carlo
+- Samples from the posterior
+- Works even when no analytic solution exists
+- Feels a bit magical, but it’s robust
+
+## Analytic vs. Sampling
+- Plot analytic posterior vs. MCMC samples
+- Both aim to estimate same thing
+- Useful to compare
+
+## How MCMC works
+- Two paths forward:
+  - Red pill: Learn how it works (see video)
+  - Blue pill: Accept it works, move on 😄
+
+## Why Bayesian modeling?
+- **Flexible**: Handles complex, missing, or messy data
+- **Principled**: Always quantifies uncertainty
+- **Intuitive**: Matches human reasoning
+- **Accessible**: Simple to use once understood
+<!-- #endregion -->
+
+
+
+<!-- #region Modelling a binary process-->
 
 # Modelling a binary process 
 - Start simple → binary processes

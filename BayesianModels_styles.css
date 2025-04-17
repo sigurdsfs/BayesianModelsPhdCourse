@@ -54,3 +54,7 @@
   max-height: 2000px;  /* Adjust based on your logo size */
   width: auto;
 }
+
+.grey {
+  color: #aaa;
+}

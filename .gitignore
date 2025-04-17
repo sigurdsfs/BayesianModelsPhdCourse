@@ -1,4 +1,15 @@
+# Auto-generated / not needed in repo
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
 *.DS_Store
-*.DS_Store
-*.DS_Store
-*.DS_Store
+.Rhistory
+
+# Folders to exclude from GitHub
+_archive/
+_documents/
+_emails/
+_links/
+_gitcommands/
+BayesianModels_slides/
+
