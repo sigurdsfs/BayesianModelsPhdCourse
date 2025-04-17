@@ -411,46 +411,65 @@
 <li class="fragment">Prior → Evidence → Posterior</li>
 </ul>
 </section>
-<section id="a-cognitive-example" class="slide level2">
-<h2>A cognitive example</h2>
+<section id="example-a-cognitive-task" class="slide level2">
+<h2>Example: a cognitive task</h2>
 <ul>
-<li class="fragment"><strong>Task</strong> 10 trials of equal difficulty</li>
-<li class="fragment"><ul>
-<li class="fragment"><span class="grey">e.g., go/no-go, task-switching, stop-go… etc.*</span></li>
-</ul></li>
-<li class="fragment">We want to estimate cognitive ability <span class="math inline">\(\theta\)</span></li>
-<li class="fragment"><span class="math inline">\(\theta\)</span> = rate of correct performance</li>
-<li class="fragment"><span class="math inline">\(\theta\)</span> is latent — we can’t observe it directly</li>
-<li class="fragment">We can only observe behavior → number of correct trials</li>
+<li class="fragment">10 trials of equal difficulty, binary outcomes (correct or incorrect)</li>
+<li class="fragment"><span class="grey">e.g., go-no-go, task-switching, stop-go… </span></li>
+<li class="fragment"><img src="/images/gonogo.png" width="800px"></li>
 </ul>
 </section>
-<section id="hidden-variables" class="slide level2">
-<h2>Hidden Variables</h2>
+<section id="cognitive-ability" class="slide level2">
+<h2>Cognitive ability</h2>
 <ul>
-<li class="fragment">Hidden variables are <strong>central</strong> to cognitive modeling</li>
+<li class="fragment">We want to estimate ability <span class="math inline">\(\theta\)</span> from behavior</li>
+<li class="fragment">Ability here is:
+<ul>
+<li class="fragment">~ <em>tendency for correct performance</em></li>
+<li class="fragment"><em>latent</em> — we can’t observe it directly</li>
+<li class="fragment">theoretical</li>
+</ul></li>
+<li class="fragment">Behavior here is:
+<ul>
+<li class="fragment">observable data</li>
+<li class="fragment">number of correct trials</li>
+<li class="fragment"><span class="grey">e.g.&nbsp;k correct out of n trials - 8/10</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="latent-vs.-observable-cartoon" class="slide level2">
+<h2>Latent vs.&nbsp;observable cartoon</h2>
+<ul>
+<li class="fragment"><img src="/images/latent_observable.png" width="1000px"></li>
+</ul>
+</section>
+<section id="latent-variables" class="slide level2">
+<h2>Latent variables</h2>
+<ul>
+<li class="fragment">Latent variables are <strong>central</strong> to cognitive modeling</li>
 <li class="fragment">They let us <strong>explain</strong>, not just describe</li>
-<li class="fragment">Descriptive: “8/10 correct”</li>
-<li class="fragment">Explanatory: “What ability produced that?”</li>
-<li class="fragment">Psych/neuro is always about <strong>hidden causes</strong></li>
+<li class="fragment"><strong>Descriptive</strong>: “8/10 correct”</li>
+<li class="fragment"><strong>Explanatory</strong>: “What ability produced that behavior?”</li>
+<li class="fragment">Psychology / neuroscience is always about <strong>hidden causes</strong></li>
 </ul>
 </section>
 <section id="whats-observed-vs.-whats-hidden" class="slide level2">
 <h2>What’s observed vs.&nbsp;what’s hidden</h2>
 <ul>
-<li class="fragment"><strong>Observed</strong>: number correct</li>
-<li class="fragment"><strong>Hidden</strong>: ability (<span class="math inline">\(\theta\)</span>)</li>
-<li class="fragment">Same <span class="math inline">\(\theta\)</span> → different outcomes</li>
+<li class="fragment"><strong>Observable</strong>: number correct - <span class="grey">e.g.&nbsp;k / n </span></li>
+<li class="fragment"><strong>Hidden/latent</strong>: ability (<span class="math inline">\(\theta\)</span>)</li>
+<li class="fragment">Same <span class="math inline">\(\theta\)</span> → different observable</li>
 <li class="fragment">Same performance ≠ same ability</li>
-<li class="fragment">Our models infer causes from data</li>
+<li class="fragment">Bayesian models infer latent causes of observable data</li>
 </ul>
 </section>
-<section id="why-we-model-hidden-causes" class="slide level2">
-<h2>Why we model hidden causes</h2>
+<section id="why-do-we-model-hidden-causes" class="slide level2">
+<h2>Why do we model hidden causes?</h2>
 <ul>
-<li class="fragment">Our theories live in the <strong>hidden layer</strong></li>
+<li class="fragment">Our theories live in the <strong>hidden</strong></li>
 <li class="fragment">We care about <em>why</em>, not just <em>what</em></li>
 <li class="fragment">Real questions ask about causes, not outcomes</li>
-<li class="fragment">e.g., <em>Do the two groups truly differ in ability?</em></li>
+<li class="fragment">e.g., <em>Do the two groups truly differ in their ability?</em></li>
 <li class="fragment">So we model what we <strong>can’t observe directly</strong></li>
 </ul>
 </section>
@@ -460,6 +479,7 @@
 <li class="fragment">If agnostic, use <strong>uniform prior</strong></li>
 <li class="fragment">Equal probability for all <span class="math inline">\(\theta\)</span> in (0,1)</li>
 <li class="fragment">Maximum uncertainty, no bias</li>
+<li class="fragment"></li>
 </ul>
 </section>
 <section id="representing-beliefs-as-distributions" class="slide level2">

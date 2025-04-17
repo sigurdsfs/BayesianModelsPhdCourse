@@ -179,39 +179,51 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - <span class="grey">In other words</span> 
 - Prior → Evidence → Posterior
 
-## A cognitive example
-- **Task** 10 trials of equal difficulty 
-- - <span class="grey">e.g., go/no-go, task-switching, stop-go... etc.*</span>
-- We want to estimate cognitive ability $\theta$
-- $\theta$ = rate of correct performance
-- $\theta$ is latent — we can’t observe it directly
-- We can only observe behavior  → number of correct trials 
+## Example: a cognitive task
+- 10 trials of equal difficulty, binary outcomes (correct or incorrect) 
+- <span class="grey">e.g., go-no-go, task-switching, stop-go... </span>
+- <img src="/images/gonogo.png" width="800px">
 
-## Hidden Variables
-- Hidden variables are **central** to cognitive modeling
+## Cognitive ability
+- We want to estimate ability $\theta$ from behavior
+- Ability here is: 
+  - ~ *tendency for correct performance*
+  - *latent* — we can’t observe it directly
+  - theoretical
+- Behavior here is:
+  - observable data
+  - number of correct trials 
+  - <span class="grey">e.g. k correct out of n trials - 8/10</span>
+
+## Latent vs. observable cartoon
+- <img src="/images/latent_observable.png" width="1000px">
+
+## Latent variables
+- Latent variables are **central** to cognitive modeling
 - They let us **explain**, not just describe
-- Descriptive: “8/10 correct”
-- Explanatory: “What ability produced that?”
-- Psych/neuro is always about **hidden causes**
+- **Descriptive**: “8/10 correct”
+- **Explanatory**: “What ability produced that behavior?”
+- Psychology / neuroscience is always about **hidden causes**
 
 ## What’s observed vs. what’s hidden
-- **Observed**: number correct
-- **Hidden**: ability ($\theta$)
-- Same $\theta$ → different outcomes
+- **Observable**: number correct - <span class="grey">e.g. k / n </span>
+- **Hidden/latent**: ability ($\theta$) 
+- Same $\theta$ → different observable 
 - Same performance ≠ same ability
-- Our models infer causes from data
+- Bayesian models infer latent causes of observable data
 
-## Why we model hidden causes
-- Our theories live in the **hidden layer**
+## Why do we model hidden causes?
+- Our theories live in the **hidden**
 - We care about *why*, not just *what*
 - Real questions ask about causes, not outcomes
-- e.g., *Do the two groups truly differ in ability?*
+- e.g., *Do the two groups truly differ in their ability?*
 - So we model what we **can’t observe directly**
 
 ## Prior belief over $\theta$
 - If agnostic, use **uniform prior**
 - Equal probability for all $\theta$ in (0,1)
 - Maximum uncertainty, no bias
+- 
 
 ## Representing beliefs as distributions
 - Probabilities represent belief
