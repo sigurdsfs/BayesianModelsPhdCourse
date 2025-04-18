@@ -147,166 +147,216 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 
 <!-- #region Lecture#2 Basics of Bayesian analysis-->
 
-# Basics of Bayesian analysis
-- What is Bayesianism? 
+## Basics of Bayesian Analysis
+- The spirit of Bayesian thinking
+- What is Bayesian modeling?
 - Principles of Bayesian inference
-- Latent vs. observable variables
-- Beliefs and evidence  
+- Observable vs. latent variables
+- Beliefs and evidence
 - Estimation methods
-- Why Bayes?
+- Why Bayesian methods?
 
-## What is Bayesian modeling, really?
-- Bayesian modeling is just probability theory in action.
-- Probability theory is logic applied to uncertainty.
-- So Bayesian modeling = **rational belief updating**.
+## Bayesian Thinking in Quotes  
+- <br>
+- *"Probability theory is nothing but common sense reduced to calculation."* — Laplace (1814)  
+- <br>
+- *"The rules of probability are the rules of consistent reasoning."* — Jaynes (2003)  
+- <br>
+- *"Bayesian methods are not a special brand of inference; they are the only logically consistent rules for inference that are known."* — Jaynes (2003)
 
-## What are we really doing?
-- We're not doing "Bayesianism" — we're using probability to reason about what we can't see.
-- We build models that update beliefs in light of evidence — just like minds do.
+::: {.footer}
+Laplace (1814); Jaynes (2003)
+:::
 
-## Bayesianism in quotes
-- *"Probability theory is nothing but common sense reduced to calculation."* — Laplace
-- *"The rules of probability are the rules of consistent reasoning."* — E.T. Jaynes
+## Bayesianism as the Calculus of Common Sense
+- <br><br>
+- *Bayesianism is just probability theory applied to inference.* — Jaynes (2003)
 
-## Bayesianism in a nutshell
-- Bayes is probability. Probability is logic.
-- Logic is consistency. Consistency is rationality.
-- So this course is about something sacred:
-  **thinking clearly about minds, brains, and behavior.**
+::: {.footer}
+Jaynes (2003)
+:::
 
-## General principles
-- Belief → Evidence → Updated belief
-- <span class="grey">In other words</span> 
-- Prior → Evidence → Posterior
+## From Probability to Rationality
+- Bayesian modeling follows the rules of probability.
+- Probability is logic.
+- Logic is consistency.
+- Consistency is rationality.
 
-## Example: a cognitive task
-- 10 trials of equal difficulty, binary outcomes (correct or incorrect) 
-- <span class="grey">e.g., go-no-go, task-switching, stop-go... </span>
+## What is "Bayesian Modeling of Minds, Brains, and Behavior"?
+- This course is about **thinking clearly about minds, brains, and behavior**.
+- It's about testing theories rationally, using the evidence provided by data.
+- Bayesian modeling offers a principled, rational way to update beliefs based on evidence.
+
+## General principle
+- Prior belief → Evidence → Posterior belief
+
+## Example of a cognitive task 
+- e.g., go/no-go
 - <img src="/images/gonogo.png" width="800px">
 
-## Cognitive ability
-- We want to estimate ability $\theta$ from behavior
-- Ability here is: 
-  - ~ *tendency for correct performance*
-  - *latent* — we can’t observe it directly
-  - theoretical
-- Behavior here is:
-  - observable data
-  - number of correct trials 
-  - <span class="grey">e.g. k correct out of n trials - 8/10</span>
+## Cognitive task example
+- 10 binary trials of equal difficulty
+- Estimate ability $\theta$ from behavior
+- $\theta$ is *latent*; 
+- data are *observed*
+- e.g., correct responses $k = 8$ out of $n = 10$
 
-## Latent vs. observable cartoon
+## Latent vs. observed
 - <img src="/images/latent_observable.png" width="1000px">
 
-## Latent variables
-- Latent variables are **central** to cognitive modeling
-- They let us **explain**, not just describe
-- **Descriptive**: “8/10 correct”
-- **Explanatory**: “What ability produced that behavior?”
-- Psychology / neuroscience is always about **hidden causes**
+## Why latent variables?
+- We want to explain, not just describe
+- Descriptive: e.g. "What did the subject score on the task?"
+- Explanatory: e.g. "What ability produced that score?"
+- Psychology, neuroscence, science in general ultimately seeks **explanations in terms of latent variables or processes**
 
-## What’s observed vs. what’s hidden
-- **Observable**: number correct - <span class="grey">e.g. k / n </span>
-- **Hidden/latent**: ability ($\theta$) 
-- Same $\theta$ → different observable 
-- Same performance ≠ same ability
-- Bayesian models infer latent causes of observable data
+## Why focus on the latent? 
+- Scientific questions are causal:
+  - Do parkinsons patients differ in *risk taking* on and off medication? 
+  - Does serotonin change *empathy*? 
+  - Does alpha waves cause *memory consolidation*? 
+  - Does ozempic improve *cognitive flexibility*?
+- In each of these examples we have observable data but we want to infer about something *latent*.  
+- Bayesian modelling lets us infer about what we can't directly observe directly.
 
-## Why do we model hidden causes?
-- Our theories live in the **hidden**
-- We care about *why*, not just *what*
-- Real questions ask about causes, not outcomes
-- e.g., *Do the two groups truly differ in their ability?*
-- So we model what we **can’t observe directly**
+## Back to cogntive task: Observed vs. latent
+- **Observed**: number correct ($k/n$)
+- **Latent**: ability ($\theta$)
+- Same $\theta$ → different $k/n$
+- Different $\theta$ → same $k/n$ 
+- Bayesian models allow us to infer latent causes of observed data
 
-## Prior belief over $\theta$
-- If agnostic, use **uniform prior**
-- Equal probability for all $\theta$ in (0,1)
-- Maximum uncertainty, no bias
-- 
+## Beliefs as distributions
+- Probability distributions encode beliefs
+- Shape reflects belief; spread reflects uncertainty
+- e.g., confident high, uncertain low, etc.
 
-## Representing beliefs as distributions
-- Probabilities represent belief
-- Shape = belief; spread = uncertainty
-- Use sliders to explore different priors
-- e.g., certain low, certain high, uncertain
+## Certainty of beliefs
+- <img src="/images/certainty_belief.jpeg" width="1000px">
 
-## Update prior with evidence
-- Data: 9/10 correct
-- Prior $\rightarrow$ Likelihood $\rightarrow$ Posterior
+## test
+```{python}
+import ipywidgets as widgets
+widgets.IntSlider(description="Test")
+```
+---
+
+## test
+<iframe src="/notebooks/beta_interactive_plot.html" width="100%" height="600px" style="border:none;"></iframe>
+
+
+## Interactive Beta Distribution (Plotly)
+
+```{python}
+import numpy as np
+import plotly.graph_objects as go
+import ipywidgets as widgets
+from ipywidgets import interact
+from scipy.stats import beta
+
+def plot_beta_plotly(k=1, n=1):
+    x = np.linspace(0, 1, 1000)
+    alpha = k + 1
+    beta_param = (n - k) + 1
+    y = beta.pdf(x, alpha, beta_param)
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=x, y=y, fill='tozeroy', name=f'Beta({alpha}, {beta_param})'))
+    fig.update_layout(
+        title="Distribution of θ",
+        xaxis_title="θ",
+        yaxis_title="Probability Density",
+        showlegend=True,
+    )
+    
+    return fig
+
+interact(
+    plot_beta_plotly,
+    k=widgets.IntSlider(min=0, max=30, step=1, value=1, description="k"),
+    n=widgets.IntSlider(min=1, max=30, step=1, value=2, description="n")
+);
+```
+---
+
+
+
+
+## Prior over $\theta$
+- Lets start with our prior beliefs for $\theta$
+- Suppose we believe that all abilities are equally likely. 
+- What would this look like? 
+- Uniform prior: equal belief over (0,1)
+- Represents maximum uncertainty
+
+## Updating beliefs according to evidence
+- Data: $k = 9$ correct of $n = 10$
+- Prior → Likelihood → Posterior
 - $p(\theta) \rightarrow p(D|\theta) \rightarrow p(\theta|D)$
 
 ## Bayes’ rule
-- $p(\theta | D) = \frac{p(D|\theta)\, p(\theta)}{p(D)}$
-- Posterior = Likelihood × Prior / Marginal Likelihood
+- $p(\theta | D) = \frac{p(D|\theta) p(\theta)}{p(D)}$
+- Posterior = Likelihood × Prior / Marginal likelihood
 
-## Marginal likelihood
-- $p(D)$ = probability of the data
-- It normalizes the posterior (ensures it sums to 1)
-- It does **not** depend on $\theta$
+## Marginal likelihood $p(D)$
+- Normalizes the posterior
+- Ensures it is a probability distribution
+- Independent of $\theta$
 
-## Shortcut expression
-- $p(\theta|D) \propto p(D|\theta) \times p(\theta)$
-- Posterior is proportional to Likelihood × Prior
+## Proportional form
+- $p(\theta|D) \propto p(D|\theta) p(\theta)$
 
-## Posterior = probability distribution
-- Interpreted as belief about $\theta$
-- If 50% is above 0.65, then $p(\theta > 0.65) = 0.5$
-- Simple, intuitive interpretation
+## Posterior = belief distribution
+- Posterior quantifies belief about $\theta$
+- If 50% is above 0.65 → $p(\theta > 0.65) = 0.5$
 
-## Bayesian credibility intervals
-- $\text{BCI}_{95\%} [0.4, 0.8]$ means 95% chance $\theta$ is in that range
-- This is what we *want* classical confidence intervals to mean
+## Credible intervals
+- $\text{BCI}_{95\%} [0.4, 0.8]$ → 95% chance $\theta \in [0.4, 0.8]$
+- Matches intuitive interpretation of intervals
 
-## Sequential updating (part 1)
-- Get new data: 3/5 additional trials correct
-- Previously: 9/10 correct → now 12/15
-- Combine new data with old
+## Sequential updating (1)
+- New data: 3/5 correct
+- Combine with prior data (9/10 → 12/15)
 
-## Sequential updating (part 2)
-- Update in two steps or one — same result
-- Prior $\rightarrow$ Posterior $\rightarrow$ Posterior again
-- Or Prior $\rightarrow$ All data $\rightarrow$ Posterior
+## Sequential updating (2)
+- Two-step: Prior → Posterior → Posterior
+- One-step: Prior → Combined data → Posterior
+- Final result is identical
 
-## Analytic solution
-- Beta prior: $\text{Beta}(1,1)$ (uniform)
-- Posterior: $\text{Beta}(1+k,1+n-k)$
-- Where $k$ = correct, $n$ = total trials
+## Analytic posterior
+- Prior: $\text{Beta}(1,1)$
+- Posterior: $\text{Beta}(1+k, 1+n-k)$
+- $k$ = correct, $n$ = total trials
 
 ## Interactive beta distribution
-- Adjust $k$ and $n$ to see posteriors
-- When is the posterior most uncertain?
-- When does it strongly prefer high or low $\theta$?
+- Adjust $k$, $n$ to see posteriors
+- Identify cases of high or low certainty
 
 ## Conjugate priors
-- Prior & posterior in same family → conjugate
-- Nice when possible
-- But often not possible 😞
+- Prior/posterior in same distribution family = conjugate
+- Enables analytic updating
+- Not always available
 
-## What then? MCMC!
+## When conjugacy fails: MCMC
 - MCMC = Markov Chain Monte Carlo
-- Samples from the posterior
-- Works even when no analytic solution exists
-- Feels a bit magical, but it’s robust
+- Approximate sampling from posterior
+- Robust when no analytic form exists
 
-## Analytic vs. Sampling
-- Plot analytic posterior vs. MCMC samples
-- Both aim to estimate same thing
-- Useful to compare
+## Analytic vs. sampling
+- Compare analytic posterior to MCMC samples
+- Both estimate posterior
 
-## How MCMC works
-- Two paths forward:
-  - Red pill: Learn how it works (see video)
-  - Blue pill: Accept it works, move on 😄
+## MCMC in practice
+- Two options:
+  - Red pill: Learn MCMC internals
+  - Blue pill: Accept it works, use it 😄
 
-## Why Bayesian modeling?
-- **Flexible**: Handles complex, missing, or messy data
-- **Principled**: Always quantifies uncertainty
-- **Intuitive**: Matches human reasoning
-- **Accessible**: Simple to use once understood
-<!-- #endregion -->
-
-
+## Why use Bayesian methods?
+- **Flexible**: Handles complexity, missing data
+- **Principled**: Represents uncertainty fully
+- **Intuitive**: Often aligns with reasoning
+- **Accessible**: Easy to apply once learned
+<!-- #endregion-->
 
 <!-- #region Modelling a binary process-->
 
@@ -370,7 +420,7 @@ model{
 \]
 -Rule of thumb: $\hat{R}$ should be 1-1.01 for convergence to be achieved
  
-footer
+footer:
 Learn more: Brooks & Gelman (1998).  
 <!-- #endregion -->
 
