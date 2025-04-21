@@ -18,8 +18,8 @@ format:  # ← Specifies output formats. You can define multiple formats like re
     preview-links: auto  # ← Automatically previews external web links (e.g., YouTube, PDFs) inside slides.
     css: BayesianModels_styles.css  # ← Applies custom styles using a user-defined CSS file.
     footer:   |  # ← Adds a custom HTML footer across all slides. The pipe (|) means the following lines are literal block text.
-        <a href="https://tinyurl.com/bayesBinder" target="_blank">
-        tinyurl.com/bayesBinder </a>&nbsp;&nbsp;&nbsp;  
+        <a href="https://tinyurl.com/bayeBinderRepo" target="_blank">
+        tinyurl.com/bayesBinderRepo </a>&nbsp;&nbsp;&nbsp;  
         <a href="https://tinyurl.com/bayesGithub" target="_blank">
         tinyurl.com/bayesGithub </a>&nbsp;&nbsp;
         <a href="https://tinyurl.com/bayesSchedule" target="_blank">
@@ -151,56 +151,7 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 
 <!-- #region Lecture#2 Basics of Bayesian analysis-->
 
-## Interactive Gaussian
-```{python}
-import numpy as np
-import plotly.graph_objects as go
-
-# Initial values
-x = np.linspace(-10, 10, 500)
-
-def make_y(mu, sigma):
-    return (1 / (sigma * np.sqrt(2 * np.pi))) * np.exp(-0.5 * ((x - mu)/sigma)**2)
-
-fig = go.Figure()
-
-# Add initial plot
-mu0 = 0
-sigma0 = 1
-y0 = make_y(mu0, sigma0)
-fig.add_trace(go.Scatter(x=x, y=y0, mode='lines', name='Gaussian'))
-
-# Add sliders
-mu_vals = np.round(np.linspace(-5, 5, 11), 1)
-sigma_vals = np.round(np.linspace(0.5, 3, 6), 2)
-
-steps = []
-for mu in mu_vals:
-    for sigma in sigma_vals:
-        y = make_y(mu, sigma)
-        steps.append(dict(
-            method="update",
-            label=f"μ={mu}, σ={sigma}",
-            args=[{"y": [y]},
-                  {"title": f"Gaussian N({mu}, {sigma}²)"}]
-        ))
-
-fig.update_layout(
-    sliders=[{
-        "active": 0,
-        "steps": steps,
-        "currentvalue": {"prefix": "Parameters: "}
-    }],
-    xaxis_title="x",
-    yaxis_title="Density",
-    title="Gaussian Distribution"
-)
-
-fig
-```
----
-
-## Basics of Bayesian Analysis
+# Basics of Bayesian Analysis
 - The spirit of Bayesian thinking
 - What is Bayesian modeling?
 - Principles of Bayesian inference
@@ -209,7 +160,7 @@ fig
 - Estimation methods
 - Why Bayesian methods?
 
-## Bayesian Thinking in Quotes  
+## The spirit of Bayesian thinking 
 - <br>
 - *"Probability theory is nothing but common sense reduced to calculation."* — Laplace (1814)  
 - <br>
@@ -229,18 +180,19 @@ Laplace (1814); Jaynes (2003)
 Jaynes (2003)
 :::
 
-## From Probability to Rationality
+## Probability as Rational Consistency 
 - Bayesian modeling follows the rules of probability.
 - Probability is logic.
 - Logic is consistency.
 - Consistency is rationality.
+- And rationality is just thinking clearly.
 
 ## What is "Bayesian Modeling of Minds, Brains, and Behavior"?
 - This course is about **thinking clearly about minds, brains, and behavior**.
 - It's about testing theories rationally, using the evidence provided by data.
 - Bayesian modeling offers a principled, rational way to update beliefs based on evidence.
 
-## General principle
+## Bayesian Updating in a Nutshell
 - Prior belief → Evidence → Posterior belief
 
 ## Example of a cognitive task 
@@ -259,114 +211,77 @@ Jaynes (2003)
 
 ## Why latent variables?
 - We want to explain, not just describe
-- *Descriptive*: e.g. "What did the subject score on the task?"
-- *Explanatory*: e.g. "What ability produced that score?"
-- Psychology, neuroscence, science in general ultimately seeks **explanations in terms of latent variables or processes**
+- *Descriptive*: e.g. "What did the subject score?"
+- *Explanatory*: e.g. "What ability caused that score?"
 
-## Why focus on the latent? 
+## Why Science Cares About the Latent
 - Scientific questions are causal:
   - Do parkinsons patients differ in *risk taking* on and off medication? 
   - Does serotonin change *empathy*? 
   - Does alpha waves cause *memory consolidation*? 
   - Does ozempic improve *cognitive flexibility*?
-- In each of these examples we have observable data but we want to infer about something *latent*.  
-- Bayesian modelling lets us infer about what we can't directly observe directly.
+- We observe data, but we infer about latent causes
+- Bayesian modeling connects observables to latent processes
 
 ## Back to the cogntive task
 - **Observed**: number correct ($k/n$)
 - **Latent**: ability ($\theta$)
 - Same $\theta$ can result in different $k/n$
 - Different $\theta$ can result in the same $k/n$ 
-- The relationship between them is probabilistic and therefore uncertain
-- Bayesian models allow us to infer latent variables from observed data, accounting for this uncertainty
+- Bayesian inference accounts for this uncertainty
 
 ## Beliefs as Distributions
 - Probability distributions encode **beliefs**
-- The **center** reflects what is most likely
-- The **spread** reflects **uncertainty**
-- <img src="/images/certainty_belief.jpeg" width="800px">
+- The **center** = most likely value
+- The **spread** = uncertainty
 
-## Interactive Gaussian 
-```{python}
-import numpy as np
-import plotly.graph_objects as go
+## Interactive demo
+- Explore distributions as beliefs:  
+- 📂 `notebooks/probability_distributions.ipynb`
 
-# x-axis range
-x = np.linspace(-20, 20, 1000)
-
-# Function to compute PDF
-def gaussian_pdf(mu, sigma):
-    return (1 / (sigma * np.sqrt(2 * np.pi))) * np.exp(-0.5 * ((x - mu)/sigma)**2)
-
-# Define value ranges
-mu_vals = np.round(np.linspace(-10, 10, 41), 1)       # μ from -10 to 10, step 0.5
-sigma_vals = np.round(np.linspace(0.1, 5.0, 50), 2)   # σ from 0.1 to 5.0, step 0.1
-
-# Initial values
-mu0 = 0.0
-sigma0 = 1.0
-y0 = gaussian_pdf(mu0, sigma0)
-
-# Create figure
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=x, y=y0, mode='lines', name='Gaussian'))
-
-# Create slider steps (combined μ and σ values)
-steps = []
-for mu in mu_vals:
-    for sigma in sigma_vals:
-        y = gaussian_pdf(mu, sigma)
-        steps.append(dict(
-            method="update",
-            label=f"μ={mu}, σ={sigma}",
-            args=[{"y": [y]},
-                  {"title": f"Gaussian Distribution — N({mu}, {sigma}²)"}]
-        ))
-
-# Add slider to layout
-fig.update_layout(
-    sliders=[{
-        "active": 0,
-        "steps": steps,
-        "currentvalue": {"prefix": "μ and σ: "}
-    }],
-    xaxis_title="θ",
-    yaxis_title="Probability Density",
-    title=f"Gaussian Distribution — N({mu0}, {sigma0}²)",
-    showlegend=False
-)
-
-fig
-```
----
-
-##
-- Play around with distributions to represent different beliefs
-- 📂 `notebooks/gaussian_interactive_plot.ipynb`
-- <img src="/images/interactive_gaussian.png" width="500px">
-
-## Interpreting probability distributions
-- See "interpreting probability distributions"
-- 📂 `notebooks/gaussian_interactive_plot.ipynb`
-- <img src="/images/interpreting_distributions.png" width="600px">
-
-## Prior over $\theta$
-- Let's set our **prior beliefs** about $\theta$
-- What are the **upper and lower limits** of $\theta$?
-- Lets play around with our prior beliefs
-- 📂 `notebooks/beta_interactive_plot.ipynb`
 
 ## Bayes’ rule
-- $p(\theta | D) = \frac{p(D|\theta) p(\theta)}{p(D)}$
-- Posterior = $\frac{\text{Likelihood} \times \text{Prior}}{\text{Marginal likelihood}}$
-- This tells us how priors beliefs are updated via evidence
+- <br> 
+- $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$
+- <br>
+- Posterior = $\frac{\color{red}{\text{Likelihood}}  \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
+- <br>
+- This tells us how prior beliefs are updated via the evidence provided by the data.
+
+## Term-by-term
+- $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
+- <br>
+- **$\color{blue}{\text{Prior}}$** is what we believe about $\theta$ before seeing the data. 
+- It reflects our assumptions or prior knowledge.
+
+## Term-by-term
+- $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
+- <br>
+- **$\color{red}{\text{Likelihood}}$** is how likely the observed data $D$ is, given a particular value of $\theta$. 
+- It tells us how well different values of $\theta$ explain the data.
+- It tells us how to update our beliefs in each value of $\theta$. 
+- Those $\theta$ that explain the data well should be believed in more
+- Those $\theta$ that explain the data poorly should be believed in less
+
+## Term-by-term
+- $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
+- <br>
+- **$\color{green}{\text{Marginal likelihood}}$** is the total probability of the data under all possible values of $\theta$.
+- It represents how good the model is at predicting the data. 
+- In doing so it normalizes the result so the posterior is a valid probability distribution.
+- Note that it is independent of $\theta$
+
+## Term-by-term
+- $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
+- <br>
+- **Posterior** is what we believe about $\theta$ *after* seeing the data. 
+- It’s the prior that has been updated by the evidence provided by the data.
 
 ## Updating Beliefs with Evidence
-- We start with a **prior** belief about ability: $p(\theta)$
-- Then we observe **data**: e.g. \( k = 9 \) correct out of \( n = 10 \)
-- Bayes tells us how to update our beliefs:
-- $\text{Prior} \quad \rightarrow \quad \text{Likelihood} \quad \rightarrow \quad \text{Posterior}$
-- $p(\theta) \quad \rightarrow \quad p(D|\theta) \quad \rightarrow \quad p(\theta|D)$
+- We start with a **prior** belief $p(\theta)$
+- Observe **data**: e.g. \( k = 9 \) correct out of \( n = 10 \)
+- Bayes updates the belief:
+- $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$
 
 ## Intuition behind belief updating  
 - The more likely the data is for a given $\theta$  
@@ -374,74 +289,83 @@ fig
 - The values of theta that are better supported by the data, are more believed in after experiencing the data
 - We have updated our beliefs according to the data
 
-
-## Marginal likelihood $p(D)$
-- Normalizes the posterior
-- Just a single number that scales to ensure it is a probability distribution
-- Independent of $\theta$
+## Proportional form
+- Since $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$
+- The **$\color{green}{\text{Marginal likelihood } p(D)}$** doesnt depend on $\theta$
+- So we can rewrite as:
+- $p(\theta|D) \propto p(D|\theta) \cdot p(\theta)$
+- $\text{Posterior} \propto \color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}$
 
 ## Proportional form
-- $p(\theta|D) \propto p(D|\theta) \times p(\theta)$
+- Since:  
+  $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$
+- <br>
+- The **$\color{green}{\text{Marginal likelihood}}$** $\color{green}{p(D)}$ doesn’t depend on $\theta$
+- <br>
+- So we can rewrite as:  
+- $p(\theta \mid D) \propto \color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}$
+- $\text{Posterior} \propto \color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}$
+- "*Posterior is proportional to likelihood times prior*""
 
-## Posterior = belief distribution
-- Posterior quantifies belief about $\theta$ after observing the data
+## Computing posteriors
+- Here is a notebook to step through updating priors according to data
+- Go to "Multiplying prior and likelihood" 📂 `notebooks/probability distributions.ipynb`
+- See how beliefs update
+- Explore summaries: MAP, mean, BCI
 
-## Analytic posterior
-- Prior: $\text{Beta}(1,1)$
-- Posterior: $\text{Beta}(1+k, 1+n-k)$
+## Special case
+- Prior: $p(\theta) \sim \text{Beta}(1,1)$
+- Posterior: $p(\theta \mid D) \sim \text{Beta}(1 + k, 1 + n - k)$
 - $k$ = correct, $n$ = total trials
+- Simple, tractable update rule for binary outcomes
 
+## Try it yourself
+- Go to "Computing posterior: the special case of the beta distribution"
+-  📂 `notebooks/probability distributions.ipynb`
 
+## Sequential updating 
+- Bayesian inference is **consistent** across steps
+- One-step:
+  - Prior → Combined data → Posterior
+- Two-step:
+  - Prior → Data1 → Intermediate Posterior → Data2 → Final Posterior
+- ✅ Final result is **identical**
 
+## Why Sequential Updating Matters
+- Matches real-world data collection
+- Enables online learning
+- Supports early stopping
+- Efficient and ethically sound (esp. in randomised control trials)
 
+## Why Frequentist Methods Don’t Allow This
+- Frequentist inference assumes a fixed sample size
+- Stopping early or collecting more data **invalidates p-values**
+- Frequentist methods lack a way to incorporate prior knowledge
 
-## Credible intervals
-- $\text{BCI}_{95\%} [0.4, 0.8]$ → 95% chance $\theta \in [0.4, 0.8]$
-- Matches intuitive interpretation of intervals
-- See BCI section of 📂 `notebooks/beta_interactive_plot.ipynb`
- 
-## Sequential updating (1)
-- New data: 3/5 correct
-- Combine with prior data (9/10 → 12/15)
+## Conjugate Priors
+- If prior and posterior belong to the same family → **conjugate**
+- Beta prior + Binomial likelihood = Beta posterior
+- Enables analytic updates
 
-## Sequential updating (2)
-- Two-step: Prior → Posterior → Posterior
-- One-step: Prior → Combined data → Posterior
-- Final result is identical
-
-## Analytic posterior
-- Prior: $\text{Beta}(1,1)$
-- Posterior: $\text{Beta}(1+k, 1+n-k)$
-- $k$ = correct, $n$ = total trials
-
-## Interactive beta distribution
-- Adjust $k$, $n$ to see posteriors
-- Identify cases of high or low certainty
-
-## Conjugate priors
-- Prior/posterior in same distribution family = conjugate
-- Enables analytic updating
-- Not always available
-
-## When conjugacy fails: MCMC
+## When Conjugacy Fails: Use MCMC
 - MCMC = Markov Chain Monte Carlo
-- Approximate sampling from posterior
-- Robust when no analytic form exists
+- Works even when no closed-form solution
+- Approximates the posterior with sampling
 
-## Analytic vs. sampling
-- Compare analytic posterior to MCMC samples
-- Both estimate posterior
+## Analytic vs. Sampling
+- **Analytic**: Exact, when conjugate
+- **MCMC**: Approximate, more flexible
 
-## MCMC in practice
-- Two options:
-  - Red pill: Learn MCMC internals
-  - Blue pill: Accept it works, use it 😄
+## MCMC in Practice
+- Red pill: Learn MCMC internals 🤓
+- Blue pill: Trust the method and use it 😄
 
-## Why use Bayesian methods?
-- **Flexible**: Handles complexity, missing data
-- **Principled**: Represents uncertainty fully
-- **Intuitive**: Often aligns with reasoning
-- **Accessible**: Easy to apply once learned
+## Why Use Bayesian Methods?
+
+- **Flexible**: Handles missing data, complex models
+- **Principled**: Captures full uncertainty
+- **Intuitive**: Matches how we reason
+- **Scalable**: Easy to apply once you learn it
 <!-- #endregion-->
 
 <!-- #region Modelling a binary process-->
