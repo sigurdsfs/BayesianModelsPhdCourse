@@ -239,7 +239,6 @@ Jaynes (2003)
 - Explore distributions as beliefs:  
 - 📂 `notebooks/probability_distributions.ipynb`
 
-
 ## Bayes’ rule
 - <br> 
 - $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$
@@ -333,39 +332,60 @@ Jaynes (2003)
 
 ## Why Sequential Updating Matters
 - Matches real-world data collection
-- Enables online learning
-- Supports early stopping
-- Efficient and ethically sound (esp. in randomised control trials)
+- Enables learning as data rolls in
+- Supports early stopping, or extending data collection 
+- Efficient: time, money, resources
+- Ethical: minimises animals, humans, unnecessary treatment etc.
 
 ## Why Frequentist Methods Don’t Allow This
-- Frequentist inference assumes a fixed sample size
+- Frequentist inference assumes a fixed sample size and plan
 - Stopping early or collecting more data **invalidates p-values**
+- Counterfactual policies also **invalidates p-values**
 - Frequentist methods lack a way to incorporate prior knowledge
 
 ## Conjugate Priors
-- If prior and posterior belong to the same family → **conjugate**
-- Beta prior + Binomial likelihood = Beta posterior
-- Enables analytic updates
+- If Prior and posterior from the same distribution family → *conjugate*  
+- <br>
+- For example:
+- $p(\theta): \text{Beta}(\alpha, \beta)$ 
+- $p(\theta|data): \text{Beta}(\alpha + k, \beta + n - k)$
+- <br>
+- The posterior can be computed by plugging data directly into an equation
+- Conjugacy allows for *analytic updates* 
 
-## When Conjugacy Fails: Use MCMC
-- MCMC = Markov Chain Monte Carlo
+## When Conjugacy Fails: Use 
+- Conjugacy is relatively rare in real world cases
+- In cases where conjugacy is not available sampling solutions are possible
+- Commonly MCMC - Markov Chain Monte Carlo
 - Works even when no closed-form solution
-- Approximates the posterior with sampling
+- Approximates the posterior via sampling
 
 ## Analytic vs. Sampling
 - **Analytic**: Exact, when conjugate
 - **MCMC**: Approximate, more flexible
 
 ## MCMC in Practice
-- Red pill: Learn MCMC internals 🤓
-- Blue pill: Trust the method and use it 😄
+- **Red pill**: Learn MCMC internals 🤓
+- Intuitive guide: https://chat.openai.com/share/887b4e2d-2689-4e2d-b9ae-246b71d5782e 
+- For an intuitive explanation of Metropolis-Hastings:https://chat.openai.com/share/55cb6a00-1718-4327-8d51-3902a2064a11
+- <br>
+- **Blue pill**: Trust the method and use it, (but know how to spot problems) 😄
+- We will demonstrate and visualise MCMC 
 
-## Why Use Bayesian Methods?
+## MCMC demo: Try it yourself
+- Go to "MCMC demo"
+-  📂 `notebooks/probability distributions.ipynb`
 
-- **Flexible**: Handles missing data, complex models
-- **Principled**: Captures full uncertainty
-- **Intuitive**: Matches how we reason
-- **Scalable**: Easy to apply once you learn it
+## Why Bayesian Methods?
+- **Principled reasoning**: Probabilistic logic = consistent thinking  
+- **Uncertainty-aware**: Fully models uncertainty  
+- **Latent variables**: Model hidden causes, not just outcomes  
+- **Transparent updating**: Prior → Evidence → Posterior
+- **Sequential updating**: Updating is the same whether data is sequential or all-in-one-go.  
+- **Richer explanations**: From data to theory  
+- **Flexible models**: Hierarchical, generative, extensible
+- **Simple**: Same principle always. 
+
 <!-- #endregion-->
 
 <!-- #region Modelling a binary process-->

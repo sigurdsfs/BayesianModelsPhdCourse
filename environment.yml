@@ -1,4 +1,4 @@
-name: bayesian-models
+name: bayesian-models 
 channels:
   - conda-forge
 dependencies:
@@ -10,4 +10,5 @@ dependencies:
   - seaborn
   - ipympl               # 🔥 for `%matplotlib ipympl` to work
   - notebook             # for classic Jupyter (enables widgets)
-  - jupyterlab  
+  - jupyterlab 
+  - pyjags 

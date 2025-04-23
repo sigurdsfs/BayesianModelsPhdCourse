@@ -635,33 +635,43 @@
 <h2>Why Sequential Updating Matters</h2>
 <ul>
 <li class="fragment">Matches real-world data collection</li>
-<li class="fragment">Enables online learning</li>
-<li class="fragment">Supports early stopping</li>
-<li class="fragment">Efficient and ethically sound (esp.&nbsp;in randomised control trials)</li>
+<li class="fragment">Enables learning as data rolls in</li>
+<li class="fragment">Supports early stopping, or extending data collection</li>
+<li class="fragment">Efficient: time, money, resources</li>
+<li class="fragment">Ethical: minimises animals, humans, unnecessary treatment etc.</li>
 </ul>
 </section>
 <section id="why-frequentist-methods-dont-allow-this" class="slide level2">
 <h2>Why Frequentist Methods Don’t Allow This</h2>
 <ul>
-<li class="fragment">Frequentist inference assumes a fixed sample size</li>
+<li class="fragment">Frequentist inference assumes a fixed sample size and plan</li>
 <li class="fragment">Stopping early or collecting more data <strong>invalidates p-values</strong></li>
+<li class="fragment">Counterfactual policies also <strong>invalidates p-values</strong></li>
 <li class="fragment">Frequentist methods lack a way to incorporate prior knowledge</li>
 </ul>
 </section>
 <section id="conjugate-priors" class="slide level2">
 <h2>Conjugate Priors</h2>
 <ul>
-<li class="fragment">If prior and posterior belong to the same family → <strong>conjugate</strong></li>
-<li class="fragment">Beta prior + Binomial likelihood = Beta posterior</li>
-<li class="fragment">Enables analytic updates</li>
+<li class="fragment">If Prior and posterior from the same distribution family → <em>conjugate</em><br>
+</li>
+<li class="fragment"><br></li>
+<li class="fragment">For example:</li>
+<li class="fragment"><span class="math inline">\(p(\theta): \text{Beta}(\alpha, \beta)\)</span></li>
+<li class="fragment"><span class="math inline">\(p(\theta|data): \text{Beta}(\alpha + k, \beta + n - k)\)</span></li>
+<li class="fragment"><br></li>
+<li class="fragment">The posterior can be computed by plugging data directly into an equation</li>
+<li class="fragment">Conjugacy allows for <em>analytic updates</em></li>
 </ul>
 </section>
-<section id="when-conjugacy-fails-use-mcmc" class="slide level2">
-<h2>When Conjugacy Fails: Use MCMC</h2>
+<section id="when-conjugacy-fails-use" class="slide level2">
+<h2>When Conjugacy Fails: Use</h2>
 <ul>
-<li class="fragment">MCMC = Markov Chain Monte Carlo</li>
+<li class="fragment">Conjugacy is relatively rare in real world cases</li>
+<li class="fragment">In cases where conjugacy is not available sampling solutions are possible</li>
+<li class="fragment">Commonly MCMC - Markov Chain Monte Carlo</li>
 <li class="fragment">Works even when no closed-form solution</li>
-<li class="fragment">Approximates the posterior with sampling</li>
+<li class="fragment">Approximates the posterior via sampling</li>
 </ul>
 </section>
 <section id="analytic-vs.-sampling" class="slide level2">
@@ -674,18 +684,39 @@
 <section id="mcmc-in-practice" class="slide level2">
 <h2>MCMC in Practice</h2>
 <ul>
-<li class="fragment">Red pill: Learn MCMC internals 🤓</li>
-<li class="fragment">Blue pill: Trust the method and use it 😄</li>
+<li class="fragment"><strong>Red pill</strong>: Learn MCMC internals 🤓</li>
+<li class="fragment">Intuitive guide: https://chat.openai.com/share/887b4e2d-2689-4e2d-b9ae-246b71d5782e</li>
+<li class="fragment">For an intuitive explanation of Metropolis-Hastings:https://chat.openai.com/share/55cb6a00-1718-4327-8d51-3902a2064a11</li>
+<li class="fragment"><br></li>
+<li class="fragment"><strong>Blue pill</strong>: Trust the method and use it, (but know how to spot problems) 😄</li>
+<li class="fragment">We will demonstrate and visualise MCMC</li>
 </ul>
 </section>
-<section id="why-use-bayesian-methods" class="slide level2">
-<h2>Why Use Bayesian Methods?</h2>
+<section id="mcmc-demo-try-it-yourself" class="slide level2">
+<h2>MCMC demo: Try it yourself</h2>
 <ul>
-<li class="fragment"><strong>Flexible</strong>: Handles missing data, complex models</li>
-<li class="fragment"><strong>Principled</strong>: Captures full uncertainty</li>
-<li class="fragment"><strong>Intuitive</strong>: Matches how we reason</li>
-<li class="fragment"><strong>Scalable</strong>: Easy to apply once you learn it <!-- #endregion--></li>
+<li class="fragment">Go to “MCMC demo”</li>
+<li class="fragment">📂 <code>notebooks/probability distributions.ipynb</code></li>
 </ul>
+</section>
+<section id="why-bayesian-methods" class="slide level2">
+<h2>Why Bayesian Methods?</h2>
+<ul>
+<li class="fragment"><strong>Principled reasoning</strong>: Probabilistic logic = consistent thinking<br>
+</li>
+<li class="fragment"><strong>Uncertainty-aware</strong>: Fully models uncertainty<br>
+</li>
+<li class="fragment"><strong>Latent variables</strong>: Model hidden causes, not just outcomes<br>
+</li>
+<li class="fragment"><strong>Transparent updating</strong>: Prior → Evidence → Posterior</li>
+<li class="fragment"><strong>Sequential updating</strong>: Updating is the same whether data is sequential or all-in-one-go.<br>
+</li>
+<li class="fragment"><strong>Richer explanations</strong>: From data to theory<br>
+</li>
+<li class="fragment"><strong>Flexible models</strong>: Hierarchical, generative, extensible</li>
+<li class="fragment"><strong>Simple</strong>: Same principle always.</li>
+</ul>
+<!-- #endregion-->
 <!-- #region Modelling a binary process-->
 </section></section>
 <section>
