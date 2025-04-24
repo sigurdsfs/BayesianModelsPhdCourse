@@ -711,67 +711,67 @@
 <li class="fragment"><strong>Transparent updating</strong>: Prior → Evidence → Posterior</li>
 <li class="fragment"><strong>Sequential updating</strong>: Updating is the same whether data is sequential or all-in-one-go.<br>
 </li>
-<li class="fragment"><strong>Richer explanations</strong>: From data to theory<br>
+<li class="fragment"><strong>Richer explanations</strong>: From describing data to explaining via theory<br>
 </li>
 <li class="fragment"><strong>Flexible models</strong>: Hierarchical, generative, extensible</li>
-<li class="fragment"><strong>Simple</strong>: Same principle always.</li>
+<li class="fragment"><strong>Simple</strong>: Same principle always. Learn it once. Apply it forever.</li>
 </ul>
 <!-- #endregion-->
 <!-- #region Modelling a binary process-->
-</section></section>
-<section>
-<section id="modelling-a-binary-process" class="title-slide slide level1 center">
-<h1>Modelling a binary process</h1>
+</section>
+<section id="modeling-a-binary-process" class="slide level2">
+<h2>Modeling a Binary Process</h2>
 <ul>
-<li class="fragment">Start simple → binary processes</li>
-<li class="fragment">Most/many tasks are binary processes 😲</li>
+<li class="fragment">Start simple: focus on binary outcomes.</li>
+<li class="fragment">Each trial is a <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em>.</li>
+<li class="fragment">Examples: Coin flips, true/false questions, detection tasks, motor responses.</li>
+<li class="fragment">Binary processes are foundational for modeling cognition.</li>
 </ul>
 </section>
 <section id="getting-started" class="slide level2">
-<h2>Getting started</h2>
+<h2>Getting Started</h2>
 <ul>
-<li class="fragment">Our first example was about inferring a rate for a binary process</li>
-<li class="fragment">Binary process since either correct or incorrect</li>
-<li class="fragment">Inferring a rate, since we were inferring the underlying ability as a probability <span class="math inline">\(\theta\)</span></li>
-<li class="fragment">Lots of tasks can be represented as binary processes</li>
+<li class="fragment">Let’s infer <strong>ability</strong> in a go/no-go task.</li>
+<li class="fragment">We estimate a <strong>rate</strong> — as a hidden probability <span class="math inline">\(\theta\)</span>.</li>
+<li class="fragment">We represent our uncertainty as a <strong>distribution</strong> over likely values of <span class="math inline">\(\theta\)</span>.</li>
+<li class="fragment">Many cognitive tasks can be represented in this way.</li>
 </ul>
 </section>
-<section id="cognitive-tasks-that-are-binary-processes" class="slide level2">
-<h2>Cognitive tasks that are binary processes</h2>
+<section id="binary-tasks-in-cognitive-science" class="slide level2">
+<h2>Binary Tasks in Cognitive Science</h2>
 <ul>
-<li class="fragment">Task switching</li>
-<li class="fragment">Go-no-go</li>
-<li class="fragment">Stop signal</li>
-<li class="fragment">…</li>
+<li class="fragment">Go/no-go, stop-signal, 2AFC, task switching<br>
+</li>
+<li class="fragment">Recognition memory, Stroop, Flanker, oddball detection<br>
+</li>
+<li class="fragment">Visual search, discrimination tasks</li>
 </ul>
 </section>
-<section id="from-binary-outcomes-to-rate" class="slide level2">
-<h2>From binary outcomes to rate</h2>
+<section id="from-binary-outcomes-to-hidden-rate" class="slide level2">
+<h2>From Binary Outcomes to Hidden Rate</h2>
 <ul>
-<li class="fragment">Binary outcomes typically k correct out of n</li>
-<li class="fragment">Expressed as a rate = k / n</li>
-<li class="fragment">This is the observed rate</li>
-<li class="fragment">But what is the underlying hidden rate <span class="math inline">\(\theta\)</span></li>
-<li class="fragment"><span class="math inline">\(k \sim \text{Binomial}(\theta, n)\)</span></li>
-<li class="fragment">assuming no history dependent effects where what happens in past influences the present</li>
+<li class="fragment">Observe <span class="math inline">\(k\)</span> successes in <span class="math inline">\(n\)</span> trials → rate <span class="math inline">\(\frac{k}{n}\)</span></li>
+<li class="fragment">But we want the <em>underlying</em> rate <span class="math inline">\(\theta\)</span></li>
+<li class="fragment">Model: <span class="math inline">\(k \sim \text{Binomial}(\theta, n)\)</span><br>
+</li>
+<li class="fragment"><span style="color: lightgrey;"><span class="math inline">\(p(k \mid \theta, n) = \binom{n}{k} \theta^k (1 - \theta)^{n - k}\)</span></span></li>
+<li class="fragment">Assumes no history effects (i.i.d. trials)</li>
 </ul>
 </section>
-<section id="from-binary-outcomes-to-rate-1" class="slide level2">
-<h2>From binary outcomes to rate</h2>
+<section id="try-it-yourself-1" class="slide level2">
+<h2>Try it yourself</h2>
 <ul>
-<li class="fragment">observing k out of n trials allows us to update our beliefs about <span class="math inline">\(\theta\)</span></li>
-<li class="fragment">what we know, and what we dont know of variables is alwwys represented by probability distributions</li>
-<li class="fragment"><span class="math inline">\(\theta \sim \text{Beta(1,1)}\)</span></li>
-<li class="fragment"><span class="math inline">\(k \sim \text{Binomial(\theta,n)}\)</span></li>
-<li class="fragment"><img data-src="fig2.1.jpg"></li>
+<li class="fragment">go to “Visualising the binomial distribution”</li>
+<li class="fragment">📂 <code>notebooks/probability distributions.ipynb</code></li>
 </ul>
 </section>
-<section id="graphical" class="slide level2">
-<h2>Graphical</h2>
+<section id="graphical-models" class="slide level2">
+<h2>Graphical models</h2>
 <ul>
-<li class="fragment">Graphical models represent our probabilisitc model</li>
-<li class="fragment">nodes represent all the variables relevant to the problem</li>
-<li class="fragment">graph structure represent dependencies - children depend on parents</li>
+<li class="fragment">Graphical models are used to represent our probabilisitc model</li>
+<li class="fragment">Nodes represent all the variables relevant to the problem</li>
+<li class="fragment">Graph structure represent dependencies - children depend on parents</li>
+<li class="fragment"><img data-src="images/graphical%20model.png" style="width:30.0%"></li>
 </ul>
 </section>
 <section id="graphical-notation" class="slide level2">
@@ -782,18 +782,37 @@
 <li class="fragment">Single-boundary - stochastic, double-boundary - deterministic</li>
 </ul>
 </section>
+<section id="graphical-notation-1" class="slide level2">
+<h2>Graphical notation</h2>
+<ul>
+<li class="fragment"><img data-src="images/graphical%20lexicon.jpeg" style="width:70.0%"></li>
+</ul>
+</section>
+<section id="tester" class="slide level2">
+<h2>Tester</h2>
+<ul>
+<li class="fragment"><img data-src="images/graphical%20model%20test.jpeg" style="width:30.0%"></li>
+<li class="fragment">Upper is what?</li>
+<li class="fragment">continuous, stochastic, and observed</li>
+<li class="fragment">Lower is what?</li>
+<li class="fragment">discrete, deterministic, and unobserved</li>
+</ul>
+</section>
 <section id="sampling-via-jags" class="slide level2">
 <h2>Sampling via JAGS</h2>
-<ul>
-<li class="fragment">JAGS code that would run this model</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource jags number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href=""></a>model{ </span>
-<span id="cb4-2"><a href=""></a>  theta ~ dbeta(1,1)</span>
-<span id="cb4-3"><a href=""></a>  k ~ dbin(theta,n)</span>
-<span id="cb4-4"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4" data-code-line-numbers="1|2|3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>model { <span class="co">#this opens the model</span></span>
+<span id="cb4-2"><a href=""></a>  theta <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># the prior is that theta is distribute as a beta(1,1)</span></span>
+<span id="cb4-3"><a href=""></a>  k <span class="op">~</span> dbin(theta,n) <span class="co"># the likelihood is that k is distrbuted binomially with the theta and n as parameters</span></span>
+<span id="cb4-4"><a href=""></a>} <span class="co"># this closes the model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">We sample from the posterior to find the posterior distribution of <span class="math inline">\(\theta\)</span> for the data k = 5, n =10</li>
 <li class="fragment"><em>[insert Fig.2.8]</em></li>
+</ul>
+</section>
+<section id="sampling-via-jags-1" class="slide level2">
+<h2>Sampling via JAGS</h2>
+<ul>
+<li class="fragment">Code that would run this model <code>{.python code-line-numbers code-annotations="1-4"} model {   theta ~ dbeta(1,1)   k ~ dbin(theta,n) }</code></li>
 </ul>
 </section>
 <section id="r-hat-as-a-convergence-check" class="slide level2">

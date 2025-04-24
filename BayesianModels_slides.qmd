@@ -31,6 +31,7 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 --- 
 <!-- #region Title slide -->
 --- 
+ 
 
 <div style="display: flex; flex-direction: column; align-items: center; height: 100vh; padding-top: 60px; text-align: center;">
   <div style="font-size:1.6em; font-weight:bold; margin-bottom:10px; margin-top:10px;">
@@ -382,65 +383,84 @@ Jaynes (2003)
 - **Latent variables**: Model hidden causes, not just outcomes  
 - **Transparent updating**: Prior → Evidence → Posterior
 - **Sequential updating**: Updating is the same whether data is sequential or all-in-one-go.  
-- **Richer explanations**: From data to theory  
+- **Richer explanations**: From describing data to explaining via theory  
 - **Flexible models**: Hierarchical, generative, extensible
-- **Simple**: Same principle always. 
+- **Simple**: Same principle always. Learn it once. Apply it forever. 
 
 <!-- #endregion-->
 
 <!-- #region Modelling a binary process-->
 
-# Modelling a binary process 
-- Start simple → binary processes
-- Most/many tasks are binary processes 😲
+## Modeling a Binary Process
+- Start simple: focus on binary outcomes.
+- Each trial is a *Success/Failure*, *Correct/Incorrect*, *Yes/No*.
+- Examples: Coin flips, true/false questions, detection tasks, motor responses.
+- Binary processes are foundational for modeling cognition.
  
-## Getting started
-- Our first example was about inferring a rate for a binary process
-- Binary process since either correct or incorrect
-- Inferring a rate, since we were inferring the underlying ability as a probability $\theta$
-- Lots of tasks can be represented as binary processes
- 
-## Cognitive tasks that are binary processes
-- Task switching
-- Go-no-go
-- Stop signal
-- ...
- 
-## From binary outcomes to rate
-- Binary outcomes typically k correct out of n
-- Expressed as a rate = k / n
-- This is the observed rate
-- But what is the underlying hidden rate $\theta$
-- $k \sim \text{Binomial}(\theta, n)$
-- assuming no history dependent effects where what happens in past influences the present
- 
-## From binary outcomes to rate
-- observing k out of n trials allows us to update our beliefs about $\theta$
-- what we know, and what we dont know of variables is alwwys represented by probability distributions
-- $\theta \sim \text{Beta(1,1)}$
-- $k \sim \text{Binomial(\theta,n)}$
-- ![](fig2.1.jpg)
+## Getting Started
+- Let’s infer **ability** in a go/no-go task.
+- We estimate a **rate** — as a hidden probability $\theta$.
+- We represent our uncertainty as a **distribution** over likely values of $\theta$.
+- Many cognitive tasks can be represented in this way.
 
-## Graphical 
-- Graphical models represent our probabilisitc model
-- nodes represent all the variables relevant to the problem
-- graph structure represent dependencies - children depend on parents
+## Binary Tasks in Cognitive Science
+- Go/no-go, stop-signal, 2AFC, task switching  
+- Recognition memory, Stroop, Flanker, oddball detection  
+- Visual search, discrimination tasks
+
+## From Binary Outcomes to Hidden Rate
+- Observe $k$ successes in $n$ trials → rate $\frac{k}{n}$
+- But we want the *underlying* rate $\theta$
+- Model: $k \sim \text{Binomial}(\theta, n)$  
+- <span style="color: lightgrey;">$p(k \mid \theta, n) = \binom{n}{k} \theta^k (1 - \theta)^{n - k}$</span>
+- Assumes no history effects (i.i.d. trials)
+
+## Try it yourself
+ - go to "Visualising the binomial distribution"
+ -  📂 `notebooks/probability distributions.ipynb`
+
+## Graphical models
+- Graphical models are used to represent our probabilisitc model
+- Nodes represent all the variables relevant to the problem
+- Graph structure represent dependencies - children depend on parents
+- ![](images/graphical%20model.png){width=30%}
  
 ## Graphical notation 
 - Circular - continuous, Square - discrete
 - Shaded - observed, Non-shaded - hidden
 - Single-boundary - stochastic, double-boundary - deterministic 
 
+## Graphical notation
+- ![](images/graphical%20lexicon.jpeg){width=70%}
+ 
+## Tester
+-  ![](images/graphical%20model%20test.jpeg){width=30%}
+- Upper is what?
+- continuous, stochastic, and observed
+- Lower is what?
+- discrete, deterministic, and unobserved
+
+#######uptohere
+
 ## Sampling via JAGS 
-- JAGS code that would run this model 
-```jags
-model{ 
+```{.python code-line-numbers="1-4"}
+model { #this opens the model
+  theta ~ dbeta(1,1) # the prior: theta is distribute as a beta(1,1)
+  k ~ dbin(theta,n) # the likelihood: k is distrbuted binomially with the theta and n as parameters
+} # this closes the model
+```
+- We sample from the posterior to find the posterior distribution of $\theta$ for the data k = 5, n =10
+- *[insert Fig.2.8]*
+
+
+## Sampling via JAGS
+- Code that would run this model
+```{.python code-line-numbers code-annotations="1-4"}
+model {
   theta ~ dbeta(1,1)
   k ~ dbin(theta,n)
 }
 ```
-- We sample from the posterior to find the posterior distribution of $\theta$ for the data k = 5, n =10
-- *[insert Fig.2.8]*
  
 ## R-hat as a convergence check
 - Its important to check that the sampling has converged to the stationary distribution
