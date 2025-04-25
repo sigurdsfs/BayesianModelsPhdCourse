@@ -717,7 +717,7 @@
 <li class="fragment"><strong>Simple</strong>: Same principle always. Learn it once. Apply it forever.</li>
 </ul>
 <!-- #endregion-->
-<!-- #region Modelling a binary process-->
+<!-- #region Lecture#3 Modelling a binary process-->
 </section>
 <section id="modeling-a-binary-process" class="slide level2">
 <h2>Modeling a Binary Process</h2>
@@ -800,10 +800,14 @@
 </section>
 <section id="sampling-via-jags" class="slide level2">
 <h2>Sampling via JAGS</h2>
-<div class="sourceCode" id="cb4" data-code-line-numbers="1|2|3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>model { <span class="co">#this opens the model</span></span>
-<span id="cb4-2"><a href=""></a>  theta <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># the prior is that theta is distribute as a beta(1,1)</span></span>
-<span id="cb4-3"><a href=""></a>  k <span class="op">~</span> dbin(theta,n) <span class="co"># the likelihood is that k is distrbuted binomially with the theta and n as parameters</span></span>
-<span id="cb4-4"><a href=""></a>} <span class="co"># this closes the model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4" data-code-line-numbers="0-5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>model {              <span class="co"># opens the model</span></span>
+<span id="cb4-2"><a href=""></a>  theta <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># the prior: theta is distributed as a beta(1,1) </span></span>
+<span id="cb4-3"><a href=""></a>  k <span class="op">~</span> dbin(theta,n)  <span class="co"># the likelihood: k is distrbuted binomially </span></span>
+<span id="cb4-4"><a href=""></a>                     <span class="co"># ...with the theta and n as parameters</span></span>
+<span id="cb4-5"><a href=""></a>}                    <span class="co"># this closes the model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
 <ul>
 <li class="fragment">We sample from the posterior to find the posterior distribution of <span class="math inline">\(\theta\)</span> for the data k = 5, n =10</li>
 <li class="fragment"><em>[insert Fig.2.8]</em></li>

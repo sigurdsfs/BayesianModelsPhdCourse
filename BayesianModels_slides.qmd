@@ -389,7 +389,7 @@ Jaynes (2003)
 
 <!-- #endregion-->
 
-<!-- #region Modelling a binary process-->
+<!-- #region Lecture#3 Modelling a binary process-->
 
 ## Modeling a Binary Process
 - Start simple: focus on binary outcomes.
@@ -440,15 +440,16 @@ Jaynes (2003)
 - Lower is what?
 - discrete, deterministic, and unobserved
 
-#######uptohere
-
 ## Sampling via JAGS 
-```{.python code-line-numbers="1-4"}
-model { #this opens the model
-  theta ~ dbeta(1,1) # the prior: theta is distribute as a beta(1,1)
-  k ~ dbin(theta,n) # the likelihood: k is distrbuted binomially with the theta and n as parameters
-} # this closes the model
+```{.python code-line-numbers="0-5"}
+model {              # opens the model
+  theta ~ dbeta(1,1) # the prior: theta is distributed as a beta(1,1) 
+  k ~ dbin(theta,n)  # the likelihood: k is distrbuted binomially 
+                     # ...with the theta and n as parameters
+}                    # this closes the model
 ```
+
+## 
 - We sample from the posterior to find the posterior distribution of $\theta$ for the data k = 5, n =10
 - *[insert Fig.2.8]*
 
