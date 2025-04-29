@@ -1,4 +1,4 @@
-# Bayesian Models: Minds, Brains & Behavior 🧠📊
+# Bayesian Models: Minds, Brains & Behavior
 
 Welcome to the course materials for **Bayesian Models of Minds, Brains, & Behavior**, hosted at Hvidovre Hospital / Copenhagen, May 2025.
 
@@ -12,28 +12,13 @@ Click below to launch an interactive Jupyter environment (no installation requir
 
 [![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ollie-hulme/BayesianModels/main?urlpath=lab)
 
----
-
-## 📂 Folder Structure
-
-```
-/notebooks/
-    beta_distribution_demo.ipynb   ← interactive demo with sliders
-/slides/
-    lecture2.qmd                   ← Quarto Reveal.js slides
-/images/
-    uniform_theta.png              ← any image assets
-environment.yml                    ← Binder environment config
-README.md                          ← this file
-```
-
----
 
 ## 📦 Dependencies
 
-All dependencies are handled automatically via Binder using the provided `environment.yml` file.
+Install Miniforge (if not already installed)
+See: https://github.com/conda-forge/miniforge#miniforge3
 
-To run locally:
+Copy this into your terminal:
 
 ```bash
 conda env create -f environment.yml
@@ -43,23 +28,12 @@ jupyter lab
 
 ---
 
-## 📚 Contents
-
-- **Lecture 2**: Basics of Bayesian Analysis
-- Estimating hidden variables (e.g., cognitive ability)
-- Visualizing beliefs using Beta distributions
-- Updating priors with data using Bayes' Rule
-- Interactive visualizations (via `ipywidgets`)
-- Intro to MCMC and analytic solutions
-
----
-
 ## ✍️ Author
 
 **Ollie Hulme**  
 Senior Researcher, Copenhagen University Hospital, Amager & Hvidovre  
 Associate Professor, University of Copenhagen  
-[olliehulme.net](https://olliehulme.net) • [@olliehulme](https://twitter.com/olliehulme)
+[olliehulme.net](https://olliehulme.net) • 
 
 ---
 

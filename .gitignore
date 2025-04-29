@@ -13,3 +13,5 @@ _links/
 _gitcommands/
 BayesianModels_slides/
 
+# files to exclude from GitHub
+BayesianModels_participant_list.webloc
