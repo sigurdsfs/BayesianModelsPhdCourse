@@ -426,9 +426,9 @@ Jaynes (2003)
 - ![](images/graphical%20model.png){width=30%}
  
 ## Graphical notation 
-- Circular - continuous, Square - discrete
-- Shaded - observed, Non-shaded - hidden
-- Single-boundary - stochastic, double-boundary - deterministic 
+- *Circular* - continuous, *Square* - discrete
+- *Shaded* - observed, *Non-shaded* - hidden
+- *Single-boundary* - stochastic, *Double-boundary* - deterministic 
 
 ## Graphical notation
 - ![](images/graphical%20lexicon.jpeg){width=70%}
@@ -441,38 +441,29 @@ Jaynes (2003)
 - discrete, deterministic, and unobserved
 
 ## Sampling via JAGS 
-```{.python code-line-numbers="0-5"}
+```{.python code-line-numbers="0|1|2|3|4|5"}
 model {              # opens the model
   theta ~ dbeta(1,1) # the prior: theta is distributed as a beta(1,1) 
   k ~ dbin(theta,n)  # the likelihood: k is distrbuted binomially 
                      # ...with the theta and n as parameters
 }                    # this closes the model
 ```
+---
 
-## 
-- We sample from the posterior to find the posterior distribution of $\theta$ for the data k = 5, n =10
-- *[insert Fig.2.8]*
+## Try it yourself
+ - go to "Run binomial rate model"
+ -  📂 `notebooks/probability distributions.ipynb`
 
-
-## Sampling via JAGS
-- Code that would run this model
-```{.python code-line-numbers code-annotations="1-4"}
-model {
-  theta ~ dbeta(1,1)
-  k ~ dbin(theta,n)
-}
-```
- 
+####### upto here 
 ## R-hat as a convergence check
 - Its important to check that the sampling has converged to the stationary distribution
-- One heuristic is the R-hat
+- One heuristic is the R-hat statistic
 \[
 \hat{R} = \frac{\text{var}(	ext{within-chain})}{\text{var}(	ext{across-chain})}
 \]
--Rule of thumb: $\hat{R}$ should be 1-1.01 for convergence to be achieved
- 
-footer:
-Learn more: Brooks & Gelman (1998).  
+- Rule of thumb: $\hat{R}$ should be 1-1.01 for convergence to be achieved
+- You can check this for your chains 
+
 <!-- #endregion -->
 
 <!-- #region Lecture#3 Parameter estimation-->
