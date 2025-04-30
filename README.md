@@ -24,7 +24,8 @@ https://www.hvidovrehospital.dk/praktisk-information/transport/Documents/Hvidovr
 
 ## What is the schedule?
 
-| Time         | M - 5th May (Bayesian basics)      | Tu - 6th May (Bayesian basics)   | W - 7th May (Bayesian intermediate)                      | Th - 8th May (Neural & psychiatric applications)          | F - 9th May (Presentations)                      |
+| Time         | M - 5th May - Bayesian basics      | Tu - 6th May - Bayesian basics   | W - 7th May - Bayesian intermediate                      | Th - 8th May 
+- Neural & psychiatric applications           | F - 9th May - Presentations                      |
 |--------------|------------------------------------|----------------------------------|----------------------------------------------------------|-----------------------------------------------------------|--------------------------------------------------|
 | Location     | Auditorium 3-4                     | Auditorium 3-4                   | MR Conference Room                                       | MR Conference Room                                        | Auditorium 3-4                                   |
 | 9-10         | *Ollie Hulme*                      | *Ollie Hulme*                    | Intermediate generative models – *David Meder*           | Functional MRI – *Janine Bühler*                         | Clinic & group work (O,D,A,S)                    |
