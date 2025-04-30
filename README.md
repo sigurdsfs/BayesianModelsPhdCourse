@@ -36,6 +36,9 @@ https://www.hvidovrehospital.dk/praktisk-information/transport/Documents/Hvidovr
 | 2-2.15       | Coffee                             | Coffee                           | Coffee                                                   | Coffee                                                    | Coffee                                           |
 | 2.15-4       | *Ollie Hulme*                      | *Ollie Hulme*                    | Clinic: Design your own model – *Today’s instructors*    | Clinic: Design your own experiment – *Today’s instructors*| Roundup & goodbye (O,D,A,S)                      |
 
+## I have to leave at X o'clock to do Y
+It's generally fine, just be sure to catch up on the activities if you are taking it for credit. All materials are online. Talk to a buddy in your class about what you missed, or ask on the whatsapp channel.  
+
 ## Can I prepare?
 We will be teaching a lot from this book, Bayesian Cognitive Modeling by Wagenmakers and Lee. There is a free and legal download of part of this book available here. Reading this PDF will help you familiarise yourself with the material, but don't worry too much if it is hard at first. Just getting familiar with it and knowing the bits you don't understand is a really good start. https://drive.google.com/file/d/1vCoDyoeqmH6q6h3a1AXmWwTXKDETlS3a/view
 
