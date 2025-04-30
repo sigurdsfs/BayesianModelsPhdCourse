@@ -293,10 +293,7 @@
 <section id="schedule" class="slide level2">
 <h2>Schedule</h2>
 <ul>
-<li class="fragment">Up to date schedule</li>
-<li class="fragment"><iframe src="https://tinyurl.com/bayesSchedule" width="1000px" height="500px" style="border:1px solid #ccc; border-radius:10px;">
-</iframe></li>
-<li class="fragment">link in footer 👇</li>
+<li class="fragment">Up to date schedule &gt; See the github readme</li>
 </ul>
 </section>
 <section id="social-whatsapp" class="slide level2">
@@ -391,7 +388,7 @@
 </div>
 </section>
 <section id="bayesianism-as-the-calculus-of-common-sense" class="slide level2">
-<h2>Bayesianism as the Calculus of Common Sense</h2>
+<h2>Bayesianism as the calculus of common sense</h2>
 <ul>
 <li class="fragment"><br><br></li>
 <li class="fragment"><em>Bayesianism is just probability theory applied to inference.</em> — Jaynes (2003)</li>
@@ -401,7 +398,7 @@
 </div>
 </section>
 <section id="probability-as-rational-consistency" class="slide level2">
-<h2>Probability as Rational Consistency</h2>
+<h2>Probability as rational consistency</h2>
 <ul>
 <li class="fragment">Bayesian modeling follows the rules of probability.</li>
 <li class="fragment">Probability is logic.</li>
@@ -410,12 +407,13 @@
 <li class="fragment">And rationality is just thinking clearly.</li>
 </ul>
 </section>
-<section id="what-is-bayesian-modeling-of-minds-brains-and-behavior" class="slide level2">
-<h2>What is “Bayesian Modeling of Minds, Brains, and Behavior”?</h2>
+<section id="so-what-is-bayesian-modeling-of-minds-brains-and-behavior" class="slide level2">
+<h2>So what is “Bayesian Modeling of Minds, Brains, and Behavior”?</h2>
 <ul>
 <li class="fragment">This course is about <strong>thinking clearly about minds, brains, and behavior</strong>.</li>
 <li class="fragment">It’s about testing theories rationally, using the evidence provided by data.</li>
 <li class="fragment">Bayesian modeling offers a principled, rational way to update beliefs based on evidence.</li>
+<li class="fragment">Ta-da!</li>
 </ul>
 </section>
 <section id="bayesian-updating-in-a-nutshell" class="slide level2">
@@ -777,9 +775,9 @@
 <section id="graphical-notation" class="slide level2">
 <h2>Graphical notation</h2>
 <ul>
-<li class="fragment">Circular - continuous, Square - discrete</li>
-<li class="fragment">Shaded - observed, Non-shaded - hidden</li>
-<li class="fragment">Single-boundary - stochastic, double-boundary - deterministic</li>
+<li class="fragment"><em>Circular</em> - continuous, <em>Square</em> - discrete</li>
+<li class="fragment"><em>Shaded</em> - observed, <em>Non-shaded</em> - hidden</li>
+<li class="fragment"><em>Single-boundary</em> - stochastic, <em>Double-boundary</em> - deterministic</li>
 </ul>
 </section>
 <section id="graphical-notation-1" class="slide level2">
@@ -793,40 +791,36 @@
 <ul>
 <li class="fragment"><img data-src="images/graphical%20model%20test.jpeg" style="width:30.0%"></li>
 <li class="fragment">Upper is what?</li>
-<li class="fragment">continuous, stochastic, and observed</li>
+<li class="fragment"><strong>continuous, stochastic, and observed</strong></li>
 <li class="fragment">Lower is what?</li>
-<li class="fragment">discrete, deterministic, and unobserved</li>
+<li class="fragment"><strong>discrete, deterministic, and unobserved</strong></li>
 </ul>
 </section>
 <section id="sampling-via-jags" class="slide level2">
 <h2>Sampling via JAGS</h2>
-<div class="sourceCode" id="cb4" data-code-line-numbers="0-5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>model {              <span class="co"># opens the model</span></span>
+<div class="sourceCode" id="cb4" data-code-line-numbers="0|1|2|3|4|5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>model {              <span class="co"># opens the model</span></span>
 <span id="cb4-2"><a href=""></a>  theta <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># the prior: theta is distributed as a beta(1,1) </span></span>
 <span id="cb4-3"><a href=""></a>  k <span class="op">~</span> dbin(theta,n)  <span class="co"># the likelihood: k is distrbuted binomially </span></span>
 <span id="cb4-4"><a href=""></a>                     <span class="co"># ...with the theta and n as parameters</span></span>
 <span id="cb4-5"><a href=""></a>}                    <span class="co"># this closes the model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="try-it-yourself-2" class="slide level2">
+<h2>Try it yourself</h2>
 <ul>
-<li class="fragment">We sample from the posterior to find the posterior distribution of <span class="math inline">\(\theta\)</span> for the data k = 5, n =10</li>
-<li class="fragment"><em>[insert Fig.2.8]</em></li>
-</ul>
-</section>
-<section id="sampling-via-jags-1" class="slide level2">
-<h2>Sampling via JAGS</h2>
-<ul>
-<li class="fragment">Code that would run this model <code>{.python code-line-numbers code-annotations="1-4"} model {   theta ~ dbeta(1,1)   k ~ dbin(theta,n) }</code></li>
+<li class="fragment">go to “Using JAGS to sample from the posterior for a binomial rate process”</li>
+<li class="fragment">📂 <code>notebooks/probability distributions.ipynb</code></li>
 </ul>
 </section>
 <section id="r-hat-as-a-convergence-check" class="slide level2">
 <h2>R-hat as a convergence check</h2>
 <ul>
-<li class="fragment">Its important to check that the sampling has converged to the stationary distribution</li>
-<li class="fragment">One heuristic is the R-hat [ = ] -Rule of thumb: <span class="math inline">\(\hat{R}\)</span> should be 1-1.01 for convergence to be achieved</li>
+<li class="fragment">It’s important to check that the sampling has converged to the stationary distribution.</li>
+<li class="fragment">One heuristic is the R-hat statistic:<br>
+<span class="math inline">\(\hat{R} = \frac{\text{var}(\text{within-chain})}{\text{var}(\text{across-chain})}\)</span></li>
+<li class="fragment">Rule of thumb: <span class="math inline">\(\hat{R}\)</span> should be between 1.00 and 1.01 for convergence.</li>
+<li class="fragment">You can check this for your chains using tools like ArviZ or Stan’s diagnostics.</li>
 </ul>
-<p>footer: Learn more: Brooks &amp; Gelman (1998).<br>
-<!-- #endregion --></p>
+<!-- #endregion -->
 <!-- #region Lecture#3 Parameter estimation-->
 </section></section>
 <section>

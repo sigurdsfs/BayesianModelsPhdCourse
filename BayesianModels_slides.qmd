@@ -435,9 +435,9 @@ Jaynes (2003)
 ## Tester
 -  ![](images/graphical%20model%20test.jpeg){width=30%}
 - Upper is what?
-- continuous, stochastic, and observed
+- **continuous, stochastic, and observed**
 - Lower is what?
-- discrete, deterministic, and unobserved
+- **discrete, deterministic, and unobserved**
 
 ## Sampling via JAGS 
 ```{.python code-line-numbers="0|1|2|3|4|5"}
@@ -454,13 +454,11 @@ model {              # opens the model
  -  📂 `notebooks/probability distributions.ipynb`
 
 ## R-hat as a convergence check
-- Its important to check that the sampling has converged to the stationary distribution
-- One heuristic is the R-hat statistic
-\[
-\hat{R} = \frac{\text{var}(	ext{within-chain})}{\text{var}(	ext{across-chain})}
-\]
-- Rule of thumb: $\hat{R}$ should be 1-1.01 for convergence to be achieved
-- You can check this for your chains 
+
+- It’s important to check that the sampling has converged to the stationary distribution.
+- One heuristic is the R-hat statistic:  
+  $\hat{R} = \frac{\text{var}(\text{within-chain})}{\text{var}(\text{across-chain})}$
+- Rule of thumb: $\hat{R}$ should be between 1.00 and 1.01 for convergence.
 
 <!-- #endregion -->
 
@@ -762,7 +760,6 @@ for (i in 1:p) {
 - the probability of the data according to Bob is high. The evidence in favor of Bob is high
 - both were correct, but Bob was "more correct" because his prediciton was more specific
  
-
 ## Marginal likelihood
 - The marginal likelihood is computed by averaging the likelihood of the data predicted across the models parameter space.  
 - Prior probabilities act as averaging weights.  
