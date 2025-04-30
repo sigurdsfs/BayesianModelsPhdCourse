@@ -97,7 +97,9 @@ This material is free to use and adapt under a Creative Commons Attribution lice
 ## Information for course instructors only 
 
 **Lunch and coffee pick up.** On days we are in auditorium 3-4 its in the basement kitchen area
-On days we are in conference room its in the old hairdressers on the ground floor
+On days we are in conference room its in the old hairdressers on the ground floor.
+Coffee available at 10:30 and at 1:30 (for 50, for everyone) 
+Lunch available at 12. Lunch for 30 only (phd school signups and teachers)
 
 **Slide upload.** Please upload your slides either by emailing ollie, or direct via github. Pdf is ideal. Slides_YourName_YourTopic.pdf
 
