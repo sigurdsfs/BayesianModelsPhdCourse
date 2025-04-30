@@ -3,12 +3,16 @@ channels:
   - conda-forge
 dependencies:
   - python=3.10
-  - numpy=1.23
-  - scipy
-  - matplotlib
-  - ipywidgets
-  - ipython
-  - ipykernel
   - pip
+  - setuptools
+  - jupyterlab
+  - jags # Jags installation
+  - pkg-config # pkg-config for pyjags installation
+  - numpy=1.24
   - pip:
-      - pyjags
+    - matplotlib==3.7
+    - scipy==1.10
+    - ipywidgets==8.0
+    - seaborn
+    - ipympl               # for `%matplotlib ipympl` to work
+    - pyjags
