@@ -102,10 +102,8 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - We rely heavily on it especially on days 1-3
 
 ## Schedule
-- Up to date schedule 
-- <iframe src="https://tinyurl.com/bayesSchedule"  width="1000px" height="500px" style="border:1px solid #ccc; border-radius:10px;"></iframe>
-- link in footer 👇   
-
+- Up to date schedule > See the github readme
+ 
 ## Social: WhatsApp 
 - Chat with each other 💬
 - Ask & answer questions amongst yourselves 🗣️
@@ -173,7 +171,7 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 Laplace (1814); Jaynes (2003)
 :::
 
-## Bayesianism as the Calculus of Common Sense
+## Bayesianism as the calculus of common sense
 - <br><br>
 - *Bayesianism is just probability theory applied to inference.* — Jaynes (2003)
 
@@ -181,17 +179,18 @@ Laplace (1814); Jaynes (2003)
 Jaynes (2003)
 :::
 
-## Probability as Rational Consistency 
+## Probability as rational consistency 
 - Bayesian modeling follows the rules of probability.
 - Probability is logic.
 - Logic is consistency.
 - Consistency is rationality.
 - And rationality is just thinking clearly.
 
-## What is "Bayesian Modeling of Minds, Brains, and Behavior"?
+## So what is "Bayesian Modeling of Minds, Brains, and Behavior"?
 - This course is about **thinking clearly about minds, brains, and behavior**.
 - It's about testing theories rationally, using the evidence provided by data.
 - Bayesian modeling offers a principled, rational way to update beliefs based on evidence.
+- Ta-da!
 
 ## Bayesian Updating in a Nutshell
 - Prior belief → Evidence → Posterior belief
@@ -451,10 +450,9 @@ model {              # opens the model
 ---
 
 ## Try it yourself
- - go to "Run binomial rate model"
+ - go to "Using JAGS to sample from the posterior for a binomial rate process"
  -  📂 `notebooks/probability distributions.ipynb`
 
-####### upto here 
 ## R-hat as a convergence check
 - Its important to check that the sampling has converged to the stationary distribution
 - One heuristic is the R-hat statistic
