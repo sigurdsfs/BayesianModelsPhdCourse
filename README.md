@@ -1,4 +1,4 @@
-# Bayesian Models: Minds, Brains & Behavior
+# Bayesian Models of Minds, Brains & Behavior
 
 ## Overview
 Welcome to the course materials and information for **Bayesian Models of Minds, Brains, & Behavior**, hosted at Hvidovre Hospital / Copenhagen, May 2025.  This Github repository contains interactive notebooks, slides, and Binder support to help you learn Bayesian modeling in a hands-on and intuitive way. In this readme you will find instructions on how to acess course material as well as answers to your questions, like schedule, where to go, preparation and so on.
@@ -7,26 +7,61 @@ Welcome to the course materials and information for **Bayesian Models of Minds, 
 The course is 5th - 9th of May 2025
 Its generally 9am-4pm, finishing at 3pm on Friday 
 
-## Course schedule
+## Where is it?
+Hvidovre hospital https://maps.app.goo.gl/uthwTHfo5idFbzZc6 
+There are two locations depending on the day. 
+
+*Mon, Tues, & Fri: Auditorium 3-4*
+Enter the hospital via *Indgang Ost* in Center E
+Follow signs to Auditorium 3-4, which will direct you down the first corridor on your right as you are walking through center E
+
+*Wed & Thurs: Conference room*
+Go to Center C, MR-Afdeling, Etage 0 (ground floor)
+Ten meters before you reach the waiting area of the MR-department: Turn right through the glass door and left immediately after, it is signposted MR-konference. 
+
+Here is a map of the hospital. Find the correct center first, then locate the room. 
+https://www.hvidovrehospital.dk/praktisk-information/transport/Documents/Hvidovre%20Hospital%20-%20Kort,%20parkering%20og%20oversigt.pdf 
+
+## What is the schedule?
+
 | Time         | M - 5th May (Bayesian basics)      | Tu - 6th May (Bayesian basics)   | W - 7th May (Bayesian intermediate)                      | Th - 8th May (Neural & psychiatric applications)          | F - 9th May (Presentations)                      |
 |--------------|------------------------------------|----------------------------------|----------------------------------------------------------|-----------------------------------------------------------|--------------------------------------------------|
-| 9-10         | Ollie Hulme                        | Ollie Hulme                      | Intermediate generative models - David Meder             | Functional MRI - Janine Bueller                            | Clinic & group work (O,D,A,S)                    |
-| 10-11        | Ollie Hulme                        | Ollie Hulme                      | Comparing intermediate models - Amin                     | EEG - Melissa Kit Larsen                                   | Clinic & group work (O,D,A,S)                    |
+| Location     | Auditorium 3-4                     | Auditorium 3-4                   | MR Conference Room                                       | MR Conference Room                                        | Auditorium 3-4                                   |
+| 9-10         | *Ollie Hulme*                      | *Ollie Hulme*                    | Intermediate generative models – *David Meder*           | Functional MRI – *Janine Bueller*                         | Clinic & group work (O,D,A,S)                    |
+| 10-11        | *Ollie Hulme*                      | *Ollie Hulme*                    | Comparing intermediate models – *Amin*                   | EEG – *Melissa Kit Larsen*                                | Clinic & group work (O,D,A,S)                    |
 | 11-11.15     | Coffee                             | Coffee                           | Coffee                                                   | Coffee                                                    | Coffee                                           |
-| 11.15-12.15  | Ollie Hulme                        | Ollie Hulme                      | Parameter recovery - Simon Steinkamp                     | Structural MRI - Naiara Demnitz                            | Group presentations (O,D,A,S)                    |
+| 11.15-12.15  | *Ollie Hulme*                      | *Ollie Hulme*                    | Parameter recovery – *Simon Steinkamp*                   | Structural MRI – *Naiara Demnitz*                         | Group presentations (O,D,A,S)                    |
 | 12.15-1      | Lunch                              | Lunch                            | Lunch                                                    | Lunch                                                     | Lunch                                            |
-| 1-2          | Ollie Hulme                        | Ollie Hulme                      | Model recovery - Simon Steinkamp                         | Clinic: Design your own experiment - Today’s instructors   | More group presentations (O,D,A,S)              |
+| 1-2          | *Ollie Hulme*                      | *Ollie Hulme*                    | Model recovery – *Simon Steinkamp*                       | Clinic: Design your own experiment – *Today’s instructors*| More group presentations (O,D,A,S)              |
 | 2-2.15       | Coffee                             | Coffee                           | Coffee                                                   | Coffee                                                    | Coffee                                           |
-| 2.15-4       | Ollie Hulme                        | Ollie Hulme                      | Clinic: Design your own model - Today’s instructors      | Clinic: Design your own experiment - Today’s instructors  | Roundup & goodbye (O,D,A,S)                      |
+| 2.15-4       | *Ollie Hulme*                      | *Ollie Hulme*                    | Clinic: Design your own model – *Today’s instructors*    | Clinic: Design your own experiment – *Today’s instructors*| Roundup & goodbye (O,D,A,S)                      |
 
-## Launch interactive notebooks in Binder
+## Can I prepare?
+We will be teaching alot from this book, Bayesian Cognitive Modeling by Wagenmakers and Lee. There is a free, legal download of part of this book available here. Reading this pdf will help you familiarise yourself with the material, but dont worry too much if it is hard at first. Just getting familiar with it and knowing the bits you dont understand is a really good start. https://drive.google.com/file/d/1vCoDyoeqmH6q6h3a1AXmWwTXKDETlS3a/view
+
+## What to bring?
+Bring your laptop, and a charger (duh).
+Make sure you have eduroam working or if not a phone with a data plan you get get internet access through.
+
+## How am I evaluated?
+There is no exam or grading, but there is a group project.
+Everyone taking the course for credit via the PhD school will do a group project and a group mini-presentation at the end of the week. 
+Those taking it without credit are welcome to do a group project too, but its optional.
+
+## I am not signed up via the PhD school can i still claim ECTS
+If you attend the full week and you do the group work yes. I can write you a certificate and you can try to claim ECTS after the course, however we cannot guarantee your program will accept this. 
+
+## Where are the slides?
+The course slides will all be in this repo, but just be aware most of them will not be available until after the lecture. 
+
+## How do I access the interactive exercises?
+There are a number of interactive exercises in this course. 
 Click below to launch an interactive Jupyter environment (no installation required):
 
 [![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ollie-hulme/BayesianModels/main?urlpath=lab)
 
-## Dependencies
+## Can I run the interactive exercises locally?
 The course is designed to run on Binder without you needing to set anything up on your local machine. However if you wish to run the code on your own machine you can follow the instructions. Then you can run the notebooks of this repo in your local Jupyter Lab environment.
-
 
 Install Miniforge (if not already installed):
 https://github.com/conda-forge/miniforge#miniforge3
@@ -50,3 +85,13 @@ oliverh@drcmr.dk
 
 ## License
 This material is free to use and adapt under a Creative Commons Attribution license (CC-BY 4.0).
+
+## Information for course instructors only 
+
+*Lunch and coffee pick up*
+On days we are in auditorium 3-4 its in the basement kitchen area
+On days we are in conference room its in the old hairdressers on the ground floor
+
+*Slide upload*
+Please upload your slides either by emailing ollie, or direct via github. Pdf is ideal. Slides_YourName_YourTopic.pdf
+
