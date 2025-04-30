@@ -1,5 +1,9 @@
 # Bayesian Models: Minds, Brains & Behavior
-Welcome to the course materials for **Bayesian Models of Minds, Brains, & Behavior**, hosted at Hvidovre Hospital / Copenhagen, May 2025. This repository contains interactive notebooks, Quarto slides, and Binder support to help you learn Bayesian modeling in a hands-on and intuitive way.
+
+## Overview
+Welcome to the course materials and information for **Bayesian Models of Minds, Brains, & Behavior**, hosted at Hvidovre Hospital / Copenhagen, May 2025. 
+
+This Github repository contains interactive notebooks, slides, and Binder support to help you learn Bayesian modeling in a hands-on and intuitive way.
 
 ## Launch in Binder
 Click below to launch an interactive Jupyter environment (no installation required):
