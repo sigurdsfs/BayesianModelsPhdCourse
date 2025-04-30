@@ -41,7 +41,7 @@ We will be teaching alot from this book, Bayesian Cognitive Modeling by Wagenmak
 
 ## What to bring?
 Bring your laptop, and a charger (duh).
-Make sure you have eduroam working or if not a phone with a data plan you get get internet access through.
+Make sure you have eduroam working or if not a phone with a data plan you get internet access through.
 
 ## How am I evaluated?
 There is no exam or grading, but there is a group project.
@@ -88,10 +88,9 @@ This material is free to use and adapt under a Creative Commons Attribution lice
 
 ## Information for course instructors only 
 
-*Lunch and coffee pick up*
+### Lunch and coffee pick up
 On days we are in auditorium 3-4 its in the basement kitchen area
 On days we are in conference room its in the old hairdressers on the ground floor
 
-*Slide upload*
+### Slide upload
 Please upload your slides either by emailing ollie, or direct via github. Pdf is ideal. Slides_YourName_YourTopic.pdf
-
