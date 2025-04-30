@@ -38,20 +38,6 @@ https://www.hvidovrehospital.dk/praktisk-information/transport/Documents/Hvidovr
 | 2-2.15       | Coffee                                       | Coffee                                       | Coffee                                                    | Coffee                                                    | Coffee                                     |
 | 2.15-4       | *Ollie Hulme*                                | *Ollie Hulme*                                | Clinic: Design your own model – *Today’s instructors*     | Clinic: Design your own experiment – *Today’s instructors*| Roundup & goodbye
 
-
-| Time         | M - 5th May - Bayesian basics      | Tu - 6th May - Bayesian basics   | W - 7th May - Bayesian intermediate                      | Th - 8th May 
-- Neural & psychiatric applications           | F - 9th May - Presentations                      |
-|--------------|------------------------------------|----------------------------------|----------------------------------------------------------|-----------------------------------------------------------|--------------------------------------------------|
-| Location     | Auditorium 3-4                     | Auditorium 3-4                   | MR Conference Room                                       | MR Conference Room                                        | Auditorium 3-4                                   |
-| 9-10         | *Ollie Hulme*                      | *Ollie Hulme*                    | Intermediate generative models – *David Meder*           | Functional MRI – *Janine Bühler*                         | Clinic & group work (O,D,A,S)                    |
-| 10-11        | *Ollie Hulme*                      | *Ollie Hulme*                    | Comparing intermediate models – *Amin Kangavari*         | EEG – *Melissa Kit Larsen*                                | Clinic & group work (O,D,A,S)                    |
-| 11-11.15     | Coffee                             | Coffee                           | Coffee                                                   | Coffee                                                    | Coffee                                           |
-| 11.15-12.15  | *Ollie Hulme*                      | *Ollie Hulme*                    | Parameter recovery – *Simon Steinkamp*                   | Structural MRI – *Naiara Demnitz*                         | Group presentations (O,D,A,S)                    |
-| 12.15-1      | Lunch                              | Lunch                            | Lunch                                                    | Lunch                                                     | Lunch                                            |
-| 1-2          | *Ollie Hulme*                      | *Ollie Hulme*                    | Model recovery – *Simon Steinkamp*                       | Clinic: Design your own experiment – *Today’s instructors*| More group presentations (O,D,A,S)              |
-| 2-2.15       | Coffee                             | Coffee                           | Coffee                                                   | Coffee                                                    | Coffee                                           |
-| 2.15-4       | *Ollie Hulme*                      | *Ollie Hulme*                    | Clinic: Design your own model – *Today’s instructors*    | Clinic: Design your own experiment – *Today’s instructors*| Roundup & goodbye (O,D,A,S)                      |
-
 ## I have to leave at X o'clock to do Y
 It's generally fine, just be sure to catch up on the activities if you are taking it for credit. All materials are online. Talk to a buddy in your class about what you missed, or ask on the whatsapp channel.  
 
