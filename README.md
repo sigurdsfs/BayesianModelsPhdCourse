@@ -77,6 +77,14 @@ jupyter lab
 
 Now you should be able to open the notebooks that are in the /notebooks folder
 
+## Social
+- Chat with each other on whatsapp 💬
+- Ask & answer questions amongst yourselves during lectures 🗣️
+- Stay in touch ❤️
+- Friday bar! 😄
+- Join group via 👇
+- <img src="/images/whatsapp.png" width="300px"> 
+
 ## Course Director
 Ollie Hulme  
 Senior Researcher, Copenhagen University Hospital, Amager &Hvidovre  
@@ -88,9 +96,10 @@ This material is free to use and adapt under a Creative Commons Attribution lice
 
 ## Information for course instructors only 
 
-### Lunch and coffee pick up
-On days we are in auditorium 3-4 its in the basement kitchen area
+**Lunch and coffee pick up.** On days we are in auditorium 3-4 its in the basement kitchen area
 On days we are in conference room its in the old hairdressers on the ground floor
 
-### Slide upload
-Please upload your slides either by emailing ollie, or direct via github. Pdf is ideal. Slides_YourName_YourTopic.pdf
+**Slide upload.** Please upload your slides either by emailing ollie, or direct via github. Pdf is ideal. Slides_YourName_YourTopic.pdf
+
+**To do list.** Here is a google doc with responsibilities and to dos. Please do update / edit / comment whatever. https://docs.google.com/document/d/18BC9EB7b6spMf-OvvvrRG0zFe0v3EMq6GaOZBh898Tc/edit?usp=sharing
+ 
