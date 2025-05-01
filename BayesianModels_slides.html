@@ -483,14 +483,33 @@
 <li class="fragment">Probability distributions encode <strong>beliefs</strong></li>
 <li class="fragment">The <strong>center</strong> = most likely value</li>
 <li class="fragment">The <strong>spread</strong> = uncertainty</li>
+<li class="fragment"><em>To play with this open the notebook on Binder</em></li>
+<li class="fragment"><code>notebooks/probability_distributions.ipynb</code>&gt; “Beliefs as distributions”</li>
 </ul>
 </section>
-<section id="interactive-demo" class="slide level2">
-<h2>Interactive demo</h2>
+<section id="probability-mass-functions" class="slide level2">
+<h2>Probability mass functions</h2>
 <ul>
-<li class="fragment">Explore distributions as beliefs:<br>
-</li>
-<li class="fragment">📂 <code>notebooks/probability_distributions.ipynb</code></li>
+<li class="fragment">For discrete variables which take finite number of values.</li>
+<li class="fragment"><img src="/images/probability_mass.jpeg" width="500px"></li>
+<li class="fragment">all probability mass sums to 1</li>
+</ul>
+</section>
+<section id="probaility-density-functions" class="slide level2">
+<h2>Probaility density functions</h2>
+<ul>
+<li class="fragment">Probability density function for continuous variables which take infinitely many values</li>
+<li class="fragment"><img src="/images/probability_density.jpeg" width="500px"></li>
+<li class="fragment">all probability density integrates to 1</li>
+<li class="fragment">area under the curve is 1</li>
+<li class="fragment">densities can exceed 1</li>
+</ul>
+</section>
+<section id="interpreting-probability-distributions" class="slide level2">
+<h2>Interpreting probability distributions</h2>
+<ul>
+<li class="fragment">Its important to be able to read and reason with probabilty distributions.</li>
+<li class="fragment"><code>notebooks/probability_distributions.ipynb</code>&gt; “Interpreting probability distributions”</li>
 </ul>
 </section>
 <section id="bayes-rule" class="slide level2">
@@ -501,11 +520,13 @@
 <li class="fragment"><br></li>
 <li class="fragment">Posterior = <span class="math inline">\(\frac{\color{red}{\text{Likelihood}}  \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}\)</span></li>
 <li class="fragment"><br></li>
-<li class="fragment">This tells us how prior beliefs are updated via the evidence provided by the data.</li>
+<li class="fragment">Where <span class="math inline">\(\theta\)</span> is a parameter, here “ability”, and D is data, here it is the correct performance, <span class="math inline">\(k\)</span> successes out of <span class="math inline">\(n\)</span> trials</li>
+<li class="fragment"><br></li>
+<li class="fragment">This tells us how our beliefs about ability are updated by the evidence provided by the data.</li>
 </ul>
 </section>
-<section id="term-by-term" class="slide level2">
-<h2>Term-by-term</h2>
+<section id="prior" class="slide level2">
+<h2>Prior</h2>
 <ul>
 <li class="fragment"><span class="math inline">\(p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}\)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\(\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}\)</span></li>
 <li class="fragment"><br></li>
@@ -513,8 +534,8 @@
 <li class="fragment">It reflects our assumptions or prior knowledge.</li>
 </ul>
 </section>
-<section id="term-by-term-1" class="slide level2">
-<h2>Term-by-term</h2>
+<section id="likelihood" class="slide level2">
+<h2>Likelihood</h2>
 <ul>
 <li class="fragment"><span class="math inline">\(p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}\)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\(\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}\)</span></li>
 <li class="fragment"><br></li>
@@ -525,8 +546,8 @@
 <li class="fragment">Those <span class="math inline">\(\theta\)</span> that explain the data poorly should be believed in less</li>
 </ul>
 </section>
-<section id="term-by-term-2" class="slide level2">
-<h2>Term-by-term</h2>
+<section id="marginal-likelihood" class="slide level2">
+<h2>Marginal likelihood</h2>
 <ul>
 <li class="fragment"><span class="math inline">\(p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}\)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\(\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}\)</span></li>
 <li class="fragment"><br></li>
@@ -536,8 +557,8 @@
 <li class="fragment">Note that it is independent of <span class="math inline">\(\theta\)</span></li>
 </ul>
 </section>
-<section id="term-by-term-3" class="slide level2">
-<h2>Term-by-term</h2>
+<section id="posterior" class="slide level2">
+<h2>Posterior</h2>
 <ul>
 <li class="fragment"><span class="math inline">\(p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}\)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\(\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}\)</span></li>
 <li class="fragment"><br></li>
@@ -545,8 +566,8 @@
 <li class="fragment">It’s the prior that has been updated by the evidence provided by the data.</li>
 </ul>
 </section>
-<section id="updating-beliefs-with-evidence" class="slide level2">
-<h2>Updating Beliefs with Evidence</h2>
+<section id="updating-beliefs-with-data" class="slide level2">
+<h2>Updating beliefs with data</h2>
 <ul>
 <li class="fragment">We start with a <strong>prior</strong> belief <span class="math inline">\(p(\theta)\)</span></li>
 <li class="fragment">Observe <strong>data</strong>: e.g.&nbsp;( k = 9 ) correct out of ( n = 10 )</li>
@@ -560,22 +581,12 @@
 <li class="fragment">The more likely the data is for a given <span class="math inline">\(\theta\)</span><br>
 </li>
 <li class="fragment">The more we believe in that value of <span class="math inline">\(\theta\)</span> after seeing the data.</li>
-<li class="fragment">The values of theta that are better supported by the data, are more believed in after experiencing the data</li>
+<li class="fragment">The values of <span class="math inline">\(\theta\)</span> that are better supported by the data, are more believed in after experiencing the data</li>
 <li class="fragment">We have updated our beliefs according to the data</li>
 </ul>
 </section>
-<section id="proportional-form" class="slide level2">
-<h2>Proportional form</h2>
-<ul>
-<li class="fragment">Since <span class="math inline">\(p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}\)</span></li>
-<li class="fragment">The <strong><span class="math inline">\(\color{green}{\text{Marginal likelihood } p(D)}\)</span></strong> doesnt depend on <span class="math inline">\(\theta\)</span></li>
-<li class="fragment">So we can rewrite as:</li>
-<li class="fragment"><span class="math inline">\(p(\theta|D) \propto p(D|\theta) \cdot p(\theta)\)</span></li>
-<li class="fragment"><span class="math inline">\(\text{Posterior} \propto \color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}\)</span></li>
-</ul>
-</section>
-<section id="proportional-form-1" class="slide level2">
-<h2>Proportional form</h2>
+<section id="proportional-form-of-bayes-rule" class="slide level2">
+<h2>Proportional form of Bayes rule</h2>
 <ul>
 <li class="fragment">Since:<br>
 <span class="math inline">\(p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}\)</span></li>
@@ -818,7 +829,6 @@
 <li class="fragment">One heuristic is the R-hat statistic:<br>
 <span class="math inline">\(\hat{R} = \frac{\text{var}(\text{within-chain})}{\text{var}(\text{across-chain})}\)</span></li>
 <li class="fragment">Rule of thumb: <span class="math inline">\(\hat{R}\)</span> should be between 1.00 and 1.01 for convergence.</li>
-<li class="fragment">You can check this for your chains using tools like ArviZ or Stan’s diagnostics.</li>
 </ul>
 <!-- #endregion -->
 <!-- #region Lecture#3 Parameter estimation-->
@@ -918,29 +928,6 @@ print(samples)
 <h2>Sampled posterior for difference in rates</h2>
 <ul>
 <li class="fragment"><img data-src="fig3.4.jpg"></li>
-</ul>
-</section>
-<section id="interpreting-distributions" class="slide level2">
-<h2>Interpreting distributions</h2>
-<ul>
-<li class="fragment">Probability mass functions are for discrete variables which take finite number of values</li>
-<li class="fragment">Probability density functiosn for continuous variables which take infinitely many values</li>
-</ul>
-</section>
-<section id="probability-mass-functions" class="slide level2">
-<h2>Probability mass functions</h2>
-<ul>
-<li class="fragment">insert left figure from box 3.2</li>
-<li class="fragment">all sum to 1</li>
-</ul>
-</section>
-<section id="probability-density-functions" class="slide level2">
-<h2>Probability density functions</h2>
-<ul>
-<li class="fragment">insert right figure from box 3.2</li>
-<li class="fragment">area sums to 1</li>
-<li class="fragment">densities can exceed 1</li>
-<li class="fragment">only areas can be interpreted as probabilities</li>
 </ul>
 </section>
 <section id="inferring-a-common-rate" class="slide level2">
@@ -1175,7 +1162,7 @@ print(samples)
 <li class="fragment">This is the magic sauce of Bayes.</li>
 </ul>
 </section>
-<section id="marginal-likelihood" class="slide level2">
+<section id="marginal-likelihood-1" class="slide level2">
 <h2>Marginal likelihood</h2>
 <ul>
 <li class="fragment">Back to Bayes equation we started with</li>
@@ -1217,7 +1204,7 @@ print(samples)
 <li class="fragment">both were correct, but Bob was “more correct” because his prediciton was more specific</li>
 </ul>
 </section>
-<section id="marginal-likelihood-1" class="slide level2">
+<section id="marginal-likelihood-2" class="slide level2">
 <h2>Marginal likelihood</h2>
 <ul>
 <li class="fragment">The marginal likelihood is computed by averaging the likelihood of the data predicted across the models parameter space.<br>

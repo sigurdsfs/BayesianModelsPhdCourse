@@ -234,10 +234,24 @@ Jaynes (2003)
 - Probability distributions encode **beliefs**
 - The **center** = most likely value
 - The **spread** = uncertainty
+- *To play with this open the notebook on Binder*
+- `notebooks/probability_distributions.ipynb`> "Beliefs as distributions"
 
-## Interactive demo
-- Explore distributions as beliefs:  
-- 📂 `notebooks/probability_distributions.ipynb`
+##  Probability mass functions
+- For discrete variables which take finite number of values.
+- <img src="/images/probability_mass.jpeg" width="500px">
+- all probability mass sums to 1
+
+## Probaility density functions
+- Probability density function for continuous variables which take infinitely many values
+- <img src="/images/probability_density.jpeg" width="500px">
+- all probability density integrates to 1
+- area under the curve is 1
+- densities can exceed 1
+
+## Interpreting probability distributions  
+- Its important to be able to read and reason with probabilty distributions.
+- `notebooks/probability_distributions.ipynb`> "Interpreting probability distributions"
 
 ## Bayes’ rule
 - <br> 
@@ -245,15 +259,17 @@ Jaynes (2003)
 - <br>
 - Posterior = $\frac{\color{red}{\text{Likelihood}}  \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
 - <br>
-- This tells us how prior beliefs are updated via the evidence provided by the data.
+- Where $\theta$ is a parameter, here "ability", and D is data, here it is the correct performance, $k$ successes out of $n$ trials
+- <br>
+- This tells us how our beliefs about ability are updated by the evidence provided by the data.
 
-## Term-by-term
+## Prior
 - $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
 - <br>
 - **$\color{blue}{\text{Prior}}$** is what we believe about $\theta$ before seeing the data. 
 - It reflects our assumptions or prior knowledge.
 
-## Term-by-term
+## Likelihood
 - $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
 - <br>
 - **$\color{red}{\text{Likelihood}}$** is how likely the observed data $D$ is, given a particular value of $\theta$. 
@@ -262,7 +278,7 @@ Jaynes (2003)
 - Those $\theta$ that explain the data well should be believed in more
 - Those $\theta$ that explain the data poorly should be believed in less
 
-## Term-by-term
+## Marginal likelihood
 - $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
 - <br>
 - **$\color{green}{\text{Marginal likelihood}}$** is the total probability of the data under all possible values of $\theta$.
@@ -270,13 +286,13 @@ Jaynes (2003)
 - In doing so it normalizes the result so the posterior is a valid probability distribution.
 - Note that it is independent of $\theta$
 
-## Term-by-term
+## Posterior
 - $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
 - <br>
 - **Posterior** is what we believe about $\theta$ *after* seeing the data. 
 - It’s the prior that has been updated by the evidence provided by the data.
 
-## Updating Beliefs with Evidence
+## Updating beliefs with data
 - We start with a **prior** belief $p(\theta)$
 - Observe **data**: e.g. \( k = 9 \) correct out of \( n = 10 \)
 - Bayes updates the belief:
@@ -285,17 +301,10 @@ Jaynes (2003)
 ## Intuition behind belief updating  
 - The more likely the data is for a given $\theta$  
 - The more we believe in that value of $\theta$ after seeing the data.
-- The values of theta that are better supported by the data, are more believed in after experiencing the data
+- The values of $\theta$ that are better supported by the data, are more believed in after experiencing the data
 - We have updated our beliefs according to the data
 
-## Proportional form
-- Since $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$
-- The **$\color{green}{\text{Marginal likelihood } p(D)}$** doesnt depend on $\theta$
-- So we can rewrite as:
-- $p(\theta|D) \propto p(D|\theta) \cdot p(\theta)$
-- $\text{Posterior} \propto \color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}$
-
-## Proportional form
+## Proportional form of Bayes rule
 - Since:  
   $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$
 - <br>
@@ -529,20 +538,6 @@ print(samples)
 
 ## Sampled posterior for difference in rates
 - ![](fig3.4.jpg) 
-
-##  Interpreting distributions
-- Probability mass functions are for discrete variables which take finite number of values
-- Probability density functiosn for continuous variables which take infinitely many values
- 
-##  Probability mass functions
-- insert left figure from box 3.2
-- all sum to 1
-
-## Probability density functions  
-- insert right figure from box 3.2
-- area sums to 1
-- densities can exceed 1
-- only areas can be interpreted as probabilities
 
 ## Inferring a common rate 
 - In some cases we want to infer a rate for 2 processes
