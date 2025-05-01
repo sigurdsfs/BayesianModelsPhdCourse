@@ -21,9 +21,7 @@ format:  # ← Specifies output formats. You can define multiple formats like re
         <a href="https://tinyurl.com/bayeBinderRepo" target="_blank">
         tinyurl.com/bayesBinderRepo </a>&nbsp;&nbsp;&nbsp;  
         <a href="https://tinyurl.com/bayesGithub" target="_blank">
-        tinyurl.com/bayesGithub </a>&nbsp;&nbsp;
-        <a href="https://tinyurl.com/bayesSchedule" target="_blank">
-        tinyurl.com/bayesSchedule </a>      
+        tinyurl.com/bayesGithub </a>&nbsp;&nbsp;</a>      
   html:  # ← Defines settings for basic HTML output (not slides). This is optional, but useful if rendering to HTML format too.
     execute:
       enabled: true  # ← Ensures that code cells are executed in HTML output as well.
@@ -235,23 +233,32 @@ Jaynes (2003)
 - The **center** = most likely value
 - The **spread** = uncertainty
 - *To play with this open the notebook on Binder*
-- `notebooks/probability_distributions.ipynb`> "Beliefs as distributions"
+- `notebooks/probability_distributions.ipynb`
+- see "Beliefs as distributions"
 
-##  Probability mass functions
-- For discrete variables which take finite number of values.
-- <img src="/images/probability_mass.jpeg" width="500px">
-- all probability mass sums to 1
+## Probability mass functions for discrete variables
+- <img src="/images/probability_mass.jpg" width="350px" style="display:inline"/> 
+- Total mass sums to 1: $\sum_x p(x) = 1$  
+- Range sums: $p(2 \leq x \leq 4) = 0.4$  
+- Odds: $\frac{p(5)}{p(7)} = 7$
 
-## Probaility density functions
-- Probability density function for continuous variables which take infinitely many values
-- <img src="/images/probability_density.jpeg" width="500px">
+## Probaility density functions for continuous variables
+- <img src="/images/probability_density.jpg" width="350px">
 - all probability density integrates to 1
 - area under the curve is 1
 - densities can exceed 1
+- ratios make sense: 5.5 is 5 times less likely than 0.7
+
+## Probability Density Functions for continuous variables
+- <img src="/images/probability_density.jpg" width="350px" style="display:inline"/>
+- Total area under curve: $\int p(x)\,dx = 1$  
+- Densities can > 1, but only area matters.  
+- Likelihood ratios make sense: e.g., $p(5.5)/p(0.7) = 1/5$
 
 ## Interpreting probability distributions  
-- Its important to be able to read and reason with probabilty distributions.
-- `notebooks/probability_distributions.ipynb`> "Interpreting probability distributions"
+- It's important to read and reason with probabilty distributions.
+- `notebooks/probability_distributions.ipynb` 
+- see "Interpreting probability distributions"
 
 ## Bayes’ rule
 - <br> 
@@ -259,7 +266,8 @@ Jaynes (2003)
 - <br>
 - Posterior = $\frac{\color{red}{\text{Likelihood}}  \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
 - <br>
-- Where $\theta$ is a parameter, here "ability", and D is data, here it is the correct performance, $k$ successes out of $n$ trials
+- $\theta$ is a parameter, here "ability"
+- $D$ is data, here it is the correct performance, $k$ successes out of $n$ trials
 - <br>
 - This tells us how our beliefs about ability are updated by the evidence provided by the data.
 
@@ -271,12 +279,10 @@ Jaynes (2003)
 
 ## Likelihood
 - $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
-- <br>
-- **$\color{red}{\text{Likelihood}}$** is how likely the observed data $D$ is, given a particular value of $\theta$. 
-- It tells us how well different values of $\theta$ explain the data.
-- It tells us how to update our beliefs in each value of $\theta$. 
-- Those $\theta$ that explain the data well should be believed in more
-- Those $\theta$ that explain the data poorly should be believed in less
+- **$\color{red}{\text{Likelihood}}$** is the probability of data $D$ given a value of $\theta$.
+- It shows how well each $\theta$ explains the data.
+- Higher likelihood → stronger belief in $\theta$ 
+- Lower likelihood → weaker belief.
 
 ## Marginal likelihood
 - $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
@@ -315,42 +321,56 @@ Jaynes (2003)
 - $\text{Posterior} \propto \color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}$
 - "*Posterior is proportional to likelihood times prior*""
 
-## Computing posteriors
-- Here is a notebook to step through updating priors according to data
-- Go to "Multiplying prior and likelihood" 📂 `notebooks/probability distributions.ipynb`
-- See how beliefs update
-- Explore summaries: MAP, mean, BCI
+## Prior beliefs for theta
+- `notebooks/probability distributions.ipynb`
+- see "Prior beliefs for theta"
 
-## Special case
+## Multiplying prior and likelihood
+- `notebooks/probability distributions.ipynb`
+-  see "Multiplying prior and likelihood" 
+
+## Is the likelihood a probability distribution?
+- `notebooks/probability distributions.ipynb`
+-  see "Is the likelihood a probability distribution?"  
+
+## Bayesian credibility intervals
+- `notebooks/probability distributions.ipynb`
+-  see "Bayesian credibility intervals"  
+
+## Summarising the posterior
+- `notebooks/probability distributions.ipynb`
+-  see "Summarising the posterior" 
+
+## Compute the posterior for the beta
 - Prior: $p(\theta) \sim \text{Beta}(1,1)$
 - Posterior: $p(\theta \mid D) \sim \text{Beta}(1 + k, 1 + n - k)$
 - $k$ = correct, $n$ = total trials
 - Simple, tractable update rule for binary outcomes
+- `notebooks/probability distributions.ipynb`
+- see "Computing posterior for the beta"
 
-## Try it yourself
-- Go to "Computing posterior: the special case of the beta distribution"
--  📂 `notebooks/probability distributions.ipynb`
-
-## Sequential updating 
-- Bayesian inference is **consistent** across steps
+## Sequential updating of posterior
+- Bayesian inference is consistent across steps
 - One-step:
   - Prior → Combined data → Posterior
 - Two-step:
   - Prior → Data1 → Intermediate Posterior → Data2 → Final Posterior
-- ✅ Final result is **identical**
+- Final result is identical
+-  `notebooks/probability distributions.ipynb`
+- see "Sequential updating"
 
-## Why Sequential Updating Matters
-- Matches real-world data collection
-- Enables learning as data rolls in
-- Supports early stopping, or extending data collection 
-- Efficient: time, money, resources
-- Ethical: minimises animals, humans, unnecessary treatment etc.
+## Why sequential updating of posterior matters
+- You can peak at your data, it's ok! 
+- Enables inference as data rolls in.
+- *Optional stopping*: stop early, or extend data collection 
+- *Efficient*: time, money, resources
+- *Ethical*: minimises animals, humans, unnecessary treatment etc.
 
-## Why Frequentist Methods Don’t Allow This
+## Frequentist methods don’t allow this
 - Frequentist inference assumes a fixed sample size and plan
-- Stopping early or collecting more data **invalidates p-values**
-- Counterfactual policies also **invalidates p-values**
-- Frequentist methods lack a way to incorporate prior knowledge
+- Stopping early or collecting more data invalidates p-values
+- Counterfactual policies: what you would have done, if the data had turned out different impacts on your p-values. 
+- Not widely understood. 
 
 ## Conjugate Priors
 - If Prior and posterior from the same distribution family → *conjugate*  
@@ -362,7 +382,7 @@ Jaynes (2003)
 - The posterior can be computed by plugging data directly into an equation
 - Conjugacy allows for *analytic updates* 
 
-## When Conjugacy Fails: Use 
+## When Conjugacy Fails: Sampling
 - Conjugacy is relatively rare in real world cases
 - In cases where conjugacy is not available sampling solutions are possible
 - Commonly MCMC - Markov Chain Monte Carlo
@@ -370,20 +390,21 @@ Jaynes (2003)
 - Approximates the posterior via sampling
 
 ## Analytic vs. Sampling
-- **Analytic**: Exact, when conjugate
-- **MCMC**: Approximate, more flexible
+- **Analytic**: Exact, when conjugate, rare
+- **MCMC**: Approximate, more flexible, common
 
 ## MCMC in Practice
-- **Red pill**: Learn MCMC internals 🤓
-- Intuitive guide: https://chat.openai.com/share/887b4e2d-2689-4e2d-b9ae-246b71d5782e 
-- For an intuitive explanation of Metropolis-Hastings:https://chat.openai.com/share/55cb6a00-1718-4327-8d51-3902a2064a11
-- <br>
-- **Blue pill**: Trust the method and use it, (but know how to spot problems) 😄
-- We will demonstrate and visualise MCMC 
+- **Red pill**: Learn how MCMC really works 🤓  
+  - [Intuitive guide to MCMC internals](https://chat.openai.com/share/887b4e2d-2689-4e2d-b9ae-246b71d5782e)  
+  - [Metropolis-Hastings explained simply](https://chat.openai.com/share/55cb6a00-1718-4327-8d51-3902a2064a11)  
+  - These methods will keep evolving — expect newer algorithms, faster sampling, and better approximations.
 
-## MCMC demo: Try it yourself
-- Go to "MCMC demo"
--  📂 `notebooks/probability distributions.ipynb`
+- **Blue pill**: Trust the method and use it (but know how to spot when it's broken) 😄  
+  - We'll demonstrate and visualise MCMC in practice.
+
+## MCMC demo
+- Go to "MCMC"
+- `notebooks/probability distributions.ipynb`
 
 ## Why Bayesian Methods?
 - **Principled reasoning**: Probabilistic logic = consistent thinking  

@@ -484,32 +484,48 @@
 <li class="fragment">The <strong>center</strong> = most likely value</li>
 <li class="fragment">The <strong>spread</strong> = uncertainty</li>
 <li class="fragment"><em>To play with this open the notebook on Binder</em></li>
-<li class="fragment"><code>notebooks/probability_distributions.ipynb</code>&gt; “Beliefs as distributions”</li>
+<li class="fragment"><code>notebooks/probability_distributions.ipynb</code></li>
+<li class="fragment">see “Beliefs as distributions”</li>
 </ul>
 </section>
-<section id="probability-mass-functions" class="slide level2">
-<h2>Probability mass functions</h2>
+<section id="probability-mass-functions-for-discrete-variables" class="slide level2">
+<h2>Probability mass functions for discrete variables</h2>
 <ul>
-<li class="fragment">For discrete variables which take finite number of values.</li>
-<li class="fragment"><img src="/images/probability_mass.jpeg" width="500px"></li>
-<li class="fragment">all probability mass sums to 1</li>
+<li class="fragment"><img src="/images/probability_mass.jpg" width="350px" style="display:inline"></li>
+<li class="fragment">Total mass sums to 1: <span class="math inline">\(\sum_x p(x) = 1\)</span><br>
+</li>
+<li class="fragment">Range sums: <span class="math inline">\(p(2 \leq x \leq 4) = 0.4\)</span><br>
+</li>
+<li class="fragment">Odds: <span class="math inline">\(\frac{p(5)}{p(7)} = 7\)</span></li>
 </ul>
 </section>
-<section id="probaility-density-functions" class="slide level2">
-<h2>Probaility density functions</h2>
+<section id="probaility-density-functions-for-continuous-variables" class="slide level2">
+<h2>Probaility density functions for continuous variables</h2>
 <ul>
-<li class="fragment">Probability density function for continuous variables which take infinitely many values</li>
-<li class="fragment"><img src="/images/probability_density.jpeg" width="500px"></li>
+<li class="fragment"><img src="/images/probability_density.jpg" width="350px"></li>
 <li class="fragment">all probability density integrates to 1</li>
 <li class="fragment">area under the curve is 1</li>
 <li class="fragment">densities can exceed 1</li>
+<li class="fragment">ratios make sense: 5.5 is 5 times less likely than 0.7</li>
+</ul>
+</section>
+<section id="probability-density-functions-for-continuous-variables" class="slide level2">
+<h2>Probability Density Functions for continuous variables</h2>
+<ul>
+<li class="fragment"><img src="/images/probability_density.jpg" width="350px" style="display:inline"></li>
+<li class="fragment">Total area under curve: <span class="math inline">\(\int p(x)\,dx = 1\)</span><br>
+</li>
+<li class="fragment">Densities can &gt; 1, but only area matters.<br>
+</li>
+<li class="fragment">Likelihood ratios make sense: e.g., <span class="math inline">\(p(5.5)/p(0.7) = 1/5\)</span></li>
 </ul>
 </section>
 <section id="interpreting-probability-distributions" class="slide level2">
 <h2>Interpreting probability distributions</h2>
 <ul>
-<li class="fragment">Its important to be able to read and reason with probabilty distributions.</li>
-<li class="fragment"><code>notebooks/probability_distributions.ipynb</code>&gt; “Interpreting probability distributions”</li>
+<li class="fragment">It’s important to read and reason with probabilty distributions.</li>
+<li class="fragment"><code>notebooks/probability_distributions.ipynb</code></li>
+<li class="fragment">see “Interpreting probability distributions”</li>
 </ul>
 </section>
 <section id="bayes-rule" class="slide level2">
@@ -520,7 +536,8 @@
 <li class="fragment"><br></li>
 <li class="fragment">Posterior = <span class="math inline">\(\frac{\color{red}{\text{Likelihood}}  \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}\)</span></li>
 <li class="fragment"><br></li>
-<li class="fragment">Where <span class="math inline">\(\theta\)</span> is a parameter, here “ability”, and D is data, here it is the correct performance, <span class="math inline">\(k\)</span> successes out of <span class="math inline">\(n\)</span> trials</li>
+<li class="fragment"><span class="math inline">\(\theta\)</span> is a parameter, here “ability”</li>
+<li class="fragment"><span class="math inline">\(D\)</span> is data, here it is the correct performance, <span class="math inline">\(k\)</span> successes out of <span class="math inline">\(n\)</span> trials</li>
 <li class="fragment"><br></li>
 <li class="fragment">This tells us how our beliefs about ability are updated by the evidence provided by the data.</li>
 </ul>
@@ -538,12 +555,10 @@
 <h2>Likelihood</h2>
 <ul>
 <li class="fragment"><span class="math inline">\(p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}\)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="math inline">\(\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}\)</span></li>
-<li class="fragment"><br></li>
-<li class="fragment"><strong><span class="math inline">\(\color{red}{\text{Likelihood}}\)</span></strong> is how likely the observed data <span class="math inline">\(D\)</span> is, given a particular value of <span class="math inline">\(\theta\)</span>.</li>
-<li class="fragment">It tells us how well different values of <span class="math inline">\(\theta\)</span> explain the data.</li>
-<li class="fragment">It tells us how to update our beliefs in each value of <span class="math inline">\(\theta\)</span>.</li>
-<li class="fragment">Those <span class="math inline">\(\theta\)</span> that explain the data well should be believed in more</li>
-<li class="fragment">Those <span class="math inline">\(\theta\)</span> that explain the data poorly should be believed in less</li>
+<li class="fragment"><strong><span class="math inline">\(\color{red}{\text{Likelihood}}\)</span></strong> is the probability of data <span class="math inline">\(D\)</span> given a value of <span class="math inline">\(\theta\)</span>.</li>
+<li class="fragment">It shows how well each <span class="math inline">\(\theta\)</span> explains the data.</li>
+<li class="fragment">Higher likelihood → stronger belief in <span class="math inline">\(\theta\)</span></li>
+<li class="fragment">Lower likelihood → weaker belief.</li>
 </ul>
 </section>
 <section id="marginal-likelihood" class="slide level2">
@@ -600,35 +615,56 @@
 <li class="fragment">“<em>Posterior is proportional to likelihood times prior</em>””</li>
 </ul>
 </section>
-<section id="computing-posteriors" class="slide level2">
-<h2>Computing posteriors</h2>
+<section id="prior-beliefs-for-theta" class="slide level2">
+<h2>Prior beliefs for theta</h2>
 <ul>
-<li class="fragment">Here is a notebook to step through updating priors according to data</li>
-<li class="fragment">Go to “Multiplying prior and likelihood” 📂 <code>notebooks/probability distributions.ipynb</code></li>
-<li class="fragment">See how beliefs update</li>
-<li class="fragment">Explore summaries: MAP, mean, BCI</li>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment">see “Prior beliefs for theta”</li>
 </ul>
 </section>
-<section id="special-case" class="slide level2">
-<h2>Special case</h2>
+<section id="multiplying-prior-and-likelihood" class="slide level2">
+<h2>Multiplying prior and likelihood</h2>
+<ul>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment">see “Multiplying prior and likelihood”</li>
+</ul>
+</section>
+<section id="is-the-likelihood-a-probability-distribution" class="slide level2">
+<h2>Is the likelihood a probability distribution?</h2>
+<ul>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment">see “Is the likelihood a probability distribution?”</li>
+</ul>
+</section>
+<section id="bayesian-credibility-intervals" class="slide level2">
+<h2>Bayesian credibility intervals</h2>
+<ul>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment">see “Bayesian credibility intervals”</li>
+</ul>
+</section>
+<section id="summarising-the-posterior" class="slide level2">
+<h2>Summarising the posterior</h2>
+<ul>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment">see “Summarising the posterior”</li>
+</ul>
+</section>
+<section id="compute-the-posterior-for-the-beta" class="slide level2">
+<h2>Compute the posterior for the beta</h2>
 <ul>
 <li class="fragment">Prior: <span class="math inline">\(p(\theta) \sim \text{Beta}(1,1)\)</span></li>
 <li class="fragment">Posterior: <span class="math inline">\(p(\theta \mid D) \sim \text{Beta}(1 + k, 1 + n - k)\)</span></li>
 <li class="fragment"><span class="math inline">\(k\)</span> = correct, <span class="math inline">\(n\)</span> = total trials</li>
 <li class="fragment">Simple, tractable update rule for binary outcomes</li>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment">see “Computing posterior for the beta”</li>
 </ul>
 </section>
-<section id="try-it-yourself" class="slide level2">
-<h2>Try it yourself</h2>
+<section id="sequential-updating-of-posterior" class="slide level2">
+<h2>Sequential updating of posterior</h2>
 <ul>
-<li class="fragment">Go to “Computing posterior: the special case of the beta distribution”</li>
-<li class="fragment">📂 <code>notebooks/probability distributions.ipynb</code></li>
-</ul>
-</section>
-<section id="sequential-updating" class="slide level2">
-<h2>Sequential updating</h2>
-<ul>
-<li class="fragment">Bayesian inference is <strong>consistent</strong> across steps</li>
+<li class="fragment">Bayesian inference is consistent across steps</li>
 <li class="fragment">One-step:
 <ul>
 <li class="fragment">Prior → Combined data → Posterior</li>
@@ -637,26 +673,28 @@
 <ul>
 <li class="fragment">Prior → Data1 → Intermediate Posterior → Data2 → Final Posterior</li>
 </ul></li>
-<li class="fragment">✅ Final result is <strong>identical</strong></li>
+<li class="fragment">Final result is identical</li>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment">see “Sequential updating”</li>
 </ul>
 </section>
-<section id="why-sequential-updating-matters" class="slide level2">
-<h2>Why Sequential Updating Matters</h2>
+<section id="why-sequential-updating-of-posterior-matters" class="slide level2">
+<h2>Why sequential updating of posterior matters</h2>
 <ul>
-<li class="fragment">Matches real-world data collection</li>
-<li class="fragment">Enables learning as data rolls in</li>
-<li class="fragment">Supports early stopping, or extending data collection</li>
-<li class="fragment">Efficient: time, money, resources</li>
-<li class="fragment">Ethical: minimises animals, humans, unnecessary treatment etc.</li>
+<li class="fragment">You can peak at your data, it’s ok!</li>
+<li class="fragment">Enables inference as data rolls in.</li>
+<li class="fragment"><em>Optional stopping</em>: stop early, or extend data collection</li>
+<li class="fragment"><em>Efficient</em>: time, money, resources</li>
+<li class="fragment"><em>Ethical</em>: minimises animals, humans, unnecessary treatment etc.</li>
 </ul>
 </section>
-<section id="why-frequentist-methods-dont-allow-this" class="slide level2">
-<h2>Why Frequentist Methods Don’t Allow This</h2>
+<section id="frequentist-methods-dont-allow-this" class="slide level2">
+<h2>Frequentist methods don’t allow this</h2>
 <ul>
 <li class="fragment">Frequentist inference assumes a fixed sample size and plan</li>
-<li class="fragment">Stopping early or collecting more data <strong>invalidates p-values</strong></li>
-<li class="fragment">Counterfactual policies also <strong>invalidates p-values</strong></li>
-<li class="fragment">Frequentist methods lack a way to incorporate prior knowledge</li>
+<li class="fragment">Stopping early or collecting more data invalidates p-values</li>
+<li class="fragment">Counterfactual policies: what you would have done, if the data had turned out different impacts on your p-values.</li>
+<li class="fragment">Not widely understood.</li>
 </ul>
 </section>
 <section id="conjugate-priors" class="slide level2">
@@ -673,8 +711,8 @@
 <li class="fragment">Conjugacy allows for <em>analytic updates</em></li>
 </ul>
 </section>
-<section id="when-conjugacy-fails-use" class="slide level2">
-<h2>When Conjugacy Fails: Use</h2>
+<section id="when-conjugacy-fails-sampling" class="slide level2">
+<h2>When Conjugacy Fails: Sampling</h2>
 <ul>
 <li class="fragment">Conjugacy is relatively rare in real world cases</li>
 <li class="fragment">In cases where conjugacy is not available sampling solutions are possible</li>
@@ -686,26 +724,32 @@
 <section id="analytic-vs.-sampling" class="slide level2">
 <h2>Analytic vs.&nbsp;Sampling</h2>
 <ul>
-<li class="fragment"><strong>Analytic</strong>: Exact, when conjugate</li>
-<li class="fragment"><strong>MCMC</strong>: Approximate, more flexible</li>
+<li class="fragment"><strong>Analytic</strong>: Exact, when conjugate, rare</li>
+<li class="fragment"><strong>MCMC</strong>: Approximate, more flexible, common</li>
 </ul>
 </section>
 <section id="mcmc-in-practice" class="slide level2">
 <h2>MCMC in Practice</h2>
 <ul>
-<li class="fragment"><strong>Red pill</strong>: Learn MCMC internals 🤓</li>
-<li class="fragment">Intuitive guide: https://chat.openai.com/share/887b4e2d-2689-4e2d-b9ae-246b71d5782e</li>
-<li class="fragment">For an intuitive explanation of Metropolis-Hastings:https://chat.openai.com/share/55cb6a00-1718-4327-8d51-3902a2064a11</li>
-<li class="fragment"><br></li>
-<li class="fragment"><strong>Blue pill</strong>: Trust the method and use it, (but know how to spot problems) 😄</li>
-<li class="fragment">We will demonstrate and visualise MCMC</li>
+<li class="fragment"><strong>Red pill</strong>: Learn how MCMC really works 🤓
+<ul>
+<li class="fragment"><a href="https://chat.openai.com/share/887b4e2d-2689-4e2d-b9ae-246b71d5782e">Intuitive guide to MCMC internals</a><br>
+</li>
+<li class="fragment"><a href="https://chat.openai.com/share/55cb6a00-1718-4327-8d51-3902a2064a11">Metropolis-Hastings explained simply</a><br>
+</li>
+<li class="fragment">These methods will keep evolving — expect newer algorithms, faster sampling, and better approximations.</li>
+</ul></li>
+<li class="fragment"><strong>Blue pill</strong>: Trust the method and use it (but know how to spot when it’s broken) 😄
+<ul>
+<li class="fragment">We’ll demonstrate and visualise MCMC in practice.</li>
+</ul></li>
 </ul>
 </section>
-<section id="mcmc-demo-try-it-yourself" class="slide level2">
-<h2>MCMC demo: Try it yourself</h2>
+<section id="mcmc-demo" class="slide level2">
+<h2>MCMC demo</h2>
 <ul>
-<li class="fragment">Go to “MCMC demo”</li>
-<li class="fragment">📂 <code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment">Go to “MCMC”</li>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
 </ul>
 </section>
 <section id="why-bayesian-methods" class="slide level2">
@@ -767,7 +811,7 @@
 <li class="fragment">Assumes no history effects (i.i.d. trials)</li>
 </ul>
 </section>
-<section id="try-it-yourself-1" class="slide level2">
+<section id="try-it-yourself" class="slide level2">
 <h2>Try it yourself</h2>
 <ul>
 <li class="fragment">go to “Visualising the binomial distribution”</li>
@@ -815,7 +859,7 @@
 <span id="cb4-4"><a href=""></a>                     <span class="co"># ...with the theta and n as parameters</span></span>
 <span id="cb4-5"><a href=""></a>}                    <span class="co"># this closes the model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="try-it-yourself-2" class="slide level2">
+<section id="try-it-yourself-1" class="slide level2">
 <h2>Try it yourself</h2>
 <ul>
 <li class="fragment">go to “Using JAGS to sample from the posterior for a binomial rate process”</li>
@@ -1909,7 +1953,7 @@ delta &lt;- theta1 - theta2</li>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="https://tinyurl.com/bayeBinderRepo" target="_blank"> tinyurl.com/bayesBinderRepo </a>&nbsp;&nbsp;&nbsp; <a href="https://tinyurl.com/bayesGithub" target="_blank"> tinyurl.com/bayesGithub </a>&nbsp;&nbsp; <a href="https://tinyurl.com/bayesSchedule" target="_blank"> tinyurl.com/bayesSchedule </a></p>
+<p><a href="https://tinyurl.com/bayeBinderRepo" target="_blank"> tinyurl.com/bayesBinderRepo </a>&nbsp;&nbsp;&nbsp; <a href="https://tinyurl.com/bayesGithub" target="_blank"> tinyurl.com/bayesGithub </a>&nbsp;&nbsp;</p>
 </div>
 </div></div>
 
