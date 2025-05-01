@@ -791,18 +791,18 @@
 <h2>Modeling a Binary Process</h2>
 <ul>
 <li class="fragment">Start simple: focus on binary outcomes<br>
-(e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em>)</li>
-<li class="fragment">Common examples: coin flips, true/false questions, detection tasks, motor responses</li>
-<li class="fragment">In our go/no-go example, each of the <span class="math inline">\(n\)</span> trials results in either success or failure,<br>
-with <span class="math inline">\(k\)</span> indicating the number of successes</li>
+e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
+<li class="fragment">Common examples: <em>coin flips, true/false questions, detection tasks, motor responses</em></li>
+<li class="fragment">In our go/no-go example, each of the <span class="math inline">\(n\)</span> trials results in either <span class="math inline">\(k\)</span> successes<br>
+</li>
 <li class="fragment">Binary processes are foundational for modeling cognition</li>
 </ul>
 </section>
 <section id="getting-started" class="slide level2">
 <h2>Getting Started</h2>
 <ul>
-<li class="fragment">Our goal is to infer <strong>ability</strong> in a go/no-go task</li>
-<li class="fragment">We estimate a <strong>rate</strong> — the hidden probability <span class="math inline">\(\theta\)</span> that a response is correct</li>
+<li class="fragment">Our goal is to infer ability in a go-no-go task</li>
+<li class="fragment">We estimate a rate — the hidden probability <span class="math inline">\(\theta\)</span> that a response is correct</li>
 <li class="fragment">We represent our uncertainty about <span class="math inline">\(\theta\)</span> as a probability distribution</li>
 <li class="fragment">Many cognitive tasks can be modeled this way</li>
 </ul>
@@ -814,7 +814,7 @@ with <span class="math inline">\(k\)</span> indicating the number of successes</
 </li>
 <li class="fragment">Recognition memory, Stroop, Flanker, oddball detection<br>
 </li>
-<li class="fragment">Visual search, discrimination tasks</li>
+<li class="fragment">Visual search, discrimination tasks, and so on.</li>
 </ul>
 </section>
 <section id="from-binary-outcomes-to-a-hidden-rate" class="slide level2">
@@ -831,18 +831,17 @@ with <span class="math inline">\(k\)</span> indicating the number of successes</
 <h2>Try it Yourself</h2>
 <ul>
 <li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
-<li class="fragment">See</li>
-<li class="fragment">Explore the binomial distribution interactively</li>
-<li class="fragment">Adjust parameters and visualize how <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span> relate to <span class="math inline">\(\theta\)</span></li>
+<li class="fragment">see lecture 3 &gt; “Binomial distribution”</li>
 </ul>
 </section>
 <section id="graphical-models" class="slide level2">
 <h2>Graphical Models</h2>
 <ul>
-<li class="fragment"><p>Graphical models represent probabilistic structure visually</p></li>
-<li class="fragment"><p>Nodes represent variables; edges represent dependencies</p></li>
-<li class="fragment"><p>Child nodes are conditionally dependent on parent nodes</p></li>
-<li class="fragment"><p><img data-src="images/graphical%20model.png" style="width:30.0%"></p></li>
+<li class="fragment">Graphical models represent probabilistic structure visually</li>
+<li class="fragment">Nodes represent variables; edges represent dependencies</li>
+<li class="fragment">Child nodes are conditionally dependent on parent nodes</li>
+<li class="fragment">This is our JAGS model:</li>
+<li class="fragment"><img data-src="images/graphical%20model.png" style="width:30.0%"></li>
 </ul>
 </section>
 <section id="graphical-notation" class="slide level2">
@@ -868,11 +867,13 @@ with <span class="math inline">\(k\)</span> indicating the number of successes</
 <section id="graphical-model-quiz" class="slide level2">
 <h2>Graphical Model Quiz</h2>
 <ul>
-<li class="fragment"><p><img data-src="images/graphical%20model%20test.jpeg" style="width:30.0%"></p></li>
-<li class="fragment"><p>Upper node: What type of variable is this?<br>
-<strong>Answer:</strong> Continuous, stochastic, and observed</p></li>
-<li class="fragment"><p>Lower node: What type of variable is this?<br>
-<strong>Answer:</strong> Discrete, deterministic, and unobserved</p></li>
+<li class="fragment"><img data-src="images/graphical%20model%20test.jpeg" style="width:30.0%"></li>
+<li class="fragment">Upper node: What type of variable is this?<br>
+</li>
+<li class="fragment"><strong>Answer:</strong> Continuous, stochastic, and observed</li>
+<li class="fragment">Lower node: What type of variable is this?<br>
+</li>
+<li class="fragment"><strong>Answer:</strong> Discrete, deterministic, and unobserved</li>
 </ul>
 </section>
 <section id="sampling-via-jags" class="slide level2">
@@ -881,99 +882,19 @@ with <span class="math inline">\(k\)</span> indicating the number of successes</
 <span id="cb4-2"><a href=""></a>  theta <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># Prior: theta follows a uniform beta distribution</span></span>
 <span id="cb4-3"><a href=""></a>  k <span class="op">~</span> dbin(theta,n)  <span class="co"># Likelihood: k follows a binomial distribution</span></span>
 <span id="cb4-4"><a href=""></a>                     <span class="co"># with parameters theta and n</span></span>
-<span id="cb4-5"><a href=""></a>}                    <span class="co"># End of model</span></span>
-<span id="cb4-6"><a href=""></a></span>
-<span id="cb4-7"><a href=""></a></span>
-<span id="cb4-8"><a href=""></a></span>
-<span id="cb4-9"><a href=""></a></span>
-<span id="cb4-10"><a href=""></a></span>
-<span id="cb4-11"><a href=""></a></span>
-<span id="cb4-12"><a href=""></a></span>
-<span id="cb4-13"><a href=""></a></span>
-<span id="cb4-14"><a href=""></a></span>
-<span id="cb4-15"><a href=""></a></span>
-<span id="cb4-16"><a href=""></a></span>
-<span id="cb4-17"><a href=""></a></span>
-<span id="cb4-18"><a href=""></a></span>
-<span id="cb4-19"><a href=""></a></span>
-<span id="cb4-20"><a href=""></a></span>
-<span id="cb4-21"><a href=""></a></span>
-<span id="cb4-22"><a href=""></a></span>
-<span id="cb4-23"><a href=""></a></span>
-<span id="cb4-24"><a href=""></a></span>
-<span id="cb4-25"><a href=""></a></span>
-<span id="cb4-26"><a href=""></a></span>
-<span id="cb4-27"><a href=""></a></span>
-<span id="cb4-28"><a href=""></a></span>
-<span id="cb4-29"><a href=""></a><span class="co"># Modeling a Binary Process</span></span>
-<span id="cb4-30"><a href=""></a><span class="op">-</span> Binary models <span class="kw">in</span> cognition </span>
-<span id="cb4-31"><a href=""></a><span class="op">-</span> Graphical models <span class="op">&amp;</span> notation  </span>
-<span id="cb4-32"><a href=""></a><span class="op">-</span> Bayesian inference <span class="cf">with</span> JAGS  </span>
-<span id="cb4-33"><a href=""></a><span class="op">-</span> Convergence <span class="kw">and</span> posterior checks<span class="op">**</span>  </span>
-<span id="cb4-34"><a href=""></a></span>
-<span id="cb4-35"><a href=""></a><span class="co">## Modeling a Binary Process</span></span>
-<span id="cb4-36"><a href=""></a><span class="op">-</span> Start simple: focus on binary outcomes.</span>
-<span id="cb4-37"><a href=""></a><span class="op">-</span> Each trial <span class="kw">is</span> a <span class="op">*</span>Success<span class="op">/</span>Failure<span class="op">*</span>, <span class="op">*</span>Correct<span class="op">/</span>Incorrect<span class="op">*</span>, <span class="op">*</span>Yes<span class="op">/</span>No<span class="op">*</span>.</span>
-<span id="cb4-38"><a href=""></a><span class="op">-</span> Examples: Coin flips, true<span class="op">/</span>false questions, detection tasks, motor responses.</span>
-<span id="cb4-39"><a href=""></a><span class="op">-</span> Our go<span class="op">-</span>nogo example <span class="kw">is</span> a binary process. n trials each either success <span class="kw">or</span> failure, where k <span class="kw">is</span> the number of success</span>
-<span id="cb4-40"><a href=""></a><span class="op">-</span> Binary processes are foundational <span class="cf">for</span> modeling cognition.</span>
-<span id="cb4-41"><a href=""></a> </span>
-<span id="cb4-42"><a href=""></a><span class="co">## Getting Started</span></span>
-<span id="cb4-43"><a href=""></a><span class="op">-</span> Let’s infer <span class="op">**</span>ability<span class="op">**</span> <span class="kw">in</span> a go<span class="op">/</span>no<span class="op">-</span>go task.</span>
-<span id="cb4-44"><a href=""></a><span class="op">-</span> We estimate a <span class="op">**</span>rate<span class="op">**</span> — <span class="im">as</span> a hidden probability $\theta$.</span>
-<span id="cb4-45"><a href=""></a><span class="op">-</span> We represent our uncertainty <span class="im">as</span> a <span class="op">**</span>distribution<span class="op">**</span> over likely values of $\theta$.</span>
-<span id="cb4-46"><a href=""></a><span class="op">-</span> Many cognitive tasks can be represented <span class="kw">in</span> this way.</span>
-<span id="cb4-47"><a href=""></a></span>
-<span id="cb4-48"><a href=""></a><span class="co">## Binary Tasks in Cognitive Science</span></span>
-<span id="cb4-49"><a href=""></a><span class="op">-</span> Go<span class="op">/</span>no<span class="op">-</span>go, stop<span class="op">-</span>signal, <span class="dv">2</span><span class="er">AFC</span>, task switching  </span>
-<span id="cb4-50"><a href=""></a><span class="op">-</span> Recognition memory, Stroop, Flanker, oddball detection  </span>
-<span id="cb4-51"><a href=""></a><span class="op">-</span> Visual search, discrimination tasks</span>
-<span id="cb4-52"><a href=""></a></span>
-<span id="cb4-53"><a href=""></a><span class="co">## From Binary Outcomes to Hidden Rate</span></span>
-<span id="cb4-54"><a href=""></a><span class="op">-</span> Observe $k$ successes <span class="kw">in</span> $n$ trials → rate $\frac{k}{n}$</span>
-<span id="cb4-55"><a href=""></a><span class="op">-</span> But we want the <span class="op">*</span>underlying<span class="op">*</span> rate $\theta$</span>
-<span id="cb4-56"><a href=""></a><span class="op">-</span> Model: $k \sim \text{Binomial}(\theta, n)$  </span>
-<span id="cb4-57"><a href=""></a><span class="op">-</span> <span class="op">&lt;</span>span style<span class="op">=</span><span class="st">"color: lightgrey;"</span><span class="op">&gt;</span>$p(k \mid \theta, n) <span class="op">=</span> \binom{n}{k} \theta<span class="op">^</span>k (<span class="dv">1</span> <span class="op">-</span> \theta)<span class="op">^</span>{n <span class="op">-</span> k}$<span class="op">&lt;/</span>span<span class="op">&gt;</span></span>
-<span id="cb4-58"><a href=""></a><span class="op">-</span> Assumes no history effects (i.i.d. trials)</span>
-<span id="cb4-59"><a href=""></a></span>
-<span id="cb4-60"><a href=""></a><span class="co">## Try it yourself</span></span>
-<span id="cb4-61"><a href=""></a> <span class="op">-</span> go to <span class="st">"Visualising the binomial distribution"</span></span>
-<span id="cb4-62"><a href=""></a> <span class="op">-</span>  📂 `notebooks<span class="op">/</span>probability distributions.ipynb`</span>
-<span id="cb4-63"><a href=""></a></span>
-<span id="cb4-64"><a href=""></a><span class="co">## Graphical models</span></span>
-<span id="cb4-65"><a href=""></a><span class="op">-</span> Graphical models are used to represent our probabilisitc model</span>
-<span id="cb4-66"><a href=""></a><span class="op">-</span> Nodes represent <span class="bu">all</span> the variables relevant to the problem</span>
-<span id="cb4-67"><a href=""></a><span class="op">-</span> Graph structure represent dependencies <span class="op">-</span> children depend on parents</span>
-<span id="cb4-68"><a href=""></a><span class="op">-</span> <span class="op">!</span>[](images<span class="op">/</span>graphical<span class="op">%</span><span class="dv">20</span><span class="er">model</span>.png){width<span class="op">=</span><span class="dv">30</span><span class="op">%</span>}</span>
-<span id="cb4-69"><a href=""></a> </span>
-<span id="cb4-70"><a href=""></a><span class="co">## Graphical notation </span></span>
-<span id="cb4-71"><a href=""></a><span class="op">-</span> <span class="op">*</span>Circular<span class="op">*</span> <span class="op">-</span> continuous, <span class="op">*</span>Square<span class="op">*</span> <span class="op">-</span> discrete</span>
-<span id="cb4-72"><a href=""></a><span class="op">-</span> <span class="op">*</span>Shaded<span class="op">*</span> <span class="op">-</span> observed, <span class="op">*</span>Non<span class="op">-</span>shaded<span class="op">*</span> <span class="op">-</span> hidden</span>
-<span id="cb4-73"><a href=""></a><span class="op">-</span> <span class="op">*</span>Single<span class="op">-</span>boundary<span class="op">*</span> <span class="op">-</span> stochastic, <span class="op">*</span>Double<span class="op">-</span>boundary<span class="op">*</span> <span class="op">-</span> deterministic </span>
-<span id="cb4-74"><a href=""></a></span>
-<span id="cb4-75"><a href=""></a><span class="co">## Graphical notation</span></span>
-<span id="cb4-76"><a href=""></a><span class="op">-</span> <span class="op">!</span>[](images<span class="op">/</span>graphical<span class="op">%</span><span class="dv">20l</span><span class="er">exicon</span>.jpeg){width<span class="op">=</span><span class="dv">70</span><span class="op">%</span>}</span>
-<span id="cb4-77"><a href=""></a> </span>
-<span id="cb4-78"><a href=""></a><span class="co">## Tester</span></span>
-<span id="cb4-79"><a href=""></a><span class="op">-</span>  <span class="op">!</span>[](images<span class="op">/</span>graphical<span class="op">%</span><span class="dv">20</span><span class="er">model</span><span class="op">%</span><span class="dv">20</span><span class="er">test</span>.jpeg){width<span class="op">=</span><span class="dv">30</span><span class="op">%</span>}</span>
-<span id="cb4-80"><a href=""></a><span class="op">-</span> Upper <span class="kw">is</span> what?</span>
-<span id="cb4-81"><a href=""></a><span class="op">-</span> <span class="op">**</span>continuous, stochastic, <span class="kw">and</span> observed<span class="op">**</span></span>
-<span id="cb4-82"><a href=""></a><span class="op">-</span> Lower <span class="kw">is</span> what?</span>
-<span id="cb4-83"><a href=""></a><span class="op">-</span> <span class="op">**</span>discrete, deterministic, <span class="kw">and</span> unobserved<span class="op">**</span></span>
-<span id="cb4-84"><a href=""></a></span>
-<span id="cb4-85"><a href=""></a><span class="co">## Sampling via JAGS </span></span>
-<span id="cb4-86"><a href=""></a>```{.python code<span class="op">-</span>line<span class="op">-</span>numbers<span class="op">=</span><span class="st">"0|1|2|3|4|5"</span>}</span>
-<span id="cb4-87"><a href=""></a>model {              <span class="co"># opens the model</span></span>
-<span id="cb4-88"><a href=""></a>  theta <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># the prior: theta is distributed as a beta(1,1) </span></span>
-<span id="cb4-89"><a href=""></a>  k <span class="op">~</span> dbin(theta,n)  <span class="co"># the likelihood: k is distrbuted binomially </span></span>
-<span id="cb4-90"><a href=""></a>                     <span class="co"># ...with the theta and n as parameters</span></span>
-<span id="cb4-91"><a href=""></a>}                    <span class="co"># this closes the model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="try-it-yourself-1" class="slide level2">
-<h2>Try it yourself</h2>
+<span id="cb4-5"><a href=""></a>}                    <span class="co"># End of model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li class="fragment">go to “Using JAGS to sample from the posterior for a binomial rate process”</li>
-<li class="fragment">📂 <code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment"><img data-src="images/graphical%20model.png" style="width:30.0%"></li>
+</ul>
+</section>
+<section id="interpreting-the-graphical-model-for-the-code" class="slide level2">
+<h2>Interpreting the graphical model for the code</h2>
+<ul>
+<li class="fragment"><img data-src="images/graphical%20model.png" style="width:30.0%"></li>
+<li class="fragment">Theta is latent, and continuous</li>
+<li class="fragment">n is observed and discrete</li>
+<li class="fragment">k is observed and discrete</li>
+<li class="fragment">Both feed n and k feed in to the likelihood to generate k</li>
 </ul>
 </section>
 <section id="r-hat-as-a-convergence-check" class="slide level2">
@@ -984,104 +905,81 @@ with <span class="math inline">\(k\)</span> indicating the number of successes</
 <span class="math inline">\(\hat{R} = \frac{\text{var}(\text{within-chain})}{\text{var}(\text{across-chain})}\)</span></li>
 <li class="fragment">Rule of thumb: <span class="math inline">\(\hat{R}\)</span> should be between 1.00 and 1.01 for convergence.</li>
 </ul>
-<!-- #endregion -->
-<!-- #region Lecture#4 Parameter estimation-->
-</section></section>
-<section>
-<section id="lecture3-parameter-estimation" class="title-slide slide level1 center">
-<h1>Lecture#3: Parameter estimation</h1>
-
 </section>
-<section id="posterior-from-the-last-example" class="slide level2">
-<h2>Posterior from the last example</h2>
+<section id="inspecting-the-chains" class="slide level2">
+<h2>Inspecting the chains</h2>
 <ul>
-<li class="fragment">We estimated the posterior distribution of <span class="math inline">\(\theta\)</span> given the data</li>
-<li class="fragment">We sampled from this model</li>
-<li class="fragment"><img data-src="fig2.1.jpg"></li>
-<li class="fragment">and we got this distribution</li>
-<li class="fragment"><img data-src="fig2.8.jpg"></li>
+<li class="fragment">the chains of samples should look like <em>hairy catapillars</em></li>
+<li class="fragment">like this:</li>
+<li class="fragment"><img data-src="images/hairy_caterpillar.png" style="width:60.0%"></li>
 </ul>
 </section>
-<section id="conjugacy" class="slide level2">
-<h2>Conjugacy</h2>
+<section id="try-it-yourself-1" class="slide level2">
+<h2>Try it yourself</h2>
 <ul>
-<li class="fragment">Beta distributions has a natural interpretation</li>
-<li class="fragment"><span class="math inline">\(\theta \sim text{Beta(\alpha, \beta)}\)</span><br>
-</li>
-<li class="fragment"><span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> can be thought of as counts</li>
-<li class="fragment"><span class="math inline">\(\alpha = 1 + text{successes} = 1 + k\)</span></li>
-<li class="fragment">$= 1 + text{failures} = 1 + (n-k) $</li>
-</ul>
-</section>
-<section id="why-1-count" class="slide level2">
-<h2>Why 1 + count?</h2>
-<ul>
-<li class="fragment">Beta(1,1) is a uniform distribution so this is equivalent to 0 counts</li>
-<li class="fragment">It is your belief distribution when you have no knowledge etc.<br>
-</li>
-<li class="fragment">Thus evidence accumulates from 1, via counting of successes and failures</li>
-</ul>
-</section>
-<section id="conjugacy-1" class="slide level2">
-<h2>Conjugacy</h2>
-<ul>
-<li class="fragment">Notice that the update from the prior to the posterior just comes from adding the counts to the beta distribution</li>
-<li class="fragment">prior: Beta(1,1) → posterior: Beta(1+k, 1+(n-k))</li>
-<li class="fragment">prior: Beta(1,1) → posterior: Beta(1+ successCount, 1+ failureCount)<br>
-</li>
-<li class="fragment">No sampling is needed because we have the equation</li>
-<li class="fragment">When the prior and posterior have same type of distribution they are “conjugate”</li>
-</ul>
-</section>
-<section id="conjugacy-interactive-example" class="slide level2">
-<h2>Conjugacy interactive example</h2>
-<ul>
-<li class="fragment">Binder example- play with the beta distribution</li>
-<li class="fragment">No sampling needed you just change inputs to the beta distribution to compute posterior</li>
+<li class="fragment">go to “MCMC convergence checks**</li>
+<li class="fragment">📂 <code>notebooks/probability distributions.ipynb</code></li>
 </ul>
 </section>
 <section id="difference-between-two-rates" class="slide level2">
 <h2>Difference between two rates</h2>
 <ul>
-<li class="fragment">Suppose we have to processes, say two tasks producing:</li>
-<li class="fragment">k1 successes out of n1 trials</li>
-<li class="fragment">k2 successes out of n2 trials</li>
-<li class="fragment">let’s assume they are generated by two different rates <span class="math inline">\(\theta_1\)</span> and <span class="math inline">\(\theta_2\)</span></li>
-<li class="fragment">we want to know the difference in the rates <span class="math inline">\(\delta = \theta_1 - \theta_2\)</span></li>
-<li class="fragment"><em>e.g.&nbsp;the effect of a drug on cognitive performance</em></li>
-<li class="fragment"><em>e.g.&nbsp;the effect of a age on task performance</em></li>
+<li class="fragment">Suppose we observe two processes, each producing successes out of trials:</li>
+<li class="fragment">Process 1: <span class="math inline">\(k_1\)</span> successes out of <span class="math inline">\(n_1\)</span> trials<br>
+</li>
+<li class="fragment">Process 2: <span class="math inline">\(k_2\)</span> successes out of <span class="math inline">\(n_2\)</span> trials</li>
+<li class="fragment">We assume each is governed by a different underlying rate: <span class="math inline">\(\theta_1\)</span> and <span class="math inline">\(\theta_2\)</span>.</li>
 </ul>
 </section>
-<section id="graphical-model-for-inferring-differences-in-rates" class="slide level2">
-<h2>Graphical model for inferring differences in rates</h2>
+<section id="estimating-the-difference" class="slide level2">
+<h2>Estimating the difference</h2>
 <ul>
-<li class="fragment"><img data-src="fig3.3.jpg"></li>
+<li class="fragment">We want to model each rate with a posterior Beta distribution, and we are interested in the difference:</li>
+<li class="fragment"><span class="math inline">\(\delta = \theta_1 - \theta_2\)</span></li>
+<li class="fragment">This tells us how much more (or less) likely success is in one group compared to the other.</li>
 </ul>
 </section>
-<section id="sampling-code-for-infferring-differences-in-rates" class="slide level2">
-<h2>Sampling code for infferring differences in rates</h2>
-<!-- ``` {.python code-line-numbers="1-2|6-7|8-9|10"}
-import pyjags
-import numpy as np
-model = """
-model{ 
-  k1 ~ dbin(theta1,n1)
-  k2 ~ dbin(theta2,n2)
-  theta1 ~ dbeta(1,1)
-  theta2 ~ dbeta(1,1)
-  delta <-theta1-theta2
-}
-"""
-data = {'N': 10, 'y': np.random.randn(10)}
-model = pyjags.Model(model, data=data, chains=3)
-samples = model.sample(1000, vars=['mu', 'sigma'])
-print(samples)
-``` -->
-</section>
-<section id="sampled-posterior-for-difference-in-rates" class="slide level2">
-<h2>Sampled posterior for difference in rates</h2>
+<section id="examples-and-intuition" class="slide level2">
+<h2>Examples and intuition</h2>
 <ul>
-<li class="fragment"><img data-src="fig3.4.jpg"></li>
+<li class="fragment">Examples:</li>
+<li class="fragment">📈 Effect of a drug on performance (<span class="math inline">\(\theta_1\)</span> = treated, <span class="math inline">\(\theta_2\)</span> = control)</li>
+<li class="fragment">👶 Performance difference between age groups</li>
+<li class="fragment">🧪 Comparison of two algorithms on success rate</li>
+<li class="fragment">A positive <span class="math inline">\(\delta\)</span> means group 1 is better; a negative <span class="math inline">\(\delta\)</span> means group 2 is better.</li>
+</ul>
+</section>
+<section id="graphical-model-for-inferring-differences" class="slide level2">
+<h2>Graphical model for inferring differences</h2>
+<ul>
+<li class="fragment"><img data-src="images/fig3.3.jpg" style="width:100.0%"></li>
+<li class="fragment">Why is delta double boundary?</li>
+<li class="fragment">Because it is completely determined by the two thetas</li>
+</ul>
+</section>
+<section id="jags-code-for-infferring-differences-in-rates" class="slide level2">
+<h2>JAGS code for infferring differences in rates</h2>
+<div class="sourceCode" id="cb5" data-code-line-numbers="0|1|2|3|4|5|6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>model{ </span>
+<span id="cb5-2"><a href=""></a>  k1 <span class="op">~</span> dbin(theta1,n1)</span>
+<span id="cb5-3"><a href=""></a>  k2 <span class="op">~</span> dbin(theta2,n2)</span>
+<span id="cb5-4"><a href=""></a>  theta1 <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb5-5"><a href=""></a>  theta2 <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb5-6"><a href=""></a>  delta <span class="op">&lt;-</span>theta1<span class="op">-</span>theta2</span>
+<span id="cb5-7"><a href=""></a>}                   <span class="co"># End of model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="try-it-yourself-2" class="slide level2">
+<h2>Try it yourself</h2>
+<ul>
+<li class="fragment">go to “Inferring the difference between two rates”<br>
+</li>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+</ul>
+</section>
+<section id="interpret-the-posterior" class="slide level2">
+<h2>Interpret the posterior</h2>
+<ul>
+<li class="fragment">What is the probability that the difference in rates is below 0?</li>
+<li class="fragment"><img data-src="images/posterior_delta.jpg" style="width:50.0%"></li>
 </ul>
 </section>
 <section id="inferring-a-common-rate" class="slide level2">

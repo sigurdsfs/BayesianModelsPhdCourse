@@ -429,22 +429,22 @@ Jaynes (2003)
 
 ## Modeling a Binary Process
 - Start simple: focus on binary outcomes  
-  (e.g., *Success/Failure*, *Correct/Incorrect*, *Yes/No*) 
-- Common examples: coin flips, true/false questions, detection tasks, motor responses
-- In our go/no-go example, each of the $n$ trials results in either success or failure,  
-  with $k$ indicating the number of successes
+  e.g., *Success/Failure*, *Correct/Incorrect*, *Yes/No*
+- Common examples: 
+  *coin flips, true/false questions, detection tasks, motor responses*
+- In our go/no-go example, each of the $n$ trials results in either $k$ successes  
 - Binary processes are foundational for modeling cognition
 
 ## Getting Started
-- Our goal is to infer **ability** in a go/no-go task
-- We estimate a **rate** — the hidden probability $\theta$ that a response is correct
+- Our goal is to infer ability in a go-no-go task
+- We estimate a rate — the hidden probability $\theta$ that a response is correct
 - We represent our uncertainty about $\theta$ as a probability distribution
 - Many cognitive tasks can be modeled this way
 
 ## Binary Tasks in Cognitive Science
 - Go/no-go, stop-signal, 2AFC, task switching  
 - Recognition memory, Stroop, Flanker, oddball detection  
-- Visual search, discrimination tasks
+- Visual search, discrimination tasks, and so on. 
 
 ## From Binary Outcomes to a Hidden Rate
 - Observe $k$ successes in $n$ trials → compute $\frac{k}{n}$
@@ -455,22 +455,14 @@ Jaynes (2003)
 
 ## Try it Yourself
 - `notebooks/probability distributions.ipynb`
-- 
-- Explore the binomial distribution interactively
-- Adjust parameters and visualize how $k$ and $n$ relate to $\theta$
-
+- see lecture 3 > "Binomial distribution"
 
 ## Graphical Models
-
 - Graphical models represent probabilistic structure visually
-
 - Nodes represent variables; edges represent dependencies
-
 - Child nodes are conditionally dependent on parent nodes
-
+- This is our JAGS model:
 - ![](images/graphical%20model.png){width=30%}
-
----
 
 ## Graphical Notation
 
@@ -483,203 +475,90 @@ Jaynes (2003)
 - **Single border**: stochastic variable  
 - **Double border**: deterministic relationship
 
----
-
 ## Graphical Notation Reference
-
 - ![](images/graphical%20lexicon.jpeg){width=70%}
 
----
-
 ## Graphical Model Quiz
-
 - ![](images/graphical%20model%20test.jpeg){width=30%}
-
 - Upper node: What type of variable is this?  
-  **Answer:** Continuous, stochastic, and observed
-
+- **Answer:** Continuous, stochastic, and observed
 - Lower node: What type of variable is this?  
-  **Answer:** Discrete, deterministic, and unobserved
-
----
+- **Answer:** Discrete, deterministic, and unobserved
 
 ## Sampling via JAGS
-
 ```{.python code-line-numbers="0|1|2|3|4|5"}
 model {              # Define the model
   theta ~ dbeta(1,1) # Prior: theta follows a uniform beta distribution
   k ~ dbin(theta,n)  # Likelihood: k follows a binomial distribution
                      # with parameters theta and n
 }                    # End of model
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Modeling a Binary Process
-- Binary models in cognition 
-- Graphical models & notation  
-- Bayesian inference with JAGS  
-- Convergence and posterior checks**  
-
-## Modeling a Binary Process
-- Start simple: focus on binary outcomes.
-- Each trial is a *Success/Failure*, *Correct/Incorrect*, *Yes/No*.
-- Examples: Coin flips, true/false questions, detection tasks, motor responses.
-- Our go-nogo example is a binary process. n trials each either success or failure, where k is the number of success
-- Binary processes are foundational for modeling cognition.
- 
-## Getting Started
-- Let’s infer **ability** in a go/no-go task.
-- We estimate a **rate** — as a hidden probability $\theta$.
-- We represent our uncertainty as a **distribution** over likely values of $\theta$.
-- Many cognitive tasks can be represented in this way.
-
-## Binary Tasks in Cognitive Science
-- Go/no-go, stop-signal, 2AFC, task switching  
-- Recognition memory, Stroop, Flanker, oddball detection  
-- Visual search, discrimination tasks
-
-## From Binary Outcomes to Hidden Rate
-- Observe $k$ successes in $n$ trials → rate $\frac{k}{n}$
-- But we want the *underlying* rate $\theta$
-- Model: $k \sim \text{Binomial}(\theta, n)$  
-- <span style="color: lightgrey;">$p(k \mid \theta, n) = \binom{n}{k} \theta^k (1 - \theta)^{n - k}$</span>
-- Assumes no history effects (i.i.d. trials)
-
-## Try it yourself
- - go to "Visualising the binomial distribution"
- -  📂 `notebooks/probability distributions.ipynb`
-
-## Graphical models
-- Graphical models are used to represent our probabilisitc model
-- Nodes represent all the variables relevant to the problem
-- Graph structure represent dependencies - children depend on parents
-- ![](images/graphical%20model.png){width=30%}
- 
-## Graphical notation 
-- *Circular* - continuous, *Square* - discrete
-- *Shaded* - observed, *Non-shaded* - hidden
-- *Single-boundary* - stochastic, *Double-boundary* - deterministic 
-
-## Graphical notation
-- ![](images/graphical%20lexicon.jpeg){width=70%}
- 
-## Tester
--  ![](images/graphical%20model%20test.jpeg){width=30%}
-- Upper is what?
-- **continuous, stochastic, and observed**
-- Lower is what?
-- **discrete, deterministic, and unobserved**
-
-## Sampling via JAGS 
-```{.python code-line-numbers="0|1|2|3|4|5"}
-model {              # opens the model
-  theta ~ dbeta(1,1) # the prior: theta is distributed as a beta(1,1) 
-  k ~ dbin(theta,n)  # the likelihood: k is distrbuted binomially 
-                     # ...with the theta and n as parameters
-}                    # this closes the model
 ```
----
+- ![](images/graphical%20model.png){width=30%}
 
-## Try it yourself
- - go to "Using JAGS to sample from the posterior for a binomial rate process"
- -  📂 `notebooks/probability distributions.ipynb`
+## Interpreting the graphical model for the code
+- ![](images/graphical%20model.png){width=30%}
+- Theta is latent, and continuous
+- n is observed and discrete
+- k is observed and discrete
+- Both feed n and k feed in to the likelihood to generate k
 
 ## R-hat as a convergence check
-
 - It’s important to check that the sampling has converged to the stationary distribution.
 - One heuristic is the R-hat statistic:  
   $\hat{R} = \frac{\text{var}(\text{within-chain})}{\text{var}(\text{across-chain})}$
 - Rule of thumb: $\hat{R}$ should be between 1.00 and 1.01 for convergence.
 
-<!-- #endregion -->
+## Inspecting the chains 
+- the chains of samples should look like *hairy catapillars*
+- like this:
+- ![](images/hairy_caterpillar.png){width=60%}
 
-<!-- #region Lecture#4 Parameter estimation-->
+## Try it yourself
+ - go to "MCMC convergence checks**
+ -  📂 `notebooks/probability distributions.ipynb`
 
-# Lecture#3: Parameter estimation
-
-## Posterior from the last example
-- We estimated the posterior distribution of $\theta$ given the data
-- We sampled from this model
-- ![](fig2.1.jpg)
-- and we got this distribution
-- ![](fig2.8.jpg) 
-
-## Conjugacy
-- Beta distributions has a natural interpretation
-- $\theta \sim text{Beta(\alpha, \beta)}$  
-- $\alpha$ and $\beta$ can be thought of as counts
-- $\alpha = 1 + text{successes} = 1 + k$
-- $\beta = 1 + text{failures} = 1 + (n-k) $
- 
-## Why 1 + count?
-- Beta(1,1) is a uniform distribution so this is equivalent to 0 counts
-- It is your belief distribution when you have no knowledge etc.  
-- Thus evidence accumulates from 1, via counting of successes and failures
- 
-## Conjugacy
-- Notice that the update from the prior to the posterior just comes from adding the counts to the beta distribution
-- prior: Beta(1,1) → posterior: Beta(1+k, 1+(n-k)) 
-- prior: Beta(1,1) → posterior: Beta(1+ successCount, 1+ failureCount)  
-- No sampling is needed because we have the equation
-- When the prior and posterior have same type of distribution they are "conjugate"
-
-## Conjugacy interactive example
-- Binder example- play with the beta distribution
-- No sampling needed you just change inputs to the beta distribution to compute posterior
-  
 ## Difference between two rates
-- Suppose we have to processes, say two tasks producing:
-- k1 successes out of n1 trials
-- k2 successes out of n2 trials
-- let's assume they are generated by two different rates $\theta_1$ and $\theta_2$
-- we want to know the difference in the rates $\delta = \theta_1 - \theta_2$
-- *e.g. the effect of a drug on cognitive performance*
-- *e.g. the effect of a age on task performance*
- 
-## Graphical model for inferring differences in rates
-- ![](fig3.3.jpg) 
+- Suppose we observe two processes, each producing successes out of trials:
+- Process 1: $k_1$ successes out of $n_1$ trials  
+- Process 2: $k_2$ successes out of $n_2$ trials
+- We assume each is governed by a different underlying rate: $\theta_1$ and $\theta_2$.
 
-## Sampling code for infferring differences in rates
-<!-- ``` {.python code-line-numbers="1-2|6-7|8-9|10"}
-import pyjags
-import numpy as np
-model = """
+## Estimating the difference
+- We want to model each rate with a posterior Beta distribution, and we are interested in the difference:
+- $\delta = \theta_1 - \theta_2$
+- This tells us how much more (or less) likely success is in one group compared to the other.
+
+## Examples and intuition
+- Examples:
+- 📈 Effect of a drug on performance ($\theta_1$ = treated, $\theta_2$ = control)
+- 👶 Performance difference between age groups
+- 🧪 Comparison of two algorithms on success rate
+- A positive $\delta$ means group 1 is better; a negative $\delta$ means group 2 is better.
+
+## Graphical model for inferring differences
+- ![](images/fig3.3.jpg){width=100%}
+- Why is delta double boundary?
+- Because it is completely determined by the two thetas 
+
+## JAGS code for infferring differences in rates
+```{.python code-line-numbers="0|1|2|3|4|5|6"}
 model{ 
   k1 ~ dbin(theta1,n1)
   k2 ~ dbin(theta2,n2)
   theta1 ~ dbeta(1,1)
   theta2 ~ dbeta(1,1)
   delta <-theta1-theta2
-}
-"""
-data = {'N': 10, 'y': np.random.randn(10)}
-model = pyjags.Model(model, data=data, chains=3)
-samples = model.sample(1000, vars=['mu', 'sigma'])
-print(samples)
-``` -->
+}                   # End of model
+```
+## Try it yourself
+ - go to "Inferring the difference between two rates"  
+ - `notebooks/probability distributions.ipynb`
 
-## Sampled posterior for difference in rates
-- ![](fig3.4.jpg) 
+## Interpret the posterior
+- What is the probability that the difference in rates is below 0?
+- ![](images/posterior_delta.jpg){width=50%}
+
+%%%%%%%%%%uptohere%%%%%%%%%%%
 
 ## Inferring a common rate 
 - In some cases we want to infer a rate for 2 processes
