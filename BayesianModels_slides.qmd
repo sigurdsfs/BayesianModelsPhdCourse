@@ -52,7 +52,7 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 <!-- #endregion -->
 
 <!-- #region Lecture#1 Preamble -->
-# Preamble
+# Lecture 1: Preamble
 - How the week will go
 - Materials  
 - Schedule  
@@ -148,7 +148,7 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 
 <!-- #region Lecture#2 Basics of Bayesian analysis-->
 
-# Basics of Bayesian Analysis
+# Lecture 2: Basics of Bayesian Analysis
 - The spirit of Bayesian thinking
 - What is Bayesian modeling?
 - Principles of Bayesian inference
@@ -372,7 +372,7 @@ Jaynes (2003)
 - Counterfactual policies: what you would have done, if the data had turned out different impacts on your p-values. 
 - Not widely understood. 
 
-## Conjugate Priors
+## Conjugate priors
 - If Prior and posterior from the same distribution family → *conjugate*  
 - <br>
 - For example:
@@ -382,7 +382,7 @@ Jaynes (2003)
 - The posterior can be computed by plugging data directly into an equation
 - Conjugacy allows for *analytic updates* 
 
-## When Conjugacy Fails: Sampling
+## When conjugacy isnt possible: Sampling
 - Conjugacy is relatively rare in real world cases
 - In cases where conjugacy is not available sampling solutions are possible
 - Commonly MCMC - Markov Chain Monte Carlo
@@ -420,10 +420,131 @@ Jaynes (2003)
 
 <!-- #region Lecture#3 Modelling a binary process-->
 
+# Modeling a Binary Process
+- Modeling binary outcomes in cognition  
+- From observed data to hidden probabilities  
+- Graphical models and their notation  
+- Bayesian inference with JAGS  
+- Convergence diagnostics and posterior checks  
+
+## Modeling a Binary Process
+- Start simple: focus on binary outcomes  
+  (e.g., *Success/Failure*, *Correct/Incorrect*, *Yes/No*) 
+- Common examples: coin flips, true/false questions, detection tasks, motor responses
+- In our go/no-go example, each of the $n$ trials results in either success or failure,  
+  with $k$ indicating the number of successes
+- Binary processes are foundational for modeling cognition
+
+## Getting Started
+- Our goal is to infer **ability** in a go/no-go task
+- We estimate a **rate** — the hidden probability $\theta$ that a response is correct
+- We represent our uncertainty about $\theta$ as a probability distribution
+- Many cognitive tasks can be modeled this way
+
+## Binary Tasks in Cognitive Science
+- Go/no-go, stop-signal, 2AFC, task switching  
+- Recognition memory, Stroop, Flanker, oddball detection  
+- Visual search, discrimination tasks
+
+## From Binary Outcomes to a Hidden Rate
+- Observe $k$ successes in $n$ trials → compute $\frac{k}{n}$
+- But our interest is in the *underlying* success rate $\theta$
+- Model: $k \sim \text{Binomial}(\theta, n)$
+- $p(k \mid \theta, n) = \binom{n}{k} \theta^k (1 - \theta)^{n - k}$
+- Assumes independent, identically distributed (i.i.d.) trials — no history effects
+
+## Try it Yourself
+- `notebooks/probability distributions.ipynb`
+- 
+- Explore the binomial distribution interactively
+- Adjust parameters and visualize how $k$ and $n$ relate to $\theta$
+
+
+## Graphical Models
+
+- Graphical models represent probabilistic structure visually
+
+- Nodes represent variables; edges represent dependencies
+
+- Child nodes are conditionally dependent on parent nodes
+
+- ![](images/graphical%20model.png){width=30%}
+
+---
+
+## Graphical Notation
+
+- **Circular** nodes: continuous variables  
+- **Square** nodes: discrete variables  
+
+- **Shaded** nodes: observed  
+- **Unshaded** nodes: hidden  
+
+- **Single border**: stochastic variable  
+- **Double border**: deterministic relationship
+
+---
+
+## Graphical Notation Reference
+
+- ![](images/graphical%20lexicon.jpeg){width=70%}
+
+---
+
+## Graphical Model Quiz
+
+- ![](images/graphical%20model%20test.jpeg){width=30%}
+
+- Upper node: What type of variable is this?  
+  **Answer:** Continuous, stochastic, and observed
+
+- Lower node: What type of variable is this?  
+  **Answer:** Discrete, deterministic, and unobserved
+
+---
+
+## Sampling via JAGS
+
+```{.python code-line-numbers="0|1|2|3|4|5"}
+model {              # Define the model
+  theta ~ dbeta(1,1) # Prior: theta follows a uniform beta distribution
+  k ~ dbin(theta,n)  # Likelihood: k follows a binomial distribution
+                     # with parameters theta and n
+}                    # End of model
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Modeling a Binary Process
+- Binary models in cognition 
+- Graphical models & notation  
+- Bayesian inference with JAGS  
+- Convergence and posterior checks**  
+
 ## Modeling a Binary Process
 - Start simple: focus on binary outcomes.
 - Each trial is a *Success/Failure*, *Correct/Incorrect*, *Yes/No*.
 - Examples: Coin flips, true/false questions, detection tasks, motor responses.
+- Our go-nogo example is a binary process. n trials each either success or failure, where k is the number of success
 - Binary processes are foundational for modeling cognition.
  
 ## Getting Started
@@ -492,7 +613,7 @@ model {              # opens the model
 
 <!-- #endregion -->
 
-<!-- #region Lecture#3 Parameter estimation-->
+<!-- #region Lecture#4 Parameter estimation-->
 
 # Lecture#3: Parameter estimation
 

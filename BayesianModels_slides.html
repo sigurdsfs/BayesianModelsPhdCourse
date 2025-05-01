@@ -221,8 +221,8 @@
 <!-- #region Lecture#1 Preamble -->
 </section>
 <section>
-<section id="preamble" class="title-slide slide level1 center">
-<h1>Preamble</h1>
+<section id="lecture-1-preamble" class="title-slide slide level1 center">
+<h1>Lecture 1: Preamble</h1>
 <ul>
 <li class="fragment">How the week will go</li>
 <li class="fragment">Materials<br>
@@ -359,8 +359,8 @@
 <!-- #region Lecture#2 Basics of Bayesian analysis-->
 </section></section>
 <section>
-<section id="basics-of-bayesian-analysis" class="title-slide slide level1 center">
-<h1>Basics of Bayesian Analysis</h1>
+<section id="lecture-2-basics-of-bayesian-analysis" class="title-slide slide level1 center">
+<h1>Lecture 2: Basics of Bayesian Analysis</h1>
 <ul>
 <li class="fragment">The spirit of Bayesian thinking</li>
 <li class="fragment">What is Bayesian modeling?</li>
@@ -698,7 +698,7 @@
 </ul>
 </section>
 <section id="conjugate-priors" class="slide level2">
-<h2>Conjugate Priors</h2>
+<h2>Conjugate priors</h2>
 <ul>
 <li class="fragment">If Prior and posterior from the same distribution family → <em>conjugate</em><br>
 </li>
@@ -711,8 +711,8 @@
 <li class="fragment">Conjugacy allows for <em>analytic updates</em></li>
 </ul>
 </section>
-<section id="when-conjugacy-fails-sampling" class="slide level2">
-<h2>When Conjugacy Fails: Sampling</h2>
+<section id="when-conjugacy-isnt-possible-sampling" class="slide level2">
+<h2>When conjugacy isnt possible: Sampling</h2>
 <ul>
 <li class="fragment">Conjugacy is relatively rare in real world cases</li>
 <li class="fragment">In cases where conjugacy is not available sampling solutions are possible</li>
@@ -771,23 +771,40 @@
 </ul>
 <!-- #endregion-->
 <!-- #region Lecture#3 Modelling a binary process-->
+</section></section>
+<section>
+<section id="modeling-a-binary-process" class="title-slide slide level1 center">
+<h1>Modeling a Binary Process</h1>
+<ul>
+<li class="fragment">Modeling binary outcomes in cognition<br>
+</li>
+<li class="fragment">From observed data to hidden probabilities<br>
+</li>
+<li class="fragment">Graphical models and their notation<br>
+</li>
+<li class="fragment">Bayesian inference with JAGS<br>
+</li>
+<li class="fragment">Convergence diagnostics and posterior checks</li>
+</ul>
 </section>
-<section id="modeling-a-binary-process" class="slide level2">
+<section id="modeling-a-binary-process-1" class="slide level2">
 <h2>Modeling a Binary Process</h2>
 <ul>
-<li class="fragment">Start simple: focus on binary outcomes.</li>
-<li class="fragment">Each trial is a <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em>.</li>
-<li class="fragment">Examples: Coin flips, true/false questions, detection tasks, motor responses.</li>
-<li class="fragment">Binary processes are foundational for modeling cognition.</li>
+<li class="fragment">Start simple: focus on binary outcomes<br>
+(e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em>)</li>
+<li class="fragment">Common examples: coin flips, true/false questions, detection tasks, motor responses</li>
+<li class="fragment">In our go/no-go example, each of the <span class="math inline">\(n\)</span> trials results in either success or failure,<br>
+with <span class="math inline">\(k\)</span> indicating the number of successes</li>
+<li class="fragment">Binary processes are foundational for modeling cognition</li>
 </ul>
 </section>
 <section id="getting-started" class="slide level2">
 <h2>Getting Started</h2>
 <ul>
-<li class="fragment">Let’s infer <strong>ability</strong> in a go/no-go task.</li>
-<li class="fragment">We estimate a <strong>rate</strong> — as a hidden probability <span class="math inline">\(\theta\)</span>.</li>
-<li class="fragment">We represent our uncertainty as a <strong>distribution</strong> over likely values of <span class="math inline">\(\theta\)</span>.</li>
-<li class="fragment">Many cognitive tasks can be represented in this way.</li>
+<li class="fragment">Our goal is to infer <strong>ability</strong> in a go/no-go task</li>
+<li class="fragment">We estimate a <strong>rate</strong> — the hidden probability <span class="math inline">\(\theta\)</span> that a response is correct</li>
+<li class="fragment">We represent our uncertainty about <span class="math inline">\(\theta\)</span> as a probability distribution</li>
+<li class="fragment">Many cognitive tasks can be modeled this way</li>
 </ul>
 </section>
 <section id="binary-tasks-in-cognitive-science" class="slide level2">
@@ -800,64 +817,157 @@
 <li class="fragment">Visual search, discrimination tasks</li>
 </ul>
 </section>
-<section id="from-binary-outcomes-to-hidden-rate" class="slide level2">
-<h2>From Binary Outcomes to Hidden Rate</h2>
+<section id="from-binary-outcomes-to-a-hidden-rate" class="slide level2">
+<h2>From Binary Outcomes to a Hidden Rate</h2>
 <ul>
-<li class="fragment">Observe <span class="math inline">\(k\)</span> successes in <span class="math inline">\(n\)</span> trials → rate <span class="math inline">\(\frac{k}{n}\)</span></li>
-<li class="fragment">But we want the <em>underlying</em> rate <span class="math inline">\(\theta\)</span></li>
-<li class="fragment">Model: <span class="math inline">\(k \sim \text{Binomial}(\theta, n)\)</span><br>
-</li>
-<li class="fragment"><span style="color: lightgrey;"><span class="math inline">\(p(k \mid \theta, n) = \binom{n}{k} \theta^k (1 - \theta)^{n - k}\)</span></span></li>
-<li class="fragment">Assumes no history effects (i.i.d. trials)</li>
+<li class="fragment">Observe <span class="math inline">\(k\)</span> successes in <span class="math inline">\(n\)</span> trials → compute <span class="math inline">\(\frac{k}{n}\)</span></li>
+<li class="fragment">But our interest is in the <em>underlying</em> success rate <span class="math inline">\(\theta\)</span></li>
+<li class="fragment">Model: <span class="math inline">\(k \sim \text{Binomial}(\theta, n)\)</span></li>
+<li class="fragment"><span class="math inline">\(p(k \mid \theta, n) = \binom{n}{k} \theta^k (1 - \theta)^{n - k}\)</span></li>
+<li class="fragment">Assumes independent, identically distributed (i.i.d.) trials — no history effects</li>
 </ul>
 </section>
 <section id="try-it-yourself" class="slide level2">
-<h2>Try it yourself</h2>
+<h2>Try it Yourself</h2>
 <ul>
-<li class="fragment">go to “Visualising the binomial distribution”</li>
-<li class="fragment">📂 <code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment">See</li>
+<li class="fragment">Explore the binomial distribution interactively</li>
+<li class="fragment">Adjust parameters and visualize how <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span> relate to <span class="math inline">\(\theta\)</span></li>
 </ul>
 </section>
 <section id="graphical-models" class="slide level2">
-<h2>Graphical models</h2>
+<h2>Graphical Models</h2>
 <ul>
-<li class="fragment">Graphical models are used to represent our probabilisitc model</li>
-<li class="fragment">Nodes represent all the variables relevant to the problem</li>
-<li class="fragment">Graph structure represent dependencies - children depend on parents</li>
-<li class="fragment"><img data-src="images/graphical%20model.png" style="width:30.0%"></li>
+<li class="fragment"><p>Graphical models represent probabilistic structure visually</p></li>
+<li class="fragment"><p>Nodes represent variables; edges represent dependencies</p></li>
+<li class="fragment"><p>Child nodes are conditionally dependent on parent nodes</p></li>
+<li class="fragment"><p><img data-src="images/graphical%20model.png" style="width:30.0%"></p></li>
 </ul>
 </section>
 <section id="graphical-notation" class="slide level2">
-<h2>Graphical notation</h2>
+<h2>Graphical Notation</h2>
 <ul>
-<li class="fragment"><em>Circular</em> - continuous, <em>Square</em> - discrete</li>
-<li class="fragment"><em>Shaded</em> - observed, <em>Non-shaded</em> - hidden</li>
-<li class="fragment"><em>Single-boundary</em> - stochastic, <em>Double-boundary</em> - deterministic</li>
+<li class="fragment"><p><strong>Circular</strong> nodes: continuous variables<br>
+</p></li>
+<li class="fragment"><p><strong>Square</strong> nodes: discrete variables</p></li>
+<li class="fragment"><p><strong>Shaded</strong> nodes: observed<br>
+</p></li>
+<li class="fragment"><p><strong>Unshaded</strong> nodes: hidden</p></li>
+<li class="fragment"><p><strong>Single border</strong>: stochastic variable<br>
+</p></li>
+<li class="fragment"><p><strong>Double border</strong>: deterministic relationship</p></li>
 </ul>
 </section>
-<section id="graphical-notation-1" class="slide level2">
-<h2>Graphical notation</h2>
+<section id="graphical-notation-reference" class="slide level2">
+<h2>Graphical Notation Reference</h2>
 <ul>
 <li class="fragment"><img data-src="images/graphical%20lexicon.jpeg" style="width:70.0%"></li>
 </ul>
 </section>
-<section id="tester" class="slide level2">
-<h2>Tester</h2>
+<section id="graphical-model-quiz" class="slide level2">
+<h2>Graphical Model Quiz</h2>
 <ul>
-<li class="fragment"><img data-src="images/graphical%20model%20test.jpeg" style="width:30.0%"></li>
-<li class="fragment">Upper is what?</li>
-<li class="fragment"><strong>continuous, stochastic, and observed</strong></li>
-<li class="fragment">Lower is what?</li>
-<li class="fragment"><strong>discrete, deterministic, and unobserved</strong></li>
+<li class="fragment"><p><img data-src="images/graphical%20model%20test.jpeg" style="width:30.0%"></p></li>
+<li class="fragment"><p>Upper node: What type of variable is this?<br>
+<strong>Answer:</strong> Continuous, stochastic, and observed</p></li>
+<li class="fragment"><p>Lower node: What type of variable is this?<br>
+<strong>Answer:</strong> Discrete, deterministic, and unobserved</p></li>
 </ul>
 </section>
 <section id="sampling-via-jags" class="slide level2">
 <h2>Sampling via JAGS</h2>
-<div class="sourceCode" id="cb4" data-code-line-numbers="0|1|2|3|4|5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>model {              <span class="co"># opens the model</span></span>
-<span id="cb4-2"><a href=""></a>  theta <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># the prior: theta is distributed as a beta(1,1) </span></span>
-<span id="cb4-3"><a href=""></a>  k <span class="op">~</span> dbin(theta,n)  <span class="co"># the likelihood: k is distrbuted binomially </span></span>
-<span id="cb4-4"><a href=""></a>                     <span class="co"># ...with the theta and n as parameters</span></span>
-<span id="cb4-5"><a href=""></a>}                    <span class="co"># this closes the model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4" data-code-line-numbers="0|1|2|3|4|5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>model {              <span class="co"># Define the model</span></span>
+<span id="cb4-2"><a href=""></a>  theta <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># Prior: theta follows a uniform beta distribution</span></span>
+<span id="cb4-3"><a href=""></a>  k <span class="op">~</span> dbin(theta,n)  <span class="co"># Likelihood: k follows a binomial distribution</span></span>
+<span id="cb4-4"><a href=""></a>                     <span class="co"># with parameters theta and n</span></span>
+<span id="cb4-5"><a href=""></a>}                    <span class="co"># End of model</span></span>
+<span id="cb4-6"><a href=""></a></span>
+<span id="cb4-7"><a href=""></a></span>
+<span id="cb4-8"><a href=""></a></span>
+<span id="cb4-9"><a href=""></a></span>
+<span id="cb4-10"><a href=""></a></span>
+<span id="cb4-11"><a href=""></a></span>
+<span id="cb4-12"><a href=""></a></span>
+<span id="cb4-13"><a href=""></a></span>
+<span id="cb4-14"><a href=""></a></span>
+<span id="cb4-15"><a href=""></a></span>
+<span id="cb4-16"><a href=""></a></span>
+<span id="cb4-17"><a href=""></a></span>
+<span id="cb4-18"><a href=""></a></span>
+<span id="cb4-19"><a href=""></a></span>
+<span id="cb4-20"><a href=""></a></span>
+<span id="cb4-21"><a href=""></a></span>
+<span id="cb4-22"><a href=""></a></span>
+<span id="cb4-23"><a href=""></a></span>
+<span id="cb4-24"><a href=""></a></span>
+<span id="cb4-25"><a href=""></a></span>
+<span id="cb4-26"><a href=""></a></span>
+<span id="cb4-27"><a href=""></a></span>
+<span id="cb4-28"><a href=""></a></span>
+<span id="cb4-29"><a href=""></a><span class="co"># Modeling a Binary Process</span></span>
+<span id="cb4-30"><a href=""></a><span class="op">-</span> Binary models <span class="kw">in</span> cognition </span>
+<span id="cb4-31"><a href=""></a><span class="op">-</span> Graphical models <span class="op">&amp;</span> notation  </span>
+<span id="cb4-32"><a href=""></a><span class="op">-</span> Bayesian inference <span class="cf">with</span> JAGS  </span>
+<span id="cb4-33"><a href=""></a><span class="op">-</span> Convergence <span class="kw">and</span> posterior checks<span class="op">**</span>  </span>
+<span id="cb4-34"><a href=""></a></span>
+<span id="cb4-35"><a href=""></a><span class="co">## Modeling a Binary Process</span></span>
+<span id="cb4-36"><a href=""></a><span class="op">-</span> Start simple: focus on binary outcomes.</span>
+<span id="cb4-37"><a href=""></a><span class="op">-</span> Each trial <span class="kw">is</span> a <span class="op">*</span>Success<span class="op">/</span>Failure<span class="op">*</span>, <span class="op">*</span>Correct<span class="op">/</span>Incorrect<span class="op">*</span>, <span class="op">*</span>Yes<span class="op">/</span>No<span class="op">*</span>.</span>
+<span id="cb4-38"><a href=""></a><span class="op">-</span> Examples: Coin flips, true<span class="op">/</span>false questions, detection tasks, motor responses.</span>
+<span id="cb4-39"><a href=""></a><span class="op">-</span> Our go<span class="op">-</span>nogo example <span class="kw">is</span> a binary process. n trials each either success <span class="kw">or</span> failure, where k <span class="kw">is</span> the number of success</span>
+<span id="cb4-40"><a href=""></a><span class="op">-</span> Binary processes are foundational <span class="cf">for</span> modeling cognition.</span>
+<span id="cb4-41"><a href=""></a> </span>
+<span id="cb4-42"><a href=""></a><span class="co">## Getting Started</span></span>
+<span id="cb4-43"><a href=""></a><span class="op">-</span> Let’s infer <span class="op">**</span>ability<span class="op">**</span> <span class="kw">in</span> a go<span class="op">/</span>no<span class="op">-</span>go task.</span>
+<span id="cb4-44"><a href=""></a><span class="op">-</span> We estimate a <span class="op">**</span>rate<span class="op">**</span> — <span class="im">as</span> a hidden probability $\theta$.</span>
+<span id="cb4-45"><a href=""></a><span class="op">-</span> We represent our uncertainty <span class="im">as</span> a <span class="op">**</span>distribution<span class="op">**</span> over likely values of $\theta$.</span>
+<span id="cb4-46"><a href=""></a><span class="op">-</span> Many cognitive tasks can be represented <span class="kw">in</span> this way.</span>
+<span id="cb4-47"><a href=""></a></span>
+<span id="cb4-48"><a href=""></a><span class="co">## Binary Tasks in Cognitive Science</span></span>
+<span id="cb4-49"><a href=""></a><span class="op">-</span> Go<span class="op">/</span>no<span class="op">-</span>go, stop<span class="op">-</span>signal, <span class="dv">2</span><span class="er">AFC</span>, task switching  </span>
+<span id="cb4-50"><a href=""></a><span class="op">-</span> Recognition memory, Stroop, Flanker, oddball detection  </span>
+<span id="cb4-51"><a href=""></a><span class="op">-</span> Visual search, discrimination tasks</span>
+<span id="cb4-52"><a href=""></a></span>
+<span id="cb4-53"><a href=""></a><span class="co">## From Binary Outcomes to Hidden Rate</span></span>
+<span id="cb4-54"><a href=""></a><span class="op">-</span> Observe $k$ successes <span class="kw">in</span> $n$ trials → rate $\frac{k}{n}$</span>
+<span id="cb4-55"><a href=""></a><span class="op">-</span> But we want the <span class="op">*</span>underlying<span class="op">*</span> rate $\theta$</span>
+<span id="cb4-56"><a href=""></a><span class="op">-</span> Model: $k \sim \text{Binomial}(\theta, n)$  </span>
+<span id="cb4-57"><a href=""></a><span class="op">-</span> <span class="op">&lt;</span>span style<span class="op">=</span><span class="st">"color: lightgrey;"</span><span class="op">&gt;</span>$p(k \mid \theta, n) <span class="op">=</span> \binom{n}{k} \theta<span class="op">^</span>k (<span class="dv">1</span> <span class="op">-</span> \theta)<span class="op">^</span>{n <span class="op">-</span> k}$<span class="op">&lt;/</span>span<span class="op">&gt;</span></span>
+<span id="cb4-58"><a href=""></a><span class="op">-</span> Assumes no history effects (i.i.d. trials)</span>
+<span id="cb4-59"><a href=""></a></span>
+<span id="cb4-60"><a href=""></a><span class="co">## Try it yourself</span></span>
+<span id="cb4-61"><a href=""></a> <span class="op">-</span> go to <span class="st">"Visualising the binomial distribution"</span></span>
+<span id="cb4-62"><a href=""></a> <span class="op">-</span>  📂 `notebooks<span class="op">/</span>probability distributions.ipynb`</span>
+<span id="cb4-63"><a href=""></a></span>
+<span id="cb4-64"><a href=""></a><span class="co">## Graphical models</span></span>
+<span id="cb4-65"><a href=""></a><span class="op">-</span> Graphical models are used to represent our probabilisitc model</span>
+<span id="cb4-66"><a href=""></a><span class="op">-</span> Nodes represent <span class="bu">all</span> the variables relevant to the problem</span>
+<span id="cb4-67"><a href=""></a><span class="op">-</span> Graph structure represent dependencies <span class="op">-</span> children depend on parents</span>
+<span id="cb4-68"><a href=""></a><span class="op">-</span> <span class="op">!</span>[](images<span class="op">/</span>graphical<span class="op">%</span><span class="dv">20</span><span class="er">model</span>.png){width<span class="op">=</span><span class="dv">30</span><span class="op">%</span>}</span>
+<span id="cb4-69"><a href=""></a> </span>
+<span id="cb4-70"><a href=""></a><span class="co">## Graphical notation </span></span>
+<span id="cb4-71"><a href=""></a><span class="op">-</span> <span class="op">*</span>Circular<span class="op">*</span> <span class="op">-</span> continuous, <span class="op">*</span>Square<span class="op">*</span> <span class="op">-</span> discrete</span>
+<span id="cb4-72"><a href=""></a><span class="op">-</span> <span class="op">*</span>Shaded<span class="op">*</span> <span class="op">-</span> observed, <span class="op">*</span>Non<span class="op">-</span>shaded<span class="op">*</span> <span class="op">-</span> hidden</span>
+<span id="cb4-73"><a href=""></a><span class="op">-</span> <span class="op">*</span>Single<span class="op">-</span>boundary<span class="op">*</span> <span class="op">-</span> stochastic, <span class="op">*</span>Double<span class="op">-</span>boundary<span class="op">*</span> <span class="op">-</span> deterministic </span>
+<span id="cb4-74"><a href=""></a></span>
+<span id="cb4-75"><a href=""></a><span class="co">## Graphical notation</span></span>
+<span id="cb4-76"><a href=""></a><span class="op">-</span> <span class="op">!</span>[](images<span class="op">/</span>graphical<span class="op">%</span><span class="dv">20l</span><span class="er">exicon</span>.jpeg){width<span class="op">=</span><span class="dv">70</span><span class="op">%</span>}</span>
+<span id="cb4-77"><a href=""></a> </span>
+<span id="cb4-78"><a href=""></a><span class="co">## Tester</span></span>
+<span id="cb4-79"><a href=""></a><span class="op">-</span>  <span class="op">!</span>[](images<span class="op">/</span>graphical<span class="op">%</span><span class="dv">20</span><span class="er">model</span><span class="op">%</span><span class="dv">20</span><span class="er">test</span>.jpeg){width<span class="op">=</span><span class="dv">30</span><span class="op">%</span>}</span>
+<span id="cb4-80"><a href=""></a><span class="op">-</span> Upper <span class="kw">is</span> what?</span>
+<span id="cb4-81"><a href=""></a><span class="op">-</span> <span class="op">**</span>continuous, stochastic, <span class="kw">and</span> observed<span class="op">**</span></span>
+<span id="cb4-82"><a href=""></a><span class="op">-</span> Lower <span class="kw">is</span> what?</span>
+<span id="cb4-83"><a href=""></a><span class="op">-</span> <span class="op">**</span>discrete, deterministic, <span class="kw">and</span> unobserved<span class="op">**</span></span>
+<span id="cb4-84"><a href=""></a></span>
+<span id="cb4-85"><a href=""></a><span class="co">## Sampling via JAGS </span></span>
+<span id="cb4-86"><a href=""></a>```{.python code<span class="op">-</span>line<span class="op">-</span>numbers<span class="op">=</span><span class="st">"0|1|2|3|4|5"</span>}</span>
+<span id="cb4-87"><a href=""></a>model {              <span class="co"># opens the model</span></span>
+<span id="cb4-88"><a href=""></a>  theta <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># the prior: theta is distributed as a beta(1,1) </span></span>
+<span id="cb4-89"><a href=""></a>  k <span class="op">~</span> dbin(theta,n)  <span class="co"># the likelihood: k is distrbuted binomially </span></span>
+<span id="cb4-90"><a href=""></a>                     <span class="co"># ...with the theta and n as parameters</span></span>
+<span id="cb4-91"><a href=""></a>}                    <span class="co"># this closes the model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="try-it-yourself-1" class="slide level2">
 <h2>Try it yourself</h2>
@@ -875,7 +985,7 @@
 <li class="fragment">Rule of thumb: <span class="math inline">\(\hat{R}\)</span> should be between 1.00 and 1.01 for convergence.</li>
 </ul>
 <!-- #endregion -->
-<!-- #region Lecture#3 Parameter estimation-->
+<!-- #region Lecture#4 Parameter estimation-->
 </section></section>
 <section>
 <section id="lecture3-parameter-estimation" class="title-slide slide level1 center">
