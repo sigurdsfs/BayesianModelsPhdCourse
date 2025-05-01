@@ -12,12 +12,12 @@ Hvidovre hospital https://maps.app.goo.gl/uthwTHfo5idFbzZc6
 There are two locations depending on the day, so pay close attention to the schedule. 
 
 *Mon, Tues, & Fri: Auditorium 3-4*
-Enter the hospital via *Indgang Ost* in Center E
-Follow signs to Auditorium 3-4, which will direct you down the first corridor on your right as you are walking through center E
+- Enter the hospital via *Indgang Ost* in Center E
+- Follow signs to Auditorium 3-4, which will direct you down the first corridor on your right as you are walking through center E
 
 *Wed & Thurs: Conference room*
-Go to Center C, MR-Afdeling, Etage 0 (ground floor)
-Ten meters before you reach the waiting area of the MR-department: Turn right through the glass door and left immediately after, it is signposted MR-konference. 
+- Go to Center C, MR-Afdeling, Etage 0 (ground floor)
+- Ten meters before you reach the waiting area of the MR-department: Turn right through the glass door and left immediately after, it is signposted MR-konference. 
 
 Here is a map of the hospital. Find the correct centre first, then locate the room. 
 https://www.hvidovrehospital.dk/praktisk-information/transport/Documents/Hvidovre%20Hospital%20-%20Kort,%20parkering%20og%20oversigt.pdf 
