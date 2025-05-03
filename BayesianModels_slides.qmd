@@ -555,79 +555,109 @@ model{
  - `notebooks/probability distributions.ipynb`
 
 ## Interpret the posterior
-- What is the probability that the difference in rates is below 0?
-- ![](images/posterior_delta.jpg){width=50%}
-
-%%%%%%%%%%uptohere%%%%%%%%%%%
+- What is the approximate probability that the difference in rates  ($\delta$) is below 0?
+- ![](images/posterior_delta.png){width=45%}
 
 ## Inferring a common rate 
-- In some cases we want to infer a rate for 2 processes
-- e.g. same subject, same task, two different sessions
-- Here we would model with a single $\theta$
-- ![](fig3.5.jpg) 
+- In some cases we want to infer a rate for 2 different processes
+- e.g. *same subject & task, two different sessions*
+- e.g. *same group, different subjects*
+- e.g. *same subject, different tasks*
+- Here we would model a single $\theta$
+- ![](/images/common_rate_model.jpg) 
 
 ##  Same model with plate notation
-- ![](fig3.6.jpg)
-- note only one theta, multiple processes  
+- ![](/images/common_rate_model_plate.jpg)
+- note only one theta, but multiple processes indexed by i 
 
-## Code for inferring a common rate 
-- model{ 
-  k1 ~ dbin(theta1,n1)
-  k2 ~ dbin(theta2,n2)
+## JAGS code for inferring a common rate 
+```{.python code-line-numbers="0|1|2|3|4"}
+ model{ 
+  k1 ~ dbin(theta,n1)
+  k2 ~ dbin(theta,n2)
   theta ~ dbeta(1,1)
 }
- 
-## Predicting data
-- We know 2 distributions already
-- 1.  Prior distribution of parameter e.g. $p(\theta)$
-- This is our prior prediction for what the parameters will be, prior to the data
-- 2. Posterior distribution of parameter having observed the data e.g. $p(\theta|data)$
-- This is our posterior prediction for the what the parameters will be, having seen the data
-- Remember todays posterior is tomorrows prior, so they can be a prediction for the next round of data, ad infinitum. 
- 
-## Predicting data
-- Priors and posteriors are of parameters. what about actually predicting data? 
-- 3.  Prior predictive distribution  $p(data)$
-- this is the prediciton of what the data will be based on the prior, prior to the data being seen.
-- 4.  Posterior predictive distribution  $p(new_data|old_data)$
-- this is the prediciton of what the data will be based on the posterior, after the data has been seen.
+```
+- ![](/images/common_rate_model.jpg){width=100%} 
+- Only one $\theta$ is modelling the two sets of data $k1$ and $k2$
+
+## Try it out
+ - go to "Inferring a common rate"  
+ - `notebooks/probability distributions.ipynb`
+
+## Predictions
+- In Bayesian modeling, everything is about prediction.
+- There are two fundamental axes:
+  1. Are we predicting **parameters** or **data**?
+  2. Are we predicting **before** or **after** observing data?
+
+## Diiferent types of prediction
+|                       | **Before data**                                         | **After data**                                                             |
+|-----------------------|---------------------------------------------------------|----------------------------------------------------------------------------|
+| **Parameters**        | Prior distribution: $p(\theta)$                         | Posterior distribution: $p(\theta \mid d_{\text{obs}})$                    | 
+| **Data**              | Prior predictive distribution: $p(d_{\text{new}})$      | Posterior predictive distribution: $p(d_{\text{new}} \mid d_{\text{obs}})$ |
+
+## Predicting parameters
+- The **prior distribution** $p(\theta)$ is our prediction about the parameter before seeing data.
+- The **posterior distribution** $p(\theta \mid d_\text{obs})$ is our updated prediction after observing data.
+
+## Predicting data.
+- The **prior predictive distribution** $p(d_{\text{new}})$ tells us what data we expect based on our prior belief about $\theta$.
+- The **posterior predictive distribution** $p(d_{\text{new}} \mid d_{\text{obs}})$ predicts new data based on our updated belief.
+
+## Todays posterior is tomorrows prior
+- This measn that any posterior can always become a prior for a future prediction, and so on.  
 
 ## Prior and posterior prediction
+```{.python code-line-numbers="1-3|5-6|8-10|12-13"}
 model {
-  k ~ dbin(theta,n)
-  theta~dbeta(1,1)
-  postpredk~dbin(theta,n)
-  thetaprior~dbeta(1,1)
-  priorpredk~dbin(thetapior,n)
+  # Prior distribution
+  thetaprior ~ dbeta(1,1) 
+  
+  # Prior predictive distribtion
+  priorpredk ~ dbin(thetapior,n) 
+  
+  # Posterior distribution 
+  theta ~ dbeta(1,1) # theta becomes the posterior distribution of   
+  k ~ dbin(theta,n) #likelihood for updating prior to posterior
+  
+  # Posterior predictive distribution
+  postpredk ~ dbin(theta,n) # posterior predictive distibution
 }
- 
+```
 ## Samples of the four distributions
-- ![](fig3.9.jpg)
-- Note the prior and posterior are in the space of the parameter
-- And the prior and posterior predictive distributions are in space of the data k out of n trials. 
+- ![](/images/prior_post_predictions.jpg){width=60%}
+- Prior and posterior distributions are in the space of the parameter
+- Prior and posterior predictive distributions are in space of the data k out of n trials. 
  
 ## Comparing data to the posterior predictive distribution 
+- - ![](/images/common_rate_model.jpg){width=100%} 
 - If we estimate the model along with its predictive distributions
 - We can see how this compares to the actual data
-- ![](fig3.11.jpg)
-- Here we see it's not good. The model has poor *descriptive adequacy*
-- Why is it not a good model?
+
+## Descriptive adequacy
+- ...means how well does the model describe the data
+-  Posterior for this data: k1 = 0, n1 =10 & k2=10, n2 = 10
+- ![](images/posterior_common.jpg){width=50%}
+- Looks ok, but does it have descriptive adequacy?
+
+## Check posterior predictive distribution against data
+- ![](images/posterior_predictive_common.jpg){width=40%}
+- The model has poor *descriptive adequacy*. Why?
 - Its a common rate model, so it predicts the same rate, but the data clearly is better modelled with different rates.  
  
-## Inference and time 
-- prediction naturally suggests thinking about the future.
-- predictions can also apply to the past—for instance, when information is missing.
-- data can help infer hidden cognitive variables, which in turn may predict past behavior where information is incomplete.
-- similar to how historians reconstruct past events from limited evidence.
-- or a court of law infers guilt based on available testimony and facts.
-- we predict what might have been known in the past if more information had been available. 
+## Prediction backwards and forward in time 
+- Prediction normally about the future.
+- Predictions can also apply to the past e.g. when information is missing.
+- Data can help us infer hidden cognitive variables, which in turn may predict past behavior where information is incomplete.
+- We predict what might have been known in the past if more information had been available. 
 - Inference allows prediction both forward and backward in time.
  
-## Todays posterior is tomorrows prior 
-- Since the posterior distribution of parameters is continually updatable, then so is the posterior predictive distribution. 
-- As the posterior is updated, then so are its predictions for the data.
-- ![](box3.4.jpg)
-- This can carry on forever.
+## Prediction forward and backward in time
+- Prediction is usually about the future — but it can also apply to the past.
+- When data are missing, we use observed evidence to infer what *might have happened*.
+- Cognitive models often predict hidden variables that explain past behavior.
+- Inference lets us predict both what **might** happen and what **might have** happened.
 <!-- #endregion -->
 
 <!-- #region Lecture#4 Inference with Gaussians   -->
@@ -682,34 +712,51 @@ for (i in 1:n) {
 <!-- #endregion                            -->
 
 <!-- #region Lecture#5 Latent Mixture models      -->
-# Latent Mixture Models  
-- A latent mixture model is a model that assumes data are generated from  a mixture of different hidden (latent) processes
-- E.g. imagine a cogntive test where some people try their best, and others just guess
-- the scores then are generated by two mechnamisms, ability and guessing
-- how would we model this as a mixture of processes
- 
-## Latent mixture model of cognitive test 
-- to model the "tryers" you would model their ability as a rate of correct performance, as before. 
-- to model the "guessers" you just model it as chance performance
+
+# Latent mixture models
+- What are they?
+- How to use them to mixtures of cognitive processes or traits
+- How to use them to model compare models 
+
+## Latent mixture models
+- ...allow you to model data as coming from a *mixture* of *latent* processes. 
+- This could be a mixture of cognitive processes, e.g. *guessing and trying, attending and not attending, remembering and forgetting.*
+- Or mixture of states or traits, e.g. *depresssed vs. healthy, parkinsons vs. healthy, sleepy vs. awake*  
+- An indicator variable estimates which mixture of processes generated the data.
+- You can also use these mixture models to compare different models 
+
+## Example: Latent mixture model of cognitive test
+- *“Tryers”* have an ability that determines their rate of correct responses.
+- *“Guessers”* score at chance level (e.g. 50%).
+- Each participant belongs to one of the two groups.
+- An *indicator* variable $z_i$ models *guesser* or *tryer*.
 
 ## Latent mixture graphical model 
-- ![](fig.6.1.jpg)
-- Here z determines whether the person is a tryer or a guesser. Thus z is a parameter that models the mixture of processes that explain the data. 
-- We know the probability of guessing is 0.5
-- The posterior distribution of z gives us the estimate of how many guessers there were.
+- ![](images/lmm.jpg){width=50%}
+- $z_i$ is an indicator variable for participant $i$.
+- $z_i = 0$ → guesser; $z_i = 1$ → tryer.
+- $\psi = 0.5$ is the known chance performance level.
+- $\phi$ is the tryer’s ability (estimated).
+- Posterior of $z$ tells us the mixture of guessers vs. tryers
+
+## JAGS code for latent mixture
+```{.python code-line-numbers="1-3|4-5|6-8"}
+model {
+  for (i in 1:p) {
+    z[i] ~ dbern(0.5)
+  }
+
+  psi <- 0.5
+  phi ~ dbeta(1, 1) I(0.5, 1)
+
+  for (i in 1:p) {
+    theta[i] <- equals(z[i], 0) * psi + equals(z[i], 1) * phi
+    k[i] ~ dbin(theta[i], n)
+  }
+}
+
  
-## Latent mixture code
-model{
-for (i in 1:p) {
-z[i]~dbern(0.5)
-}
-psi <-0.5
-phi ~ dbeta(1,1)I(0.5,1)
-for (i in 1:p) {
-  theta[i]<- equals(z[i],0)*psi+equals(z[i],1)*phi
-  k[i]~dbin(theta[i],n)
-}
-}
+
 <!-- #endregion                             -->
 
 <!-- #region Lecture#6 Model selection            -->

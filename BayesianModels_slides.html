@@ -978,103 +978,177 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <section id="interpret-the-posterior" class="slide level2">
 <h2>Interpret the posterior</h2>
 <ul>
-<li class="fragment">What is the probability that the difference in rates is below 0?</li>
-<li class="fragment"><img data-src="images/posterior_delta.jpg" style="width:50.0%"></li>
+<li class="fragment">What is the approximate probability that the difference in rates (<span class="math inline">\(\delta\)</span>) is below 0?</li>
+<li class="fragment"><img data-src="images/posterior_delta.png" style="width:45.0%"></li>
 </ul>
 </section>
 <section id="inferring-a-common-rate" class="slide level2">
 <h2>Inferring a common rate</h2>
 <ul>
-<li class="fragment">In some cases we want to infer a rate for 2 processes</li>
-<li class="fragment">e.g.&nbsp;same subject, same task, two different sessions</li>
-<li class="fragment">Here we would model with a single <span class="math inline">\(\theta\)</span></li>
-<li class="fragment"><img data-src="fig3.5.jpg"></li>
+<li class="fragment">In some cases we want to infer a rate for 2 different processes</li>
+<li class="fragment">e.g.&nbsp;<em>same subject &amp; task, two different sessions</em></li>
+<li class="fragment">e.g.&nbsp;<em>same group, different subjects</em></li>
+<li class="fragment">e.g.&nbsp;<em>same subject, different tasks</em></li>
+<li class="fragment">Here we would model a single <span class="math inline">\(\theta\)</span></li>
+<li class="fragment"><img data-src="./images/common_rate_model.jpg"></li>
 </ul>
 </section>
 <section id="same-model-with-plate-notation" class="slide level2">
 <h2>Same model with plate notation</h2>
 <ul>
-<li class="fragment"><img data-src="fig3.6.jpg"></li>
-<li class="fragment">note only one theta, multiple processes</li>
+<li class="fragment"><img data-src="./images/common_rate_model_plate.jpg"></li>
+<li class="fragment">note only one theta, but multiple processes indexed by i</li>
 </ul>
 </section>
-<section id="code-for-inferring-a-common-rate" class="slide level2">
-<h2>Code for inferring a common rate</h2>
+<section id="jags-code-for-inferring-a-common-rate" class="slide level2">
+<h2>JAGS code for inferring a common rate</h2>
+<div class="sourceCode" id="cb6" data-code-line-numbers="0|1|2|3|4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a> model{ </span>
+<span id="cb6-2"><a href=""></a>  k1 <span class="op">~</span> dbin(theta,n1)</span>
+<span id="cb6-3"><a href=""></a>  k2 <span class="op">~</span> dbin(theta,n2)</span>
+<span id="cb6-4"><a href=""></a>  theta <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb6-5"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li class="fragment">model{ k1 ~ dbin(theta1,n1) k2 ~ dbin(theta2,n2) theta ~ dbeta(1,1) }</li>
+<li class="fragment"><img data-src="./images/common_rate_model.jpg" style="width:100.0%"></li>
+<li class="fragment">Only one <span class="math inline">\(\theta\)</span> is modelling the two sets of data <span class="math inline">\(k1\)</span> and <span class="math inline">\(k2\)</span></li>
 </ul>
 </section>
-<section id="predicting-data" class="slide level2">
-<h2>Predicting data</h2>
+<section id="try-it-out" class="slide level2">
+<h2>Try it out</h2>
 <ul>
-<li class="fragment">We know 2 distributions already</li>
-<li class="fragment"><ol type="1">
-<li class="fragment">Prior distribution of parameter e.g.&nbsp;<span class="math inline">\(p(\theta)\)</span></li>
+<li class="fragment">go to “Inferring a common rate”<br>
+</li>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+</ul>
+</section>
+<section id="predictions" class="slide level2">
+<h2>Predictions</h2>
+<ul>
+<li class="fragment">In Bayesian modeling, everything is about prediction.</li>
+<li class="fragment">There are two fundamental axes:
+<ol type="1">
+<li class="fragment">Are we predicting <strong>parameters</strong> or <strong>data</strong>?</li>
+<li class="fragment">Are we predicting <strong>before</strong> or <strong>after</strong> observing data?</li>
 </ol></li>
-<li class="fragment">This is our prior prediction for what the parameters will be, prior to the data</li>
-<li class="fragment"><ol start="2" type="1">
-<li class="fragment">Posterior distribution of parameter having observed the data e.g.&nbsp;<span class="math inline">\(p(\theta|data)\)</span></li>
-</ol></li>
-<li class="fragment">This is our posterior prediction for the what the parameters will be, having seen the data</li>
-<li class="fragment">Remember todays posterior is tomorrows prior, so they can be a prediction for the next round of data, ad infinitum.</li>
 </ul>
 </section>
-<section id="predicting-data-1" class="slide level2">
-<h2>Predicting data</h2>
+<section id="diiferent-types-of-prediction" class="slide level2">
+<h2>Diiferent types of prediction</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 36%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Before data</strong></th>
+<th><strong>After data</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Parameters</strong></td>
+<td>Prior distribution: <span class="math inline">\(p(\theta)\)</span></td>
+<td>Posterior distribution: <span class="math inline">\(p(\theta \mid d_{\text{obs}})\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Data</strong></td>
+<td>Prior predictive distribution: <span class="math inline">\(p(d_{\text{new}})\)</span></td>
+<td>Posterior predictive distribution: <span class="math inline">\(p(d_{\text{new}} \mid d_{\text{obs}})\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="predicting-parameters" class="slide level2">
+<h2>Predicting parameters</h2>
 <ul>
-<li class="fragment">Priors and posteriors are of parameters. what about actually predicting data?</li>
-<li class="fragment"><ol start="3" type="1">
-<li class="fragment">Prior predictive distribution <span class="math inline">\(p(data)\)</span></li>
-</ol></li>
-<li class="fragment">this is the prediciton of what the data will be based on the prior, prior to the data being seen.</li>
-<li class="fragment"><ol start="4" type="1">
-<li class="fragment">Posterior predictive distribution <span class="math inline">\(p(new_data|old_data)\)</span></li>
-</ol></li>
-<li class="fragment">this is the prediciton of what the data will be based on the posterior, after the data has been seen.</li>
+<li class="fragment">The <strong>prior distribution</strong> <span class="math inline">\(p(\theta)\)</span> is our prediction about the parameter before seeing data.</li>
+<li class="fragment">The <strong>posterior distribution</strong> <span class="math inline">\(p(\theta \mid d_\text{obs})\)</span> is our updated prediction after observing data.</li>
 </ul>
 </section>
-<section id="prior-and-posterior-prediction" class="slide level2">
-<h2>Prior and posterior prediction</h2>
-<p>model { k ~ dbin(theta,n) theta~dbeta(1,1) postpredk~dbin(theta,n) thetaprior~dbeta(1,1) priorpredk~dbin(thetapior,n) }</p>
-</section>
-<section id="samples-of-the-four-distributions" class="slide level2">
-<h2>Samples of the four distributions</h2>
+<section id="predicting-data." class="slide level2">
+<h2>Predicting data.</h2>
 <ul>
-<li class="fragment"><img data-src="fig3.9.jpg"></li>
-<li class="fragment">Note the prior and posterior are in the space of the parameter</li>
-<li class="fragment">And the prior and posterior predictive distributions are in space of the data k out of n trials.</li>
-</ul>
-</section>
-<section id="comparing-data-to-the-posterior-predictive-distribution" class="slide level2">
-<h2>Comparing data to the posterior predictive distribution</h2>
-<ul>
-<li class="fragment">If we estimate the model along with its predictive distributions</li>
-<li class="fragment">We can see how this compares to the actual data</li>
-<li class="fragment"><img data-src="fig3.11.jpg"></li>
-<li class="fragment">Here we see it’s not good. The model has poor <em>descriptive adequacy</em></li>
-<li class="fragment">Why is it not a good model?</li>
-<li class="fragment">Its a common rate model, so it predicts the same rate, but the data clearly is better modelled with different rates.</li>
-</ul>
-</section>
-<section id="inference-and-time" class="slide level2">
-<h2>Inference and time</h2>
-<ul>
-<li class="fragment">prediction naturally suggests thinking about the future.</li>
-<li class="fragment">predictions can also apply to the past—for instance, when information is missing.</li>
-<li class="fragment">data can help infer hidden cognitive variables, which in turn may predict past behavior where information is incomplete.</li>
-<li class="fragment">similar to how historians reconstruct past events from limited evidence.</li>
-<li class="fragment">or a court of law infers guilt based on available testimony and facts.</li>
-<li class="fragment">we predict what might have been known in the past if more information had been available.</li>
-<li class="fragment">Inference allows prediction both forward and backward in time.</li>
+<li class="fragment">The <strong>prior predictive distribution</strong> <span class="math inline">\(p(d_{\text{new}})\)</span> tells us what data we expect based on our prior belief about <span class="math inline">\(\theta\)</span>.</li>
+<li class="fragment">The <strong>posterior predictive distribution</strong> <span class="math inline">\(p(d_{\text{new}} \mid d_{\text{obs}})\)</span> predicts new data based on our updated belief.</li>
 </ul>
 </section>
 <section id="todays-posterior-is-tomorrows-prior" class="slide level2">
 <h2>Todays posterior is tomorrows prior</h2>
 <ul>
-<li class="fragment">Since the posterior distribution of parameters is continually updatable, then so is the posterior predictive distribution.</li>
-<li class="fragment">As the posterior is updated, then so are its predictions for the data.</li>
-<li class="fragment"><img data-src="box3.4.jpg"></li>
-<li class="fragment">This can carry on forever. <!-- #endregion --></li>
+<li class="fragment">This measn that any posterior can always become a prior for a future prediction, and so on.</li>
+</ul>
+</section>
+<section id="prior-and-posterior-prediction" class="slide level2">
+<h2>Prior and posterior prediction</h2>
+<div class="sourceCode" id="cb7" data-code-line-numbers="1-3|5-6|8-10|12-13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>model {</span>
+<span id="cb7-2"><a href=""></a>  <span class="co"># Prior distribution</span></span>
+<span id="cb7-3"><a href=""></a>  thetaprior <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>) </span>
+<span id="cb7-4"><a href=""></a>  </span>
+<span id="cb7-5"><a href=""></a>  <span class="co"># Prior predictive distribtion</span></span>
+<span id="cb7-6"><a href=""></a>  priorpredk <span class="op">~</span> dbin(thetapior,n) </span>
+<span id="cb7-7"><a href=""></a>  </span>
+<span id="cb7-8"><a href=""></a>  <span class="co"># Posterior distribution </span></span>
+<span id="cb7-9"><a href=""></a>  theta <span class="op">~</span> dbeta(<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># theta becomes the posterior distribution of   </span></span>
+<span id="cb7-10"><a href=""></a>  k <span class="op">~</span> dbin(theta,n) <span class="co">#likelihood for updating prior to posterior</span></span>
+<span id="cb7-11"><a href=""></a>  </span>
+<span id="cb7-12"><a href=""></a>  <span class="co"># Posterior predictive distribution</span></span>
+<span id="cb7-13"><a href=""></a>  postpredk <span class="op">~</span> dbin(theta,n) <span class="co"># posterior predictive distibution</span></span>
+<span id="cb7-14"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="samples-of-the-four-distributions" class="slide level2">
+<h2>Samples of the four distributions</h2>
+<ul>
+<li class="fragment"><img data-src="./images/prior_post_predictions.jpg" style="width:60.0%"></li>
+<li class="fragment">Prior and posterior distributions are in the space of the parameter</li>
+<li class="fragment">Prior and posterior predictive distributions are in space of the data k out of n trials.</li>
+</ul>
+</section>
+<section id="comparing-data-to-the-posterior-predictive-distribution" class="slide level2">
+<h2>Comparing data to the posterior predictive distribution</h2>
+<ul>
+<li class="fragment"><ul>
+<li class="fragment"><img data-src="./images/common_rate_model.jpg" style="width:100.0%"></li>
+</ul></li>
+<li class="fragment">If we estimate the model along with its predictive distributions</li>
+<li class="fragment">We can see how this compares to the actual data</li>
+</ul>
+</section>
+<section id="descriptive-adequacy" class="slide level2">
+<h2>Descriptive adequacy</h2>
+<ul>
+<li class="fragment">…means how well does the model describe the data</li>
+<li class="fragment">Posterior for this data: k1 = 0, n1 =10 &amp; k2=10, n2 = 10</li>
+<li class="fragment"><img data-src="images/posterior_common.jpg" style="width:50.0%"></li>
+<li class="fragment">Looks ok, but does it have descriptive adequacy?</li>
+</ul>
+</section>
+<section id="check-posterior-predictive-distribution-against-data" class="slide level2">
+<h2>Check posterior predictive distribution against data</h2>
+<ul>
+<li class="fragment"><img data-src="images/posterior_predictive_common.jpg" style="width:40.0%"></li>
+<li class="fragment">The model has poor <em>descriptive adequacy</em>. Why?</li>
+<li class="fragment">Its a common rate model, so it predicts the same rate, but the data clearly is better modelled with different rates.</li>
+</ul>
+</section>
+<section id="prediction-backwards-and-forward-in-time" class="slide level2">
+<h2>Prediction backwards and forward in time</h2>
+<ul>
+<li class="fragment">Prediction normally about the future.</li>
+<li class="fragment">Predictions can also apply to the past e.g.&nbsp;when information is missing.</li>
+<li class="fragment">Data can help us infer hidden cognitive variables, which in turn may predict past behavior where information is incomplete.</li>
+<li class="fragment">We predict what might have been known in the past if more information had been available.</li>
+<li class="fragment">Inference allows prediction both forward and backward in time.</li>
+</ul>
+</section>
+<section id="prediction-forward-and-backward-in-time" class="slide level2">
+<h2>Prediction forward and backward in time</h2>
+<ul>
+<li class="fragment">Prediction is usually about the future — but it can also apply to the past.</li>
+<li class="fragment">When data are missing, we use observed evidence to infer what <em>might have happened</em>.</li>
+<li class="fragment">Cognitive models often predict hidden variables that explain past behavior.</li>
+<li class="fragment">Inference lets us predict both what <strong>might</strong> happen and what <strong>might have</strong> happened. <!-- #endregion --></li>
 </ul>
 <!-- #region Lecture#4 Inference with Gaussians   -->
 </section></section>
@@ -1130,22 +1204,45 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 </section></section>
 <section>
 <section id="latent-mixture-models" class="title-slide slide level1 center">
-<h1>Latent Mixture Models</h1>
+<h1>Latent mixture models</h1>
 <ul>
-<li class="fragment">A latent mixture model is a model that assumes data are generated from a mixture of different hidden (latent) processes</li>
-<li class="fragment">E.g. imagine a cogntive test where some people try their best, and others just guess</li>
-<li class="fragment">the scores then are generated by two mechnamisms, ability and guessing</li>
-<li class="fragment">how would we model this as a mixture of processes</li>
+<li class="fragment">What are they?</li>
+<li class="fragment">How to use them to mixtures of cognitive processes or traits</li>
+<li class="fragment">How to use them to model compare models</li>
 </ul>
 </section>
-<section id="latent-mixture-model-of-cognitive-test" class="slide level2">
-<h2>Latent mixture model of cognitive test</h2>
+<section id="latent-mixture-models-1" class="slide level2">
+<h2>Latent mixture models</h2>
 <ul>
-<li class="fragment">to model the “tryers” you would model their ability as a rate of correct performance, as before.</li>
-<li class="fragment">to model the “guessers” you just model it as chance performance</li>
+<li class="fragment">…allow you to model data as coming from a <em>mixture</em> of <em>latent</em> processes.</li>
+<li class="fragment">This could be a mixture of cognitive processes, e.g.&nbsp;<em>guessing and trying, attending and not attending, remembering and forgetting.</em></li>
+<li class="fragment">Or mixture of states or traits, e.g.&nbsp;<em>depresssed vs.&nbsp;healthy, parkinsons vs.&nbsp;healthy, sleepy vs.&nbsp;awake</em><br>
+</li>
+<li class="fragment">An indicator variable estimates which mixture of processes generated the data.</li>
+<li class="fragment">You can also use these mixture models to compare different models</li>
+</ul>
+</section>
+<section id="example-latent-mixture-model-of-cognitive-test" class="slide level2">
+<h2>Example: Latent mixture model of cognitive test</h2>
+<ul>
+<li class="fragment"><em>“Tryers”</em> have an ability that determines their rate of correct responses.</li>
+<li class="fragment"><em>“Guessers”</em> score at chance level (e.g.&nbsp;50%).</li>
+<li class="fragment">Each participant belongs to one of the two groups.</li>
+<li class="fragment">An <em>indicator</em> variable <span class="math inline">\(z_i\)</span> indicates guesser or tryer.</li>
 </ul>
 </section>
 <section id="latent-mixture-graphical-model" class="slide level2">
+<h2>Latent mixture graphical model</h2>
+<ul>
+<li class="fragment"><img data-src="images/lmm.jpg" style="width:50.0%"></li>
+<li class="fragment"><span class="math inline">\(z_i\)</span> is a binary latent variable for participant <span class="math inline">\(i\)</span>.</li>
+<li class="fragment"><span class="math inline">\(z_i = 0\)</span> → guesser; <span class="math inline">\(z_i = 1\)</span> → tryer.</li>
+<li class="fragment"><span class="math inline">\(\psi = 0.5\)</span> is the known chance performance level.</li>
+<li class="fragment"><span class="math inline">\(\phi\)</span> is the tryer’s ability (estimated).</li>
+<li class="fragment">Posterior on <span class="math inline">\(z\)</span> tells us who likely guessed.</li>
+</ul>
+</section>
+<section id="latent-mixture-graphical-model-1" class="slide level2">
 <h2>Latent mixture graphical model</h2>
 <ul>
 <li class="fragment"><img data-src="fig.6.1.jpg"></li>
