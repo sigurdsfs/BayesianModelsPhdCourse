@@ -1639,6 +1639,13 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 </tbody>
 </table>
 </section>
+<section id="try-it-out-2" class="slide level2">
+<h2>Try it out</h2>
+<ul>
+<li class="fragment">see “Bayes factor scale interpretation”</li>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+</ul>
+</section>
 <section id="example-guessing-vs.-non-guessing" class="slide level2">
 <h2>Example: guessing vs.&nbsp;non-guessing</h2>
 <ul>
@@ -1666,16 +1673,24 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <li class="fragment">Data is about 9× more likely under <span class="math inline">\(M_1\)</span> than <span class="math inline">\(M_2\)</span></li>
 </ul>
 </section>
-<section id="flipping-the-ratio" class="slide level2">
-<h2>Flipping the ratio</h2>
+<section id="try-it-out-3" class="slide level2">
+<h2>Try it out</h2>
 <ul>
-<li class="fragment">If <span class="math inline">\(BF_{12} &lt; 1\)</span>, take the reciprocal: <span class="math inline">\(BF_{21} = \frac{1}{BF_{12}}\)</span><br>
+<li class="fragment">see “Bayes factor calculation step by step”</li>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+</ul>
+</section>
+<section id="flipping-the-bf" class="slide level2">
+<h2>Flipping the BF</h2>
+<ul>
+<li class="fragment">If <span class="math inline">\(BF_{12} &lt; 1\)</span>…</li>
+<li class="fragment">…take the reciprocal: <span class="math inline">\(BF_{21} = \frac{1}{BF_{12}}\)</span><br>
 </li>
 <li class="fragment">Keeps interpretation intuitive: how many times more likely is the data?<br>
 </li>
 <li class="fragment">Example: <span class="math inline">\(BF_{12} = 0.2\)</span> → <span class="math inline">\(BF_{21} = 5\)</span><br>
 </li>
-<li class="fragment">Now we say: data is 5× more likely under <span class="math inline">\(M_2\)</span><br>
+<li class="fragment">Now we say: data is 5 × more likely under <span class="math inline">\(M_2\)</span><br>
 </li>
 <li class="fragment">Same info, more digestible</li>
 </ul>
@@ -1685,7 +1700,7 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <ul>
 <li class="fragment">Bayes compares models<br>
 </li>
-<li class="fragment">Fisherian methods test a single null hypothesis<br>
+<li class="fragment">Fisherian methods tests a single null hypothesis<br>
 </li>
 <li class="fragment">p-values ask: “how unlikely is this data under <span class="math inline">\(H_0\)</span>?”<br>
 </li>
@@ -1694,169 +1709,243 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <li class="fragment">Evidence is always comparative: <span class="math inline">\(p(\text{data} \mid \text{A})\)</span> vs.&nbsp;<span class="math inline">\(p(\text{data} \mid \text{B})\)</span></li>
 </ul>
 </section>
-<section id="cautions-and-critiques" class="slide level2">
-<h2>Cautions and critiques</h2>
+<section id="critiques" class="slide level2">
+<h2>Critiques</h2>
 <ul>
-<li class="fragment">Bayes factors are sensitive to prior choice<br>
-</li>
-<li class="fragment">Especially important for point nulls (e.g.&nbsp;<span class="math inline">\(\theta = 0\)</span>)<br>
-</li>
-<li class="fragment">Priors must reflect genuine uncertainty or theory<br>
-</li>
-<li class="fragment">Use sensitivity analysis: test how conclusions change with different priors<br>
-</li>
-<li class="fragment">Critics argue: are sharp nulls ever really true?</li>
+<li class="fragment"><p><strong>Criticism:</strong> <em>Bayes factors are sensitive to prior choice</em><br>
+</p></li>
+<li class="fragment"><p><strong>Answer:</strong> This is a <strong>feature</strong> — priors are part of the model.</p></li>
+<li class="fragment"><p><strong>Criticism:</strong> <em>But I don’t want my conclusions to depend so much on the prior</em><br>
+</p></li>
+<li class="fragment"><p><strong>Answer:</strong> Then use <strong>sensitivity analysis</strong> to check robustness.</p></li>
+<li class="fragment"><p><strong>Criticism:</strong> <em>BFs can prefer one bad model over another</em><br>
+</p></li>
+<li class="fragment"><p><strong>Answer:</strong> True. Check <strong>descriptive adequacy</strong> — look at <strong>posterior predictive distributions</strong>, simulate data, or compare out-of-sample predictions.</p></li>
 </ul>
 </section>
 <section id="the-arc-of-civilisation" class="slide level2">
 <h2>The arc of civilisation</h2>
-<p>Fire, the wheel, writing, zero, the printing press, Newtonian physics, germ theory, the steam engine, the combustion engine, the Moon landing, the internet, CRISPR, GPT-4, self-driving cars, <strong>Bayes factors</strong></p>
+<ul>
+<li class="fragment"><p>Oppposable thumbs, fire, the wheel, writing, zero, the printing press, Newtonian physics, germ theory, the steam engine, the combustion engine, the Moon landing, In Rainbows, the internet, CRISPR, Bayes factors</p></li>
+<li class="fragment"><p><sub><span style="color:gray"><em>I’m being satirical (kinda).</em></span></sub></p></li>
+</ul>
 <!-- #endregion                             -->
-</section>
-<section id="bayes-factor-equation" class="slide level2">
-<h2>Bayes factor equation</h2>
+</section></section>
+<section>
+<section id="posterior-model-probabilities" class="title-slide slide level1 center">
+<h1>Posterior model probabilities</h1>
 <ul>
-<li class="fragment">Marginal likelihood measures a model’s absolute evidence by averaging its predictive performance over all parameter values.<br>
+<li class="fragment">From Bayes factors to posterior model plausibility<br>
 </li>
-<li class="fragment">Model selection often focuses on relative evidence —how well one model explains the data compared to another.<br>
+<li class="fragment">Combining likelihood and prior beliefs<br>
 </li>
-<li class="fragment">This is quantified using the Bayes factor:<br>
-<span class="math inline">\(BF_{12} = \frac{p(D \mid M_1)}{p(D \mid M_2)}\)</span></li>
+<li class="fragment">Posterior odds: what we believe after seeing the data<br>
+</li>
+<li class="fragment">Why priors matter<br>
+</li>
+<li class="fragment">Common critiques and computational issues</li>
 </ul>
 </section>
-<section id="interpretation-of-the-bayes-factor" class="slide level2">
-<h2>Interpretation of the Bayes Factor</h2>
+<section id="from-bayes-factor-to-posterior-odds" class="slide level2">
+<h2>From Bayes factor to posterior odds</h2>
 <ul>
-<li class="fragment"><strong>BF &gt; 1</strong> → Data favors <strong>M₁</strong> over <strong>M₂</strong>.<br>
+<li class="fragment">Bayes factors compare predictive performance<br>
 </li>
-<li class="fragment"><strong>BF &lt; 1</strong> → Data favors <strong>M₂</strong> over <strong>M₁</strong>.<br>
+<li class="fragment">But model plausibility also depends on prior belief<br>
 </li>
-<li class="fragment"><strong>Higher BF</strong> → Stronger evidence for the favored model.<br>
+<li class="fragment">Posterior odds = updated belief in models after data<br>
 </li>
-<li class="fragment">If <strong>BF = 5</strong>, the data is <strong>5 times more likely</strong> under <strong>M₁</strong> than <strong>M₂</strong>.<br>
+<li class="fragment">Combines evidence (likelihood) and belief (prior)<br>
 </li>
-<li class="fragment">If <strong>BF = 1/5</strong>, the data is <strong>5 times more likely</strong> under <strong>M₂</strong> than <strong>M₁</strong>.</li>
+<li class="fragment">This gives a more complete model comparison</li>
 </ul>
 </section>
-<section id="jeffreys-scale-for-bayes-factor" class="slide level2">
-<h2>Jeffreys’ Scale for Bayes Factor</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th><strong>Bayes Factor (BF₁₂)</strong></th>
-<th><strong>Interpretation</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>&gt;100</td>
-<td>Extreme evidence for <strong>M₁</strong></td>
-</tr>
-<tr class="even">
-<td>30–100</td>
-<td>Very strong evidence for <strong>M₁</strong></td>
-</tr>
-<tr class="odd">
-<td>10–30</td>
-<td>Strong evidence for <strong>M₁</strong></td>
-</tr>
-<tr class="even">
-<td>3–10</td>
-<td>Moderate evidence for <strong>M₁</strong></td>
-</tr>
-<tr class="odd">
-<td>1–3</td>
-<td>Anecdotal evidence for <strong>M₁</strong></td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>No preference</td>
-</tr>
-<tr class="odd">
-<td>1/3–1</td>
-<td>Anecdotal evidence for <strong>M₂</strong></td>
-</tr>
-<tr class="even">
-<td>1/10–1/3</td>
-<td>Moderate evidence for <strong>M₂</strong></td>
-</tr>
-<tr class="odd">
-<td>1/30–1/10</td>
-<td>Strong evidence for <strong>M₂</strong></td>
-</tr>
-<tr class="even">
-<td>1/100–1/30</td>
-<td>Very strong evidence for <strong>M₂</strong></td>
-</tr>
-<tr class="odd">
-<td>&lt;1/100</td>
-<td>Extreme evidence for <strong>M₂</strong></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="example-binomial-model" class="slide level2">
-<h2>Example: Binomial Model</h2>
+<section id="posterior-odds-equation" class="slide level2">
+<h2>Posterior odds equation</h2>
 <ul>
-<li class="fragment">Suppose we have 9 correct (k) out of 10 trials (n) and compare two models:<br>
+<li class="fragment">Relative plausibility:<br>
+<span class="math inline">\(\frac{p(M_1 \mid D)}{p(M_2 \mid D)} = \frac{p(D \mid M_1)}{p(D \mid M_2)} \cdot \frac{p(M_1)}{p(M_2)}\)</span><br>
 </li>
-<li class="fragment">M₁: A non-guessing model with unknown success rate.<br>
-<span class="math inline">\(p(\theta \mid M_1) \sim \text{Uniform}(0,1)\)</span><br>
+<li class="fragment">In words:<br>
+posterior odds = Bayes factor × prior odds<br>
 </li>
-<li class="fragment">M₂: A guessing model with chance at 0.5 <span class="math inline">\(p(\theta \mid M_2) = 0.5\)</span></li>
-<li class="fragment">Compute <strong>marginal likelihoods</strong> for both models.</li>
+<li class="fragment">Clear separation of belief and data<br>
+</li>
+<li class="fragment">Makes assumptions explicit<br>
+</li>
+<li class="fragment">Encourages transparency in modeling</li>
 </ul>
 </section>
-<section id="bayes-factor-for-the-example" class="slide level2">
-<h2>Bayes Factor for the example</h2>
+<section id="posterior-odds-example" class="slide level2">
+<h2>Posterior odds example</h2>
 <ul>
-<li class="fragment"><strong>Marginal likelihoods</strong>:<br>
-</li>
-<li class="fragment"><span class="math inline">\(p(D \mid M_1) = \left(\frac{10}{9}\right) \left(\frac{1}{2}\right)^{10}\)</span><br>
-</li>
-<li class="fragment"><span class="math inline">\(p(D \mid M_2) = \left(\frac{1}{1+n}\right)\)</span><br>
-</li>
-<li class="fragment"><strong>Bayes factor calculation</strong>:<br>
-<span class="math inline">\(BF_{12} = \frac{p(D \mid M_1)}{p(D \mid M_2)}\)</span><br>
-</li>
-<li class="fragment">$ BF_{12} = 0.107</li>
-<li class="fragment">If <span class="math inline">\(BF_{12} &gt; 1\)</span>, M₁ is preferred; if &lt; 1, M₂ is preferred.</li>
+<li class="fragment"><img data-src="images/posterior_odds_rain.png"></li>
 </ul>
 </section>
-<section id="flipping-the-bf" class="slide level2">
-<h2>Flipping the BF</h2>
+<section id="posterior-odds-schematic" class="slide level2">
+<h2>Posterior odds schematic</h2>
 <ul>
-<li class="fragment">m1 is 0.107 less likely than m2</li>
-<li class="fragment">hard to interpret</li>
-<li class="fragment">thus when a BF is below it is often more convenient to take the reciprocal so that it is a value above 1.</li>
-<li class="fragment">here it would be <span class="math inline">\(BF_{21}\)</span> which is 1/1.07 = 9.3</li>
-<li class="fragment">M2 is 9.3 times more likely than M1</li>
-<li class="fragment">the data is 9.3 times more likely under a model in which subjects are not guessing, vs.&nbsp;than in which they are guessing</li>
+<li class="fragment"><img data-src="images/posterior_odds_eq.png"></li>
 </ul>
 </section>
-<section id="bayes-vs.-fisher-1" class="slide level2">
-<h2>Bayes vs.&nbsp;Fisher</h2>
+<section id="transforming-prior-into-posterior" class="slide level2">
+<h2>Transforming prior into posterior</h2>
 <ul>
-<li class="fragment">Bayesian methods are typically comparative, where two ore more models are compared</li>
-<li class="fragment">Frequentist methods are not comparative, simply considering how unlikely data was generated by the null.</li>
-<li class="fragment">Evidence is always comparative. ratio of p(data|Innocent) : p(data|Guilty)</li>
+<li class="fragment">Bayes factor converts prior odds into posterior odds<br>
+</li>
+<li class="fragment">If prior odds = 1, posterior odds = Bayes factor<br>
+</li>
+<li class="fragment">Prior beliefs influence conclusions<br>
+</li>
+<li class="fragment">But can be updated rationally with data<br>
+</li>
+<li class="fragment">That’s the power of Bayes</li>
 </ul>
 </section>
-<section id="cautions-and-critiques-1" class="slide level2">
-<h2>Cautions and Critiques</h2>
+<section id="why-bayes-factors-are-powerful" class="slide level2">
+<h2>Why Bayes factors are powerful</h2>
 <ul>
-<li class="fragment">Bayes factors sensitive to prior specification.</li>
-<li class="fragment">Must use careful prior selection and sensitivity analyses.</li>
-<li class="fragment">Point null hypotheses controversial: can they ever be exactly true?
+<li class="fragment">Automatically penalize overly complex models<br>
+</li>
+<li class="fragment">Allow direct evidence for the null<br>
+</li>
+<li class="fragment">Can handle multiple models, not just null vs.&nbsp;alt<br>
+</li>
+<li class="fragment">Support sequential data collection<br>
+</li>
+<li class="fragment">Intuitive: how much more likely is the data?</li>
+</ul>
+</section>
+<section id="extraordinary-claims-extraordinary-evidence" class="slide level2">
+<h2>Extraordinary claims, extraordinary evidence</h2>
 <ul>
-<li class="fragment">Pragmatically, yes (experimental studies).</li>
-<li class="fragment">Conceptually, more debated. <!-- #endregion                             --></li>
+<li class="fragment">Strong priors require stronger data<br>
+</li>
+<li class="fragment"><span class="math inline">\(p(M \mid D) = BF \cdot p(M)\)</span><br>
+</li>
+<li class="fragment">Even big Bayes factors may not sway implausible models<br>
+</li>
+<li class="fragment">Prior odds encode skepticism<br>
+</li>
+<li class="fragment">Bayesian methods make this explicit</li>
+</ul>
+</section>
+<section id="why-p-values-cant-do-this" class="slide level2">
+<h2>Why p-values can’t do this</h2>
+<ul>
+<li class="fragment">p-values don’t compare models<br>
+</li>
+<li class="fragment">Don’t provide evidence for the null<br>
+</li>
+<li class="fragment">Depend on hypothetical outcomes<br>
+</li>
+<li class="fragment">Require fixed plans to be valid<br>
+</li>
+<li class="fragment">Can’t say “this model is better”</li>
+</ul>
+</section>
+<section id="optional-stopping" class="slide level2">
+<h2>Optional stopping</h2>
+<ul>
+<li class="fragment">Bayes allows data collection to stop anytime<br>
+</li>
+<li class="fragment">p-values require pre-specified <span class="math inline">\(n\)</span><br>
+</li>
+<li class="fragment">Bayes factors stay valid during interim checks<br>
+</li>
+<li class="fragment">Enables adaptive design<br>
+</li>
+<li class="fragment">More flexible, more realistic</li>
+</ul>
+</section>
+<section id="conceptual-and-computational-challenges" class="slide level2">
+<h2>Conceptual and computational challenges</h2>
+<ul>
+<li class="fragment">Priors matter: vague priors can be a liability<br>
+</li>
+<li class="fragment">Marginal likelihood is hard to compute<br>
+</li>
+<li class="fragment">Complex models need careful approximation<br>
+</li>
+<li class="fragment">Broad priors lower predictive accuracy<br>
+</li>
+<li class="fragment">Precision in priors improves inference</li>
+</ul>
+</section>
+<section id="specifying-priors" class="slide level2">
+<h2>Specifying priors</h2>
+<ul>
+<li class="fragment">Priors must reflect real uncertainty<br>
+</li>
+<li class="fragment">Two strategies:
+<ul>
+<li class="fragment">Subjective (expert-driven)<br>
+</li>
+<li class="fragment">Objective (e.g., unit-information priors)<br>
+</li>
+</ul></li>
+<li class="fragment">Objective priors = default baseline<br>
+</li>
+<li class="fragment">Useful for reproducibility<br>
+</li>
+<li class="fragment">Can be refined with context</li>
+</ul>
+</section>
+<section id="common-confusion-about-priors" class="slide level2">
+<h2>Common confusion about priors</h2>
+<ul>
+<li class="fragment">Bayes factor does <strong>not</strong> depend on model priors<br>
+</li>
+<li class="fragment">It <strong>does</strong> depend on parameter priors<br>
+</li>
+<li class="fragment">Posterior model probability depends on both<br>
+</li>
+<li class="fragment">So:
+<ul>
+<li class="fragment">Priors on models → posterior odds<br>
+</li>
+<li class="fragment">Priors on parameters → Bayes factor</li>
+</ul></li>
+</ul>
+</section>
+<section id="prior-sensitivity" class="slide level2">
+<h2>Prior sensitivity</h2>
+<ul>
+<li class="fragment">Different priors = different conclusions<br>
+</li>
+<li class="fragment">That’s not a bug — it’s honest uncertainty<br>
+</li>
+<li class="fragment">Test robustness with sensitivity analysis<br>
+</li>
+<li class="fragment">Try narrower and wider priors<br>
+</li>
+<li class="fragment">Some models are robust, others fragile</li>
+</ul>
+</section>
+<section id="computational-solutions" class="slide level2">
+<h2>Computational solutions</h2>
+<ul>
+<li class="fragment">Exact marginal likelihood often unavailable<br>
+</li>
+<li class="fragment">Approximate methods include:
+<ul>
+<li class="fragment">Candidate’s formula<br>
+</li>
+<li class="fragment">Marginal likelihood identity:<br>
+<span class="math inline">\(p(D \mid M) = \frac{p(D \mid \theta, M) \cdot p(\theta \mid M)}{p(\theta \mid D, M)}\)</span><br>
+</li>
+</ul></li>
+<li class="fragment">MCMC methods:
+<ul>
+<li class="fragment">Sample from posterior<br>
+</li>
+<li class="fragment">Use model indicators to switch between models</li>
 </ul></li>
 </ul>
 <!-- #region Lecture#8 Posterior                  -->
 </section></section>
 <section>
-<section id="posterior-model-probabilities" class="title-slide slide level1 center">
+<section id="posterior-model-probabilities-1" class="title-slide slide level1 center">
 <h1>Posterior model probabilities</h1>
 <ul>
 <li class="fragment">Bayes factors compare the predictive performance of two different theories</li>
@@ -1914,7 +2003,7 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <li class="fragment">Null can be rejected, but never confirmed.</li>
 </ul>
 </section>
-<section id="optional-stopping" class="slide level2">
+<section id="optional-stopping-1" class="slide level2">
 <h2>Optional Stopping</h2>
 <ul>
 <li class="fragment">Bayesian methods allow data collection to stop at any time based on evidence.</li>
@@ -1967,7 +2056,7 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 </ul></li>
 </ul>
 </section>
-<section id="prior-sensitivity" class="slide level2">
+<section id="prior-sensitivity-1" class="slide level2">
 <h2>Prior Sensitivity</h2>
 <ul>
 <li class="fragment">When different parameter priors yield different conclusions, it shows scientific uncertainty.</li>
@@ -2301,10 +2390,6 @@ delta &lt;- theta1 - theta2</li>
 <li class="fragment">The 95% credible interval for delta is approximately [-0.09, 0.01], which does not include 0.</li>
 </ul>
 <p><strong>Interpretation</strong>: - There is only modest evidence that one rate is higher than another - The Bayes factor penalizes H1 for spreading prior mass over implausible values. <!-- #endregion    --></p>
-<!-- #region Lecture#12 Memory retention-->
-<!-- #endregion    -->
-<!-- #region Lecture#13 Psychophysical function fitting-->
-<!-- #endregion    -->
 
 </section></section>
     </div>

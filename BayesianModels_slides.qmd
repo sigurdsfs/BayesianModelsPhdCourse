@@ -978,6 +978,10 @@ model {
 | 1/100–1/30     | Very strong evidence for $M_2$ |
 | <1/100         | Extreme evidence for $M_2$     |
 
+## Try it out
+- see "Bayes factor scale interpretation"
+- `notebooks/probability distributions.ipynb`
+
 ## Example: guessing vs. non-guessing
 - 9 out of 10 trials correct → $k = 9$, $n = 10$  
 - $M_1$: unknown ability → $\theta \sim \text{Uniform}(0,1)$  
@@ -992,115 +996,162 @@ model {
   $BF_{12} = \frac{0.0909}{0.0098} \approx 9.3$  
 - Data is about 9× more likely under $M_1$ than $M_2$
 
-## Flipping the ratio
-- If $BF_{12} < 1$, take the reciprocal: $BF_{21} = \frac{1}{BF_{12}}$  
+## Try it out
+- see "Bayes factor calculation step by step"
+- `notebooks/probability distributions.ipynb`
+
+## Flipping the BF
+- If $BF_{12} < 1$...
+- ...take the reciprocal: $BF_{21} = \frac{1}{BF_{12}}$  
 - Keeps interpretation intuitive: how many times more likely is the data?  
 - Example: $BF_{12} = 0.2$ → $BF_{21} = 5$  
-- Now we say: data is 5× more likely under $M_2$  
+- Now we say: data is 5 × more likely under $M_2$  
 - Same info, more digestible
 
 ## Bayes vs. Fisher
 - Bayes compares models  
-- Fisherian methods test a single null hypothesis  
+- Fisherian methods tests a single null hypothesis  
 - p-values ask: “how unlikely is this data under $H_0$?”  
 - Bayes factors ask: “which model better explains the data?”  
 - Evidence is always comparative: $p(\text{data} \mid \text{A})$ vs. $p(\text{data} \mid \text{B})$
 
-## Cautions and critiques
+## Critiques
 
-- Bayes factors are sensitive to prior choice  
-- Especially important for point nulls (e.g. $\theta = 0$)  
-- Priors must reflect genuine uncertainty or theory  
-- Use sensitivity analysis: test how conclusions change with different priors  
-- Critics argue: are sharp nulls ever really true?
+- **Criticism:** *Bayes factors are sensitive to prior choice*  
+- **Answer:** This is a **feature** — priors are part of the model.
 
-## The arc of civilisation
-Fire, the wheel, writing, zero, the printing press, Newtonian physics, germ theory, the steam engine, the combustion engine, the Moon landing, the internet, CRISPR, GPT-4, self-driving cars, **Bayes factors**
+- **Criticism:** *But I don’t want my conclusions to depend so much on the prior*  
+- **Answer:** Then use **sensitivity analysis** to check robustness.
 
+- **Criticism:** *BFs can prefer one bad model over another*  
+- **Answer:** True. Check **descriptive adequacy** — look at **posterior predictive distributions**, simulate data, or compare out-of-sample predictions.
 
+## The arc of civilisation  
 
+- Oppposable thumbs, fire, the wheel, writing, zero, the printing press, Newtonian physics, germ theory, the steam engine, the combustion engine, the Moon landing, In Rainbows, the internet, CRISPR, Bayes factors
 
-
-
-
-
-
+- <sub><span style="color:gray"><em>I’m being satirical (kinda).</em></span></sub>
 
 <!-- #endregion                             -->
 
+# Posterior model probabilities
+- From Bayes factors to posterior model plausibility  
+- Combining likelihood and prior beliefs  
+- Posterior odds: what we believe after seeing the data  
+- Why priors matter  
+- Common critiques and computational issues
+
+## From Bayes factor to posterior odds
+- Bayes factors compare predictive performance  
+- But model plausibility also depends on prior belief  
+- Posterior odds = updated belief in models after data  
+- Combines evidence (likelihood) and belief (prior)  
+- This gives a more complete model comparison
+
+## Posterior odds equation
+- Relative plausibility:  
+  $\frac{p(M_1 \mid D)}{p(M_2 \mid D)} = \frac{p(D \mid M_1)}{p(D \mid M_2)} \cdot \frac{p(M_1)}{p(M_2)}$  
+- In words:  
+  posterior odds = Bayes factor × prior odds  
+- Clear separation of belief and data  
+- Makes assumptions explicit  
+- Encourages transparency in modeling
+
+## Posterior odds example
+- ![](images/posterior_odds_rain.png)
+
+## Posterior odds schematic
+- ![](images/posterior_odds_eq.png)
+
+
+## Transforming prior into posterior
+
+- Bayes factor converts prior odds into posterior odds  
+- If prior odds = 1, posterior odds = Bayes factor  
+- Prior beliefs influence conclusions  
+- But can be updated rationally with data  
+- That’s the power of Bayes
+
+## Why Bayes factors are powerful
+
+- Automatically penalize overly complex models  
+- Allow direct evidence for the null  
+- Can handle multiple models, not just null vs. alt  
+- Support sequential data collection  
+- Intuitive: how much more likely is the data?
+
+## Extraordinary claims, extraordinary evidence
+
+- Strong priors require stronger data  
+- $p(M \mid D) = BF \cdot p(M)$  
+- Even big Bayes factors may not sway implausible models  
+- Prior odds encode skepticism  
+- Bayesian methods make this explicit
+
+## Why p-values can’t do this
+
+- p-values don't compare models  
+- Don’t provide evidence for the null  
+- Depend on hypothetical outcomes  
+- Require fixed plans to be valid  
+- Can’t say “this model is better”
+
+## Optional stopping
+
+- Bayes allows data collection to stop anytime  
+- p-values require pre-specified $n$  
+- Bayes factors stay valid during interim checks  
+- Enables adaptive design  
+- More flexible, more realistic
+
+## Conceptual and computational challenges
+
+- Priors matter: vague priors can be a liability  
+- Marginal likelihood is hard to compute  
+- Complex models need careful approximation  
+- Broad priors lower predictive accuracy  
+- Precision in priors improves inference
+
+## Specifying priors
+
+- Priors must reflect real uncertainty  
+- Two strategies:  
+  - Subjective (expert-driven)  
+  - Objective (e.g., unit-information priors)  
+- Objective priors = default baseline  
+- Useful for reproducibility  
+- Can be refined with context
+
+## Common confusion about priors
+
+- Bayes factor does **not** depend on model priors  
+- It **does** depend on parameter priors  
+- Posterior model probability depends on both  
+- So:  
+  - Priors on models → posterior odds  
+  - Priors on parameters → Bayes factor
+
+## Prior sensitivity
+
+- Different priors = different conclusions  
+- That’s not a bug — it’s honest uncertainty  
+- Test robustness with sensitivity analysis  
+- Try narrower and wider priors  
+- Some models are robust, others fragile
+
+## Computational solutions
+
+- Exact marginal likelihood often unavailable  
+- Approximate methods include:  
+  - Candidate’s formula  
+  - Marginal likelihood identity:  
+    $p(D \mid M) = \frac{p(D \mid \theta, M) \cdot p(\theta \mid M)}{p(\theta \mid D, M)}$  
+- MCMC methods:  
+  - Sample from posterior  
+  - Use model indicators to switch between models
 
 
 
-
-
-
-
-## Bayes factor equation
-- Marginal likelihood measures a model’s absolute evidence by averaging its predictive performance over all parameter values.  
-- Model selection often focuses on relative evidence —how well one model explains the data compared to another.  
-- This is quantified using the Bayes factor:  
-  $BF_{12} = \frac{p(D \mid M_1)}{p(D \mid M_2)}$
- 
-## Interpretation of the Bayes Factor  
-- **BF > 1** → Data favors **M₁** over **M₂**.  
-- **BF < 1** → Data favors **M₂** over **M₁**.  
-- **Higher BF** → Stronger evidence for the favored model.  
-- If **BF = 5**, the data is **5 times more likely** under **M₁** than **M₂**.  
-- If **BF = 1/5**, the data is **5 times more likely** under **M₂** than **M₁**.  
-
-## Jeffreys’ Scale for Bayes Factor  
-| **Bayes Factor (BF₁₂)** | **Interpretation** |
-|----------------|----------------|
-| >100 | Extreme evidence for **M₁** |
-| 30–100 | Very strong evidence for **M₁** |
-| 10–30 | Strong evidence for **M₁** |
-| 3–10 | Moderate evidence for **M₁** |
-| 1–3 | Anecdotal evidence for **M₁** |
-| 1 | No preference |
-| 1/3–1 | Anecdotal evidence for **M₂** |
-| 1/10–1/3 | Moderate evidence for **M₂** |
-| 1/30–1/10 | Strong evidence for **M₂** |
-| 1/100–1/30 | Very strong evidence for **M₂** |
-| <1/100 | Extreme evidence for **M₂** |
--------------------------
- 
-## Example: Binomial Model  
-- Suppose we have 9 correct (k) out of 10 trials (n) and compare two models:  
-- M₁: A non-guessing model with unknown success rate.  
-  $p(\theta \mid M_1) \sim \text{Uniform}(0,1)$  
-- M₂: A guessing model with chance at 0.5
-  $p(\theta \mid M_2) = 0.5$ 
-- Compute **marginal likelihoods** for both models.  
-
-## Bayes Factor for the example  
-- **Marginal likelihoods**:  
-- $p(D \mid M_1) = \left(\frac{10}{9}\right) \left(\frac{1}{2}\right)^{10}$  
-- $p(D \mid M_2) = \left(\frac{1}{1+n}\right)$  
-- **Bayes factor calculation**:  
- $BF_{12} = \frac{p(D \mid M_1)}{p(D \mid M_2)}$  
-- $ BF_{12} = 0.107
-- If $BF_{12} > 1$, M₁ is preferred; if < 1, M₂ is preferred.  
- 
-## Flipping the BF
-- m1 is 0.107 less likely than m2
-- hard to interpret
-- thus when a BF is below it is often more convenient to take the reciprocal so that it is a value above 1.
-- here it would be $BF_{21}$ which is 1/1.07 = 9.3
-- M2 is 9.3 times more likely than M1
-- the data is 9.3 times more likely under a model in which subjects are not guessing, vs. than in which they are guessing 
-
-## Bayes vs. Fisher
-- Bayesian methods are typically comparative, where two ore more models are compared
-- Frequentist methods are not comparative, simply considering how unlikely data was generated by the null. 
-- Evidence is always comparative. ratio of p(data|Innocent) : p(data|Guilty)
-
-## Cautions and Critiques
-- Bayes factors sensitive to prior specification.
-- Must use careful prior selection and sensitivity analyses.
-- Point null hypotheses controversial: can they ever be exactly true?
-  - Pragmatically, yes (experimental studies).
-  - Conceptually, more debated. 
-<!-- #endregion                             -->
 
 <!-- #region Lecture#8 Posterior                  -->
 # Posterior model probabilities 
@@ -1367,8 +1418,3 @@ This allows us to compare the prior and posterior density of delta at zero.
 - The Bayes factor penalizes H1 for spreading prior mass over implausible values. 
 <!-- #endregion    -->
 
-<!-- #region Lecture#12 Memory retention-->
-<!-- #endregion    -->
-
-<!-- #region Lecture#13 Psychophysical function fitting-->
-<!-- #endregion    -->
