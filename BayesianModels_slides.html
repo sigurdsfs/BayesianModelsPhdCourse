@@ -1308,200 +1308,6 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <section id="model-selection" class="title-slide slide level1 center">
 <h1>Model selection</h1>
 <ul>
-<li class="fragment">Model selection is perhaps the most persuasive reason to choose Bayesian methods.</li>
-<li class="fragment">Bayesian models provide a simple and principled way to choose between models balancing between accuracy and complexity</li>
-</ul>
-</section>
-<section id="why-model-comparison" class="slide level2">
-<h2>Why model comparison?</h2>
-<ul>
-<li class="fragment">so far we have covered single models</li>
-<li class="fragment">in psychology/neuroscience we want to compare different models</li>
-<li class="fragment">is this theory or this theory better at explaining the data</li>
-<li class="fragment">if someone says this is the theory. it begs the question, compared to what?</li>
-<li class="fragment">we want to know how well a theory explains relative to another, or many others.</li>
-<li class="fragment">we need to compare models if we are to move beyond descriptive data analysis.</li>
-</ul>
-</section>
-<section id="ptolomy" class="slide level2">
-<h2>Ptolomy</h2>
-<ul>
-<li class="fragment">We consider it a good principle to explain the phenomena by the simplest hypothesis, provided this doesnt contradict the data in an important way</li>
-</ul>
-</section>
-<section id="occams-razon" class="slide level2">
-<h2>Occam’s razon</h2>
-<ul>
-<li class="fragment">“Plurarity must never be posited without necessity”</li>
-<li class="fragment">This is nicknamed Occam’s razor, which cuts out needless complexity when it comes to theories or models or explanations</li>
-</ul>
-</section>
-<section id="fristons-free-energy" class="slide level2">
-<h2>Friston’s free energy</h2>
-<ul>
-<li class="fragment">“Minimizing free energy means finding the right balance between accuracy and complexity”</li>
-<li class="fragment">“Good models should be as simple as possible, but not simpler than necessary to explain the data. Complexity must be minimized to avoid overfitting, yet sufficient to capture the underlying structure of the world.”</li>
-</ul>
-</section>
-<section id="geoff-hinton" class="slide level2">
-<h2>Geoff Hinton</h2>
-<ul>
-<li class="fragment">“Model complexity must pay for itself”</li>
-<li class="fragment">Geoff is referring to the fact that model complexity must be justified by its ability to explain the data.</li>
-</ul>
-</section>
-<section id="bayesian-magic" class="slide level2">
-<h2>Bayesian magic</h2>
-<ul>
-<li class="fragment">Lots of methods exist for trying to get this balance right</li>
-<li class="fragment">Out of sample prediction, parameter counting algorithms, blah, blah.</li>
-<li class="fragment">Bayes nails it by finding a universal principle by which to compare models that optimally balances accuracy and complexity.</li>
-<li class="fragment">This is the magic sauce of Bayes.</li>
-</ul>
-</section>
-<section id="marginal-likelihood-1" class="slide level2">
-<h2>Marginal likelihood</h2>
-<ul>
-<li class="fragment">Back to Bayes equation we started with</li>
-<li class="fragment"><img data-src="fig.1.1.jpg"></li>
-<li class="fragment"><img data-src="fig.1.2.jpg"></li>
-<li class="fragment">There is something missing which is that this is all conditional on a particular model. We could have a very different model that might have different parameters.</li>
-</ul>
-</section>
-<section id="marginal-likelihood-conditional-on-model" class="slide level2">
-<h2>Marginal likelihood conditional on model</h2>
-<ul>
-<li class="fragment">We can be explicit about how this is conditional on a specific model</li>
-<li class="fragment"><img data-src="fig.7.1.jpg"></li>
-<li class="fragment"><span class="math inline">\(p(D|M_1)\)</span> is a single number, the marginal likelihood, also known as the evidence.</li>
-</ul>
-</section>
-<section id="marginal-likelihood-in-words" class="slide level2">
-<h2>Marginal likelihood in words</h2>
-<ul>
-<li class="fragment">the probability of the data given model</li>
-<li class="fragment">the probability of the data according to the models predictions</li>
-<li class="fragment">average predictive performance of the model</li>
-<li class="fragment">how unsuprised was the model when seeing the data</li>
-<li class="fragment">the prior in the model is like betting on where good parameters lie. The marginal likelihood sums up how well those bets paid off in terms of predictive performance when the data arrived.</li>
-<li class="fragment">a models predictions has probability mass of 1. it can spend its predicitons in different ways by having different priors. a bad prior wastes this on predictions that are not supported by the data, a good prior concrentrates its predicitons to where the data is well predicted.</li>
-<li class="fragment">the better the predictions of the model, the greater the evidence for the model</li>
-<li class="fragment">it’s like running every possible version of the model (with every parameter setting weighted by the prior), and asking: “on average, how well does the model predict the data?”</li>
-</ul>
-</section>
-<section id="marginal-likelihood-of-paranormal-octopi" class="slide level2">
-<h2>Marginal likelihood of paranormal octopi</h2>
-<ul>
-<li class="fragment">Imagine two paranormal octupuses helping the KGB find a missing sub.</li>
-<li class="fragment">Alice predicts the sub is in the nothern hemisphere</li>
-<li class="fragment">Bob predicts its in nothern europe</li>
-<li class="fragment">Data: the sub is found in the Baltic,</li>
-<li class="fragment">the probability of the data according to Alice is reasonable. the evidence in favor of alice is reasonable</li>
-<li class="fragment">the probability of the data according to Bob is high. The evidence in favor of Bob is high</li>
-<li class="fragment">both were correct, but Bob was “more correct” because his prediciton was more specific</li>
-</ul>
-</section>
-<section id="marginal-likelihood-2" class="slide level2">
-<h2>Marginal likelihood</h2>
-<ul>
-<li class="fragment">The marginal likelihood is computed by averaging the likelihood of the data predicted across the models parameter space.<br>
-</li>
-<li class="fragment">Prior probabilities act as averaging weights.<br>
-</li>
-<li class="fragment">Based on the law of total probability:<br>
-<span class="math inline">\(p(D \mid M_1) = \sum_{i=1}^{k} p(D \mid \xi_i, M_1) p(\xi_i \mid M_1)\)</span></li>
-</ul>
-</section>
-<section id="example-calculation-of-marginal-likelihood" class="slide level2">
-<h2>Example calculation of marginal likelihood</h2>
-<ul>
-<li class="fragment"><ul>
-<li class="fragment">Consider a model <span class="math inline">\(M_x\)</span> with one parameter <span class="math inline">\(\xi\)</span>.<br>
-</li>
-</ul></li>
-<li class="fragment"><span class="math inline">\(\xi\)</span> can take <strong>three values</strong>:
-<ul>
-<li class="fragment"><span class="math inline">\(\xi_1 = -1\)</span>, <span class="math inline">\(\xi_2 = 0\)</span>, <span class="math inline">\(\xi_3 = 1\)</span>.<br>
-</li>
-</ul></li>
-<li class="fragment">Prior probabilities assigned:
-<ul>
-<li class="fragment"><span class="math inline">\(p(\xi_1) = 0.6\)</span><br>
-</li>
-<li class="fragment"><span class="math inline">\(p(\xi_2) = 0.3\)</span><br>
-</li>
-<li class="fragment"><span class="math inline">\(p(\xi_3) = 0.1\)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="likelihood-computation" class="slide level2">
-<h2>Likelihood Computation</h2>
-<ul>
-<li class="fragment"><ul>
-<li class="fragment">Likelihood values for observed data <span class="math inline">\(D\)</span>:<br>
-</li>
-<li class="fragment"><span class="math inline">\(p(D \mid \xi_1) = 0.001\)</span><br>
-</li>
-<li class="fragment"><span class="math inline">\(p(D \mid \xi_2) = 0.002\)</span><br>
-</li>
-<li class="fragment"><span class="math inline">\(p(D \mid \xi_3) = 0.003\)</span><br>
-</li>
-</ul></li>
-<li class="fragment">Compute marginal likelihood:<br>
-<span class="math inline">\(p(D \mid M_x) = p(\xi_1) p(D \mid \xi_1) + p(\xi_2) p(D \mid \xi_2) + p(\xi_3) p(D \mid \xi_3)\)</span> <span class="math inline">\(= 0.6 \times 0.001 + 0.3 \times 0.002 + 0.1 \times 0.003\)</span> <span class="math inline">\(= 0.0015\)</span></li>
-</ul>
-</section>
-<section id="marginal-likelihood-and-complexity" class="slide level2">
-<h2>Marginal likelihood and complexity</h2>
-<ul>
-<li class="fragment">To have high evidence, the model needs good predictive peformance</li>
-<li class="fragment">It needs to focus its predictions where the data has a high likelihood</li>
-<li class="fragment">Complex models with many parameters distribute their predictions widely</li>
-<li class="fragment">Complex models thus make many predictions that may not turn out to have high likelihood</li>
-<li class="fragment">Complex models thus are more likely to “waste their predictions”</li>
-</ul>
-</section>
-<section id="model-complexity-is-not-the-same-as-the-number-of-parameters" class="slide level2">
-<h2>Model complexity is not the same as the number of parameters</h2>
-<ul>
-<li class="fragment">Complexity is not just the number of parameters.</li>
-<li class="fragment">A model with few parameters can still be complex if its predictions are highly uncertain due to vague priors.</li>
-<li class="fragment">True complexity comes from how broadly the model spreads its predictions across its parameter space.</li>
-<li class="fragment">A narrow prediction distribution suggests a simpler model.</li>
-<li class="fragment">A wider distribution indicates greater complexity, as the model allows for more diverse possible outcomes.</li>
-<li class="fragment">Models are complex to the degree to which they make broad range of predictions</li>
-</ul>
-</section>
-<section id="model-complexity-and-vagueness-of-priors" class="slide level2">
-<h2>Model complexity and vagueness of priors</h2>
-<ul>
-<li class="fragment">a model with prior <span class="math inline">\(\theta \sim \text{Uniform} (0,1)\)</span></li>
-<li class="fragment">…is more complex than…</li>
-<li class="fragment">a model with prior <span class="math inline">\(\theta \sim \text{Uniform} (0.5,1)\)</span></li>
-<li class="fragment"></li>
-</ul>
-</section>
-<section id="marginal-likelihood-as-a-unifying-maximandum" class="slide level2">
-<h2>Marginal likelihood as a unifying maximandum</h2>
-<ul>
-<li class="fragment">Marginal likelihood is arguably the most important concept ever.</li>
-<li class="fragment">It is at the heart of scientific inference, psychological and neural inference, and survival, and even existence of objects.</li>
-<li class="fragment">Maximising it is hard, we often need to approximate it.</li>
-<li class="fragment">Variational Bayes, Free-energy minimisation, Predictive coding, MCMC Sampling etc. are all ways to approximate it.</li>
-<li class="fragment">Ultimately it is one quantity we care about.</li>
-<li class="fragment">In our context we want to build models of brain, mind or behavior, that best explain these phenomena.</li>
-<li class="fragment">This reduces to finding models that have the best average predictive performance.</li>
-<li class="fragment">And this reduces to finding models with the highest marginal likelihood</li>
-<li class="fragment">Thats it.</li>
-<li class="fragment">Everything else is details.</li>
-<li class="fragment">Ah but so and so maximises something different.</li>
-<li class="fragment">Yes but at heart this is just a proxy for the marginal likelihood. <!-- #endregion                                   --></li>
-</ul>
-</section></section>
-<section>
-<section id="model-selection-1" class="title-slide slide level1 center">
-<h1>Model selection</h1>
-<ul>
 <li class="fragment">Why we need to compare models</li>
 <li class="fragment">Simplicity vs.&nbsp;complexity</li>
 <li class="fragment">Marginal likelihood as a comparison tool</li>
@@ -1554,7 +1360,7 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <li class="fragment">It’s the probability of the data, <em>given the model</em></li>
 </ul>
 </section>
-<section id="marginal-likelihood-3" class="slide level2">
+<section id="marginal-likelihood-1" class="slide level2">
 <h2>Marginal likelihood</h2>
 <ul>
 <li class="fragment"><span class="math inline">\(p(D \mid M)\)</span> = average predictive performance of model <span class="math inline">\(M\)</span></li>
@@ -1571,7 +1377,7 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <li class="fragment">The prior is the placing of the bets, and the marginal likelihood is how good those bets paid off.</li>
 </ul>
 </section>
-<section id="marginal-likelihood-in-words-1" class="slide level2">
+<section id="marginal-likelihood-in-words" class="slide level2">
 <h2>Marginal likelihood in words</h2>
 <ul>
 <li class="fragment">How probable was the data under this model <span class="math inline">\(M\)</span>?</li>
@@ -1675,9 +1481,7 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <section id="example-prior-vagueness-1" class="slide level2">
 <h2>Example: prior vagueness</h2>
 <ul>
-<li class="fragment"><ul>
-<li class="fragment"><img data-src="images/complexity.png" style="width:50.0%"></li>
-</ul></li>
+<li class="fragment"><img data-src="images/complexity.png" style="width:100.0%"></li>
 </ul>
 </section>
 <section id="why-marginal-likelihood-matters" class="slide level2">
@@ -1686,7 +1490,7 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <li class="fragment">It’s the most important quantity in Bayesian model comparison</li>
 <li class="fragment">It unifies inference in brain, behavior, science</li>
 <li class="fragment">Maximizing it means best average predictive performance</li>
-<li class="fragment">It is the quantity that arguably everything else is trying to approximate: variational Bayes, free energy, predictive coding</li>
+<li class="fragment">It is the quantity that arguably everything else is trying to approximate: variational Bayes, free energy minimisation, ELBO, predictive coding, predictive processing</li>
 </ul>
 </section>
 <section id="why-marginal-likelihood-matters-1" class="slide level2">
@@ -1696,17 +1500,42 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <li class="fragment"><span style="color:gray">Woah man, that’s like, deep.</span></li>
 <li class="fragment">😵‍💫</li>
 </ul>
+<!-- #endregion                             -->
 <!-- #region Lecture#7 Bayes factors              -->
 </section></section>
 <section>
 <section id="the-bayes-factor" class="title-slide slide level1 center">
 <h1>The Bayes factor</h1>
 <ul>
-<li class="fragment">Compared to what? This is a surprisingly powerful question to ask.</li>
-<li class="fragment">This model is good - it has high model evidence.</li>
-<li class="fragment">Ok great, but compared to what?</li>
-<li class="fragment">We want relative evidence. We want to compare predictive performance for one model versus another.</li>
-<li class="fragment">The Bayes factor gives us this by taking the ratio of the marginal likelihoods for two different models</li>
+<li class="fragment">Compared to what?<br>
+</li>
+<li class="fragment">From marginal likelihood to relative evidence<br>
+</li>
+<li class="fragment">Interpreting Bayes factors<br>
+</li>
+<li class="fragment">Worked example: guessing vs.&nbsp;non-guessing<br>
+</li>
+<li class="fragment">Pitfalls and philosophical notes</li>
+</ul>
+</section>
+<section id="why-compare-models-1" class="slide level2">
+<h2>Why compare models?</h2>
+<ul>
+<li class="fragment">A model with high marginal likelihood is good — but only <em>relative</em> to alternatives<br>
+</li>
+<li class="fragment">Absolute goodness is rarely meaningful on its own<br>
+</li>
+<li class="fragment">The key question is: compared to what?<br>
+</li>
+<li class="fragment">We want relative evidence — which model explains the data better<br>
+</li>
+<li class="fragment">The Bayes factor gives us that answer</li>
+</ul>
+</section>
+<section id="compared-to-what" class="slide level2">
+<h2>Compared to what?</h2>
+<ul>
+<li class="fragment"><img data-src="images/oompa.jpg" style="width:50.0%"></li>
 </ul>
 </section>
 <section id="bayes-factor-equation" class="slide level2">

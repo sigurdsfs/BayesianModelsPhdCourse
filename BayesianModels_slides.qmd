@@ -920,13 +920,130 @@ model {
 <!-- #endregion                             -->
 
 <!-- #region Lecture#7 Bayes factors              -->
+
 # The Bayes factor
-- Compared to what? This is a surprisingly powerful question to ask. 
-- This model is good - it has high model evidence. 
-- Ok great, but compared to what?
-- We want relative evidence. We want to compare predictive performance for one model versus another. 
-- The Bayes factor gives us this by taking the ratio of the marginal likelihoods for two different models
- 
+- Compared to what?  
+- From marginal likelihood to relative evidence  
+- Interpreting Bayes factors  
+- Worked example: guessing vs. non-guessing  
+- Pitfalls and philosophical notes
+
+## Why compare models?
+- A model with high marginal likelihood is good — but only *relative* to alternatives  
+- Absolute goodness is rarely meaningful on its own  
+- The key question is: compared to what?  
+- We want relative evidence — which model explains the data better  
+- The Bayes factor gives us that answer
+
+## Compared to what?
+- ![](images/oompa.jpg){width=100%}
+
+## Set a compared-to-what alarm in your brain
+- Listen out for one-sided superiority / inferiority claims
+- "this is theory is good!" 
+- "this model predicts the data poorly"
+- "this data is unlikely under the null hypothesis"
+- Ding!
+- Compared to what?
+
+## Bayes factor definition
+- Marginal likelihood: average predictive performance of a model  
+- Bayes factor compares this between two models  
+- Defined as the ratio of marginal likelihoods:  
+  $BF_{12} = \frac{p(D \mid M_1)}{p(D \mid M_2)}$  
+- Quantifies how much more likely the data is under $M_1$ than $M_2$
+
+## We already plotted Bayes factors
+- Sneakly i didnt tell you they were bayes factors. 
+-
+
+## Interpreting the Bayes factor
+
+- $BF > 1$ → data favors $M_1$  
+- $BF < 1$ → data favors $M_2$  
+- $BF = 5$ → data is 5× more likely under $M_1$  
+- $BF = \frac{1}{5}$ → data is 5× more likely under $M_2$  
+- Strength of evidence depends on how far from 1 the ratio is
+
+## Jeffreys' scale
+
+- A rough guide for interpreting Bayes factors:  
+
+| $BF_{12}$       | Interpretation                 |
+|----------------|-------------------------------|
+| >100           | Extreme evidence for $M_1$     |
+| 30–100         | Very strong evidence for $M_1$ |
+| 10–30          | Strong evidence for $M_1$      |
+| 3–10           | Moderate evidence for $M_1$    |
+| 1–3            | Anecdotal evidence for $M_1$   |
+| 1              | No preference                  |
+| 1/3–1          | Anecdotal evidence for $M_2$   |
+| 1/10–1/3       | Moderate evidence for $M_2$    |
+| 1/30–1/10      | Strong evidence for $M_2$      |
+| 1/100–1/30     | Very strong evidence for $M_2$ |
+| <1/100         | Extreme evidence for $M_2$     |
+
+## Example: guessing vs. non-guessing
+
+- 9 out of 10 trials correct → $k = 9$, $n = 10$  
+- $M_1$: unknown ability → $\theta \sim \text{Uniform}(0,1)$  
+- $M_2$: guessing → $\theta = 0.5$  
+- Compute marginal likelihood under each model  
+- Compare with a Bayes factor
+
+## Bayes factor calculation
+
+- For $M_1$: $p(D \mid M_1) = \frac{1}{1+n} = \frac{1}{11} \approx 0.0909$  
+- For $M_2$: $p(D \mid M_2) = \binom{10}{9} (0.5)^{10} = 10 \cdot 0.000976 = 0.0098$  
+- Bayes factor:  
+  $BF_{12} = \frac{0.0909}{0.0098} \approx 9.3$  
+- Data is about 9× more likely under $M_1$ than $M_2$
+
+## Flipping the ratio
+
+- If $BF_{12} < 1$, take the reciprocal: $BF_{21} = \frac{1}{BF_{12}}$  
+- Keeps interpretation intuitive: how many times more likely is the data?  
+- Example: $BF_{12} = 0.2$ → $BF_{21} = 5$  
+- Now we say: data is 5× more likely under $M_2$  
+- Same info, more digestible
+
+## Bayes vs. Fisher
+
+- Bayes compares models  
+- Fisherian methods test a single null hypothesis  
+- p-values ask: “how unlikely is this data under $H_0$?”  
+- Bayes factors ask: “which model better explains the data?”  
+- Evidence is always comparative: $p(\text{data} \mid \text{A})$ vs. $p(\text{data} \mid \text{B})$
+
+## Cautions and critiques
+
+- Bayes factors are sensitive to prior choice  
+- Especially important for point nulls (e.g. $\theta = 0$)  
+- Priors must reflect genuine uncertainty or theory  
+- Use sensitivity analysis: test how conclusions change with different priors  
+- Critics argue: are sharp nulls ever really true?
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- #endregion                             -->
+
+
+
+
+
+
+
+
 ## Bayes factor equation
 - Marginal likelihood measures a model’s absolute evidence by averaging its predictive performance over all parameter values.  
 - Model selection often focuses on relative evidence —how well one model explains the data compared to another.  
