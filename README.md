@@ -51,6 +51,10 @@ There is no exam or grading, but there is a group project.
 Everyone taking the course for credit via the PhD school will do a group project and a group mini-presentation at the end of the week. 
 Those taking it without credit are welcome to do a group project too, but it's optional.
 
+## Where can I find details about the group work?
+Here is a google doc, its a little bit evolving over time so keep checking it. 
+https://docs.google.com/document/d/1qGCNzpORVxF7BhnksqNsq5lxFw9Uk5-MUXx_jpLP3dQ/edit?usp=sharing 
+
 ## I am not signed up via the PhD school, can I still claim ECTS?
 If you attend the full week and you do the group work, yes. I can write you a certificate, and you can try to claim ECTS after the course; however, we cannot guarantee your program will accept this. They usually do, but we cannot promise. 
 
