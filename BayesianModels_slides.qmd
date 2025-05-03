@@ -134,7 +134,7 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - **Vibes.** Intuitive · Playful · Fun · Useful ✨
 
 ## Our expectations of you:
-- **Life is short.** Don't things pass that you dont understand. 
+- **Life is short.** Don't let things pass that you dont understand. 
 - **Your life matters.** Your understanding matters. Actively take part.
 - **You are entitled** to understand this. 
 - **Don't listen** to it, fight it. 🥊
@@ -940,35 +940,30 @@ model {
 
 ## Set a compared-to-what alarm in your brain
 - Listen out for one-sided superiority / inferiority claims
-- "this is theory is good!" 
-- "this model predicts the data poorly"
-- "this data is unlikely under the null hypothesis"
-- Ding!
-- Compared to what?
+- *"this theory explains..."* 
+- *"this model predicts the data poorly..."*
+- *"this data is unlikely under the null hypothesis..."*
+- **Ding!** → Compared to what?
 
 ## Bayes factor definition
-- Marginal likelihood: average predictive performance of a model  
+- Marginal likelihood: *average predictive performance of a model*  
 - Bayes factor compares this between two models  
 - Defined as the ratio of marginal likelihoods:  
-  $BF_{12} = \frac{p(D \mid M_1)}{p(D \mid M_2)}$  
-- Quantifies how much more likely the data is under $M_1$ than $M_2$
+  $BF_{\color{blue}{1} \color{red}{2}} = \frac{p(D \mid \color{blue}{M_1})}{p(D \mid \color{red}{M_2})}$  
+- Quantifies how much more likely the data is under $\color{blue}{M_1}$ than $\color{red}{M_2}$
 
 ## We already plotted Bayes factors
 - Sneakly i didnt tell you they were bayes factors. 
--
+- ![](images/ratio_marginal_likelihoods.png)
 
 ## Interpreting the Bayes factor
-
-- $BF > 1$ → data favors $M_1$  
-- $BF < 1$ → data favors $M_2$  
-- $BF = 5$ → data is 5× more likely under $M_1$  
-- $BF = \frac{1}{5}$ → data is 5× more likely under $M_2$  
+- $BF_{12} > 1$ → data favors $M_1$  
+- $BF_{12} < 1$ → data favors $M_2$  
+- $BF_{12} = 5$ → data is 5× more likely under $M_1$  
+- $BF_{12} = \frac{1}{5}$ → data is 5× more likely under $M_2$  
 - Strength of evidence depends on how far from 1 the ratio is
 
 ## Jeffreys' scale
-
-- A rough guide for interpreting Bayes factors:  
-
 | $BF_{12}$       | Interpretation                 |
 |----------------|-------------------------------|
 | >100           | Extreme evidence for $M_1$     |
@@ -984,7 +979,6 @@ model {
 | <1/100         | Extreme evidence for $M_2$     |
 
 ## Example: guessing vs. non-guessing
-
 - 9 out of 10 trials correct → $k = 9$, $n = 10$  
 - $M_1$: unknown ability → $\theta \sim \text{Uniform}(0,1)$  
 - $M_2$: guessing → $\theta = 0.5$  
@@ -992,7 +986,6 @@ model {
 - Compare with a Bayes factor
 
 ## Bayes factor calculation
-
 - For $M_1$: $p(D \mid M_1) = \frac{1}{1+n} = \frac{1}{11} \approx 0.0909$  
 - For $M_2$: $p(D \mid M_2) = \binom{10}{9} (0.5)^{10} = 10 \cdot 0.000976 = 0.0098$  
 - Bayes factor:  
@@ -1000,7 +993,6 @@ model {
 - Data is about 9× more likely under $M_1$ than $M_2$
 
 ## Flipping the ratio
-
 - If $BF_{12} < 1$, take the reciprocal: $BF_{21} = \frac{1}{BF_{12}}$  
 - Keeps interpretation intuitive: how many times more likely is the data?  
 - Example: $BF_{12} = 0.2$ → $BF_{21} = 5$  
@@ -1008,7 +1000,6 @@ model {
 - Same info, more digestible
 
 ## Bayes vs. Fisher
-
 - Bayes compares models  
 - Fisherian methods test a single null hypothesis  
 - p-values ask: “how unlikely is this data under $H_0$?”  
@@ -1023,8 +1014,8 @@ model {
 - Use sensitivity analysis: test how conclusions change with different priors  
 - Critics argue: are sharp nulls ever really true?
 
-
-
+## The arc of civilisation
+Fire, the wheel, writing, zero, the printing press, Newtonian physics, germ theory, the steam engine, the combustion engine, the Moon landing, the internet, CRISPR, GPT-4, self-driving cars, **Bayes factors**
 
 
 

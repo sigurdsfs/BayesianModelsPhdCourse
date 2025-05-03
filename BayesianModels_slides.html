@@ -345,7 +345,7 @@
 <section id="our-expectations-of-you" class="slide level2">
 <h2>Our expectations of you:</h2>
 <ul>
-<li class="fragment"><strong>Life is short.</strong> Don’t things pass that you dont understand.</li>
+<li class="fragment"><strong>Life is short.</strong> Don’t let things pass that you dont understand.</li>
 <li class="fragment"><strong>Your life matters.</strong> Your understanding matters. Actively take part.</li>
 <li class="fragment"><strong>You are entitled</strong> to understand this.</li>
 <li class="fragment"><strong>Don’t listen</strong> to it, fight it. 🥊</li>
@@ -1535,8 +1535,183 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <section id="compared-to-what" class="slide level2">
 <h2>Compared to what?</h2>
 <ul>
-<li class="fragment"><img data-src="images/oompa.jpg" style="width:50.0%"></li>
+<li class="fragment"><img data-src="images/oompa.jpg" style="width:100.0%"></li>
 </ul>
+</section>
+<section id="set-a-compared-to-what-alarm-in-your-brain" class="slide level2">
+<h2>Set a compared-to-what alarm in your brain</h2>
+<ul>
+<li class="fragment">Listen out for one-sided superiority / inferiority claims</li>
+<li class="fragment"><em>“this theory explains…”</em></li>
+<li class="fragment"><em>“this model predicts the data poorly…”</em></li>
+<li class="fragment"><em>“this data is unlikely under the null hypothesis…”</em></li>
+<li class="fragment"><strong>Ding!</strong> → Compared to what?</li>
+</ul>
+</section>
+<section id="bayes-factor-definition" class="slide level2">
+<h2>Bayes factor definition</h2>
+<ul>
+<li class="fragment">Marginal likelihood: <em>average predictive performance of a model</em><br>
+</li>
+<li class="fragment">Bayes factor compares this between two models<br>
+</li>
+<li class="fragment">Defined as the ratio of marginal likelihoods:<br>
+<span class="math inline">\(BF_{\color{blue}{1} \color{red}{2}} = \frac{p(D \mid \color{blue}{M_1})}{p(D \mid \color{red}{M_2})}\)</span><br>
+</li>
+<li class="fragment">Quantifies how much more likely the data is under <span class="math inline">\(\color{blue}{M_1}\)</span> than <span class="math inline">\(\color{red}{M_2}\)</span></li>
+</ul>
+</section>
+<section id="we-already-plotted-bayes-factors" class="slide level2">
+<h2>We already plotted Bayes factors</h2>
+<ul>
+<li class="fragment">Sneakly i didnt tell you they were bayes factors.</li>
+<li class="fragment"><img data-src="images/ratio_marginal_likelihoods.png"></li>
+</ul>
+</section>
+<section id="interpreting-the-bayes-factor" class="slide level2">
+<h2>Interpreting the Bayes factor</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(BF_{12} &gt; 1\)</span> → data favors <span class="math inline">\(M_1\)</span><br>
+</li>
+<li class="fragment"><span class="math inline">\(BF_{12} &lt; 1\)</span> → data favors <span class="math inline">\(M_2\)</span><br>
+</li>
+<li class="fragment"><span class="math inline">\(BF_{12} = 5\)</span> → data is 5× more likely under <span class="math inline">\(M_1\)</span><br>
+</li>
+<li class="fragment"><span class="math inline">\(BF_{12} = \frac{1}{5}\)</span> → data is 5× more likely under <span class="math inline">\(M_2\)</span><br>
+</li>
+<li class="fragment">Strength of evidence depends on how far from 1 the ratio is</li>
+</ul>
+</section>
+<section id="jeffreys-scale" class="slide level2">
+<h2>Jeffreys’ scale</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(BF_{12}\)</span></th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&gt;100</td>
+<td>Extreme evidence for <span class="math inline">\(M_1\)</span></td>
+</tr>
+<tr class="even">
+<td>30–100</td>
+<td>Very strong evidence for <span class="math inline">\(M_1\)</span></td>
+</tr>
+<tr class="odd">
+<td>10–30</td>
+<td>Strong evidence for <span class="math inline">\(M_1\)</span></td>
+</tr>
+<tr class="even">
+<td>3–10</td>
+<td>Moderate evidence for <span class="math inline">\(M_1\)</span></td>
+</tr>
+<tr class="odd">
+<td>1–3</td>
+<td>Anecdotal evidence for <span class="math inline">\(M_1\)</span></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>No preference</td>
+</tr>
+<tr class="odd">
+<td>1/3–1</td>
+<td>Anecdotal evidence for <span class="math inline">\(M_2\)</span></td>
+</tr>
+<tr class="even">
+<td>1/10–1/3</td>
+<td>Moderate evidence for <span class="math inline">\(M_2\)</span></td>
+</tr>
+<tr class="odd">
+<td>1/30–1/10</td>
+<td>Strong evidence for <span class="math inline">\(M_2\)</span></td>
+</tr>
+<tr class="even">
+<td>1/100–1/30</td>
+<td>Very strong evidence for <span class="math inline">\(M_2\)</span></td>
+</tr>
+<tr class="odd">
+<td>&lt;1/100</td>
+<td>Extreme evidence for <span class="math inline">\(M_2\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-guessing-vs.-non-guessing" class="slide level2">
+<h2>Example: guessing vs.&nbsp;non-guessing</h2>
+<ul>
+<li class="fragment">9 out of 10 trials correct → <span class="math inline">\(k = 9\)</span>, <span class="math inline">\(n = 10\)</span><br>
+</li>
+<li class="fragment"><span class="math inline">\(M_1\)</span>: unknown ability → <span class="math inline">\(\theta \sim \text{Uniform}(0,1)\)</span><br>
+</li>
+<li class="fragment"><span class="math inline">\(M_2\)</span>: guessing → <span class="math inline">\(\theta = 0.5\)</span><br>
+</li>
+<li class="fragment">Compute marginal likelihood under each model<br>
+</li>
+<li class="fragment">Compare with a Bayes factor</li>
+</ul>
+</section>
+<section id="bayes-factor-calculation" class="slide level2">
+<h2>Bayes factor calculation</h2>
+<ul>
+<li class="fragment">For <span class="math inline">\(M_1\)</span>: <span class="math inline">\(p(D \mid M_1) = \frac{1}{1+n} = \frac{1}{11} \approx 0.0909\)</span><br>
+</li>
+<li class="fragment">For <span class="math inline">\(M_2\)</span>: <span class="math inline">\(p(D \mid M_2) = \binom{10}{9} (0.5)^{10} = 10 \cdot 0.000976 = 0.0098\)</span><br>
+</li>
+<li class="fragment">Bayes factor:<br>
+<span class="math inline">\(BF_{12} = \frac{0.0909}{0.0098} \approx 9.3\)</span><br>
+</li>
+<li class="fragment">Data is about 9× more likely under <span class="math inline">\(M_1\)</span> than <span class="math inline">\(M_2\)</span></li>
+</ul>
+</section>
+<section id="flipping-the-ratio" class="slide level2">
+<h2>Flipping the ratio</h2>
+<ul>
+<li class="fragment">If <span class="math inline">\(BF_{12} &lt; 1\)</span>, take the reciprocal: <span class="math inline">\(BF_{21} = \frac{1}{BF_{12}}\)</span><br>
+</li>
+<li class="fragment">Keeps interpretation intuitive: how many times more likely is the data?<br>
+</li>
+<li class="fragment">Example: <span class="math inline">\(BF_{12} = 0.2\)</span> → <span class="math inline">\(BF_{21} = 5\)</span><br>
+</li>
+<li class="fragment">Now we say: data is 5× more likely under <span class="math inline">\(M_2\)</span><br>
+</li>
+<li class="fragment">Same info, more digestible</li>
+</ul>
+</section>
+<section id="bayes-vs.-fisher" class="slide level2">
+<h2>Bayes vs.&nbsp;Fisher</h2>
+<ul>
+<li class="fragment">Bayes compares models<br>
+</li>
+<li class="fragment">Fisherian methods test a single null hypothesis<br>
+</li>
+<li class="fragment">p-values ask: “how unlikely is this data under <span class="math inline">\(H_0\)</span>?”<br>
+</li>
+<li class="fragment">Bayes factors ask: “which model better explains the data?”<br>
+</li>
+<li class="fragment">Evidence is always comparative: <span class="math inline">\(p(\text{data} \mid \text{A})\)</span> vs.&nbsp;<span class="math inline">\(p(\text{data} \mid \text{B})\)</span></li>
+</ul>
+</section>
+<section id="cautions-and-critiques" class="slide level2">
+<h2>Cautions and critiques</h2>
+<ul>
+<li class="fragment">Bayes factors are sensitive to prior choice<br>
+</li>
+<li class="fragment">Especially important for point nulls (e.g.&nbsp;<span class="math inline">\(\theta = 0\)</span>)<br>
+</li>
+<li class="fragment">Priors must reflect genuine uncertainty or theory<br>
+</li>
+<li class="fragment">Use sensitivity analysis: test how conclusions change with different priors<br>
+</li>
+<li class="fragment">Critics argue: are sharp nulls ever really true?</li>
+</ul>
+</section>
+<section id="the-arc-of-civilisation" class="slide level2">
+<h2>The arc of civilisation</h2>
+<p>Fire, the wheel, writing, zero, the printing press, Newtonian physics, germ theory, the steam engine, the combustion engine, the Moon landing, the internet, CRISPR, GPT-4, self-driving cars, <strong>Bayes factors</strong></p>
+<!-- #endregion                             -->
 </section>
 <section id="bayes-factor-equation" class="slide level2">
 <h2>Bayes factor equation</h2>
@@ -1659,7 +1834,7 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <li class="fragment">the data is 9.3 times more likely under a model in which subjects are not guessing, vs.&nbsp;than in which they are guessing</li>
 </ul>
 </section>
-<section id="bayes-vs.-fisher" class="slide level2">
+<section id="bayes-vs.-fisher-1" class="slide level2">
 <h2>Bayes vs.&nbsp;Fisher</h2>
 <ul>
 <li class="fragment">Bayesian methods are typically comparative, where two ore more models are compared</li>
@@ -1667,7 +1842,7 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <li class="fragment">Evidence is always comparative. ratio of p(data|Innocent) : p(data|Guilty)</li>
 </ul>
 </section>
-<section id="cautions-and-critiques" class="slide level2">
+<section id="cautions-and-critiques-1" class="slide level2">
 <h2>Cautions and Critiques</h2>
 <ul>
 <li class="fragment">Bayes factors sensitive to prior specification.</li>
@@ -2118,7 +2293,7 @@ delta &lt;- theta1 - theta2</li>
 <li class="fragment">The Savage–Dickey method compares: BF_01 = prior density at delta = 0 / posterior density at delta = 0</li>
 </ul>
 </section>
-<section id="interpreting-the-bayes-factor" class="slide level2">
+<section id="interpreting-the-bayes-factor-1" class="slide level2">
 <h2>Interpreting the Bayes Factor</h2>
 <ul>
 <li class="fragment">The posterior density at delta = 0 is about half the prior density.</li>
