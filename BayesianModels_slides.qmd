@@ -68,6 +68,10 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - ↓
 - lectures · interactive exercises · discussion · case studies ·  group work 
  
+## Overarching schematic
+- ![](images/course_schema.jpg){width=100%}
+- Your group project will reflect this workflow.
+
 ## Group work & presentations
 - **Separate** into small groups
 - **Supervision** from multiple experts 
@@ -100,7 +104,8 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - We rely heavily on it especially on days 1-3
 
 ## Schedule
-- Up to date schedule > See the github readme
+- Up to date schedule > See the GitHub > README.md
+- LOCATION CHANGES BY DAY
  
 ## Social: WhatsApp 
 - Chat with each other 💬
@@ -116,6 +121,10 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - **Simplicity.** Tools are parsimonious, flexible, intuitive, and powerful.
 - **Universality.** Same principles apply to science, statistic, brains, minds, behaviors, evolution, even physics. 
  
+## Overarching schematic
+- ![](images/course_schema.jpg){width=100%}
+- Your goup project will reflect this workflow.
+
 ## Specific aims
 - **Focus on mind & behavior** → Cognitive models 
 - **Connect to neural data** via simple methods 🧠
@@ -138,12 +147,17 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - *"i dont understand why..."*
 - *"do you have an intuition for why..."*
 - *"i'm confused..."* 🤔
-- **If you are shy.** Say it in the break / ask in whatsApp 
  
 ## Don't do this to yourself:
 - Nod and pretend you get something 🙅‍♂️ 
 - Assume you are the only one confused 😵‍💫😵
-- Collapse under self doubt. 
+- Collapse under self doubt.
+
+## Course team
+- Too shy to ask a question, talk to Janine
+- Organisation, ask David or Ollie
+- Technical issue / Github / Binder / Python > Simon
+
 <!-- #endregion-->
 
 <!-- #region Lecture#2 Basics of Bayesian analysis-->
@@ -715,7 +729,7 @@ for (i in 1:n) {
 
 # Latent mixture models
 - What are they?
-- How to use them to mixtures of cognitive processes or traits
+- How to use them to model mixtures of cognitive processes or traits
 - How to use them to model compare models 
 
 ## Latent mixture models
@@ -731,13 +745,19 @@ for (i in 1:n) {
 - Each participant belongs to one of the two groups.
 - An *indicator* variable $z_i$ models *guesser* or *tryer*.
 
+## Latent mixture model vs. simpler model
+- ![](images/lmm.jpg){width=50%}
+- ![](images/%20binomial%20rate%20model.jpg){width=50%}
+- Its the same model, $z$ just allows a mix of two different processes that can set the rate $\theta$.
+- Simples. 
+
 ## Latent mixture graphical model 
 - ![](images/lmm.jpg){width=50%}
 - $z_i$ is an indicator variable for participant $i$.
 - $z_i = 0$ → guesser; $z_i = 1$ → tryer.
 - $\psi = 0.5$ is the known chance performance level.
-- $\phi$ is the tryer’s ability (estimated).
-- Posterior of $z$ tells us the mixture of guessers vs. tryers
+- $\phi$ is the tryer’s ability (same as $\theta$).
+- Posterior of $z$ tells us the probability of each subject being either a guessers vs. a tryer.
 
 ## JAGS code for latent mixture
 ```{.python code-line-numbers="1-3|4-5|6-8"}
@@ -754,134 +774,150 @@ model {
     k[i] ~ dbin(theta[i], n)
   }
 }
-
+```
+## Interactive demo
+- `notebooks/probability distributions.ipynb`
+-  Let's simulate data first
+-  go to "Simulate guessers and tryers"  
+- <br>
+- Then we can run inference on each subject
+-  go to "Infer guessers and tryers" 
  
-
 <!-- #endregion                             -->
 
 <!-- #region Lecture#6 Model selection            -->
+
 # Model selection
-- Model selection is perhaps the most persuasive reason to choose Bayesian methods.
-- Bayesian models provide a simple and principled way to choose between models balancing between accuracy and complexity
+- Why we need to compare models
+- Simplicity vs. complexity
+- Marginal likelihood as a comparison tool
+- Predictive performance and prior bets
+- Bayesian model comparison intuition
 
-## Why model comparison?
-- so far we have covered single models
-- in psychology/neuroscience we want to compare different models
-- is this theory or this theory better at explaining the data
-- if someone says this is the theory. it begs the question, compared to what?
-- we want to know how well a theory explains relative to another, or many others. 
-- we need to compare models if we are to move beyond descriptive data analysis. 
+## Why compare models?
+- Exept for the last section, we’ve mainly focused on single models
+- Science advances by comparing competing explanations
+- “This theory is good” → compared to what?
+- We want to know which theory explains the data *better*
+- This requires comparing models
 
-## Ptolomy
-- We consider it a good principle to explain the phenomena by the simplest hypothesis, provided this doesnt contradict the data in an important way
- 
-## Occam's razon
-- "Plurarity must never be posited without necessity"
-- This is nicknamed Occam's razor, which cuts out needless complexity when it comes to theories or models or explanations
+## Simplicity vs. complexity
+- “Explain phenomena by the simplest hypothesis that works” — Ptolemy
+- “Avoid unnecessary plurality” — Occam’s razor
+- “Complexity must pay for itself” — Hinton
+- “Minimize free energy” — Friston
+- These ideas all reflect the same principle: balance fit and complexity
 
-## Friston's free energy
-- "Minimizing free energy means finding the right balance between accuracy  and complexity"
-- "Good models should be as simple as possible, but not simpler than necessary to explain the data. Complexity must be minimized to avoid overfitting, yet sufficient to capture the underlying structure of the world." 
+## The Bayesian solution
+- Many methods try to balance fit and complexity
+- Bayesian methods do it naturally 
+- Bayes gives us a single number for model quality: marginal likelihood
+- It rewards accuracy...
+- ...and penalizes wasted complexity
 
-## Geoff Hinton
-- "Model complexity must pay for itself"
-- Geoff is referring to the fact that model complexity must be justified by its ability to explain the data. 
-
-## Bayesian magic
-- Lots of methods exist for trying to get this balance right
-- Out of sample prediction, parameter counting algorithms, blah, blah.
-- Bayes nails it by finding a universal principle by which to compare models that optimally balances accuracy and complexity. 
-- This is the magic sauce of Bayes. 
+## Conditioning on a model
+- Bayes' rule always assumes *a model*  
+- But we can easily imagine different models, with different priors or structures
+- Science is filled with competing explanations and models after all  
+- We now ask: which model better predicts the data?  
+- This leads us to the *marginal likelihood*  
+- It’s the probability of the data, *given the model*
 
 ## Marginal likelihood
-- Back to Bayes equation we started with
-- ![](fig.1.1.jpg)
-- ![](fig.1.2.jpg)
-- There is something missing which is that this is all conditional on a particular model. We could have a very different model that might have different parameters. 
- 
-## Marginal likelihood conditional on model
-- We can be explicit about how this is conditional on a specific model
-- ![](fig.7.1.jpg)
-- $p(D|M_1)$ is a single number, the marginal likelihood, also known as the evidence. 
- 
+- $p(D \mid M)$ = average predictive performance of model $M$
+- It’s a single number: 
+- *How well the model predicted the data, on average*
+- It accounts for *all* parameter values, weighted by their prior
+
+## Analogy to betting
+- Think of it like your model is betting on which parameter values best predict the data
+- The better your bets, the higher your model’s score
+- The prior is the placing of the bets, and the marginal likelihood is how good those bets paid off. 
+
 ## Marginal likelihood in words
-- the probability of the data given model
-- the probability of the data according to the models predictions
-- average predictive performance of the model
-- how unsuprised was the model when seeing the data
-- the prior in the model is like betting on where good parameters lie. The marginal likelihood sums up how well those bets paid off in terms of predictive performance when the data arrived.
-- a models predictions has probability mass of 1. it can spend its predicitons in different ways by having different priors. a bad prior wastes this on predictions that are not supported by the data, a good prior concrentrates its predicitons to where the data is well predicted.
-- the better the predictions of the model, the greater the evidence for the model 
-- it’s like running every possible version of the model (with every parameter setting weighted by the prior), and asking: “on average, how well does the model predict the data?”
- 
-## Marginal likelihood of paranormal octopi
-- Imagine two paranormal octupuses helping the KGB find a missing sub. 
-- Alice predicts the sub is in the nothern hemisphere
-- Bob predicts its in nothern europe
-- Data: the sub is found in the Baltic, 
-- the probability of the data according to Alice is reasonable. the evidence in favor of alice is reasonable
-- the probability of the data according to Bob is high. The evidence in favor of Bob is high
-- both were correct, but Bob was "more correct" because his prediciton was more specific
- 
-## Marginal likelihood
-- The marginal likelihood is computed by averaging the likelihood of the data predicted across the models parameter space.  
-- Prior probabilities act as averaging weights.  
-- Based on the law of total probability:  
-  $p(D \mid M_1) = \sum_{i=1}^{k} p(D \mid \xi_i, M_1) p(\xi_i \mid M_1)$ 
+- How probable was the data under this model $M$?
+- Did the model concentrate its predictions where the data actually were?
+- Priors spread out predictive mass
+- Bad priors waste predictions on wrong areas
+- Good priors focus predictions where the data land
 
-## Example calculation of marginal likelihood 
-- - Consider a model $M_x$ with one parameter $\xi$.  
-- $\xi$ can take **three values**:  
-  - $\xi_1 = -1$, $\xi_2 = 0$, $\xi_3 = 1$.  
-- Prior probabilities assigned:  
-  - $p(\xi_1) = 0.6$  
-  - $p(\xi_2) = 0.3$  
-  - $p(\xi_3) = 0.1$  
- 
-## Likelihood Computation  
-- - Likelihood values for observed data $D$:  
-  - $p(D \mid \xi_1) = 0.001$  
-  - $p(D \mid \xi_2) = 0.002$  
-  - $p(D \mid \xi_3) = 0.003$  
-- Compute marginal likelihood:  
-  $p(D \mid M_x) = p(\xi_1) p(D \mid \xi_1) + p(\xi_2) p(D \mid \xi_2) + p(\xi_3) p(D \mid \xi_3)$
-  $= 0.6 \times 0.001 + 0.3 \times 0.002 + 0.1 \times 0.003$
-  $= 0.0015$
+## Octopus example
+- There are two ~~octopi~~ octopusses.
+- Both claim to be paranormal.
+- It's 1970, so they are both working for the CIA
+- ![](images/octopuses.jpg){width=50%}
 
-##  Marginal likelihood and complexity 
-- To have high evidence, the model needs good predictive peformance
-- It needs to focus its predictions where the data has a high likelihood
-- Complex models with many parameters distribute their predictions widely
-- Complex models thus make many predictions that may not turn out to have high likelihood 
-- Complex models thus are more likely to "waste their predictions" 
- 
-## Model complexity is not the same as the number of parameters
-- Complexity is not just the number of parameters.
-- A model with few parameters can still be complex if its predictions are highly uncertain due to vague priors.
-- True complexity comes from how broadly the model spreads its predictions across its parameter space.
-- A narrow prediction distribution suggests a simpler model.
-- A wider distribution indicates greater complexity, as the model allows for more diverse possible outcomes.
-- Models are complex to the degree to which they make broad range of predictions
+## Octopus predictions 
+- Where is the Russian sub?
+- Alice: northern hemisphere
+- Bob: Baltic Sea
+- Data: Off the coast of Stockholm
+- Alice was vaguely right 
+- Bob was more precisely right → higher marginal likelihood
 
-## Model complexity and vagueness of priors
-- a model with prior $\theta \sim \text{Uniform} (0,1)$
-- ...is more complex than...
-- a model with prior $\theta \sim \text{Uniform} (0.5,1)$
+## How is marginal likelihood calculated?
+- It’s the expected likelihood under the predictions of the prior:
+- $p(D \mid M) = \int p(D \mid \theta, M)\, p(\theta \mid M)\, d\theta$
+- For discrete parameters:
+- $p(D \mid M) = \sum p(D \mid \xi_i)\, p(\xi_i)$
+- It's a weighted average across all parameter settings
 
-## Marginal likelihood as a unifying maximandum
-- Marginal likelihood is arguably the most important concept ever. 
-- It is at the heart of scientific inference, psychological and neural inference, and survival, and even existence of objects.
-- Maximising it is hard, we often need to approximate it.
-- Variational Bayes, Free-energy minimisation, Predictive coding, MCMC Sampling etc. are all ways to approximate it.
-- Ultimately it is one quantity we care about.
-- In our context we want to build models of brain, mind or behavior, that best explain these phenomena.
-- This reduces to finding models that have the best average predictive performance.
-- And this reduces to finding models with the highest marginal likelihood
-- Thats it. 
-- Everything else is details. 
-- Ah but so and so maximises something different. 
-- Yes but at heart this is just a proxy for the marginal likelihood.
-<!-- #endregion                                   -->
+## Try it out  
+- Lets compare alice and bob
+-  `notebooks/probability distributions.ipynb`
+- "Compare octopusses via marginal likelihood"
+
+## Worked example
+- Suppose a model has three parameter values: $\theta = \{0, 0.5, 1\}$
+- Prior probabilities: $p(\theta_1) = \color{blue}{0.6}$, $p(\theta_2) = \color{blue}{0.3}$, $p(\theta_3) = \color{blue}{0.1}$
+- Likelihoods: $p(D \mid \theta_1) = \color{red}{0.1}$, $p(D \mid \theta_2) = \color{red}{0.4}$, $p(D \mid \theta_3) = \color{red}{0.6}$
+- Marginal likelihood:  
+  $p(D) = \color{blue}{0.6} \cdot \color{red}{0.1} + \color{blue}{0.3} \cdot \color{red}{0.4} + \color{blue}{0.1} \cdot \color{red}{0.6}$
+- Step by step:  
+  $= \color{gray}{0.06} + \color{gray}{0.12} + \color{gray}{0.06} = \boxed{0.24}$
+
+## Complexity and spread
+- More complex models spread their predictions widely
+- This lowers the average likelihood
+- Even if they include the truth, they may assign low probability to it
+- Marginal likelihood punishes this
+- Broad priors = wasted predictions = lower score = lower marginal likelihood
+
+## Complexity is not just parameter count
+- A model with *many* narrow priors can be simple
+- A model with *one* vague prior can be complex
+- Complexity = how broadly a model spreads its predictions
+- Narrow predictive distributions = simpler models
+- Wide, uncertain predictions = complex models
+
+## Misconception - sidenote
+- <span style="color:gray">AIC, BIC penalize complexity by counting parameters</span>  
+- <span style="color:gray">But parameter count ≠ true complexity</span>  
+- <span style="color:gray">Complexity = how broadly a model spreads its predictions</span>
+- <span style="color:gray">Bayesian marginal likelihood captures this automatically</span>
+
+## Example: prior vagueness
+- $\theta \sim \text{Uniform}(0,1)$ → vague → complex
+- $\theta \sim \text{Uniform}(0.5,1)$ → tighter → simpler
+- Both models have one parameter
+- But they differ in how much of the prediction space they cover
+- Complexity depends on how much ground a model tries to cover
+
+## Example: prior vagueness 
+- ![](images/complexity.png){width=100%}
+
+## Why marginal likelihood matters
+- It’s the most important quantity in Bayesian model comparison
+- It unifies inference in brain, behavior, science
+- Maximizing it means best average predictive performance
+- It is the quantity that arguably everything else is trying to approximate: variational Bayes, free energy minimisation, ELBO, predictive coding, predictive processing
+
+## Why marginal likelihood matters
+- <span style="color:gray">Can even argue it is a *unique universal maximandum* for all physical and adaptive systems</span>
+- <span style="color:gray">Woah man, that's like, deep.</span>
+- 😵‍💫
+
+<!-- #endregion                             -->
 
 <!-- #region Lecture#7 Bayes factors              -->
 # The Bayes factor

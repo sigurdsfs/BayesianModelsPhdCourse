@@ -245,6 +245,13 @@
 <li class="fragment">lectures · interactive exercises · discussion · case studies · group work</li>
 </ul>
 </section>
+<section id="overarching-schematic" class="slide level2">
+<h2>Overarching schematic</h2>
+<ul>
+<li class="fragment"><img data-src="images/course_schema.jpg" style="width:100.0%"></li>
+<li class="fragment">Your group project will reflect this workflow.</li>
+</ul>
+</section>
 <section id="group-work-presentations" class="slide level2">
 <h2>Group work &amp; presentations</h2>
 <ul>
@@ -293,7 +300,8 @@
 <section id="schedule" class="slide level2">
 <h2>Schedule</h2>
 <ul>
-<li class="fragment">Up to date schedule &gt; See the github readme</li>
+<li class="fragment">Up to date schedule &gt; See the GitHub &gt; README.md</li>
+<li class="fragment">LOCATION CHANGES BY DAY</li>
 </ul>
 </section>
 <section id="social-whatsapp" class="slide level2">
@@ -314,6 +322,13 @@
 <li class="fragment"><strong>New perspective</strong>. Upgrade your scientific thinking</li>
 <li class="fragment"><strong>Simplicity.</strong> Tools are parsimonious, flexible, intuitive, and powerful.</li>
 <li class="fragment"><strong>Universality.</strong> Same principles apply to science, statistic, brains, minds, behaviors, evolution, even physics.</li>
+</ul>
+</section>
+<section id="overarching-schematic-1" class="slide level2">
+<h2>Overarching schematic</h2>
+<ul>
+<li class="fragment"><img data-src="images/course_schema.jpg" style="width:100.0%"></li>
+<li class="fragment">Your goup project will reflect this workflow.</li>
 </ul>
 </section>
 <section id="specific-aims" class="slide level2">
@@ -346,7 +361,6 @@
 <li class="fragment"><em>“i dont understand why…”</em></li>
 <li class="fragment"><em>“do you have an intuition for why…”</em></li>
 <li class="fragment"><em>“i’m confused…”</em> 🤔</li>
-<li class="fragment"><strong>If you are shy.</strong> Say it in the break / ask in whatsApp</li>
 </ul>
 </section>
 <section id="dont-do-this-to-yourself" class="slide level2">
@@ -354,8 +368,17 @@
 <ul>
 <li class="fragment">Nod and pretend you get something 🙅‍♂️</li>
 <li class="fragment">Assume you are the only one confused 😵‍💫😵</li>
-<li class="fragment">Collapse under self doubt. <!-- #endregion--></li>
+<li class="fragment">Collapse under self doubt.</li>
 </ul>
+</section>
+<section id="course-team" class="slide level2">
+<h2>Course team</h2>
+<ul>
+<li class="fragment">Too shy to ask a question, talk to Janine</li>
+<li class="fragment">Organisation, ask David or Ollie</li>
+<li class="fragment">Technical issue / Github / Binder / Python &gt; Simon</li>
+</ul>
+<!-- #endregion-->
 <!-- #region Lecture#2 Basics of Bayesian analysis-->
 </section></section>
 <section>
@@ -1207,7 +1230,7 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <h1>Latent mixture models</h1>
 <ul>
 <li class="fragment">What are they?</li>
-<li class="fragment">How to use them to mixtures of cognitive processes or traits</li>
+<li class="fragment">How to use them to model mixtures of cognitive processes or traits</li>
 <li class="fragment">How to use them to model compare models</li>
 </ul>
 </section>
@@ -1228,32 +1251,57 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <li class="fragment"><em>“Tryers”</em> have an ability that determines their rate of correct responses.</li>
 <li class="fragment"><em>“Guessers”</em> score at chance level (e.g.&nbsp;50%).</li>
 <li class="fragment">Each participant belongs to one of the two groups.</li>
-<li class="fragment">An <em>indicator</em> variable <span class="math inline">\(z_i\)</span> indicates guesser or tryer.</li>
+<li class="fragment">An <em>indicator</em> variable <span class="math inline">\(z_i\)</span> models <em>guesser</em> or <em>tryer</em>.</li>
+</ul>
+</section>
+<section id="latent-mixture-model-vs.-simpler-model" class="slide level2">
+<h2>Latent mixture model vs.&nbsp;simpler model</h2>
+<ul>
+<li class="fragment"><img data-src="images/lmm.jpg" style="width:50.0%"></li>
+<li class="fragment"><img data-src="images/%20binomial%20rate%20model.jpg" style="width:50.0%"></li>
+<li class="fragment">Its the same model, <span class="math inline">\(z\)</span> just allows a mix of two different processes that can set the rate <span class="math inline">\(\theta\)</span>.</li>
+<li class="fragment">Simples.</li>
 </ul>
 </section>
 <section id="latent-mixture-graphical-model" class="slide level2">
 <h2>Latent mixture graphical model</h2>
 <ul>
 <li class="fragment"><img data-src="images/lmm.jpg" style="width:50.0%"></li>
-<li class="fragment"><span class="math inline">\(z_i\)</span> is a binary latent variable for participant <span class="math inline">\(i\)</span>.</li>
+<li class="fragment"><span class="math inline">\(z_i\)</span> is an indicator variable for participant <span class="math inline">\(i\)</span>.</li>
 <li class="fragment"><span class="math inline">\(z_i = 0\)</span> → guesser; <span class="math inline">\(z_i = 1\)</span> → tryer.</li>
 <li class="fragment"><span class="math inline">\(\psi = 0.5\)</span> is the known chance performance level.</li>
-<li class="fragment"><span class="math inline">\(\phi\)</span> is the tryer’s ability (estimated).</li>
-<li class="fragment">Posterior on <span class="math inline">\(z\)</span> tells us who likely guessed.</li>
+<li class="fragment"><span class="math inline">\(\phi\)</span> is the tryer’s ability (same as <span class="math inline">\(\theta\)</span>).</li>
+<li class="fragment">Posterior of <span class="math inline">\(z\)</span> tells us the probability of each subject being either a guessers vs.&nbsp;a tryer.</li>
 </ul>
 </section>
-<section id="latent-mixture-graphical-model-1" class="slide level2">
-<h2>Latent mixture graphical model</h2>
+<section id="jags-code-for-latent-mixture" class="slide level2">
+<h2>JAGS code for latent mixture</h2>
+<div class="sourceCode" id="cb8" data-code-line-numbers="1-3|4-5|6-8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a>model {</span>
+<span id="cb8-2"><a href=""></a>  <span class="cf">for</span> (i <span class="kw">in</span> <span class="dv">1</span>:p) {</span>
+<span id="cb8-3"><a href=""></a>    z[i] <span class="op">~</span> dbern(<span class="fl">0.5</span>)</span>
+<span id="cb8-4"><a href=""></a>  }</span>
+<span id="cb8-5"><a href=""></a></span>
+<span id="cb8-6"><a href=""></a>  psi <span class="op">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb8-7"><a href=""></a>  phi <span class="op">~</span> dbeta(<span class="dv">1</span>, <span class="dv">1</span>) I(<span class="fl">0.5</span>, <span class="dv">1</span>)</span>
+<span id="cb8-8"><a href=""></a></span>
+<span id="cb8-9"><a href=""></a>  <span class="cf">for</span> (i <span class="kw">in</span> <span class="dv">1</span>:p) {</span>
+<span id="cb8-10"><a href=""></a>    theta[i] <span class="op">&lt;-</span> equals(z[i], <span class="dv">0</span>) <span class="op">*</span> psi <span class="op">+</span> equals(z[i], <span class="dv">1</span>) <span class="op">*</span> phi</span>
+<span id="cb8-11"><a href=""></a>    k[i] <span class="op">~</span> dbin(theta[i], n)</span>
+<span id="cb8-12"><a href=""></a>  }</span>
+<span id="cb8-13"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="interactive-demo" class="slide level2">
+<h2>Interactive demo</h2>
 <ul>
-<li class="fragment"><img data-src="fig.6.1.jpg"></li>
-<li class="fragment">Here z determines whether the person is a tryer or a guesser. Thus z is a parameter that models the mixture of processes that explain the data.</li>
-<li class="fragment">We know the probability of guessing is 0.5</li>
-<li class="fragment">The posterior distribution of z gives us the estimate of how many guessers there were.</li>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment">Let’s simulate data first</li>
+<li class="fragment">go to “Simulate guessers and tryers”<br>
+</li>
+<li class="fragment"><br></li>
+<li class="fragment">Then we can run inference on each subject</li>
+<li class="fragment">go to “Infer guessers and tryers”</li>
 </ul>
-</section>
-<section id="latent-mixture-code" class="slide level2">
-<h2>Latent mixture code</h2>
-<p>model{ for (i in 1:p) { z[i]~dbern(0.5) } psi &lt;-0.5 phi ~ dbeta(1,1)I(0.5,1) for (i in 1:p) { theta[i]&lt;- equals(z[i],0)<em>psi+equals(z[i],1)</em>phi k[i]~dbin(theta[i],n) } } <!-- #endregion                             --></p>
+<!-- #endregion                             -->
 <!-- #region Lecture#6 Model selection            -->
 </section></section>
 <section>
@@ -1430,6 +1478,7 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <li class="fragment">a model with prior <span class="math inline">\(\theta \sim \text{Uniform} (0,1)\)</span></li>
 <li class="fragment">…is more complex than…</li>
 <li class="fragment">a model with prior <span class="math inline">\(\theta \sim \text{Uniform} (0.5,1)\)</span></li>
+<li class="fragment"></li>
 </ul>
 </section>
 <section id="marginal-likelihood-as-a-unifying-maximandum" class="slide level2">
@@ -1447,6 +1496,205 @@ e.g., <em>Success/Failure</em>, <em>Correct/Incorrect</em>, <em>Yes/No</em></li>
 <li class="fragment">Everything else is details.</li>
 <li class="fragment">Ah but so and so maximises something different.</li>
 <li class="fragment">Yes but at heart this is just a proxy for the marginal likelihood. <!-- #endregion                                   --></li>
+</ul>
+</section></section>
+<section>
+<section id="model-selection-1" class="title-slide slide level1 center">
+<h1>Model selection</h1>
+<ul>
+<li class="fragment">Why we need to compare models</li>
+<li class="fragment">Simplicity vs.&nbsp;complexity</li>
+<li class="fragment">Marginal likelihood as a comparison tool</li>
+<li class="fragment">Predictive performance and prior bets</li>
+<li class="fragment">Bayesian model comparison intuition</li>
+</ul>
+</section>
+<section id="why-compare-models" class="slide level2">
+<h2>Why compare models?</h2>
+<ul>
+<li class="fragment">Exept for the last section, we’ve mainly focused on single models</li>
+<li class="fragment">Science advances by comparing competing explanations</li>
+<li class="fragment">“This theory is good” → compared to what?</li>
+<li class="fragment">We want to know which theory explains the data <em>better</em></li>
+<li class="fragment">This requires comparing models</li>
+</ul>
+</section>
+<section id="simplicity-vs.-complexity" class="slide level2">
+<h2>Simplicity vs.&nbsp;complexity</h2>
+<ul>
+<li class="fragment">“Explain phenomena by the simplest hypothesis that works” — Ptolemy</li>
+<li class="fragment">“Avoid unnecessary plurality” — Occam’s razor</li>
+<li class="fragment">“Complexity must pay for itself” — Hinton</li>
+<li class="fragment">“Minimize free energy” — Friston</li>
+<li class="fragment">These ideas all reflect the same principle: balance fit and complexity</li>
+</ul>
+</section>
+<section id="the-bayesian-solution" class="slide level2">
+<h2>The Bayesian solution</h2>
+<ul>
+<li class="fragment">Many methods try to balance fit and complexity</li>
+<li class="fragment">Bayesian methods do it naturally</li>
+<li class="fragment">Bayes gives us a single number for model quality: marginal likelihood</li>
+<li class="fragment">It rewards accuracy…</li>
+<li class="fragment">…and penalizes wasted complexity</li>
+</ul>
+</section>
+<section id="conditioning-on-a-model" class="slide level2">
+<h2>Conditioning on a model</h2>
+<ul>
+<li class="fragment">Bayes’ rule always assumes <em>a model</em><br>
+</li>
+<li class="fragment">But we can easily imagine different models, with different priors or structures</li>
+<li class="fragment">Science is filled with competing explanations and models after all<br>
+</li>
+<li class="fragment">We now ask: which model better predicts the data?<br>
+</li>
+<li class="fragment">This leads us to the <em>marginal likelihood</em><br>
+</li>
+<li class="fragment">It’s the probability of the data, <em>given the model</em></li>
+</ul>
+</section>
+<section id="marginal-likelihood-3" class="slide level2">
+<h2>Marginal likelihood</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(p(D \mid M)\)</span> = average predictive performance of model <span class="math inline">\(M\)</span></li>
+<li class="fragment">It’s a single number:</li>
+<li class="fragment"><em>How well the model predicted the data, on average</em></li>
+<li class="fragment">It accounts for <em>all</em> parameter values, weighted by their prior</li>
+</ul>
+</section>
+<section id="analogy-to-betting" class="slide level2">
+<h2>Analogy to betting</h2>
+<ul>
+<li class="fragment">Think of it like your model is betting on which parameter values best predict the data</li>
+<li class="fragment">The better your bets, the higher your model’s score</li>
+<li class="fragment">The prior is the placing of the bets, and the marginal likelihood is how good those bets paid off.</li>
+</ul>
+</section>
+<section id="marginal-likelihood-in-words-1" class="slide level2">
+<h2>Marginal likelihood in words</h2>
+<ul>
+<li class="fragment">How probable was the data under this model <span class="math inline">\(M\)</span>?</li>
+<li class="fragment">Did the model concentrate its predictions where the data actually were?</li>
+<li class="fragment">Priors spread out predictive mass</li>
+<li class="fragment">Bad priors waste predictions on wrong areas</li>
+<li class="fragment">Good priors focus predictions where the data land</li>
+</ul>
+</section>
+<section id="octopus-example" class="slide level2">
+<h2>Octopus example</h2>
+<ul>
+<li class="fragment">There are two <del>octopi</del> octopusses.</li>
+<li class="fragment">Both claim to be paranormal.</li>
+<li class="fragment">It’s 1970, so they are both working for the CIA</li>
+<li class="fragment"><img data-src="images/octopuses.jpg" style="width:50.0%"></li>
+</ul>
+</section>
+<section id="octopus-predictions" class="slide level2">
+<h2>Octopus predictions</h2>
+<ul>
+<li class="fragment">Where is the Russian sub?</li>
+<li class="fragment">Alice: northern hemisphere</li>
+<li class="fragment">Bob: Baltic Sea</li>
+<li class="fragment">Data: Off the coast of Stockholm</li>
+<li class="fragment">Alice was vaguely right</li>
+<li class="fragment">Bob was more precisely right → higher marginal likelihood</li>
+</ul>
+</section>
+<section id="how-is-marginal-likelihood-calculated" class="slide level2">
+<h2>How is marginal likelihood calculated?</h2>
+<ul>
+<li class="fragment">It’s the expected likelihood under the predictions of the prior:</li>
+<li class="fragment"><span class="math inline">\(p(D \mid M) = \int p(D \mid \theta, M)\, p(\theta \mid M)\, d\theta\)</span></li>
+<li class="fragment">For discrete parameters:</li>
+<li class="fragment"><span class="math inline">\(p(D \mid M) = \sum p(D \mid \xi_i)\, p(\xi_i)\)</span></li>
+<li class="fragment">It’s a weighted average across all parameter settings</li>
+</ul>
+</section>
+<section id="try-it-out-1" class="slide level2">
+<h2>Try it out</h2>
+<ul>
+<li class="fragment">Lets compare alice and bob</li>
+<li class="fragment"><code>notebooks/probability distributions.ipynb</code></li>
+<li class="fragment">“Compare octopusses via marginal likelihood”</li>
+</ul>
+</section>
+<section id="worked-example" class="slide level2">
+<h2>Worked example</h2>
+<ul>
+<li class="fragment">Suppose a model has three parameter values: <span class="math inline">\(\theta = \{0, 0.5, 1\}\)</span></li>
+<li class="fragment">Prior probabilities: <span class="math inline">\(p(\theta_1) = \color{blue}{0.6}\)</span>, <span class="math inline">\(p(\theta_2) = \color{blue}{0.3}\)</span>, <span class="math inline">\(p(\theta_3) = \color{blue}{0.1}\)</span></li>
+<li class="fragment">Likelihoods: <span class="math inline">\(p(D \mid \theta_1) = \color{red}{0.1}\)</span>, <span class="math inline">\(p(D \mid \theta_2) = \color{red}{0.4}\)</span>, <span class="math inline">\(p(D \mid \theta_3) = \color{red}{0.6}\)</span></li>
+<li class="fragment">Marginal likelihood:<br>
+<span class="math inline">\(p(D) = \color{blue}{0.6} \cdot \color{red}{0.1} + \color{blue}{0.3} \cdot \color{red}{0.4} + \color{blue}{0.1} \cdot \color{red}{0.6}\)</span></li>
+<li class="fragment">Step by step:<br>
+<span class="math inline">\(= \color{gray}{0.06} + \color{gray}{0.12} + \color{gray}{0.06} = \boxed{0.24}\)</span></li>
+</ul>
+</section>
+<section id="complexity-and-spread" class="slide level2">
+<h2>Complexity and spread</h2>
+<ul>
+<li class="fragment">More complex models spread their predictions widely</li>
+<li class="fragment">This lowers the average likelihood</li>
+<li class="fragment">Even if they include the truth, they may assign low probability to it</li>
+<li class="fragment">Marginal likelihood punishes this</li>
+<li class="fragment">Broad priors = wasted predictions = lower score = lower marginal likelihood</li>
+</ul>
+</section>
+<section id="complexity-is-not-just-parameter-count" class="slide level2">
+<h2>Complexity is not just parameter count</h2>
+<ul>
+<li class="fragment">A model with <em>many</em> narrow priors can be simple</li>
+<li class="fragment">A model with <em>one</em> vague prior can be complex</li>
+<li class="fragment">Complexity = how broadly a model spreads its predictions</li>
+<li class="fragment">Narrow predictive distributions = simpler models</li>
+<li class="fragment">Wide, uncertain predictions = complex models</li>
+</ul>
+</section>
+<section id="misconception---sidenote" class="slide level2">
+<h2>Misconception - sidenote</h2>
+<ul>
+<li class="fragment"><span style="color:gray">AIC, BIC penalize complexity by counting parameters</span><br>
+</li>
+<li class="fragment"><span style="color:gray">But parameter count ≠ true complexity</span><br>
+</li>
+<li class="fragment"><span style="color:gray">Complexity = how broadly a model spreads its predictions</span></li>
+<li class="fragment"><span style="color:gray">Bayesian marginal likelihood captures this automatically</span></li>
+</ul>
+</section>
+<section id="example-prior-vagueness" class="slide level2">
+<h2>Example: prior vagueness</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\theta \sim \text{Uniform}(0,1)\)</span> → vague → complex</li>
+<li class="fragment"><span class="math inline">\(\theta \sim \text{Uniform}(0.5,1)\)</span> → tighter → simpler</li>
+<li class="fragment">Both models have one parameter</li>
+<li class="fragment">But they differ in how much of the prediction space they cover</li>
+<li class="fragment">Complexity depends on how much ground a model tries to cover</li>
+</ul>
+</section>
+<section id="example-prior-vagueness-1" class="slide level2">
+<h2>Example: prior vagueness</h2>
+<ul>
+<li class="fragment"><ul>
+<li class="fragment"><img data-src="images/complexity.png" style="width:50.0%"></li>
+</ul></li>
+</ul>
+</section>
+<section id="why-marginal-likelihood-matters" class="slide level2">
+<h2>Why marginal likelihood matters</h2>
+<ul>
+<li class="fragment">It’s the most important quantity in Bayesian model comparison</li>
+<li class="fragment">It unifies inference in brain, behavior, science</li>
+<li class="fragment">Maximizing it means best average predictive performance</li>
+<li class="fragment">It is the quantity that arguably everything else is trying to approximate: variational Bayes, free energy, predictive coding</li>
+</ul>
+</section>
+<section id="why-marginal-likelihood-matters-1" class="slide level2">
+<h2>Why marginal likelihood matters</h2>
+<ul>
+<li class="fragment"><span style="color:gray">Can even argue it is a <em>unique universal maximandum</em> for all physical and adaptive systems</span></li>
+<li class="fragment"><span style="color:gray">Woah man, that’s like, deep.</span></li>
+<li class="fragment">😵‍💫</li>
 </ul>
 <!-- #region Lecture#7 Bayes factors              -->
 </section></section>
