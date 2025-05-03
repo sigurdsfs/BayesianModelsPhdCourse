@@ -84,6 +84,8 @@ jupyter lab
 
 Now you should be able to open the notebooks that are in the /notebooks folder
 
+We might not have time to help everyone get this working on their local machines, so please only go this route if you really want to, and you are confident you don't need (much) help. 
+
 ## Social
 - Chat with each other on WhatsApp 💬
 - Ask & answer questions amongst yourselves during lectures 🗣️
