@@ -52,45 +52,47 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 <!-- #endregion -->
 
 <!-- #region Lecture#1 Preamble -->
-## Lecture 1: Preamble — Roadmap  
+# Lecture 1: Preamble & housekeeping
+
+## Roadmap
 - What this course is about 
-- Materials: GitHub, Binder, Book  
+- Materials: GitHub, Binder, Book...  
 - Schedule, social, and how the week works  
-- Group project: model minds & brains  
-- Our vibe & what we expect from you
+- Group project  
+- Vibe & expectations
 
 ## How the week will go
-- A mix of lectures, exercises, and group work  
+- A mix of lectures, interactive demos, case studies, and group work  
 - You’ll build and present a research project with your group  
-- Lectures lay the conceptual groundwork  
-- Most hands-on work happens in Jupyter notebooks  
-- We’re here to learn by doing & discussing
+- Lectures & demos lay the conceptual groundwork 
+- You build the research project sequentially as you learn more   
+- Morning - lectures and demos
+- Afternoons - self-paced demos and group work
 
 ## Materials  
 - GitHub: slides, code, schedule, everything...  
-- Binder: run notebooks in browser, no install  
+- Binder: run interactive notebooks in browser, no install  
 - Book: key reference, especially early in the week  
-- All links in the GitHub `README.md`
+- Important links: GitHub `README.md`
 
 ## Schedule  
-- Up to date on GitHub  
-- Locations may change — check daily  
-- Each day blends concept and coding  
-- Friday = presentations 
-- Be curious, flexible, and collaborative
+- Each day blends concepts, demos, & group work  
+
+## Schedule
+- Up to date on GitHub 
+- Note different room on wed & thurs   
+- <img src="/images/schedule.png" width="1000px">
 
 ## Social  
 - Join the WhatsApp group (link on GitHub)  
-- Ask questions, comment, share thoughts, coordinate  
-- Friday = informal bar to celebrate
+- There you can ask informal questions, comment, idle thoughts
+- Friday bar to celebrate
 
 ## Course overview  
 - **Basic modelling** → Get started (Mon-Tues) 
 - **Intermediate modelling** → Go deeper  (Wed)
 - **Neural data integration** → Link models to brain (Thurs) 
 - **Group project** → Model, analyze, present (Fri) 
-- ↓  
-- lectures · exercises · case studies · group work
 
 ## Course schematic  
 - ![](images/course_schema.jpg){width=100%}  
@@ -102,25 +104,26 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - Design an experiment (behavioral + neural)  
 - Build models to test your hypotheses  
 - Present your work on Friday (~15 min)
+- See google doc on the Github README
 
 ## Supervision & Support  
-- Janine: talk to her if you are shy to ask in class  
-- Ollie & David: logistics, organisation, schedule  
-- Simon: anything technical, Binder, GitHub, Python  
-- Group work: you will have many supervisors depending on the day
+- **Janine**: talk to her if you are shy to ask in class  
+- **Ollie & David:** logistics, organisation, schedule  
+- **Simon:** anything technical, Binder, GitHub, Python  
+- **Group work:** you will have many supervisors depending on the day
 
 ## Binder  
 - Launch notebooks in your browser  
 - No installation needed  
 - Be patient — it takes time to load  
-- Keep your Binder tab open all day
-- It can time out so best to use continuously   
+- Keep your Binder tab open
+- It can time out so best to use continuously in longer sessions   
   <img src="/images/binder.png" width="300px">
 
 ## GitHub  
-- Main hub for slides, code, notebooks, and schedule  
-- Just browse or clone the repo, link in footer  
-  <img src="/images/github.png" width="300px">
+- Main hub for slides, code, notebooks, and schedule etc.  
+- link in footer 👇  
+  <img src="/images/github.png" width="500px">
 
 ## Book  
 - Core reference for models & theory
@@ -128,30 +131,22 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - Especially useful Mon–Wed  
   <img src="/images/book.jpeg" width="300px">
 
-## WhatsApp  
-- Ask questions, coordinate, share  
-- Link is on GitHub `README.md`  
-  <img src="/images/whatsapp.png" width="300px">
-
-## Overarching aim ofcourse 
-- Use probability theory to explain minds and behavior  
+## Overarching aim
+- Use probability theory to explain minds, brains, and behavior  
 - Upgrade your scientific reasoning  
-- Simplicity: intuitive, powerful tools  
-- Universality: same ideas apply across science  
+- Simple: intuitive, powerful tools  
+- Universal: same ideas apply across science  
 - From description → explanation
 
 ## Specific aims  
 - Build and test cognitive models  
 - Link cognitive models to neural data  
 - Be hands-on, interactive, exploratory  
-- Get messy — you’ll learn by doing  
 
 ## Our expectations of you  
 - Ask questions — don’t nod and fake it  
 - Disrupt — curiosity is good  
 - You deserve to understand this  
-- Doubt is natural, confusion is common  
-- Let’s work it out together
 
 ## Things we love to hear  
 - “I might have missed this, but…”  
@@ -163,7 +158,6 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - Don’t pretend to get it  
 - Don’t assume you’re the only one confused  
 - Don’t sit in silence out of self-doubt  
-- Speak up — you’re helping the group
 
 ## Upcoming lectures  
 - Basics of Bayesian thinking  
@@ -171,15 +165,13 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - Modeling mixtures of processes  
 - Selecting models  
 - Bayes factors and posterior odds  
-
-
 <!-- #endregion-->
 
 <!-- #region Lecture#2 Basics of Bayesian analysis-->
 
-# Lecture 2: Basics of Bayesian Analysis
-- <br>
-- **Roadmap**
+# Lecture 2: Bayesian basics
+
+## Roadmap
 - The spirit of Bayesian thinking
 - What is Bayesian modeling?
 - Principles of Bayesian inference
@@ -224,15 +216,20 @@ Jaynes (2003)
 ## Bayesian Updating in a Nutshell
 - Prior belief → Evidence → Posterior belief
 
-## Example of a cognitive task 
-- e.g., go/no-go
+## A cognitive task 
+- The go-nogo task
 - <img src="/images/gonogo.png" width="800px">
+- You respond (Go) to frequent stimuli... 
+- ...and withhold response (No-Go) to infrequent ones.
+- Measures response inhibition, impulse control, and attention.
+- Commonly used in motor neuroscience / ADHD / addiction / tests of frontal lobe function...
 
-## Cognitive task example
-- 10 binary trials of equal difficulty
-- Estimate ability $\theta$ from behavior
-- $\theta$ is *latent*; 
-- data are *observed*
+## Estimating ability from behavioral data
+- 10 trials of equal difficulty
+- Binary outcomes, correct or incorrect
+- We want to estimate ability $\theta$ from behavior
+- $\theta$ is *latent* which means it is hidden 
+- Data are *observed* which means we can see it
 - e.g., correct responses $k = 8$ out of $n = 10$
 
 ## Latent vs. observed
@@ -243,27 +240,29 @@ Jaynes (2003)
 - *Descriptive*: e.g. "What did the subject score?"
 - *Explanatory*: e.g. "What ability caused that score?"
 
-## Why Science Cares About the Latent
-- Scientific questions are causal:
+## Scientitific questions pertain to the latent
   - Do parkinsons patients differ in *risk taking* on and off medication? 
   - Does serotonin change *empathy*? 
   - Does alpha waves cause *memory consolidation*? 
   - Does ozempic improve *cognitive flexibility*?
-- We observe data, but we infer about latent causes
+
+## Science cares about the latent 
+- We observe data, but we want to infer about latent variables
+- Cognitive & brain sciences are ultimately about latent variables
 - Bayesian modeling connects observables to latent processes
 
-## Back to the cogntive task
-- **Observed**: number correct ($k/n$)
-- **Latent**: ability ($\theta$)
-- Same $\theta$ can result in different $k/n$
-- Different $\theta$ can result in the same $k/n$ 
+## Back to go-nogo
+- **Observed**: behavior → number correct $k/n$
+- **Latent**: ability → $\theta$
+- There is always uncertainty
+- The same ability can result in different behavior
+- Different ability can result in the same behavior
 - Bayesian inference accounts for this uncertainty
 
 ## Beliefs as Distributions
 - Probability distributions encode **beliefs**
 - The **center** = most likely value
 - The **spread** = uncertainty
-- *To play with this open the notebook on Binder*
 - `notebooks/probability_distributions.ipynb`
 - see "Beliefs as distributions"
 
@@ -275,10 +274,10 @@ Jaynes (2003)
 
 ## Probaility density functions for continuous variables
 - <img src="/images/probability_density.jpg" width="350px">
-- all probability density integrates to 1
-- area under the curve is 1
-- densities can exceed 1
-- ratios make sense: 5.5 is 5 times less likely than 0.7
+- All probability density integrates to 1
+- (area under the curve is 1)
+- Densities can exceed 1
+- Ratios make sense: The value "5.5" is 5 times less likely than "0.7"
 
 ## Probability Density Functions for continuous variables
 - <img src="/images/probability_density.jpg" width="350px" style="display:inline"/>
@@ -291,43 +290,47 @@ Jaynes (2003)
 - `notebooks/probability_distributions.ipynb` 
 - see "Interpreting probability distributions"
 
-## Bayes’ rule
-- <br> 
+## Bayes’ rule 
 - $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$
 - <br>
 - Posterior = $\frac{\color{red}{\text{Likelihood}}  \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
 - <br>
-- $\theta$ is a parameter, here "ability"
+- $\theta$ is a parameter, here "ability" on go-nogo task
 - $D$ is data, here it is the correct performance, $k$ successes out of $n$ trials
-- <br>
 - This tells us how our beliefs about ability are updated by the evidence provided by the data.
 
 ## Prior
 - $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
 - <br>
 - **$\color{blue}{\text{Prior}}$** is what we believe about $\theta$ before seeing the data. 
-- It reflects our assumptions or prior knowledge.
+- It reflects our prior assumptions or knowledge.
 
 ## Likelihood
 - $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
 - **$\color{red}{\text{Likelihood}}$** is the probability of data $D$ given a value of $\theta$.
-- It shows how well each $\theta$ explains the data.
+- It tells us how well each $\theta$ explains the data
+- It also tells us how to update our beliefs about each value of $\theta$
 - Higher likelihood → stronger belief in $\theta$ 
-- Lower likelihood → weaker belief.
+- Lower likelihood → weaker belief in $\theta$
 
 ## Marginal likelihood
 - $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
 - <br>
-- **$\color{green}{\text{Marginal likelihood}}$** is the total probability of the data under all possible values of $\theta$.
+- **$\color{green}{\text{Marginal likelihood}}$** is the total probability of the data averaged over all possible values of $\theta$.
 - It represents how good the model is at predicting the data. 
-- In doing so it normalizes the result so the posterior is a valid probability distribution.
-- Note that it is independent of $\theta$
+- (It also normalizes the posterior so it is a valid probability distribution)
 
 ## Posterior
 - $p(\theta \mid D) = \frac{\color{red}{p(D \mid \theta)} \cdot \color{blue}{p(\theta)}}{\color{green}{p(D)}}$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\text{Posterior} = \frac{\color{red}{\text{Likelihood}} \cdot \color{blue}{\text{Prior}}}{\color{green}{\text{Marginal likelihood}}}$
 - <br>
 - **Posterior** is what we believe about $\theta$ *after* seeing the data. 
 - It’s the prior that has been updated by the evidence provided by the data.
+
+## Recap in context of go-nogo
+- The *prior* is our prior belief about ability $p(\theta)$
+- The *likelihood* is how likely the behavior is under each ability $p(data|\theta)$
+- The *posterior* is our new belief about ability after observing the behavior $p(\theta|data)$
+- The *marginal likelihood* is how good in general this model predicts the behaivor $p(data)$
 
 ## Updating beliefs with data
 - We start with a **prior** belief $p(\theta)$
@@ -363,19 +366,20 @@ Jaynes (2003)
 ## Is the likelihood a probability distribution?
 - `notebooks/probability distributions.ipynb`
 -  see "Is the likelihood a probability distribution?"  
-
-## Bayesian credibility intervals
-- `notebooks/probability distributions.ipynb`
--  see "Bayesian credibility intervals"  
+- It is if you plot it appropriately.
+- e.g $p(data|theta=0.5)$
+- It is if you plot it over the data rather than theta
 
 ## Summarising the posterior
 - `notebooks/probability distributions.ipynb`
+-  see "Bayesian credibility intervals"  
 -  see "Summarising the posterior" 
 
 ## Compute the posterior for the beta
-- Prior: $p(\theta) \sim \text{Beta}(1,1)$
-- Posterior: $p(\theta \mid D) \sim \text{Beta}(1 + k, 1 + n - k)$
-- $k$ = correct, $n$ = total trials
+- Here is an easy way to calculate the posterior
+- We start with a flat prior: $p(\theta) \sim \text{Beta}(1,1)$
+- Observe some data - $k$ = correct, $n$ = total trials
+- Posterior is then: $p(\theta \mid D) \sim \text{Beta}(1 + k, 1 + n - k)$
 - Simple, tractable update rule for binary outcomes
 - `notebooks/probability distributions.ipynb`
 - see "Computing posterior for the beta"
@@ -383,7 +387,7 @@ Jaynes (2003)
 ## Sequential updating of posterior
 - Bayesian inference is consistent across steps
 - One-step:
-  - Prior → Combined data → Posterior
+  - Prior → Combined data1 & data2 → Posterior
 - Two-step:
   - Prior → Data1 → Intermediate Posterior → Data2 → Final Posterior
 - Final result is identical
@@ -397,10 +401,13 @@ Jaynes (2003)
 - *Efficient*: time, money, resources
 - *Ethical*: minimises animals, humans, unnecessary treatment etc.
 
+## Optional stopping
+- - ![](images/optional_stopping.png){width=100%}
+
 ## Frequentist methods don’t allow this
 - Frequentist inference assumes a fixed sample size and plan
 - Stopping early or collecting more data invalidates p-values
-- Counterfactual policies: what you would have done, if the data had turned out different impacts on your p-values. 
+- *Counterfactual policies:* what you would have done, if the data had turned out different impacts on your p-values. 
 - Not widely understood. 
 
 ## Conjugate priors
@@ -421,8 +428,8 @@ Jaynes (2003)
 - Approximates the posterior via sampling
 
 ## Analytic vs. Sampling
-- **Analytic**: Exact, when conjugate, rare
-- **MCMC**: Approximate, more flexible, common
+- **Analytic**: Exact, requires conjugacy, rare
+- **MCMC**: Approximate, doesnt require conjugacy, more flexible, common
 
 ## MCMC in Practice
 - **Red pill**: Learn how MCMC really works 🤓  
@@ -434,6 +441,9 @@ Jaynes (2003)
   - We'll demonstrate and visualise MCMC in practice.
 
 ## MCMC demo
+- An easy way to sample the posterior.
+- With enough samples you can get as close to the true posterior as you want.
+- Works for conjugacy cases too. 
 - Go to "MCMC"
 - `notebooks/probability distributions.ipynb`
 
@@ -441,28 +451,29 @@ Jaynes (2003)
 - **Principled reasoning**: Probabilistic logic = consistent thinking  
 - **Uncertainty-aware**: Fully models uncertainty  
 - **Latent variables**: Model hidden causes, not just outcomes  
-- **Transparent updating**: Prior → Evidence → Posterior
 - **Sequential updating**: Updating is the same whether data is sequential or all-in-one-go.  
-- **Richer explanations**: From describing data to explaining via theory  
-- **Flexible models**: Hierarchical, generative, extensible
+- **Explanations**: From describing data to explaining via theory  
+- **Flexibility**: Hierarchical, generative, extensible
 - **Simple**: Same principle always. Learn it once. Apply it forever. 
 
 <!-- #endregion-->
 
 <!-- #region Lecture#3 Modelling a binary process-->
 
-# Modeling a Binary Process
-- Modeling binary outcomes in cognition  
+# Lecture 3: Modeling a Binary Process
+
+## Roadmap
+- Cogntive tasks with binary outcomes  
 - From observed data to hidden probabilities  
 - Graphical models and their notation  
-- Bayesian inference with JAGS  
+- Bayesian inference via sampling in JAGS  
 - Convergence diagnostics and posterior checks  
 
 ## Modeling a Binary Process
 - Start simple: focus on binary outcomes  
-  e.g., *Success/Failure*, *Correct/Incorrect*, *Yes/No*
+- e.g., *Success/Failure*, *Correct/Incorrect*, *Yes/No*
 - Common examples: 
-  *coin flips, true/false questions, detection tasks, motor responses*
+- *coin flips, true/false questions, detection tasks, motor responses*
 - In our go/no-go example, each of the $n$ trials results in either $k$ successes  
 - Binary processes are foundational for modeling cognition
 
@@ -482,29 +493,29 @@ Jaynes (2003)
 - But our interest is in the *underlying* success rate $\theta$
 - Model: $k \sim \text{Binomial}(\theta, n)$
 - $p(k \mid \theta, n) = \binom{n}{k} \theta^k (1 - \theta)^{n - k}$
-- Assumes independent, identically distributed (i.i.d.) trials — no history effects
+- For a given $\theta$ and $n$, this is the probability distribtion for $k$
+- <span style="color:lightgray;">Assumes independent, identically distributed (i.i.d.) trials — no history effects</span>
 
 ## Try it Yourself
 - `notebooks/probability distributions.ipynb`
-- see lecture 3 > "Binomial distribution"
+- see "Binomial distribution"
 
 ## Graphical Models
 - Graphical models represent probabilistic structure visually
 - Nodes represent variables; edges represent dependencies
 - Child nodes are conditionally dependent on parent nodes
-- This is our JAGS model:
+- This is a simple model of the go-nogo task:
 - ![](images/graphical%20model.png){width=30%}
 
 ## Graphical Notation
-
 - **Circular** nodes: continuous variables  
 - **Square** nodes: discrete variables  
-
+- <br>
 - **Shaded** nodes: observed  
 - **Unshaded** nodes: hidden  
-
+- <br>
 - **Single border**: stochastic variable  
-- **Double border**: deterministic relationship
+- **Double border**: deterministic relationship derived from others
 
 ## Graphical Notation Reference
 - ![](images/graphical%20lexicon.jpeg){width=70%}
@@ -590,7 +601,7 @@ model{
 - ![](images/posterior_delta.png){width=45%}
 
 ## Inferring a common rate 
-- In some cases we want to infer a rate for 2 different processes
+- In some cases we want to infer a common rate for 2 different processes
 - e.g. *same subject & task, two different sessions*
 - e.g. *same group, different subjects*
 - e.g. *same subject, different tasks*
@@ -622,7 +633,7 @@ model{
   1. Are we predicting **parameters** or **data**?
   2. Are we predicting **before** or **after** observing data?
 
-## Diiferent types of prediction
+## Different types of prediction
 |                       | **Before data**                                         | **After data**                                                             |
 |-----------------------|---------------------------------------------------------|----------------------------------------------------------------------------|
 | **Parameters**        | Prior distribution: $p(\theta)$                         | Posterior distribution: $p(\theta \mid d_{\text{obs}})$                    | 
@@ -637,7 +648,7 @@ model{
 - The **posterior predictive distribution** $p(d_{\text{new}} \mid d_{\text{obs}})$ predicts new data based on our updated belief.
 
 ## Todays posterior is tomorrows prior
-- This measn that any posterior can always become a prior for a future prediction, and so on.  
+- This means that any posterior can always become a prior for a future prediction, and so on.  
 
 ## Prior and posterior prediction
 ```{.python code-line-numbers="1-3|5-6|8-10|12-13"}
@@ -674,25 +685,19 @@ model {
 
 ## Check posterior predictive distribution against data
 - ![](images/posterior_predictive_common.jpg){width=40%}
+- X marks the observed data, square size indicates probability
 - The model has poor *descriptive adequacy*. Why?
 - Its a common rate model, so it predicts the same rate, but the data clearly is better modelled with different rates.  
  
-## Prediction backwards and forward in time 
-- Prediction normally about the future.
-- Predictions can also apply to the past e.g. when information is missing.
-- Data can help us infer hidden cognitive variables, which in turn may predict past behavior where information is incomplete.
-- We predict what might have been known in the past if more information had been available. 
-- Inference allows prediction both forward and backward in time.
- 
 ## Prediction forward and backward in time
-- Prediction is usually about the future — but it can also apply to the past.
-- When data are missing, we use observed evidence to infer what *might have happened*.
-- Cognitive models often predict hidden variables that explain past behavior.
-- Inference lets us predict both what **might** happen and what **might have** happened.
+- Prediction usually targets the future — but can also fill in the past  
+- When data are missing, we infer what might have happened  
+- Cognitive models use observed data to uncover hidden causes of past behavior  
+- Inference helps us predict both outcomes and hidden history
+- Bayesian inference works backwards and forwards in time
 <!-- #endregion -->
 
 <!-- #region Lecture#4 Latent Mixture models      -->
-
 # Latent mixture models
 - What are they?
 - How to use them to model mixtures of cognitive processes or traits
