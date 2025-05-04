@@ -52,117 +52,134 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 <!-- #endregion -->
 
 <!-- #region Lecture#1 Preamble -->
-# Lecture 1: Preamble
-- How the week will go
-- Materials  
-- Schedule  
-- Social 😊  
-- Aims & expectations  
+## Lecture 1: Preamble — Roadmap  
+- What this course is about 
+- Materials: GitHub, Binder, Book  
+- Schedule, social, and how the week works  
+- Group project: model minds & brains  
+- Our vibe & what we expect from you
 
-## Course overview
+## How the week will go
+- A mix of lectures, exercises, and group work  
+- You’ll build and present a research project with your group  
+- Lectures lay the conceptual groundwork  
+- Most hands-on work happens in Jupyter notebooks  
+- We’re here to learn by doing & discussing
 
-- **Basic modelling** → Get started
-- **Intermediate modelling** → Go deeper
-- **Integrate neural data** → Bridge brain & behavior
-- **Group presentations** → Show what you built
-- ↓
-- lectures · interactive exercises · discussion · case studies ·  group work 
- 
-## Overarching schematic
-- ![](images/course_schema.jpg){width=100%}
-- Your group project will reflect this workflow.
+## Materials  
+- GitHub: slides, code, schedule, everything...  
+- Binder: run notebooks in browser, no install  
+- Book: key reference, especially early in the week  
+- All links in the GitHub `README.md`
 
-## Group work & presentations
-- **Separate** into small groups
-- **Supervision** from multiple experts 
-- **Pick question** that requires cognitive modelling
-- **Design experiment** that collects behavioral & neural data
-- **Design models**, sketch graphical diagrams, plan analyses to test hypotheses & answer question
-- **Present projects**, share your work, ~15 mins on fri
-- **Audience** questions & discussion 
+## Schedule  
+- Up to date on GitHub  
+- Locations may change — check daily  
+- Each day blends concept and coding  
+- Friday = presentations 
+- Be curious, flexible, and collaborative
 
-## Materials: Interactive exercises  
-- Run interactive python code via Binder   
-- No installation needed  → just open in browser and go 😌  
-- Loading takes time → keep your tab open
-- <div style="text-align: center;">
-    <img src="/images/binder.png" alt="binder screenshot" width="300px">
-  </div>
-- link in footer 👇 
+## Social  
+- Join the WhatsApp group (link on GitHub)  
+- Ask questions, comment, share thoughts, coordinate  
+- Friday = informal bar to celebrate
 
-## Materials: GitHub  
-- All materials + code on GitHub 
-- <div style="text-align: center;">
-    <img src="/images/github.png" alt="github screenshot" width="300px">
-  </div>
- - link in footer 👇   
+## Course overview  
+- **Basic modelling** → Get started (Mon-Tues) 
+- **Intermediate modelling** → Go deeper  (Wed)
+- **Neural data integration** → Link models to brain (Thurs) 
+- **Group project** → Model, analyze, present (Fri) 
+- ↓  
+- lectures · exercises · case studies · group work
 
-## Materials: Book
-- <div style="text-align: center;">
-   <img src="/images/book.jpeg" alt="book screenshot" width="300px">
- </div>
-- We rely heavily on it especially on days 1-3
+## Course schematic  
+- ![](images/course_schema.jpg){width=100%}  
+- Your group project will follow this workflow
 
-## Schedule
-- Up to date schedule > See the GitHub > README.md
-- LOCATION CHANGES BY DAY
- 
-## Social: WhatsApp 
-- Chat with each other 💬
-- Ask & answer questions amongst yourselves 🗣️
-- Stay in touch ❤️
-- Friday bar! 😄
-- Join group via 👇
-- <img src="/images/whatsapp.png" width="300px">
+## Group project  
+- Form a small group  
+- Pick a cognitive question  
+- Design an experiment (behavioral + neural)  
+- Build models to test your hypotheses  
+- Present your work on Friday (~15 min)
 
-## Overarching aim
-- **Use the tools of probability theory to scientifically understand brains, minds, and behavior**
-- **New perspective**. Upgrade your scientific thinking
-- **Simplicity.** Tools are parsimonious, flexible, intuitive, and powerful.
-- **Universality.** Same principles apply to science, statistic, brains, minds, behaviors, evolution, even physics. 
- 
-## Overarching schematic
-- ![](images/course_schema.jpg){width=100%}
-- Your goup project will reflect this workflow.
+## Supervision & Support  
+- Janine: talk to her if you are shy to ask in class  
+- Ollie & David: logistics, organisation, schedule  
+- Simon: anything technical, Binder, GitHub, Python  
+- Group work: you will have many supervisors depending on the day
 
-## Specific aims
-- **Focus on mind & behavior** → Cognitive models 
-- **Connect to neural data** via simple methods 🧠
-- **Stop describing 🥱 → Start explaining 😌**
-- **Engage.** Hands-on · Interactive · Discursive 
-- **KISS.** Keep It Simple, Stoopid 😜
-- **Vibes.** Intuitive · Playful · Fun · Useful ✨
+## Binder  
+- Launch notebooks in your browser  
+- No installation needed  
+- Be patient — it takes time to load  
+- Keep your Binder tab open all day
+- It can time out so best to use continuously   
+  <img src="/images/binder.png" width="300px">
 
-## Our expectations of you:
-- **Life is short.** Don't let things pass that you dont understand. 
-- **Your life matters.** Your understanding matters. Actively take part.
-- **You are entitled** to understand this. 
-- **Don't listen** to it, fight it. 🥊
-- **Disrupt.** Ask questions, interrupt. 🙋‍♂️
-- **Be sceptical.** The truth is out there. 🤨
+## GitHub  
+- Main hub for slides, code, notebooks, and schedule  
+- Just browse or clone the repo, link in footer  
+  <img src="/images/github.png" width="300px">
 
-## We love to hear:
-- *"I'm probably being stupid..."* 🤪
-- *"I might have missed this..."*
-- *"i dont understand why..."*
-- *"do you have an intuition for why..."*
-- *"i'm confused..."* 🤔
- 
-## Don't do this to yourself:
-- Nod and pretend you get something 🙅‍♂️ 
-- Assume you are the only one confused 😵‍💫😵
-- Collapse under self doubt.
+## Book  
+- Core reference for models & theory
+- This course roughly goes through it in order  
+- Especially useful Mon–Wed  
+  <img src="/images/book.jpeg" width="300px">
 
-## Course team
-- Too shy to ask a question, talk to Janine
-- Organisation, ask David or Ollie
-- Technical issue / Github / Binder / Python > Simon
+## WhatsApp  
+- Ask questions, coordinate, share  
+- Link is on GitHub `README.md`  
+  <img src="/images/whatsapp.png" width="300px">
+
+## Overarching aim ofcourse 
+- Use probability theory to explain minds and behavior  
+- Upgrade your scientific reasoning  
+- Simplicity: intuitive, powerful tools  
+- Universality: same ideas apply across science  
+- From description → explanation
+
+## Specific aims  
+- Build and test cognitive models  
+- Link cognitive models to neural data  
+- Be hands-on, interactive, exploratory  
+- Get messy — you’ll learn by doing  
+
+## Our expectations of you  
+- Ask questions — don’t nod and fake it  
+- Disrupt — curiosity is good  
+- You deserve to understand this  
+- Doubt is natural, confusion is common  
+- Let’s work it out together
+
+## Things we love to hear  
+- “I might have missed this, but…”  
+- “Can I ask a stupid question?”  
+- “Do you have an intuition for why…”  
+- “I’m confused” 🤔  
+
+## Things not to do to yourself  
+- Don’t pretend to get it  
+- Don’t assume you’re the only one confused  
+- Don’t sit in silence out of self-doubt  
+- Speak up — you’re helping the group
+
+## Upcoming lectures  
+- Basics of Bayesian thinking  
+- Modeling cognition as a binary process  
+- Modeling mixtures of processes  
+- Selecting models  
+- Bayes factors and posterior odds  
+
 
 <!-- #endregion-->
 
 <!-- #region Lecture#2 Basics of Bayesian analysis-->
 
 # Lecture 2: Basics of Bayesian Analysis
+- <br>
+- **Roadmap**
 - The spirit of Bayesian thinking
 - What is Bayesian modeling?
 - Principles of Bayesian inference
@@ -674,58 +691,7 @@ model {
 - Inference lets us predict both what **might** happen and what **might have** happened.
 <!-- #endregion -->
 
-<!-- #region Lecture#4 Inference with Gaussians   -->
-# Inferences with Gaussians  
-- Due to central limit theorem, data and parameters are frequently Gaussian
-- Gaussians have 2 parameters, a mean and a measure of their spread
-- Spread can be expressed as a variance, std, or a precision (1/var) 
- 
-## Graphical model for Gaussians 
-- Simple model for inferring Gaussian with unknown mean and std
-- ![](fig.4.1.jpg)
- 
-## Interactive demo of Gaussian
-- Jupyter notebook - interactive plotting of gaussian
- 
-## Sampling model for inferring Gaussians  
-model { 
-for (i in 1:n){
-x[i]~dnorm(mu,lambda)
-}
-mu~dnorm(0,0.001)
-sigma~dunif(0,10)
-lambda<-1/pow(sigma,2)
-} 
- 
-## Repeated measures of IQ 
-- Imagine taking a cognitive test like IQ multiple times
-- The mean is your IQ, and the spread models fluctuations in your performance. e.g. attention, fatigue, emotion, venus orbitting satturn
-- We can model this as a Gaussian for each person
-
-## Graphical model for IQ
-- ![](fig.4.3.jpg)
-- What parameter is common to all subjects?
-- No index on the std. This means it is fixed.
-- Is this justified?
-- How to change it?
- 
-## Sampling code for IQ 
-model{
-  for (i in 1:n) {
-    for (j in 1:m) {
-      x[i,j]~dnorm(mu[i],lambda)
-    }
-  } 
-sigma~dunif(0,100)
-lambda <-1/pow(sigma,2)
-for (i in 1:n) {
-  mu([i]~ dunif(0,300))
-}
-
-}
-<!-- #endregion                            -->
-
-<!-- #region Lecture#5 Latent Mixture models      -->
+<!-- #region Lecture#4 Latent Mixture models      -->
 
 # Latent mixture models
 - What are they?
@@ -785,7 +751,7 @@ model {
  
 <!-- #endregion                             -->
 
-<!-- #region Lecture#6 Model selection            -->
+<!-- #region Lecture#5 Model selection            -->
 
 # Model selection
 - Why we need to compare models
@@ -919,7 +885,7 @@ model {
 
 <!-- #endregion                             -->
 
-<!-- #region Lecture#7 Bayes factors              -->
+<!-- #region Lecture#6 Bayes factors              -->
 
 # The Bayes factor
 - Compared to what?  
@@ -1023,18 +989,19 @@ model {
 - **Criticism:** *But I don’t want my conclusions to depend so much on the prior*  
 - **Answer:** Then use **sensitivity analysis** to check robustness.
 
-- **Criticism:** *BFs can prefer one bad model over another*  
+- **Criticism:** *BFs be high if one bad model is much worse than another*  
 - **Answer:** True. Check **descriptive adequacy** — look at **posterior predictive distributions**, simulate data, or compare out-of-sample predictions.
 
 ## The arc of civilisation  
-
 - Oppposable thumbs, fire, the wheel, writing, zero, the printing press, Newtonian physics, germ theory, the steam engine, the combustion engine, the Moon landing, In Rainbows, the internet, CRISPR, Bayes factors
 
 - <sub><span style="color:gray"><em>I’m being satirical (kinda).</em></span></sub>
 
 <!-- #endregion                             -->
 
-# Posterior model probabilities
+<!-- #region Lecture#7 Posterior odds -->
+
+# Posterior odds
 - From Bayes factors to posterior model plausibility  
 - Combining likelihood and prior beliefs  
 - Posterior odds: what we believe after seeing the data  
@@ -1063,9 +1030,12 @@ model {
 ## Posterior odds schematic
 - ![](images/posterior_odds_eq.png)
 
+## Try it out
+- This demo ties everything together!
+- `notebooks/probability distributions.ipynb`
+- Go to "posterior odds calculation"
 
 ## Transforming prior into posterior
-
 - Bayes factor converts prior odds into posterior odds  
 - If prior odds = 1, posterior odds = Bayes factor  
 - Prior beliefs influence conclusions  
@@ -1073,7 +1043,6 @@ model {
 - That’s the power of Bayes
 
 ## Why Bayes factors are powerful
-
 - Automatically penalize overly complex models  
 - Allow direct evidence for the null  
 - Can handle multiple models, not just null vs. alt  
@@ -1081,7 +1050,6 @@ model {
 - Intuitive: how much more likely is the data?
 
 ## Extraordinary claims, extraordinary evidence
-
 - Strong priors require stronger data  
 - $p(M \mid D) = BF \cdot p(M)$  
 - Even big Bayes factors may not sway implausible models  
@@ -1089,7 +1057,6 @@ model {
 - Bayesian methods make this explicit
 
 ## Why p-values can’t do this
-
 - p-values don't compare models  
 - Don’t provide evidence for the null  
 - Depend on hypothetical outcomes  
@@ -1097,7 +1064,6 @@ model {
 - Can’t say “this model is better”
 
 ## Optional stopping
-
 - Bayes allows data collection to stop anytime  
 - p-values require pre-specified $n$  
 - Bayes factors stay valid during interim checks  
@@ -1105,15 +1071,13 @@ model {
 - More flexible, more realistic
 
 ## Conceptual and computational challenges
-
-- Priors matter: vague priors can be a liability  
-- Marginal likelihood is hard to compute  
+- Priors matter: vague priors can be a liability because they can make a model bad 
+- Marginal likelihood is sometimes hard to compute  
 - Complex models need careful approximation  
 - Broad priors lower predictive accuracy  
 - Precision in priors improves inference
 
 ## Specifying priors
-
 - Priors must reflect real uncertainty  
 - Two strategies:  
   - Subjective (expert-driven)  
@@ -1123,16 +1087,15 @@ model {
 - Can be refined with context
 
 ## Common confusion about priors
-
+- Model priors are priors over models, parameter priors are priors over parameters. 
 - Bayes factor does **not** depend on model priors  
-- It **does** depend on parameter priors  
+- It **does** depend on parameter priors because these are part of models 
 - Posterior model probability depends on both  
 - So:  
   - Priors on models → posterior odds  
   - Priors on parameters → Bayes factor
 
 ## Prior sensitivity
-
 - Different priors = different conclusions  
 - That’s not a bug — it’s honest uncertainty  
 - Test robustness with sensitivity analysis  
@@ -1140,111 +1103,17 @@ model {
 - Some models are robust, others fragile
 
 ## Computational solutions
-
 - Exact marginal likelihood often unavailable  
 - Approximate methods include:  
-  - Candidate’s formula  
-  - Marginal likelihood identity:  
-    $p(D \mid M) = \frac{p(D \mid \theta, M) \cdot p(\theta \mid M)}{p(\theta \mid D, M)}$  
-- MCMC methods:  
-  - Sample from posterior  
-  - Use model indicators to switch between models
+  - Free energy minimisation
+  - Variational Bayes
+  - MCMC methods *like we have used*
 
 
 
-
-<!-- #region Lecture#8 Posterior                  -->
-# Posterior model probabilities 
-- Bayes factors compare the predictive performance of two different theories
-- But model plausibility also depends on prior beliefs in each model.
-- To assess relative plausibility after seeing the data we combine:
-- Predictive performance (likelihood) and Prior plausibility (prior probabilities)
- 
-## Posterior odds
-- Relaitve plausibility of models after seeing the data is indicated by the posterior odds
-- The posterior odds of two models is:
-  $\frac{p(M_1 \mid D)}{p(M_2 \mid D)} = \frac{p(D \mid M_1)}{p(D \mid M_2)} \cdot \frac{p(M_1)}{p(M_2)}$
-- Or in words:
-  **posterior odds = Bayes factor × prior odds**
-
-## Bayes factor transforms prior odds into posterior odds
-- The Bayes factor transforms **prior odds** into **posterior odds**:
-  $\text{prior odds} \rightarrow \text{posterior odds}$
- 
-## Advantages of the Bayes factors
-- Bayesian hypothesis tests (e.g., Bayes factors) naturally implement Ockham’s razor, penalising complex models when comparing them.  
-- They quantify relative support for multiple models.  
-- Allow model-averaged predictions over parameters.
-- Bayes factors can provide evidence in favor of the null hypothesis (unlike frequentist)
-- Bayes factors can be forever updated as data arrive (no fixed sample size or plan required)
-- Easy to understand. How many more times likely the data is for one model than another. Thats it. What was the p-value again? 
- 
-## Extraordinary Claims Require Extraordinary Evidence
-- Echoing Hume, Laplace, and Sagan: extraordinary claims require extraordinary evidence.
-- This principle is baked into Bayesian methods through **posterior odds**:  
-  $\text{Posterior odds} = \text{Bayes factor} \times \text{prior odds}$
-- The prior plausibility of a model matters.
-- Even strong evidence may not overturn implausible claims.
-- Bayesian methods make explicit the influence of prior beliefs. Thats a good thing.
- 
-## Problems with p-values 
-- p-values often misinterpreted
-- ask your supervisor to define p-values. Most can't.
-- p-values do not provide evidence for the null.
-- depend on experimenter's intentions, and what they would do, if the data had turned out differently, as well as alternative hypotheses.
-- Classical hypothesis testing is asymmetric:
-- Null can be rejected, but never confirmed.
-
-## Optional Stopping
-- Bayesian methods allow data collection to stop at any time based on evidence.
-- p-value methods require pre-specified stopping rules.
-- Researchers can continue or stop based on interim Bayes factor values.
-- Provides more flexibility and transparency.
- 
-## Challenges for Bayesian Approach
-- Conceptual: Sensitivity to **prior distributions**.
-- Computational: Difficulty in calculating **marginal likelihoods**.
-- Using vague priors can lead to low-precision predictions.
-- The Ockham’s razor property penalizes overly vague models.
-- Priors must reflect meaningful knowledge — vague priors yield unhelpful results.
-- Vague priors entail complex models
- 
-## Specifying Good Priors
-- Researchers must encode prior knowledge into prior distributions.
-- Options:
-  - Subjective specification: Based on domain expertise.
-  - Objective priors: E.g., unit-information priors, do not rely on specific prior knowledge.
-- Objective priors useful for:
-  - Wide applicability.
-  - Transparent baseline comparisons.
-  - Refinement with specific information when needed.
- 
-## Confusion About Priors
-- Common misconception: Bayes factor depends on the prior plausibility of the models.
-- In truth:  
-  - Bayes factor is unaffected by prior probabilities of the models.
-  - It does depend on the prior over model parameters (e.g., effect size).
-- Important distinction:
-  - Prior on models affects posterior probabilities but not bayes factor.
-  - Prior on parameters affects the Bayes factor itself and hence the posterior odds.
-
-## Prior Sensitivity
-- When different parameter priors yield different conclusions, it shows scientific uncertainty.
-- Strategies to handle prior sensitivity:
-  - Local/intrinsic/fractional/partial Bayes factors.
-  - Sensitivity analyses: Vary the priors on parameters and observe effects on conclusions.
-- Reminder: Some models are robust, others are fragile to prior assumptions.
- 
-## Computational Challenges
-- Computing marginal likelihoods is hard for complex models.
-- Approximate methods include:
-  - Candidate’s formula.
-  - Basic marginal likelihood identity:
-    $p(D \mid M_1) = \frac{p(D \mid \theta, M_1) p(\theta \mid M_1)}{p(\theta \mid D, M_1)}$
-- MCMC-based methods:
-  - Sample from posterior, evaluate likelihoods.
-  - Use **model indicator variables** for model comparison.
 <!-- #endregion -->
+
+<!-- #region Misc lectures -->
 
 <!-- #region Lecture#9 Savage Dickey -->
 # Savage-Dickkey method of model comparison
@@ -1418,3 +1287,55 @@ This allows us to compare the prior and posterior density of delta at zero.
 - The Bayes factor penalizes H1 for spreading prior mass over implausible values. 
 <!-- #endregion    -->
 
+<!-- #region Lecture#4 Inference with Gaussians   -->
+# Inferences with Gaussians  
+- Due to central limit theorem, data and parameters are frequently Gaussian
+- Gaussians have 2 parameters, a mean and a measure of their spread
+- Spread can be expressed as a variance, std, or a precision (1/var) 
+ 
+## Graphical model for Gaussians 
+- Simple model for inferring Gaussian with unknown mean and std
+- ![](fig.4.1.jpg)
+ 
+## Interactive demo of Gaussian
+- Jupyter notebook - interactive plotting of gaussian
+ 
+## Sampling model for inferring Gaussians  
+model { 
+for (i in 1:n){
+x[i]~dnorm(mu,lambda)
+}
+mu~dnorm(0,0.001)
+sigma~dunif(0,10)
+lambda<-1/pow(sigma,2)
+} 
+ 
+## Repeated measures of IQ 
+- Imagine taking a cognitive test like IQ multiple times
+- The mean is your IQ, and the spread models fluctuations in your performance. e.g. attention, fatigue, emotion, venus orbitting satturn
+- We can model this as a Gaussian for each person
+
+## Graphical model for IQ
+- ![](fig.4.3.jpg)
+- What parameter is common to all subjects?
+- No index on the std. This means it is fixed.
+- Is this justified?
+- How to change it?
+ 
+## Sampling code for IQ 
+model{
+  for (i in 1:n) {
+    for (j in 1:m) {
+      x[i,j]~dnorm(mu[i],lambda)
+    }
+  } 
+sigma~dunif(0,100)
+lambda <-1/pow(sigma,2)
+for (i in 1:n) {
+  mu([i]~ dunif(0,300))
+}
+
+}
+<!-- #endregion                            -->
+
+<!-- #endregion -->
