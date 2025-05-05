@@ -62,18 +62,37 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - Vibe & expectations
 
 ## How the week will go
-- A mix of lectures, interactive demos, case studies, and group work  
+- A mix of lectures, interactive demos, case studies, discussion & group work  
 - You’ll build and present a research project with your group  
 - Lectures & demos lay the conceptual groundwork 
 - You build the research project sequentially as you learn more   
 - Morning - lectures and demos
-- Afternoons - self-paced demos and group work
+- Afternoons - self-paced demos and/or group work
 
 ## Materials  
 - GitHub: slides, code, schedule, everything...  
 - Binder: run interactive notebooks in browser, no install  
 - Book: key reference, especially early in the week  
 - Important links: GitHub `README.md`
+
+## GitHub  
+- Main hub for slides, code, notebooks, and schedule etc.  
+- link in footer 👇  
+  <img src="/images/github.png" width="500px">
+
+  ## Binder  
+- Launch notebooks in your browser  
+- No installation needed  
+- Be patient — it takes time to load  
+- Keep your Binder tab open
+- It can time out so best to use continuously in longer sessions   
+  <img src="/images/binder.png" width="300px">
+
+## Book  
+- Core reference for models & theory
+- This course roughly goes through it in order  
+- Especially useful Mon–Wed  
+  <img src="/images/book.jpeg" width="300px">
 
 ## Schedule  
 - Each day blends concepts, demos, & group work  
@@ -82,11 +101,6 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - Up to date on GitHub 
 - Note different room on wed & thurs   
 - <img src="/images/schedule.png" width="1000px">
-
-## Social  
-- Join the WhatsApp group (link on GitHub)  
-- There you can ask informal questions, comment, idle thoughts
-- Friday bar to celebrate
 
 ## Course overview  
 - **Basic modelling** → Get started (Mon-Tues) 
@@ -112,36 +126,10 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - **Simon:** anything technical, Binder, GitHub, Python  
 - **Group work:** you will have many supervisors depending on the day
 
-## Binder  
-- Launch notebooks in your browser  
-- No installation needed  
-- Be patient — it takes time to load  
-- Keep your Binder tab open
-- It can time out so best to use continuously in longer sessions   
-  <img src="/images/binder.png" width="300px">
-
-## GitHub  
-- Main hub for slides, code, notebooks, and schedule etc.  
-- link in footer 👇  
-  <img src="/images/github.png" width="500px">
-
-## Book  
-- Core reference for models & theory
-- This course roughly goes through it in order  
-- Especially useful Mon–Wed  
-  <img src="/images/book.jpeg" width="300px">
-
-## Overarching aim
-- Use probability theory to explain minds, brains, and behavior  
-- Upgrade your scientific reasoning  
-- Simple: intuitive, powerful tools  
-- Universal: same ideas apply across science  
-- From description → explanation
-
-## Specific aims  
-- Build and test cognitive models  
-- Link cognitive models to neural data  
-- Be hands-on, interactive, exploratory  
+## Social  
+- Join the WhatsApp group (link on GitHub)  
+- There you can ask informal questions, comment, idle thoughts
+- Friday bar to celebrate
 
 ## Our expectations of you  
 - Ask questions — don’t nod and fake it  
@@ -158,6 +146,18 @@ jupyter: python3  # ← Tells Quarto to use the Python Jupyter kernel, not the d
 - Don’t pretend to get it  
 - Don’t assume you’re the only one confused  
 - Don’t sit in silence out of self-doubt  
+
+## Overarching aim
+- Use probability theory to explain minds, brains, and behavior  
+- Upgrade your scientific reasoning  
+- Simple: intuitive, powerful tools  
+- Universal: same ideas apply across science  
+- From description → explanation
+
+## Specific aims  
+- Build and test cognitive models  
+- Link cognitive models to neural data  
+- Be hands-on, interactive, exploratory  
 
 ## Upcoming lectures  
 - Basics of Bayesian thinking  
@@ -215,6 +215,7 @@ Jaynes (2003)
 
 ## Bayesian Updating in a Nutshell
 - Prior belief → Evidence → Posterior belief
+- Thats it. 
 
 ## A cognitive task 
 - The go-nogo task
@@ -231,6 +232,7 @@ Jaynes (2003)
 - $\theta$ is *latent* which means it is hidden 
 - Data are *observed* which means we can see it
 - e.g., correct responses $k = 8$ out of $n = 10$
+- *We will use the same symbols & letters throughout*
 
 ## Latent vs. observed
 - <img src="/images/latent_observable.png" width="1000px">
@@ -272,7 +274,7 @@ Jaynes (2003)
 - Range sums: $p(2 \leq x \leq 4) = 0.4$  
 - Odds: $\frac{p(5)}{p(7)} = 7$
 
-## Probaility density functions for continuous variables
+## Probability density functions for continuous variables
 - <img src="/images/probability_density.jpg" width="350px">
 - All probability density integrates to 1
 - (area under the curve is 1)
@@ -1004,30 +1006,86 @@ model {
 
 <!-- #endregion                             -->
 
-<!-- #region Lecture#7 Posterior odds -->
+<!-- #region Lecture#7 Model probabilities -->
+# Lecture 7 Model probabilities
 
-# Posterior odds
-- From Bayes factors to posterior model plausibility  
-- Combining likelihood and prior beliefs  
-- Posterior odds: what we believe after seeing the data  
-- Why priors matter  
-- Common critiques and computational issues
+## Roadmap
+- Model probabilities
+- Prior model probability
+- Marginal likelihood
+- Posterior model probability
+- Odds and model comparison
+- From prior odds to posterior odds
+- Conceptual and computational challenges
 
-## From Bayes factor to posterior odds
-- Bayes factors compare predictive performance  
-- But model plausibility also depends on prior belief  
-- Posterior odds = updated belief in models after data  
-- Combines evidence (likelihood) and belief (prior)  
-- This gives a more complete model comparison
+## Model probabilities
+- Often we want to know which model to believe in  
+- As Bayesians, we assign prior probabilities to models  
+- Then update these into posterior model probabilities  
+- Updating is based on how well each model predicts the data
 
-## Posterior odds equation
-- Relative plausibility:  
-  $\frac{p(M_1 \mid D)}{p(M_2 \mid D)} = \frac{p(D \mid M_1)}{p(D \mid M_2)} \cdot \frac{p(M_1)}{p(M_2)}$  
-- In words:  
-  posterior odds = Bayes factor × prior odds  
-- Clear separation of belief and data  
-- Makes assumptions explicit  
-- Encourages transparency in modeling
+## Prior model probability
+- Assign prior probabilities to models: $p(m_1)$, $p(m_2)$ ...  
+- Reflects belief before seeing any data  
+- Must sum to 1 across the model space $M$  
+- Can be informed by prior knowledge or data...  
+- ...or set uniformly if agnostic
+
+## Marginal likelihood
+- Measures average predictive performance of a model  
+- e.g. for a model $m_1$:  
+- $p(D \mid m_1) = \int p(D \mid \theta, m_1)\,p(\theta \mid m_1)\,d\theta$  
+- Rewards models that predict the data well  
+- Penalizes models that spread probability too widely  
+
+## Posterior model probability
+- Probability of model after seeing data  
+- Bayes' rule for models:  
+- $p(m_1 \mid D) = \frac{p(D \mid m_1)\,p(m_1)}{p(D \mid M)}$  
+- <br>
+- Note: The denominator is the marginal likelihood of the model space:  
+- $p(D \mid M) = \sum_{m \in M} p(D \mid m)\,p(m)$
+
+## Posterior model probability
+- Probability of model after seeing data  
+- Bayes' rule for models:  
+- <br> 
+- $p(m_1 \mid D) = \frac{p(D \mid m_1)\,p(m_1)}{p(D \mid M)}$  
+- <br> 
+- <span style="color:gray;">
+Note: The denominator is the marginal likelihood of the model space $M$:  
+$$
+p(D \mid M) = \sum_{m \in M} p(D \mid m)\,p(m)
+$$
+</span>
+
+## Odds
+- Odds express the ratio of one probability relative to another  
+- If probability of success is p = 0.75
+- ...and probability of failure is then p = 0.25 then:  
+  $\text{odds} = \frac{0.75}{.25} = 3$  
+- "Three to one" odds means success is three times more likely than failure  
+
+## Prior odds
+- Compares plausibility of two models before seeing data  
+- Defined as: $\text{Prior odds} = \frac{p(m_1)}{p(m_2)}$  
+- Encodes how much you believe in $m_1$ relative to $m_2$ a priori  
+
+## Posterior odds
+- Compares plausibility of two models after seeing data  
+- Defined as: $\text{Posterior odds} = \frac{p(m_1 \mid D)}{p(m_2 \mid D)}$  
+- Reflects relative belief in one model over another after the data 
+
+## From prior odds to posterior odds
+- Bayes' rule for model comparison (in odds form): 
+- 
+  $$
+  \frac{p(m_1)}{p(m_2)} \times \frac{p(D \mid m_1)}{p(D \mid m_2)} = \frac{p(m_1 \mid D)}{p(m_2 \mid D)}
+  $$  
+- Prior odds × Bayes factor = Posterior odds
+
+## Simples!
+- ![](images/simples.jpeg){width=2000%}
 
 ## Posterior odds example
 - ![](images/posterior_odds_rain.png)
@@ -1036,85 +1094,81 @@ model {
 - ![](images/posterior_odds_eq.png)
 
 ## Try it out
-- This demo ties everything together!
-- `notebooks/probability distributions.ipynb`
-- Go to "posterior odds calculation"
-
-## Transforming prior into posterior
-- Bayes factor converts prior odds into posterior odds  
-- If prior odds = 1, posterior odds = Bayes factor  
-- Prior beliefs influence conclusions  
-- But can be updated rationally with data  
-- That’s the power of Bayes
-
-## Why Bayes factors are powerful
-- Automatically penalize overly complex models  
-- Allow direct evidence for the null  
-- Can handle multiple models, not just null vs. alt  
-- Support sequential data collection  
-- Intuitive: how much more likely is the data?
-
-## Extraordinary claims, extraordinary evidence
-- Strong priors require stronger data  
-- $p(M \mid D) = BF \cdot p(M)$  
-- Even big Bayes factors may not sway implausible models  
-- Prior odds encode skepticism  
-- Bayesian methods make this explicit
-
-## Why p-values can’t do this
-- p-values don't compare models  
-- Don’t provide evidence for the null  
-- Depend on hypothetical outcomes  
-- Require fixed plans to be valid  
-- Can’t say “this model is better”
-
-## Optional stopping
-- Bayes allows data collection to stop anytime  
-- p-values require pre-specified $n$  
-- Bayes factors stay valid during interim checks  
-- Enables adaptive design  
-- More flexible, more realistic
+- Demo brings it all together  
+- See: `notebooks/probability distributions.ipynb`  
+  → “Posterior odds calculation”
 
 ## Conceptual and computational challenges
-- Priors matter: vague priors can be a liability because they can make a model bad 
-- Marginal likelihood is sometimes hard to compute  
-- Complex models need careful approximation  
-- Broad priors lower predictive accuracy  
-- Precision in priors improves inference
+- Priors affect inference — vague ≠ safe  
+- Marginal likelihoods are often hard to compute  
+- Complex models often need approximations
 
-## Specifying priors
-- Priors must reflect real uncertainty  
+## Specifying model priors
+- Model priors should reflect genuine uncertainty  
 - Two strategies:  
-  - Subjective (expert-driven)  
-  - Objective (e.g., unit-information priors)  
-- Objective priors = default baseline  
-- Useful for reproducibility  
-- Can be refined with context
+  - Subjective (expert-informed)  
+  - Objective (e.g., unit-information)  
+- Objective priors support reproducibility  
+- Subjective priors offer flexibility when justified
 
 ## Common confusion about priors
-- Model priors are priors over models, parameter priors are priors over parameters. 
-- Bayes factor does **not** depend on model priors  
-- It **does** depend on parameter priors because these are part of models 
-- Posterior model probability depends on both  
-- So:  
-  - Priors on models → posterior odds  
-  - Priors on parameters → Bayes factor
+- Model priors ≠ parameter priors  
+- Be clear what you are talking about with "priors"
+
+## What priors influence what
+- Model priors → Prior odds 
+- *Since prior odds are composed of model priors*
+- <br>
+- Parameter priors → Bayes factor
+- *Parameter priors infuence how good each model predicts data*
+- <br>
+- Both model AND parameter priors → posterior odds
+- *Since Posterior odds = prior odds * BF*
 
 ## Prior sensitivity
-- Different priors = different conclusions  
-- That’s not a bug — it’s honest uncertainty  
-- Test robustness with sensitivity analysis  
-- Try narrower and wider priors  
-- Some models are robust, others fragile
+- Different priors can lead to different conclusions based on the posterior   
+- This is not a flaw — it's a feature of honest uncertainty  
+- Sensitivity analysis tests how robust your conclusions are  
+- Try wider/narrower priors and compare results  
+- Some models are robust; others are fragile 
+
+## Similarity: model vs. parameter inference
+- Posterior distribution of parameters:  
+  $$
+  p(\theta \mid D, m) = \frac{\color{red}{p(D \mid \theta, m)} \cdot \color{blue}{p(\theta \mid m)}}{\color{green}{p(D \mid m)}}
+  $$
+
+- Posterior distribution of models:  
+  $$
+  p(m \mid D) = \frac{p(D \mid m)\,p(m)}{p(D \mid M)}
+  $$
+
+- <span style="color:gray;">
+Note: First denominator is conditional on a specific model \( m \), second sums across model space of models \( M \)
+</span>
+
+## Belief updating for models vs. parameters
+
+- Posterior probability of parameters (within a model, m):  
+  $$
+  p(\theta \mid D, m) = \frac{\color{red}{p(D \mid \theta, m)} \cdot \color{blue}{p(\theta \mid m)}}{\color{green}{p(D \mid m)}}
+  $$
+
+- Posterior probability of models m (within a model space, M):  
+  $$
+  p(m \mid D) = \frac{\color{green}{p(D \mid m)} \cdot \color{blue}{p(m)}}{\color{gray}{p(D \mid M)}}
+  $$
+
+- <span style="color:gray;">
+Note: First denominator is for a single model m, second sums over the full space of possible models, M {m1, m2...}.
+</span>
 
 ## Computational solutions
-- Exact marginal likelihood often unavailable  
-- Approximate methods include:  
-  - Free energy minimisation
-  - Variational Bayes
-  - MCMC methods *like we have used*
-
-
+- Marginal likelihoods are rarely available in closed form  
+- Approximate inference methods include:  
+  - Variational Bayes  
+  - Free energy minimisation  
+  - MCMC (like we've used)
 
 <!-- #endregion -->
 
