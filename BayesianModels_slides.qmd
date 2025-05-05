@@ -1096,7 +1096,7 @@ $$
 ## Try it out
 - Demo brings it all together  
 - See: `notebooks/probability distributions.ipynb`  
-  → “Posterior odds calculation”
+  → “Putting everything together into one massive beast of a demo kind of thing"
 
 ## Conceptual and computational challenges
 - Priors affect inference — vague ≠ safe  
@@ -1132,23 +1132,8 @@ $$
 - Try wider/narrower priors and compare results  
 - Some models are robust; others are fragile 
 
-## Similarity: model vs. parameter inference
-- Posterior distribution of parameters:  
-  $$
-  p(\theta \mid D, m) = \frac{\color{red}{p(D \mid \theta, m)} \cdot \color{blue}{p(\theta \mid m)}}{\color{green}{p(D \mid m)}}
-  $$
-
-- Posterior distribution of models:  
-  $$
-  p(m \mid D) = \frac{p(D \mid m)\,p(m)}{p(D \mid M)}
-  $$
-
-- <span style="color:gray;">
-Note: First denominator is conditional on a specific model \( m \), second sums across model space of models \( M \)
-</span>
 
 ## Belief updating for models vs. parameters
-
 - Posterior probability of parameters (within a model, m):  
   $$
   p(\theta \mid D, m) = \frac{\color{red}{p(D \mid \theta, m)} \cdot \color{blue}{p(\theta \mid m)}}{\color{green}{p(D \mid m)}}

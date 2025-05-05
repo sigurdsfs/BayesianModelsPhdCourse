@@ -1992,20 +1992,6 @@ p(D \mid M) = \sum_{m \in M} p(D \mid m)\,p(m)
 <li class="fragment">Some models are robust; others are fragile</li>
 </ul>
 </section>
-<section id="similarity-model-vs.-parameter-inference" class="slide level2">
-<h2>Similarity: model vs.&nbsp;parameter inference</h2>
-<ul>
-<li class="fragment"><p>Posterior distribution of parameters:<br>
-<span class="math display">\[
-p(\theta \mid D, m) = \frac{\color{red}{p(D \mid \theta, m)} \cdot \color{blue}{p(\theta \mid m)}}{\color{green}{p(D \mid m)}}
-\]</span></p></li>
-<li class="fragment"><p>Posterior distribution of models:<br>
-<span class="math display">\[
-p(m \mid D) = \frac{p(D \mid m)\,p(m)}{p(D \mid M)}
-\]</span></p></li>
-<li class="fragment"><p><span style="color:gray;"> Note: First denominator is conditional on a specific model ( m ), second sums across model space of models ( M ) </span></p></li>
-</ul>
-</section>
 <section id="belief-updating-for-models-vs.-parameters" class="slide level2">
 <h2>Belief updating for models vs.&nbsp;parameters</h2>
 <ul>
