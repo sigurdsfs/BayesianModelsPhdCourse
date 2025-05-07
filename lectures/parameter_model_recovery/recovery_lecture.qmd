@@ -43,6 +43,7 @@ footer:   |  # ← Adds a custom HTML footer across all slides. The pipe (|) mea
 ## Plot setting {visibility="hidden"}
 ```{python}
 # Run this first!
+
 import matplotlib as mpl
 import seaborn as sns
 import numpy as np
