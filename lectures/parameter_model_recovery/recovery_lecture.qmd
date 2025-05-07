@@ -20,12 +20,6 @@ format:
       theme: neutral
       format: svg
     theme: [sky, BayesianModels_style.scss]
-  html:
-    code-overflow: wrap
-    code-fold: true
-    fontsize: 0.9em
-    linestretch: 1.2
-    mermaid-format: svg
 bibliography: bibliography.bib
 execute:
   echo: true
@@ -166,7 +160,7 @@ https://commons.wikimedia.org/wiki/File:Slot_machine.jpg, cc-by-sa-2.0
 * Our hypothesis is that participants will prefer 🎰A, as it is advantageous in the long run.
   * So the question is: How often do participants select machine 🎰A?
   * Our observation: The number of times 🎰A is preferred over 🎰B
-  * $\quad $
+  * .
 
 ![ ](images/Slot_machine.jpg){height="250px"}
 
@@ -1183,6 +1177,6 @@ for label, (a, b) in params.items():
 
 # Style the plot
 axes.set(title="Beta Distributions", xlabel="x", ylabel="Density")
-axes.legend()
+axes.legend(fancybox=False, framealpha=0.0)
 plt.tight_layout()
 ```
