@@ -1,0 +1,75 @@
+
+/*-- scss:defaults --*/
+
+$presentation-font-size-root: 30px !default;
+$code-block-bg: #d8eef1ff !default;
+$body-bg: rgb(229, 242, 243) !default;
+$body-color: #3a3f41ff !default;
+//$text-muted: #3a3f41ff !default;
+$font-family-sans-serif: "Arial" !default;
+
+/*-- scss:rules --*/
+
+.border {
+    border: 1px solid #dee2e6;
+  }
+
+  .border-thick {
+    border-width: 3px;
+  }
+
+  .reveal h2.subtitle {
+    font-size: 1.1em !important;
+    color:grey !important; /* Makes subtitle text grey */
+  }
+
+  .reveal h1.title {
+    font-size: 1.1em !important; /* Adjust as needed */
+    font-weight: bold;
+  }
+
+  /* Remove bullet points for lists */
+  .reveal ul {
+    list-style-type: none;  /* Removes the default bullet points */
+    padding-left: 0;  /* Ensures no indentation */
+  }
+
+  .reveal li {
+    margin-bottom: 1em;  /* Adds spacing between list items */
+  }
+
+  /* Remove padding and margin for nested lists */
+  .reveal ul ul {
+    padding-left: 0;  /* Removes left padding for sub-lists */
+    margin-left: 10;   /* Removes left margin for sub-lists */
+  }
+
+  /* Remove bullets for any nested levels */
+  .reveal ul li {
+    list-style-type: none;  /* Ensures no bullets at any level */
+  }
+
+
+  .grey {
+    color: rgb(18, 18, 19);
+  }
+
+  // Slide numbers to the bottom-left
+  .slide-number, .reveal.has-logo .slide-number {
+    bottom: 14px !important;
+    left: 50px !important;
+    top: unset !important;
+    color: #777777 !important;
+  }
+
+  .slide-logo {
+    display: block !important;
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
+    max-height: 5% !important;
+    height: 100% !important;
+    width: auto !important;
+    color: $body-color !important;
+  }
+
