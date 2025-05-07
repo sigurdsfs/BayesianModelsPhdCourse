@@ -11,7 +11,7 @@ format:
     code-fold: true
     smaller: false
     slide-number: true
-    embed-resources: true
+    embed-resources: false
     incremental: true
     height: 700
     width: 1050
@@ -20,16 +20,16 @@ format:
       theme: neutral
       format: svg
     theme: [sky, BayesianModels_style.scss]
-  ipynb: default
+  html:
+    code-overflow: wrap
+    code-fold: true
+    fontsize: 0.9em
+    linestretch: 1.2
+    mermaid-format: svg
 bibliography: bibliography.bib
-html:
-  code-overflow: wrap
-  code-fold: true
-  fontsize: 0.9em
-  linestretch: 1.2
-  mermaid-format: png
 execute:
   echo: true
+keep-ipynb: true
 jupyter: python3
 footer:   |  # ← Adds a custom HTML footer across all slides. The pipe (|) means the following lines are literal block text.
     <a href="https://tinyurl.com/bayeBinderRepo" target="_blank">
@@ -203,6 +203,7 @@ k [shape=square, style=filled]
 n -> k
 }
 ```
+
 :::
 ::::
 
@@ -234,6 +235,7 @@ Not so fast:
 ::: {.fragment}
 
 We could also sample using the JAGS model
+
 ```{dot}
 //| echo: false
 //| fig-width: 3
@@ -248,6 +250,7 @@ k [shape=square, style=filled]
 n -> k
 }
 ```
+
 :::
 :::
 ::::
@@ -282,6 +285,7 @@ k [shape=square, style=filled]
 n -> k
 }
 ```
+
 :::
 ::::
 
@@ -290,6 +294,7 @@ n -> k
 :::: {.columns}
 ::: {.column width="49%"}
 ::: {.fragment}
+
 ```{python}
 # Let's generate data:
 rate_model = '''
@@ -310,10 +315,12 @@ fig, axes = plt.subplots(1, 1, figsize=(7, 2.5))
 sns.histplot(x=example_datasets_25)
 axes.set(title="Synthetic datasets", xlabel="No of selected A", xlim=[0, 25]);
 ```
+
 :::
 :::
 ::: {.column width="49%"}
 ::: {.fragment}
+
 ```{python}
 mean_estimates_25 = np.zeros(n_datasets)
 
@@ -336,6 +343,7 @@ axes.axvline(theta, color='black', linewidth=3, linestyle='--')
 axes.set(xlim=[0, 1], xlabel=r"recovered $\theta$");
 plt.suptitle(r"Parameter recovery for $\theta=0.7$");
 ```
+
 :::
 :::
 ::::
@@ -345,6 +353,7 @@ plt.suptitle(r"Parameter recovery for $\theta=0.7$");
 Do more trials help?
 
 ::: {.fragment}
+
 ```{python}
 theta = 0.7
 n_trials = 75
@@ -383,11 +392,13 @@ plt.suptitle(r"Parameter recovery for $\theta=0.7$");
 axes[1].legend(fancybox=False, framealpha=0.0)
 plt.tight_layout()
 ```
+
 :::
 
 ## Play around
 
 Code is in the jupyter notebook
+
 ```{python}
 #| echo: false
 
@@ -439,7 +450,6 @@ interactive_plot = widgets.interactive(update_plot, theta=theta_slider,
 display(interactive_plot)
 ```
 
-
 ## A full parameter recovery study
 
 * Often we simulate data over larger parameter spaces.
@@ -447,6 +457,7 @@ display(interactive_plot)
 assuming $n=50$ trials, and simulating 50 datasets for each point.
 
 ::: {.fragment}
+
 ```{python}
 # Sampling function
 
@@ -470,6 +481,7 @@ axes.plot([0, 1], [0, 1], linestyle='--', color='gray')
 axes.set(title=f"Parameter recovery (r={stats.pearsonr(theta_pred, theta_true)[0]:4.2f})",
 ylabel=r'recovered $\theta$', xlabel=r'true $\theta$', xlim=[-0.05,1.05], ylim=[-0.05,1.05]);
 ```
+
 :::
 
 ## What can go wrong
@@ -478,6 +490,7 @@ The same simulation, but something went, wrong, any ideas?
 
 :::: {.columns}
 ::: {.column width="50%"}
+
 ```{python}
 #| echo: false
 rate_model_typo = '''
@@ -508,13 +521,16 @@ axes.plot([0, 1], [0, 1], linestyle='--', color='gray')
 axes.set(title=f"Parameter recovery (r={stats.pearsonr(theta_pred, theta_true)[0]:4.2f})",
 ylabel=r'recovered $\theta$', xlabel=r'true $\theta$', xlim=[-0.05,1.05], ylim=[-0.05,1.05]);
 ```
+
 :::
 
 ::: {.column width="50%"}
 ::: {.fragment}
+
 ```{python}
 print(rate_model_typo)
 ```
+
 :::
 :::
 ::::
@@ -538,6 +554,7 @@ https://en.wikipedia.org/wiki/Accuracy_and_precision
 
 
 ## Always plot your data
+
 ```{python}
 #| echo: false
 # Load the example dataset for Anscombe's quartet
@@ -683,6 +700,7 @@ flowchart TB
 :::: {.columns}
 ::: {.column width="49%"}
 ::: {.fragment}
+
 ```{python}
 model_comparison = """
 model {
@@ -698,6 +716,7 @@ model {
 """
 print(model_comparison)
 ```
+
 :::
 :::
 ::: {.column width="49%"}
@@ -725,6 +744,7 @@ switch -> k
 n -> k
 }
 ```
+
 :::
 :::
 ::::
@@ -737,6 +757,7 @@ n -> k
 * We also assume $n=75$ trials.
 
 ::: {.fragment}
+
 ```{python}
 # We could use the sampling function of the jags model but
 # sometimes it's easier to use the generative process:
@@ -775,6 +796,7 @@ axes[0].set(xlim=[0, n_trials], xlabel="k", ylabel="counts",
 axes[1].set(xlim=[0, n_trials], xlabel="k", ylabel="counts",
             title="Datasets M2");
 ```
+
 :::
 
 ## We now infer the model for each of the two separate datasets
@@ -806,6 +828,7 @@ axes.set(ylabel='true model', xlabel='recovered model');
 :::
 ::: {.column width="49%"}
 ::: {.fragment}
+
 ```{python}
 #| echo: false
 # Plotting confusion matrix
@@ -829,6 +852,7 @@ axes[0].set(ylim=[0, 1], xlim=[0, 75], xlabel="successes (k)",  ylabel=r"Posteri
 axes[1].set(ylim=[0, 1], xlim=[0, 75],xlabel="successes (k)",  ylabel=r"Posterior $p(M_1|D)$", title="Model recovery M2");
 plt.tight_layout()
 ```
+
 :::
 :::
 ::::
@@ -1039,6 +1063,7 @@ plt.tight_layout()
 ```
 
 ## Two parameters? {.scrollable}
+
 ```{python}
 #| echo: true
 rate_model_hier = '''
@@ -1136,3 +1161,27 @@ cbar=False)
 plt.tight_layout()
 ```
 
+
+## Beta distributions
+
+```{python}
+x = np.linspace(0, 1, 500)
+
+# Define the beta distributions
+params = {
+    "Beta(4, 4)": (4, 4),
+    "Beta(2, 4)": (2, 4),
+    "Beta(4, 2)": (4, 2),
+    "Beta(1, 10)": (1, 10),
+}
+
+# Plot each distribution
+fig, axes = plt.subplots(figsize=(8, 5))
+for label, (a, b) in params.items():
+    plt.plot(x, stats.beta.pdf(x, a, b), label=label)
+
+# Style the plot
+axes.set(title="Beta Distributions", xlabel="x", ylabel="Density")
+axes.legend()
+plt.tight_layout()
+```
