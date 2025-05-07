@@ -160,7 +160,7 @@ https://commons.wikimedia.org/wiki/File:Slot_machine.jpg, cc-by-sa-2.0
 * Our hypothesis is that participants will prefer 🎰A, as it is advantageous in the long run.
   * So the question is: How often do participants select machine 🎰A?
   * Our observation: The number of times 🎰A is preferred over 🎰B
-  * .
+  * &nbsp;
 
 ![ ](images/Slot_machine.jpg){height="250px"}
 
